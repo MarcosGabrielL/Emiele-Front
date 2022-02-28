@@ -9,6 +9,7 @@ import { ProfileComponent } from './components/views/profile/profile.component';
 import { RtlComponent } from './components/views/rtl/rtl.component';
 import { SigninComponent } from './components/security/signin/signin.component';
 import { SignupComponent } from './components/security/signup/signup.component';
+import { TableComponent } from './components/views/table/table.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { SignupComponent } from './components/security/signup/signup.component';
     ProfileComponent,
     RtlComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
