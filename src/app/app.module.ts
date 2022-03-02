@@ -11,6 +11,11 @@ import { SigninComponent } from './components/security/signin/signin.component';
 import { SignupComponent } from './components/security/signup/signup.component';
 import { TableComponent } from './components/views/table/table.component';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HttpInterceptorService } from './components/security/httpinterceptor.service';
+
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +29,16 @@ import { TableComponent } from './components/views/table/table.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: HttpInterceptorService,
+          multi: true
+        }
+    ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
