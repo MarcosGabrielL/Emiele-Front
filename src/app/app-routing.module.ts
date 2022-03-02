@@ -25,12 +25,12 @@ const routes: Routes = [
    },
    {
     path: 'index',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [ HttpInterceptorService ]
    },
    {
     path: 'profile',
-    component: ProfileComponent
-    ,
+    component: ProfileComponent,
     canActivate: [ HttpInterceptorService ]
    }
    ,

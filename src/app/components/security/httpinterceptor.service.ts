@@ -27,7 +27,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     async canActivate(): Promise<boolean> {
     if (!await this.authenticationService.isUserLoggedIn()) {
-      await this.router.navigate(['home']);
+      await this.router.navigate(['']);
       return false;
     }
     return true;

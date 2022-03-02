@@ -11,10 +11,13 @@ import { SigninComponent } from './components/security/signin/signin.component';
 import { SignupComponent } from './components/security/signup/signup.component';
 import { TableComponent } from './components/views/table/table.component';
 
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpInterceptorService } from './components/security/httpinterceptor.service';
 
 import { FormsModule } from '@angular/forms';
+
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,9 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [
         {

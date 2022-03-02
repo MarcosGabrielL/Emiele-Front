@@ -26833,13 +26833,27 @@ pre[class*="language-"] {
             <div class="card-body">
               <form role="form text-left">
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
+                  <input for="firstName"  id="firstName" [(ngModel)]="firstName"
+              name="firstName" 
+
+                  type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
                 </div>
                 <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                  <input for="lastName" id="lastName" [(ngModel)]="lastName"
+              name="lastName"
+
+                  type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="email-addon">
                 </div>
                 <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                  <input  for="emailreg" id="emailreg" [(ngModel)]="emailreg"
+              name="emailreg"
+
+                  type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                </div>
+                <div class="mb-3">
+                  <input type="Password" [(ngModel)]="passwordreg" id="passwordreg" 
+
+                  type="password" class="form-control" placeholder="Senha" aria-label="Password" aria-describedby="password-addon">
                 </div>
                 <div class="form-check form-check-info text-left">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
