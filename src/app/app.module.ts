@@ -12,12 +12,33 @@ import { SignupComponent } from './components/security/signup/signup.component';
 import { TableComponent } from './components/views/table/table.component';
 
 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCardModule} from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {PlatformModule} from '@angular/cdk/platform';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { HttpInterceptorService } from './components/security/httpinterceptor.service';
 
-import { FormsModule } from '@angular/forms';
 
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { VerificarEmailComponent } from './components/security/verificar-email/verificar-email.component';
+import { RecuperarsenhaComponent } from './components/security/recuperarsenha/recuperarsenha.component';
+import { AtualizarsenhaComponent } from './components/security/atualizarsenha/atualizarsenha.component';
+import { SelecionatipoComponent } from './components/views/selecionatipo/selecionatipo.component';
+import { EmailsucessComponent } from './components/template/emailsucess/emailsucess.component';
+import { EmailfailComponent } from './components/template/emailfail/emailfail.component';
 
 @NgModule({
   declarations: [
@@ -28,14 +49,35 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RtlComponent,
     SigninComponent,
     SignupComponent,
-    TableComponent
+    TableComponent,
+    VerificarEmailComponent,
+    RecuperarsenhaComponent,
+    AtualizarsenhaComponent,
+    SelecionatipoComponent,
+    EmailsucessComponent,
+    EmailfailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    BrowserAnimationsModule,
+    MatListModule,
+    MatMenuModule,
+    MatCardModule,
+    MatTableModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+    PlatformModule,
+    NgbModule,
+    NgxDropzoneModule 
   ],
   providers: [
         {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../login.service';
 import { RegisterService } from '../register.service';
+import { VerifyemailService } from '../verifyemail.service';
 import {
   getSupportedInputTypes,
   Platform,
@@ -57,7 +58,8 @@ export class SigninComponent implements OnInit {
     private router: Router,
     private authenticationService: LoginService,
     private registerService: RegisterService,
-    public platform: Platform) {   }
+    public platform: Platform,
+    public verifyemailservice: VerifyemailService) {   }
 
 
   ngOnInit(): void {
@@ -75,7 +77,7 @@ export class SigninComponent implements OnInit {
     "email":this.email,
     "password":this.password
   };
-    //console.log(this.authRequest);
+    console.log(this.authRequest);
     this.authenticationService.authenticationService(this.authRequest).subscribe((result)=> {
       this.invalidLogin = false;
       this.loginSuccess = true;
@@ -115,6 +117,7 @@ export class SigninComponent implements OnInit {
                 this.authenticationService.registerSuccessfulLogin(this.emailreg, this.passwordreg);
                 this.successMessage = 'Login com sucesso';
                 this.authenticationService.mensagem(this.successMessage);
+                this.sendEmail();
                 this.router.navigate(['/index']);
               }, () => {
                 this.invalidLogin = true;
@@ -127,7 +130,20 @@ export class SigninComponent implements OnInit {
         this.authenticationService.mensagem(this.errorMessage);
         
      }); 
-
-          
+   
   }
+
+  sendEmail(){
+
+    
+
+      this.verifyemailservice.sendemail(this.authRequestreg).subscribe((resposta) => {
+                this.authenticationService.mensagem('Email de verificação enviado');
+            
+            },  () => {
+                this.authenticationService.mensagem('Erro ao enviar Email de verificação');
+              });
+
+    }
+
 }

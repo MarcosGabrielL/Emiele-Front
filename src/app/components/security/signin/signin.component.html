@@ -25621,18 +25621,20 @@ pre[class*="language-"] {
                   <p class="mb-0">Digite seu Email e Senha para entrar</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
+                  <form role="form" >
                     <label>Email</label>
                     <div class="mb-3">
-                      <input  for="email" id="username" [ngModel]="email"
-              name="email"  type="email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="email-addon">
+                      <input  [(ngModel)]="email" id="email" 
+              name="email" 
+
+                      type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                     </div>
                     <label>Senha</label>
                     <div class="mb-3">
                       <input [(ngModel)]="password" id="password" 
               name="password" 
 
-                      type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                      type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                     </div>
                     <div class="form-check form-switch">
                       <input class="form-check-input" type="checkbox" id="rememberMe" checked="">
@@ -25643,10 +25645,15 @@ pre[class*="language-"] {
                     </div>
                   </form>
                 </div>
-                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                <div class="card-footer text-center pt-0 px-lg-2 px-1" style="padding: 0;">
                   <p class="mb-4 text-sm mx-auto">
                     Não tem uma conta?
                     <a href="/cadastrar" class="text-info text-gradient font-weight-bold" style="background-image: linear-gradient(310deg, #cc2945, red);">Cadastrar</a>
+                  </p>
+                </div>
+                <div class="card-footer text-center pt-0 px-lg-2 px-1" style="padding: 0;">
+                  <p class="mb-4 text-sm mx-auto">
+                    <a href="/forgotpassword" class="text-info text-gradient font-weight-bold" style="background-image: linear-gradient(310deg, blue, red);">Esqueceu a senha?</a>
                   </p>
                 </div>
               </div>

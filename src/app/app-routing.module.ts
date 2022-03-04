@@ -12,6 +12,11 @@ import { RtlComponent } from './components/views/rtl/rtl.component';
 import { BillingComponent } from './components/views/billing/billing.component';
 import { TableComponent } from './components/views/table/table.component';
 import { HttpInterceptorService } from './components/security/httpinterceptor.service';
+import { VerificarEmailComponent } from './components/security/verificar-email/verificar-email.component';
+import { EmailsucessComponent } from './components/template/emailsucess/emailsucess.component';
+import { EmailfailComponent } from './components/template/emailfail/emailfail.component';
+import { RecuperarsenhaComponent } from './components/security/recuperarsenha/recuperarsenha.component';
+import { AtualizarsenhaComponent } from './components/security/atualizarsenha/atualizarsenha.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -46,7 +51,23 @@ const routes: Routes = [
    {
     path: 'tables',
     component: TableComponent
-   }
+   },
+   {
+    path: 'confirm',
+    component: VerificarEmailComponent,
+      children: [
+                    {path: 'sucess',  component: EmailsucessComponent, pathMatch: 'full'},
+                    { path: 'fail', component: EmailfailComponent, pathMatch: 'full'}
+                  ]
+   },
+   {
+    path: 'forgotpassword',
+    component: RecuperarsenhaComponent
+   },
+   {
+    path: 'reset_password',
+    component: AtualizarsenhaComponent
+   }  
 ];
 
 @NgModule({
