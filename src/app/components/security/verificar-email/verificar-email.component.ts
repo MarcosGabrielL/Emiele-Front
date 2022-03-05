@@ -26,15 +26,15 @@ export class VerificarEmailComponent implements OnInit {
 
             // console.log(this.token + "+" + this.email);
             this.verifyemailservice.Verifyemail(this.token , this.email).subscribe((resposta: boolean) => {
-                //this.verifyemailservice.mensagem('Email verificado com sucesso');
+                this.verifyemailservice.mensagem('Email verificado com sucesso');
                 this.isSucessful = true;
                 this.cdRef.detectChanges();
                 //this.router.navigate(['/sucess']);
                  console.log("Sucesso");
-                 this.router.navigate(['/home']);
+                 
             
             },  () => {
-                //this.verifyemailservice.mensagem('Erro ao verificar Email');
+                this.verifyemailservice.mensagem('Erro ao verificar Email');
                 this.isSucessful = false;
                 this.cdRef.detectChanges();
                  //this.router.navigate(['/fail']);

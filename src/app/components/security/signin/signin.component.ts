@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../login.service';
 import { RegisterService } from '../register.service';
@@ -13,14 +13,14 @@ import {
 @Component({
   selector: 'app-login',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['../../../../app/app.component.css']
 })
 export class SigninComponent implements OnInit {
 
 //Login Components
    email: string = "";
   password : string = "";
-  errorMessage = 'Invalid Credentials';
+  errorMessage = 'Erro ao Fazer Login';
   successMessage: string = "";
   invalidLogin = false;
   loginSuccess = false;
@@ -77,7 +77,7 @@ export class SigninComponent implements OnInit {
     "email":this.email,
     "password":this.password
   };
-    console.log(this.authRequest);
+   // console.log(this.authRequest);
     this.authenticationService.authenticationService(this.authRequest).subscribe((result)=> {
       this.invalidLogin = false;
       this.loginSuccess = true;

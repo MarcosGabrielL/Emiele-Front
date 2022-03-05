@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-atualizarsenha',
   templateUrl: './atualizarsenha.component.html',
-  styleUrls: ['./atualizarsenha.component.css']
+  styleUrls: ['../../../../app/app.component.css']
 })
 export class AtualizarsenhaComponent implements OnInit {
 
@@ -38,13 +38,13 @@ export class AtualizarsenhaComponent implements OnInit {
 
     this.resetpasswordservice.processResetPassword(this.token, this.email, this.password).subscribe((result:any)=> {
       
-      //this.resetpasswordservice.mensagem(this.Message);
+      this.resetpasswordservice.mensagem("Senha atualizada");
       console.log(result);
       console.log("Senha atualizada")
-      //this.router.navigate(['/home']);
+      this.router.navigate(['/home']);
     }, () => {
       console.log("Erro ao atualizar senha");
-      //this.resetpasswordservice.mensagem("Erro ao enviar email");
+      this.resetpasswordservice.mensagem("Erro ao atualizar senha");
     });
   }
 

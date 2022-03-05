@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from '../login.service';
 import { RegisterService } from '../register.service';
@@ -15,7 +15,7 @@ import {
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['../../../../app/app.component.css']
 })
 export class SignupComponent implements OnInit {
 
@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
        // console.log(this.authRequestRegister);
     this.registerService.registration(this.authRequestRegister).subscribe((result)=> {
         this.successMessage = 'Cadastro com sucesso';
-        //this.authenticationService.mensagem(this.successMessage); 
+        this.authenticationService.mensagem(this.successMessage); 
             this.authenticationService.authenticationService(this.authRequestreg).subscribe((result)=> {
                 this.invalidLogin = false;
                 this.loginSuccess = true;
@@ -81,17 +81,17 @@ export class SignupComponent implements OnInit {
                 this.authenticationService.registerSuccessfulLogin(this.emailreg, this.passwordreg);
                 this.successMessage = 'Login com sucesso';
                 this.sendEmail();
-                //this.authenticationService.mensagem(this.successMessage);
+                this.authenticationService.mensagem(this.successMessage);
                 this.router.navigate(['/index']);
               }, () => {
                 this.invalidLogin = true;
                 this.loginSuccess = false;
-                //this.authenticationService.mensagem(this.errorMessage);
+                this.authenticationService.mensagem(this.errorMessage);
                 this.router.navigate(['/index']);
               });
     }, () => {
   this.errorMessage = 'Erro no cadastro';
-       // this.authenticationService.mensagem(this.errorMessage);
+        this.authenticationService.mensagem(this.errorMessage);
        console.log("Erro no cadastro");
         
      }); 

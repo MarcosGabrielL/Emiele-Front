@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-recuperarsenha',
   templateUrl: './recuperarsenha.component.html',
-  styleUrls: ['./recuperarsenha.component.css']
+   styleUrls: ['../../../../app/app.component.css']
 })
 export class RecuperarsenhaComponent implements OnInit {
 
