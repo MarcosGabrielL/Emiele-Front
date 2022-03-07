@@ -22,7 +22,8 @@ export class FileService {
       {
         reportProgress: true,
         observe: 'events',
-         headers: {'Content-Type': 'multipart/form-data'}
+         headers: {'Content-Type': 'multipart/form-data',
+                    'Access-Control-Allow-Origin': '*'}
         
       });
   }
