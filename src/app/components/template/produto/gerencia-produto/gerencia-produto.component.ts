@@ -34,21 +34,23 @@ export class GerenciaProdutoComponent implements OnInit {
       const fileDetails = new FileDetails();
       fileDetails.name = file.name;
       this.uploadedFiles.push(fileDetails);
-      this.fileService.uploadSingleFile(file, "1")
-        .pipe(tap(event => {
-          if (event.type === HttpEventType.UploadProgress) {
-            this.loaded = Math.round(100 * event.loaded / 100);
-            fileDetails.progress = this.loaded;
-          }
-        })).subscribe(event => {
-        if (event instanceof HttpResponse) {
-          if (this.selectedFiles.item(this.selectedFiles.length - 1) === file) {
-            // Invokes fetchFileNames() when last file in the list is uploaded.
-            //this.fileService.fetchFileNames();
-            console.log("Foi");
-            console.log(event);
-          }
+      this.fileService.uploadSingleFile(file, "1").subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress) {
+          // calculate the progress percentage
+//
+          console.log("Aqui");
+
+          //const percentDone = Math.round((100 * event.loaded) / event.total);
+          // pass the percentage into the progress-stream
+        //  progress.next(percentDone);
+        } else if (event instanceof HttpResponse) {
+          // Close the progress-stream if we get an answer form the API
+          // The upload is complete
+          //progress.complete();
+          console.log("Foi");
+          
         }
+
       }, () => {
                 console.log("Não foi:"+event);
               });

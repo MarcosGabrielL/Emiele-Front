@@ -22,31 +22,16 @@ export class FileService {
         
       });
 
-       this.http.request(req).subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          // calculate the progress percentage
-//
-          console.log("Aqui");
+      return this.http.request(req);
 
-          //const percentDone = Math.round((100 * event.loaded) / event.total);
-          // pass the percentage into the progress-stream
-        //  progress.next(percentDone);
-        } else if (event instanceof HttpResponse) {
-          // Close the progress-stream if we get an answer form the API
-          // The upload is complete
-          //progress.complete();
-          console.log("Aqui 1");
-        }
-      });
-
-    return this.http.post<any>(
-      `https://emiele-service-vendas.herokuapp.com/uploadFile`,
-      formData,
-      {
-        reportProgress: true,
-        observe: 'events'
+    // this.http.post<any>(
+      //`https://emiele-service-vendas.herokuapp.com/uploadFile`,
+      //formData,
+      //{
+        //reportProgress: true,
+        //ob//serve: 'events'
         
-      });
+      //});
   }
 
   
