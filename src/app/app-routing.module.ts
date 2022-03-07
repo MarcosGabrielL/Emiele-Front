@@ -17,6 +17,9 @@ import { EmailsucessComponent } from './components/template/emailsucess/emailsuc
 import { EmailfailComponent } from './components/template/emailfail/emailfail.component';
 import { RecuperarsenhaComponent } from './components/security/recuperarsenha/recuperarsenha.component';
 import { AtualizarsenhaComponent } from './components/security/atualizarsenha/atualizarsenha.component';
+import { GerenciaProdutoComponent } from './components/template/produto/gerencia-produto/gerencia-produto.component';
+import { ProdutoComponent } from './components/template/produto/produto/produto.component';
+import { ListaComponent } from './components/template/produto/lista/lista.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -67,7 +70,17 @@ const routes: Routes = [
    {
     path: 'reset_password',
     component: AtualizarsenhaComponent
+   },
+   {
+    path: 'produtos',
+    component: ProdutoComponent,
+        children: [
+                    {path: 'gerencia',  component:GerenciaProdutoComponent , pathMatch: 'full'},
+                     {path: 'home', component: ListaComponent, pathMatch: 'full'}
+                  ]
    }  
+
+   
 ];
 
 @NgModule({

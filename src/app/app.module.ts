@@ -18,7 +18,9 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatCardModule} from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -39,6 +41,11 @@ import { AtualizarsenhaComponent } from './components/security/atualizarsenha/at
 import { SelecionatipoComponent } from './components/views/selecionatipo/selecionatipo.component';
 import { EmailsucessComponent } from './components/template/emailsucess/emailsucess.component';
 import { EmailfailComponent } from './components/template/emailfail/emailfail.component';
+import { GerenciaProdutoComponent } from './components/template/produto/gerencia-produto/gerencia-produto.component';
+import { HeaderComponent } from './components/template/header/header.component';
+import { FooterComponent } from './components/template/footer/footer.component';
+import { ProdutoComponent } from './components/template/produto/produto/produto.component';
+import { ListaComponent } from './components/template/produto/lista/lista.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +62,12 @@ import { EmailfailComponent } from './components/template/emailfail/emailfail.co
     AtualizarsenhaComponent,
     SelecionatipoComponent,
     EmailsucessComponent,
-    EmailfailComponent
+    EmailfailComponent,
+    GerenciaProdutoComponent,
+    HeaderComponent,
+    FooterComponent,
+    ProdutoComponent,
+    ListaComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +89,9 @@ import { EmailfailComponent } from './components/template/emailfail/emailfail.co
     MatGridListModule,
     PlatformModule,
     NgbModule,
-    NgxDropzoneModule 
+    NgxDropzoneModule,
+    MatProgressBarModule,
+    MatIconModule
   ],
   providers: [
         {
