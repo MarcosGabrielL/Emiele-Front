@@ -21,7 +21,9 @@ export class FileService {
       formData,
       {
         reportProgress: true,
-        observe: 'events'
+        observe: 'events',
+         headers: {'Content-Type': 'multipart/form-data'}
+        
       });
   }
 
