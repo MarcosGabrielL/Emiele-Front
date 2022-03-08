@@ -47,6 +47,9 @@ import { FooterComponent } from './components/template/footer/footer.component';
 import { ProdutoComponent } from './components/template/produto/produto/produto.component';
 import { ListaComponent } from './components/template/produto/lista/lista.component';
 
+import { AngularFileUploaderModule } from "angular-file-uploader";
+import { MaterialFileInputModule } from 'ngx-material-file-input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +94,9 @@ import { ListaComponent } from './components/template/produto/lista/lista.compon
     NgbModule,
     NgxDropzoneModule,
     MatProgressBarModule,
-    MatIconModule
+    MatIconModule,
+    AngularFileUploaderModule,
+    MaterialFileInputModule
   ],
   providers: [
         {

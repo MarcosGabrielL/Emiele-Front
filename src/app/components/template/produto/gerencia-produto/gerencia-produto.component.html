@@ -1,6 +1,14 @@
 
 
-
+<style type="text/css">
+@media (max-width: 700px) {
+.some{
+  display: none;
+}
+.lado{
+  padding: 0;margin: 0; width: 100% !important;
+}
+</style>
 
   
   
@@ -64,7 +72,7 @@
       <div class="page-header min-vh-75">
         <div class="container">
           <div class="row">
-            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto"  style="padding: 0;margin: 0; width: 59%;">
+            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto lado"  style="padding: 0;margin: 0; width: 50%;">
               <div class="card card-plain mt-0">
                 <div class="card-header pb-0 text-left bg-transparent" style="padding-top: 0;">
                   <h3 class="font-weight-bolder text-info text-gradient" style="background-image: linear-gradient(310deg, #cc2945, red); ">Editor de Produtos</h3>
@@ -74,24 +82,24 @@
                   <form role="form" >
                     <label>Codigo</label>
                     <div class="mb-3">
-                      <input [(ngModel)]="newProduct.codigo" id="email" 
-              name="email" 
+                      <input [(ngModel)]="newProduct.codigo" id="codigo" 
+              name="codigo"  maxlength="10"
 
-                      type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                      type="text" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon">
                     </div>
                      <label>Descrição</label>
                     <div class="mb-3">
-                      <textarea [(ngModel)]="descricao" id="email" rows="5" 
-              name="email" 
+                      <textarea [(ngModel)]="descricao" id="descricao" rows="5" 
+              name="descricao" 
 
-                      type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon"></textarea>
+                      type="email" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon"></textarea>
                     </div>
                     <label>Titulo</label>
                     <div class="mb-3">
-                      <input  id="password" 
-              name="password" 
+                      <input maxlength="10"  id="Titulo" 
+              name="Titulo" 
 
-                      type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                      type="text" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon">
                     </div>
                     <label class="w-50" >Preço</label>
                                         <label>Quantidade</label>
@@ -99,54 +107,33 @@
     align-content: center;
     flex-direction: row-reverse;
     flex-wrap: nowrap;">
-                      <input [(ngModel)]="preco" id="password" 
-              name="password" 
 
-                      type="text" class="form-control w-50" placeholder="Password" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
+                      <input maxlength="10" [(ngModel)]="newProduct.quantidade" id="quantidade" 
+              name="quantidade" 
 
-                      <input [(ngModel)]="newProduct.quantidade" id="password" 
-              name="password" 
+                      type="text" class="form-control w-50" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
 
-                      type="text" class="form-control w-40" placeholder="Password" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
+                      <input maxlength="10" [(ngModel)]="preco" id="preco" 
+              name="preco" 
 
-                    </div>
-                    <label class="w-50" >Unidade</label>
-                                        <label>Tipo</label>
-                    <div class="w-100 mb-3" style="display: flex;
-    align-content: center;
-    flex-direction: row-reverse;
-    flex-wrap: nowrap;">
-                      <input [(ngModel)]="newProduct.unidade"  id="password" 
-              name="password" 
-
-                      type="text" class="form-control w-50" placeholder="Password" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
-
-                      <input [(ngModel)]="newProduct.tipo"  id="password" 
-              name="password" 
-
-                      type="text" class="form-control w-40" placeholder="Password" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
+                      type="text" class="form-control w-40" placeholder="Somente numeros" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
 
                     </div>
                     
+                    
                     <div class="form-check form-switch">
-                      <input class="form-check-input" type="checkbox" id="rememberMe" >
+                      <input class="form-check-input" type="checkbox" id="rememberMe" checked>
                       <label class="form-check-label" for="rememberMe">Disponivel</label>
                     </div>
                    
                     
-                    <div class="text-center" >
-                      <button  type="button" (click)="SaveProduct()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Salvar Produto</button>
-                    </div>
-                    <div class="text-center">
-                      <button  type="button" (click)="ExcluiProduct()"class="btn bg-gradient-info w-40 mt-4 mb-0" style="margin-right: 5%; background-image: linear-gradient(310deg, #cc2945, red);" >Excluir</button>
-                      <button  type="button" (click)="Cancela()" class="btn bg-gradient-info w-40 mt-4 mb-0" style="margin-right: 5%;background-image: linear-gradient(310deg, #cc2945, blue);" >Cancelar</button>
-                    </div>
+                    
                   </form>
                 </div>
                 
               </div>
             </div>
-            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto" style="padding: 0;margin: 0; width: 39%;">
+            <div class="col-xl-4 col-lg-5 col-md-6 d-flex flex-column mx-auto lado" style="padding: 0;margin: 0; width: 45%;">
               <div class="card card-plain mt-3" style="padding-top: 1.5rem;">
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient" style="background-image: linear-gradient(310deg, #cc2945, red);"></h3>
@@ -156,19 +143,42 @@
                   <form role="form" >
                     <label class="w-50" >Upload Imagens</label>
                                         <label></label>
-                    <div class="mb-3">
-<input #fileInput type="file" (change)="selectFile($event)" class="w-100 btn btn-light" style="display:none;" ngModel multiple style="margin-right: 10%;"/>
-                      
+                    <div class="mb-3">              
+                      <ngx-dropzone (change)="selectFile($event)">
+            <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
                     </div>
-                    <div class="mb-3">
-<input matInput placeholder="Choose Multiple Files" disabled 
-                   value="{{fileInput.value.substr(fileInput.value.lastIndexOf('\\')+1)}}" class="w-100" style="margin-right: 10%;"> 
-                   
-</div>
-                    
-                    <div class="mb-3">
+                    <div class="mb-3" style="display:none;">
+
     <button mat-raised-button color="primary" class="w-50 btn btn-secondary" (click)="upload()" style="margin-left: 50%;">Upload</button>
   </div>
+  <label class="w-50" >Unidade</label>
+                                        <label>Tipo</label>
+                    <div class="w-100 mb-3" style="display: flex;
+    align-content: center;
+    flex-direction: row-reverse;
+    flex-wrap: nowrap;">
+                      <input maxlength="10" [(ngModel)]="newProduct.unidade"  id="unidade" 
+              name="unidade" 
+
+                      type="text" class="form-control w-50" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
+
+                      <input maxlength="10" [(ngModel)]="newProduct.tipo"  id="Tipo" 
+              name="Tipo" 
+
+                      type="text" class="form-control w-40" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
+
+                    </div>
+  <div class="text-center" >
+                      <button  type="button" (click)="SaveProduct()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Salvar Produto</button>
+                    </div>
+                    <div class="text-center">
+                      <button  type="button" (click)="ExcluiProduct()"class="btn bg-gradient-info w-40 mt-4 mb-0" style="margin-right: 5%; background-image: linear-gradient(310deg, #cc2945, red);" >Excluir</button>
+                      <button  type="button" (click)="Cancela()" class="btn bg-gradient-info w-45 mt-4 mb-0" style="margin-right: 0%;background-image: linear-gradient(310deg, #cc2945, blue);" >Cancelar</button>
+                    </div>
   <div  class="mb-3" style="display: none;">
     <mat-card>
       <mat-card-header>

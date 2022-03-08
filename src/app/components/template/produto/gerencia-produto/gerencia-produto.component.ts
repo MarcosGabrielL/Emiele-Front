@@ -9,6 +9,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Produto} from '../produto.model';
 import {LoginService} from '../../../../../app/components/security/login.service'
 import { User } from '../../../../../app/components/security/user.model';
+import { NgxDropzoneModule } from 'ngx-dropzone';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -39,20 +41,51 @@ descricao: string = "";
   selectedFiles: FileList;
   uploadedFiles: FileDetails[] = [];
   showProgress = false;
+  files: File[] = [];
+  closeResult = '';
 
   constructor(private authenticationService: LoginService,
     private router: Router,
     private http: HttpClient,
     private fileService: FileService,
     private snackBar: MatSnackBar,
-    private produtoservice: ProdutoService) {
+    private produtoservice: ProdutoService,
+    private modalService: NgbModal) {
   }
 
   ngOnInit(): void {
   }
 
+   private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  onSelect(event : any) {
+  console.log(event);
+  this.files.push(...event.addedFiles);
+}
+
+onRemove(event: any) {
+  console.log(event);
+  this.files.splice(this.files.indexOf(event), 1);
+}
+
+open(content: any) {
+    this.modalService.open(content, { size: 'lg' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
   selectFile(event: any) {
-    this.selectedFiles = event.target.files;
+    this.files.push(...event.addedFiles);
+    //this.selectedFiles = event.target.files;
   }
 
   SaveProduct(){
@@ -79,20 +112,23 @@ descricao: string = "";
                         //Pega usuario pelo email
                         this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
                            // this.usuario = resposta;
-                            console.log('vendedor id'+ resposta.id);
+                            //console.log('vendedor id'+ resposta.id);
                             this.newProduct.vendedor_id  = resposta.id.toString();
                
             }, () => {
                this.produtoservice.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
              }); 
-               }; 
+               };  
 
 console.log(this.newProduct);
 
 
-      this.produtoservice.create(this.newProduct, this.token).subscribe((result)=> {
+      this.produtoservice.create(this.newProduct, this.token).subscribe((result: Produto)=> {
         this.successMessage = 'Produto Salvo com sucesso!';
         this.produtoservice.mensagem(this.successMessage); 
+
+        this.newProduct = result;
+        console.log('New Product: '+this.newProduct);
              this.upload();
     }, () => {
   this.errorMessage = 'Error ao Salvar produto';
@@ -107,16 +143,15 @@ console.log(this.newProduct);
   upload() {
     this.showProgress = true;
     this.uploadedFiles = [];
-    Array.from(this.selectedFiles).forEach(file => {
-      const fileDetails = new FileDetails();
-      fileDetails.name = file.name;
-      this.uploadedFiles.push(fileDetails);
-      this.fileService.uploadSingleFile(file, "1").subscribe(event => {
+    Array.from(this.files).forEach(file => {
+      console.log(file);
+      this.fileService.uploadSingleFile(file, this.newProduct.id).subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
            // calculate the progress percentage
 //
           console.log("Aqui");
-
+          let aqui: number = event!.total;
+            this.authenticationService.mensagem('Salvando Imagens: '+Math.round((100 * event.loaded) / aqui) + '%...');
           //const percentDone = Math.round((100 * event.loaded) / event.total);
           // pass the percentage into the progress-stream
         //  progress.next(percentDone);
