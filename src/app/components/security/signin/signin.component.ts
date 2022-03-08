@@ -85,6 +85,8 @@ export class SigninComponent implements OnInit {
       this.authenticationService.registerSuccessfulLogin(this.email, this.password);
       this.successMessage = 'Login Successful.';
       this.authenticationService.mensagem(this.successMessage);
+      localStorage.setItem('this.TOKEN_SESSION_ATTRIBUTE', result+'');
+      console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
       this.router.navigate(['/index']);
     }, () => {
       this.invalidLogin = true;
@@ -117,6 +119,9 @@ export class SigninComponent implements OnInit {
                 this.authenticationService.registerSuccessfulLogin(this.emailreg, this.passwordreg);
                 this.successMessage = 'Login com sucesso';
                 this.authenticationService.mensagem(this.successMessage);
+                localStorage.setItem('this.TOKEN_SESSION_ATTRIBUTE', result+'');
+                console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
+                console.log(result);
                 this.sendEmail();
                 this.router.navigate(['/index']);
               }, () => {

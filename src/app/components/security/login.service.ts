@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { User } from './../../../app/components/security/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +27,9 @@ export class LoginService {
             this.password = password;
             this.registerSuccessfulLogin(email, password);
           }));*/
-          
-           return this.http.post<String>(`${this.baseUrl}/authenticate`, request, {  responseType: 'text' as 'json' });
+
+          return this.http.post<String>(`${this.baseUrl}/authenticate`, request, {  responseType: 'text' as 'json' });
+           
       
       }
 
@@ -55,6 +58,11 @@ export class LoginService {
         if (user === null) return ''
         return user
       }
+
+       getByEmail(email: String): Observable<User>{
+     const url = `${this.baseUrl}/user/${email}`
+     return this.http.get<User>(url)
+    }
 
       mensagem(str: string): void {
         console.log(str);

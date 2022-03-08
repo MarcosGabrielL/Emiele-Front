@@ -74,14 +74,14 @@
                   <form role="form" >
                     <label>Codigo</label>
                     <div class="mb-3">
-                      <input id="email" 
+                      <input [(ngModel)]="newProduct.codigo" id="email" 
               name="email" 
 
                       type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
                     </div>
                      <label>Descrição</label>
                     <div class="mb-3">
-                      <textarea id="email" rows="5" 
+                      <textarea [(ngModel)]="descricao" id="email" rows="5" 
               name="email" 
 
                       type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon"></textarea>
@@ -99,12 +99,12 @@
     align-content: center;
     flex-direction: row-reverse;
     flex-wrap: nowrap;">
-                      <input  id="password" 
+                      <input [(ngModel)]="preco" id="password" 
               name="password" 
 
                       type="text" class="form-control w-50" placeholder="Password" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
 
-                      <input  id="password" 
+                      <input [(ngModel)]="newProduct.quantidade" id="password" 
               name="password" 
 
                       type="text" class="form-control w-40" placeholder="Password" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
@@ -116,12 +116,12 @@
     align-content: center;
     flex-direction: row-reverse;
     flex-wrap: nowrap;">
-                      <input  id="password" 
+                      <input [(ngModel)]="newProduct.unidade"  id="password" 
               name="password" 
 
                       type="text" class="form-control w-50" placeholder="Password" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
 
-                      <input  id="password" 
+                      <input [(ngModel)]="newProduct.tipo"  id="password" 
               name="password" 
 
                       type="text" class="form-control w-40" placeholder="Password" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
@@ -135,11 +135,11 @@
                    
                     
                     <div class="text-center" >
-                      <button  type="button" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Entrar</button>
+                      <button  type="button" (click)="SaveProduct()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Salvar Produto</button>
                     </div>
                     <div class="text-center">
-                      <button  type="button" class="btn bg-gradient-info w-40 mt-4 mb-0" style="margin-right: 5%; background-image: linear-gradient(310deg, #cc2945, red);" >Excluir</button>
-                      <button  type="button" class="btn bg-gradient-info w-40 mt-4 mb-0" style="margin-right: 5%;background-image: linear-gradient(310deg, #cc2945, blue);" >Cancelar</button>
+                      <button  type="button" (click)="ExcluiProduct()"class="btn bg-gradient-info w-40 mt-4 mb-0" style="margin-right: 5%; background-image: linear-gradient(310deg, #cc2945, red);" >Excluir</button>
+                      <button  type="button" (click)="Cancela()" class="btn bg-gradient-info w-40 mt-4 mb-0" style="margin-right: 5%;background-image: linear-gradient(310deg, #cc2945, blue);" >Cancelar</button>
                     </div>
                   </form>
                 </div>
