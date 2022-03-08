@@ -12,6 +12,7 @@ import { SignupComponent } from './components/security/signup/signup.component';
 import { TableComponent } from './components/views/table/table.component';
 
 
+
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatMenuModule} from '@angular/material/menu';
@@ -49,6 +50,24 @@ import { ListaComponent } from './components/template/produto/lista/lista.compon
 
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { HomeComponent } from './components/marketplaceweb/views/home/home/home.component';
+import { BuscaComponent } from './components/marketplaceweb/views/home/busca/busca.component';
+import { HomeDestaqueComponent } from './components/marketplaceweb/views/home/home-destaque/home-destaque.component';
+import { HomeDestaqueFestividadeComponent } from './components/marketplaceweb/views/home/home-destaque-festividade/home-destaque-festividade.component';
+import { HomeDestaqueHojeComponent } from './components/marketplaceweb/views/home/home-destaque-hoje/home-destaque-hoje.component';
+import { HomeDestaqueTopvisitComponent } from './components/marketplaceweb/views/home/home-destaque-topvisit/home-destaque-topvisit.component';
+import { HomeNewslleterComponent } from './components/marketplaceweb/views/home/home-newslleter/home-newslleter.component';
+import { HomeSlideComponent } from './components/marketplaceweb/views/home/home-slide/home-slide.component';
+import { HomeSlideCategoriasComponent } from './components/marketplaceweb/views/home/home-slide-categorias/home-slide-categorias.component';
+import { BlogComponent } from './components/marketplaceweb/views/blog/blog.component';
+import { CartComponent } from './components/marketplaceweb/views/cart/cart.component';
+import { CheckoutComponent } from './components/marketplaceweb/views/checkout/checkout.component';
+import { ContactComponent } from './components/marketplaceweb/views/contact/contact.component';
+
+
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { CarouselHomeComponent } from './components/marketplaceweb/views/home/carousel-home/carousel-home.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +89,21 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     HeaderComponent,
     FooterComponent,
     ProdutoComponent,
-    ListaComponent
+    ListaComponent,
+    HomeComponent,
+    BuscaComponent,
+    HomeDestaqueComponent,
+    HomeDestaqueFestividadeComponent,
+    HomeDestaqueHojeComponent,
+    HomeDestaqueTopvisitComponent,
+    HomeNewslleterComponent,
+    HomeSlideComponent,
+    HomeSlideCategoriasComponent,
+    BlogComponent,
+    CartComponent,
+    CheckoutComponent,
+    ContactComponent,
+    CarouselHomeComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +129,9 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatProgressBarModule,
     MatIconModule,
     AngularFileUploaderModule,
-    MaterialFileInputModule
+    MaterialFileInputModule, 
+    CarouselModule,
+    MatToolbarModule,
   ],
   providers: [
         {

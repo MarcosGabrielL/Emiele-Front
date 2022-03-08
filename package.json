@@ -37,8 +37,9 @@
     "express": "^4.16.3",
     "ngx-dropzone": "^3.1.0",
     "ngx-material-file-input": "^3.0.0",
+    "ngx-owl-carousel-o": "^7.0.1",
     "rxjs": "~7.5.0",
-    "tslib": "^2.3.0",
+    "tslib": "^2.3.1",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {

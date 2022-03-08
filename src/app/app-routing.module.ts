@@ -21,6 +21,8 @@ import { GerenciaProdutoComponent } from './components/template/produto/gerencia
 import { ProdutoComponent } from './components/template/produto/produto/produto.component';
 import { ListaComponent } from './components/template/produto/lista/lista.component';
 
+import { HomeComponent } from './components/marketplaceweb/views/home/home/home.component';
+
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
    {
@@ -78,7 +80,11 @@ const routes: Routes = [
                     {path: 'gerencia',  component:GerenciaProdutoComponent , pathMatch: 'full'},
                      {path: 'home', component: ListaComponent, pathMatch: 'full'}
                   ]
-   }  
+   },
+   {
+    path: 'shop',
+    component: HomeComponent
+   },  
 
    
 ];
