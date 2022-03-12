@@ -22,6 +22,14 @@ import { ProdutoComponent } from './components/template/produto/produto/produto.
 import { ListaComponent } from './components/template/produto/lista/lista.component';
 
 import { HomeComponent } from './components/marketplaceweb/views/home/home/home.component';
+import { CheckoutComponent } from './components/marketplaceweb/views/checkout/checkout.component';
+import { CartComponent } from './components/marketplaceweb/views/cart/cart.component';
+import { ContactComponent } from './components/marketplaceweb/views/contact/contact.component';
+import { BlogComponent } from './components/marketplaceweb/views/blog/blog.component';
+import { IndexComponent } from './components/marketplaceweb/views/home/index/index.component';
+import { BuscaComponent } from './components/marketplaceweb/views/home/busca/busca.component';
+import { ProductPageComponent } from './components/marketplaceweb/views/product-page/product-page.component';
+import { Erro404Component } from './components/template/erro404/erro404.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -83,8 +91,20 @@ const routes: Routes = [
    },
    {
     path: 'shop',
-    component: HomeComponent
-   },  
+    component: HomeComponent,
+        children: [
+                    {path: '',  component: IndexComponent, pathMatch: 'full'},
+                    { path: 'checkout', component: CheckoutComponent, pathMatch: 'full'},
+                    { path: 'cart', component: CartComponent, pathMatch: 'full'},
+                    { path: 'contact', component: ContactComponent, pathMatch: 'full'},
+                    { path: 'blog', component: BlogComponent, pathMatch: 'full'},
+                    { path: 'busca', component: BuscaComponent, pathMatch: 'full'},
+                    { path: 'produto/:id', component: ProductPageComponent, pathMatch: 'full'},
+                    { path: 'produto-nao-encontrado', pathMatch: 'full', component: Erro404Component }
+                  ]
+   },
+    { path: '**', pathMatch: 'full', 
+        component: Erro404Component }
 
    
 ];

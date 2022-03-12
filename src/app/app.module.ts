@@ -63,11 +63,14 @@ import { BlogComponent } from './components/marketplaceweb/views/blog/blog.compo
 import { CartComponent } from './components/marketplaceweb/views/cart/cart.component';
 import { CheckoutComponent } from './components/marketplaceweb/views/checkout/checkout.component';
 import { ContactComponent } from './components/marketplaceweb/views/contact/contact.component';
-
+ 
 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CarouselHomeComponent } from './components/marketplaceweb/views/home/carousel-home/carousel-home.component';
+import { IndexComponent } from './components/marketplaceweb/views/home/index/index.component';
+import { ProductPageComponent } from './components/marketplaceweb/views/product-page/product-page.component';
+import { Erro404Component } from './components/template/erro404/erro404.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +106,10 @@ import { CarouselHomeComponent } from './components/marketplaceweb/views/home/ca
     CartComponent,
     CheckoutComponent,
     ContactComponent,
-    CarouselHomeComponent
+    CarouselHomeComponent,
+    IndexComponent,
+    ProductPageComponent,
+    Erro404Component
   ],
   imports: [
     BrowserModule,

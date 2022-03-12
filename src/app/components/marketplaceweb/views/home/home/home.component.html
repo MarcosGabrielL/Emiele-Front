@@ -1,3 +1,4 @@
+
 <style type="text/css">
     
 /*======================================
@@ -27,7 +28,7 @@
 }
 .header.v3 .navbar-expand-lg .navbar-collapse{
     display:block !important;
-    background:#333333;
+    background:#fff;
 }
 .header .nav li a i {
     margin-left: 6px;
@@ -78,7 +79,7 @@
     border-bottom:0px;
 }
 .header .nav li .dropdown li:hover a{
-    color:#6CC947;
+    color:#cc2945;
     background:#ffffff;
 }
 .header .nav li .dropdown li a:hover{
@@ -154,7 +155,7 @@
     color: #ccc;
 }
 .header.shop .topbar .login a {
-    color: #ffffff;
+    color: #333;
 }
 /* Topbar Left Nav */
 .header.shop .left-nav{
@@ -387,7 +388,7 @@
     float: left;
 }
 .header.shop .topbar {
-    background-color: #E7E6E4;
+    background-color: #fff;
     border: none;
 }
 .header.shop.v3 .topbar{
@@ -488,12 +489,11 @@
     width: 62px;
     text-align: center;
     font-size: 18px;
-    color: #6CC947;
+    color: #cc2945;
     background: #fff;
     position: absolute;
     right: -2px;
     top: -1px;
-    border: none;
     border-radius: 0 5px 5px 0;
     -webkit-transition: all 0.4s ease;
     -moz-transition: all 0.4s ease;
@@ -516,7 +516,7 @@
 }
 .header.shop .middle-inner {
     padding: 10px 0;
-    background: #333333;
+    background: #fff;
     /*border-top: 1px solid #eee;*/
 }
 .header.shop.v3 .middle-inner {
@@ -680,7 +680,7 @@
     margin-bottom:10px;
 }
 .header.shop .main-category li .mega-menu .single-menu .inner-link a:hover{
-    color:#ffffff;
+    color:#333333;
     background:transparent;
 }
 .header.shop .main-category li .mega-menu .single-menu .inner-link a:last-child{
@@ -734,7 +734,7 @@
     transition: all 0.4s ease;
 }
 .header.shop .nav li:hover a{
-    color:#6CC947;
+    color:#cc2945;
     background:#ffffff;
 }
 .header.shop.v2 .nav li:hover a{
@@ -762,14 +762,14 @@
     color:#333333 !important;
 }
 .header.shop.v2 .nav li.active .dropdown li a:hover{
-    color:#6CC947 !important;
+    color:#cc2945 !important;
     background:#ffffff !important;
 }
 .header.shop.v2 .nav li.active .dropdown li a:hover{
-    color:#6CC947 !important;
+    color:#cc2945 !important;
 }
 .header.shop.v2 .nav li .dropdown li:hover a{
-    color:#6CC947;
+    color:#cc2945;
 }
 .header.shop .nav li .dropdown li a {
     color: #333333;
@@ -786,10 +786,10 @@
     font-size: 14px;
 }
 .header.shop .nav li .dropdown li a:hover{
-    color:#6CC947;
+    color:#cc2945;
 }
 .header.shop.v2 .nav li .dropdown li a:hover{
-    color:#6CC947 !important;
+    color:#cc2945 !important;
     background:#ffffff;
 }
 .header.shop .nav li .dropdown li .dropdown.sub-dropdown li a:hover{
@@ -810,7 +810,7 @@
     color:#ffffff;
 }
 .header.shop .right-bar .sinlge-bar .single-icon{
-    color:#fff;
+    color:#333;
     font-size:30px;
     position:relative;
 }
@@ -945,7 +945,7 @@
     color:#fff;
 }
 .header.sticky.v2 .header-inner .nav li:hover a{
-    color:#6CC947;
+    color:#cc2945;
 }
 .header.sticky .header-inner .nav li .dropdown li a{
     color:#333333;
@@ -954,10 +954,10 @@
     color:#333333;
 }
 .header.sticky .header-inner .nav li .dropdown li a:hover{
-    color:#6CC947;
+    color:#cc2945;
 }
 .header.sticky .header-inner .nav li.active a {
-    color: #6CC947;
+    color: #cc2945;
 }
 .header.sticky .header-inner{
     position:fixed;
@@ -4180,7 +4180,7 @@ Version:1.0
     padding: 20px 0;
 }
 .header.shop .topbar {
-    background: #6CC947;
+    background: #fff;
 }
 .header.shop .topbar .top-left{
     text-align:center;
@@ -4851,7 +4851,14 @@ Version:1.0
 }
 
 
-
+::ng-deep .snackbar{
+  background: #333;
+  color: #fff;
+   position: absolute;
+   top: 2%;
+   right: 0%;
+   z-index: 999999;
+}
 
 
 
@@ -4894,8 +4901,8 @@ Version:1.0
                         <!-- Top Left -->
                         <div class="top-left">
                             <ul class="list-main">
-                                <li><i class="fa fa-email"></i> Guia de segurança</li>
-                                <li><i class="fa fa-phone"></i> Compre pelo tel: 0800 123 4444</li>
+                                <li><i class="fa fa-email"></i><a href="#"> Guia de segurança</a></li>
+                                <li><i class="fa fa-phone"></i><a href="#"> Compre pelo tel: 0800 123 4444</a></li>
                             </ul>
                         </div>
                         <!--/ End Top Left -->
@@ -4904,8 +4911,8 @@ Version:1.0
                         <!-- Top Right -->
                         <div class="right-content">
                             <ul class="list-main">
-                                <li><i class="fa fa-envelope "></i> Atendimento</li>
-                                <li><i class="fa "></i> <a href="#">venda na tuSalvador</a></li>
+                                <li style="Color:#6cc947;"><i style="Color:#6cc947;" class="fa fa-envelope "></i>Seja um entregador</li>
+                                <li style="Color:#cc2945"><i style="Color:#cc2945;" class="fa fa-dollar-sign"></i>venda na emiele</li>
                                 <li><i class="fa "></i> <a href="#">Meus pedidos</a></li>
                                 <li><i class="fa fa-mobile"></i><a href="login.html#">Baixe o app</a></li>
                             </ul>
@@ -4922,16 +4929,16 @@ Version:1.0
                     <div class="col-lg-2 col-md-2 col-12">
                         <!-- Logo -->
                         <div class="logo">
-                            <a href="index.html"><img style="    height: 64px;
+                            <a href="/shop"><img style="    height: 64px;
     max-width: 100%;
     margin-top: -19px;
     margin-left: 50px;
-" src="https://i.ibb.co/YjcXKnQ/Untitled-1.png" alt="logo"></a>
+" src="https://i.ibb.co/r60TMhc/Untitled-4.png" alt="logo"></a>
                         </div>
                         <!--/ End Logo -->
                         <!-- Search Form -->
                         <div class="search-top">
-                            <div class="top-search"><a href="#0"><i class="fa fa-phone"></i></a></div>
+                            <div class="top-search"><a href="#0"><i class="fa fa-search"></i></a></div>
                             <!-- Search Form -->
                             <div class="search-top">
                                 <form class="search-form">
@@ -4948,14 +4955,15 @@ Version:1.0
                         <div class="search-bar-top">
                             <div class="search-bar">
                                 <select style="display: none;">
-                                    <option selected="selected">Todas categorias</option>
+                                    <option selected="selected">Categorias</option>
                                     <option>watch</option>
                                     <option>mobile</option>
                                     <option>kid’s item</option>
-                                </select><div class="nice-select" tabindex="0"><span class="current">All Category</span><ul class="list"><li data-value="All Category" class="option selected">All Category</li><li data-value="watch" class="option">watch</li><li data-value="mobile" class="option">mobile</li><li data-value="kid’s item" class="option">kid’s item</li></ul></div>
+                                </select><div class="nice-select" tabindex="0"><span class="current">Categorias</span><ul class="list"><li data-value="All Category" class="option selected">All Category</li><li data-value="watch" class="option">watch</li><li data-value="mobile" class="option">mobile</li><li data-value="kid’s item" class="option">kid’s item</li></ul></div>
                                 <form>
                                     <input name="search" placeholder="Busque o produto aqui....." type="search">
-                                    <button class="btnn"><i class="fa fa-phone"></i></button>
+                                    <button class="btnn" style="    border-radius: 5px;
+    border: 1px solid #ececec;"><i class="fa fa-search"></i></button>
                                 </form>
                             </div>
                         </div>
@@ -5040,7 +5048,7 @@ Version:1.0
                                                     <a href="#">Kids Travel Car</a>
                                                     <a href="#">Kids Color Shape</a>
                                                     <a href="#">Kids Tent</a>
-                                                </div>
+                                                </div> 
                                             </li>
                                             <li class="single-menu">
                                                 <a href="#" class="title-link">Shop Men's</a>
@@ -5173,8 +5181,8 @@ Version:1.0
                                                             <li><a href="checkout.html">Checkout</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="#">Notebooks</a></li>                                  
-                                                    <li><a href="#">TV</a></li>                                 
+                                                    <li><a href="#">Restaurantes</a></li>                                  
+                                                    <li><a href="#">Supermervado</a></li>                                 
                                                     <li><a href="#">Moda</a></li>                                   
                                                     <li><a href="#">Natal</a></li>                                  
                                                     <li><a href="#">Blog<i class="ti-angle-down"><span class="new">New</span></i></a>
@@ -5203,17 +5211,7 @@ Version:1.0
         <!-- Body -->
 <router-outlet>
 
-<app-carousel-home></app-carousel-home>
     
-    <app-home-destaque-hoje></app-home-destaque-hoje>
-
-    <app-home-slide-categorias></app-home-slide-categorias>
-
-    <app-home-destaque></app-home-destaque>
-
-    <app-home-destaque-topvisit></app-home-destaque-topvisit>
-
-    <app-home-newslleter></app-home-newslleter>
 
 
 </router-outlet>
@@ -5300,7 +5298,7 @@ Version:1.0
                     <div class="row">
                         <div class="col-lg-6 col-12">
                             <div class="left">
-                                <p>Copyright © 2020 <a href="" target="_blank">Softsaj</a>  -  All Rights Reserved.</p>
+                                <p>Copyright © 2020 <a href="https://softsaj.com" target="_blank">Softsaj</a>  -  All Rights Reserved.</p>
                             </div>
                         </div>
                         <div class="col-lg-6 col-12">

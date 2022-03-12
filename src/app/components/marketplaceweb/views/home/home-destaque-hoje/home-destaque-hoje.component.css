@@ -48,7 +48,7 @@ h1 {
 }
 
 .days {
-  background: #6CC947;
+  background: #cc2945;
 }
 
 .hours {
@@ -73,6 +73,12 @@ h1 {
   font-size: 4em;
 }
 
+.numbers1 {
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    font-size: 4em;
+  }
+
 .white {
   position: absolute;
   background: #F6F4F3;
@@ -91,7 +97,7 @@ h1 {
 
 .red {
   position: absolute;
-  background: #6CC947;
+  background: #cc2945;
   left: 23%;
     top: 13%;
   height: 65px;

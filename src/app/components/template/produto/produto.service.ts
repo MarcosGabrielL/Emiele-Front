@@ -39,11 +39,13 @@ export class ProdutoService {
     return this.http.put<void>(url, categoria)
   }
   
-  mensagem(str: String): void {
-    this._snack.open(`${str}`, 'OK', {
-      horizontalPosition: 'end',
-      verticalPosition: 'top',
-      duration: 4000
-    })
-  }
+  mensagem(str: string): void {
+        //console.log(str);
+        this._snack.open(`${str}`, 'OK', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['snackbar'],
+          duration: 4000
+        })
+        }
 }
