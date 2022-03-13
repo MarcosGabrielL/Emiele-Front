@@ -144,7 +144,15 @@ console.log(this.newProduct);
     this.showProgress = true;
     this.uploadedFiles = [];
     Array.from(this.files).forEach(file => {
+      
       console.log(file);
+
+      const mimeType = file.type;
+    if (mimeType.match(/image\/*/) == null) {
+         this.authenticationService.mensagem("Only images are supported.");
+        return;
+    }
+
       this.fileService.uploadSingleFile(file, this.newProduct.id).subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
            // calculate the progress percentage

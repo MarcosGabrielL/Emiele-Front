@@ -103,5 +103,20 @@ export class FileService {
       );*/
   }
 
+  findAll():Observable<File[]> {
+    const url = `${this.baseUrl}/files`
+    return this.http.get<File[]>(url)
+  }
+  
+   findByIdProduto(id: any, token: string): Observable<any> {
+    const url = `${this.baseUrl}/filelist/produto/${id}`
+    return this.http.get<any>(url)
+  }
+
+   findById(id: any, token: string): Observable<File> {
+    const url = `${this.baseUrl}/file/${id}`
+    return this.http.get<File>(url)
+  }
+
   
 }

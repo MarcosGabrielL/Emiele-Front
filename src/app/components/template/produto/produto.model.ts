@@ -11,3 +11,12 @@ export interface Produto{
     vendedor_id:String;
     
 }
+
+export interface ResponseFile {
+
+          name: String;
+          url: String ;
+          type: String;
+          data: BlobPart[];
+
+  }
