@@ -94,13 +94,7 @@
 
                       type="email" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon"></textarea>
                     </div>
-                    <label>Titulo</label>
-                    <div class="mb-3">
-                      <input maxlength="10"  id="Titulo" 
-              name="Titulo" 
-
-                      type="text" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon">
-                    </div>
+                     
                     <label class="w-50" >Preço</label>
                                         <label>Quantidade</label>
                     <div class="w-100 mb-3" style="display: flex;
@@ -155,21 +149,59 @@
 
     <button mat-raised-button color="primary" class="w-50 btn btn-secondary" (click)="upload()" style="margin-left: 50%;">Upload</button>
   </div>
-  <label class="w-50" >Unidade</label>
-                                        <label>Tipo</label>
+  <label class="w-50" >Tipo</label>
+                                        <label>Unidade</label>
                     <div class="w-100 mb-3" style="display: flex;
     align-content: center;
     flex-direction: row-reverse;
     flex-wrap: nowrap;">
-                      <input maxlength="10" [(ngModel)]="newProduct.unidade"  id="unidade" 
+                      <input list="unidades" maxlength="10" [(ngModel)]="newProduct.unidade"  id="unidade" 
               name="unidade" 
 
                       type="text" class="form-control w-50" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
-
-                      <input maxlength="10" [(ngModel)]="newProduct.tipo"  id="Tipo" 
+                      <datalist id="unidades">
+  <option value="UN">
+  <option value="CX">
+  <option value="KG">
+  <option value="Lt">
+  <option value="TON">
+  <option value="DUZIA">
+  <option value="1000Un">
+  <option value="QUILAT">
+  <option value="METRO">
+  <option value="M3">
+  <option value="PARES">
+  <option value="M2">
+  </datalist>
+                      <input list="tipos" maxlength="10" [(ngModel)]="newProduct.tipo"  id="Tipo" 
               name="Tipo" 
 
                       type="text" class="form-control w-40" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
+                      <datalist id="tipos">
+  <option selected value="Sem tipo">
+  <option value="Hamburguer">
+  <option value="Sushi">
+  <option value="Pizza">
+  <option value="Bolo">
+    <option value="Sorvete">
+      <option value="Bebida">
+        <option value="Pasteis">
+        <option value="Lanche">
+        <option value="Massa">
+        <option value="Refeição">
+        <option value="Higiene e limpeza do lar">
+        <option value="Higiene e limpeza pessoal">
+        <option value="Perfumaria">
+        <option value="Utilidades dom&#xe9;sticas">
+        <option value="Campo e lazer">
+        <option value="Padaria">
+        <option value="A&#xe7;ougue">
+        <option value="Enlatados">
+        <option value="Doces">
+        <option value="Massas e biscoitos">
+        <option value="Cereais">
+        <option value="Outros">
+</datalist>
 
                     </div>
   <div class="text-center" >

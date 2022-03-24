@@ -26,10 +26,10 @@ export class GerenciaProdutoComponent implements OnInit {
     descrição:"",
     preçoUn: 0,
     quantidade: 0,
-    tipo:"",
-    unidade:"",
+    tipo:"Sem tipo",
+    unidade:"UN",
     data:"",
-    vendedor_id:""
+    vendedor_id:"" 
   } 
     successMessage: string = "";
   errorMessage: string = "";
