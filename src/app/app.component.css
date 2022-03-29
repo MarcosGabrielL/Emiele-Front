@@ -902,6 +902,7 @@ figure {
 img,
 svg {
   vertical-align: middle;
+    align-items: center;
 }
 
 table {
