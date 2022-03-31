@@ -278,17 +278,6 @@ this.htmlvendas = this.sanitized.bypassSecurityTrustHtml(
   }
 
 
-  getTempoDecorrido(hora: String): string{
-    let string = "";
-   this.vendaService.getTempoDecorrido(hora).subscribe((resposta: string)=> {
-      string = resposta.toString();
-    }, () => {
-                             // return 'Error ao Buscar Notifications';
-                                   //   this.vendaService.mensagem(this.errorMessage);
-                                  
-                               });
-    return string;
-
-  }
+  
 
 }
