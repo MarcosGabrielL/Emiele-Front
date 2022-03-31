@@ -68,4 +68,15 @@ export interface Tem{
      tem: boolean;
 }
 
+export interface Notification{
+     id: String;
+     message: String;
+     info: String;
+     date: String;
+     cod: String;
+     level: String;
+     usuario: String;
+     isRead: boolean;
+}
+
  

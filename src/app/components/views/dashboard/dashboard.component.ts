@@ -1,12 +1,13 @@
 import {Component, OnInit, ChangeDetectorRef, ViewEncapsulation, NgModule} from '@angular/core';
 import {HttpClient, HttpEventType, HttpResponse} from '@angular/common/http';
 import {tap, map} from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Produto } from './../../../../app/components/template/produto/produto.model';
 import { Venda, Evento } from './../../../../app/components/template/produto/venda.model';
 import { ResponseVendas } from './../../../../app/components/template/produto/venda.model';
-import { Vendido, Tem } from './../../../../app/components/template/produto/venda.model';
+import { Vendido, Tem, Notification } from './../../../../app/components/template/produto/venda.model';
 import { User } from './../../../../app/components/security/user.model';
 import { VendaService } from './../../../../app/components/template/produto/venda.service';
 import {LoginService} from './../../../../app/components/security/login.service'
@@ -14,6 +15,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from "@angular/common";
+
 
 
 @Component({
@@ -46,11 +48,17 @@ export class DashboardComponent implements OnInit {
   tem4:boolean= false;
   tem5:boolean= false;
   cont: number = 0;
+   cont1: number = 0;
 
 
   successMessage: string = "";
   errorMessage: string = "";
   token: any;
+
+  mostranotify: boolean;
+  mostralist: boolean = false;
+  notfycunt: String = "";
+  Notification: Notification[];
 
   constructor(private authenticationService: LoginService,
               private router: Router,
@@ -63,8 +71,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
 
     this.isLoggedin();
-
-   // this.tem[0] = false;
+    this.mostranotify = this.vendaService.mostranotify;
+    this.getNotifications();
   }
 
   CarregaDadosGerais(){
@@ -216,6 +224,71 @@ this.htmlvendas = this.sanitized.bypassSecurityTrustHtml(
 //console.log(this.htmlvendas);
                   }
 
+ async getNotifications(){
 
+
+    while(true){
+    console.log(this.cont1);
+    this.cont1 = this.cont1 +1;
+    await this.wait(30000);
+  }
+
+ }
+
+  wait(ms: number)  {
+    return new Promise((resolve)=> {
+
+      this.vendaService.userNotification(this.vendedor_id).subscribe((result: Notification[])=> {
+                                 // this.successMessage = 'Produto Salvo com sucesso!';
+                                  //this.vendaService.mensagem(this.successMessage); 
+
+                                    console.log('Notification: '+result);
+                                    this.Notification = result;
+
+
+
+                                    if(result == null){
+                                        this.vendaService.mostranotify = false;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }else{
+                                       this.vendaService.mostranotify = true;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }
+                                   
+                                      this.notfycunt = result.length.toString();
+                                  
+
+                              }, () => {
+                              console.log('Error ao Buscar Notifications');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+      setTimeout(resolve, ms);
+    });
+  }
+
+  mostranotification(){
+    if(!this.mostralist){
+      this.mostralist = true;
+     
+    }else{
+      this.mostralist = false;
+    }
+  }
+
+
+  getTempoDecorrido(hora: String): string{
+    let string = "";
+   this.vendaService.getTempoDecorrido(hora).subscribe((resposta: string)=> {
+      string = resposta.toString();
+    }, () => {
+                             // return 'Error ao Buscar Notifications';
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+    return string;
+
+  }
 
 }

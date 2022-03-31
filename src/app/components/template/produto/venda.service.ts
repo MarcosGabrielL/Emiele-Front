@@ -4,13 +4,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Produto } from './produto.model';
-import { Venda, Evento, ResponseVendas } from './venda.model';
+import { Venda, Evento, ResponseVendas, Notification } from './venda.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VendaService {
 
+  mostranotify: boolean;
   baseUrl: String = environment.baseUrlVendas;
 
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
@@ -108,5 +109,16 @@ export class VendaService {
           duration: 4000
         })
         }
+
+        userNotification (id: String):Observable<Notification[]> {
+    const url = `${this.baseUrl}/notifications/notification/user/${id}?id=${id}&token=1`
+    return this.http.get<Notification[]>(url)
+  }
+
+  getTempoDecorrido(horacomentad?: any): Observable<string> {
+    
+     const url = `${this.baseUrl}/util/TempoDecorrido/${horacomentad}`
+        return this.http.get(url, { responseType: 'text' })
+  }
      
 }

@@ -5013,20 +5013,22 @@ fieldset:disabled .btn {
 }
 
 .dropdown-menu {
-  position: absolute;
-  z-index: 1000;
-  display: none;
-  min-width: 11rem;
-  padding: 0.5rem 0;
-  margin: 0;
-  font-size: 0.875rem;
-  color: #67748e;
-  text-align: left;
-  list-style: none;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 0 solid transparent;
-  border-radius: 0.5rem;
+ position: absolute !important;
+    z-index: 1000;
+    top: 44px;
+    right: 3px !important;
+    display: block;
+    min-width: 11rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 0.875rem;
+    color: #67748e;
+    text-align: left;
+    list-style: none;
+    background-color: #fff !important;
+    background-clip: padding-box;
+    border: 0 solid transparent;
+    border-radius: 0.5rem;
 }
 
 .dropdown-menu[data-bs-popper] {
@@ -20153,7 +20155,7 @@ fieldset:disabled .btn {
 
 @media (min-width: 992px) {
 
-  .dropdown .dropdown-menu,
+  /*.dropdown .dropdown-menu,
   .dropup .dropdown-menu,
   .dropstart .dropdown-menu,
   .dropend .dropdown-menu {
@@ -20244,7 +20246,7 @@ fieldset:disabled .btn {
 
   .dropdown-item {
     transition: background-color 0.3s ease, color 0.3s ease;
-  }
+  }*/
 }
 
 @media (max-width: 991.98px) {
@@ -25567,4 +25569,6 @@ pre[class*="language-"] {
 }       { /* 5 */ }
 ::-webkit-scrollbar-corner       { /* 6 */ }
 ::-webkit-resizer   
+
+
 
