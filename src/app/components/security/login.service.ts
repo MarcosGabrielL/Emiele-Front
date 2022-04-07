@@ -64,6 +64,11 @@ export class LoginService {
      return this.http.get<User>(url)
     }
 
+       getById(id: String): Observable<User>{
+     const url = `${this.baseUrl}/user/id/${id}`
+     return this.http.get<User>(url)
+    }
+
       mensagem(str: string): void {
         console.log(str);
         this._snack.open(`${str}`, 'OK', {

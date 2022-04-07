@@ -29,7 +29,7 @@ export interface Venda{
     7-Cancelado
     8-Extraviado
     9-Danificado*/
-   Status: String;
+   status: String;
     
 }
 
@@ -77,6 +77,113 @@ export interface Notification{
      level: String;
      usuario: String;
      isRead: boolean;
+}
+
+export interface Produto{
+      
+      id: String;
+    
+      codigo: String;
+    
+     descrição: String;
+    
+     preçoUn: String;
+    
+     Ventrada: String;
+    
+     quantidade: number;
+    
+     tipo: String;
+    
+     Unidade: String;
+    
+     UnidadeTributavel: String;
+
+     data: String;
+    
+     loja : String;
+    
+     SubTotal: number;
+    
+     vendedor_id: String;
+    
+     CST: String;
+    
+     CFOP: String;
+    
+     BaseICMS: String;
+    
+     ICMS: String;
+    
+     AliquotaICMS: String;
+    
+    
+     CEST: String;
+    
+     CEAN: String;
+    
+     CEANTrib: String;
+    
+     QTrib: String;
+    
+     VUnTrib: String;
+    
+
+     Item: number;
+
+    
+     BCICMS: String;
+    
+     BCICMSST: String;
+    
+     PMVAST: String;
+    
+     PRedBCST: String;
+    
+     VBCST: String;
+    
+     PICMSST: String;//Valor
+    
+     VICMSST: String;//Percentual
+    
+     PRedBC: String;
+    
+     PDif: String;
+    
+     VICMSDif: String;
+    
+     VICMS: String;
+    
+     PCredSN: String;
+    
+     VCredICMSSN: String;
+    
+    
+     CSTPIS: String;
+    
+     VBCPIS: String;
+    
+     PPIS: String;
+    
+     VPIS: String;
+    
+    
+     CSTCOFINS: String;
+    
+     VBCCOFINS: String;
+    
+     PCOFINS: String;
+    
+     VCOFINS: String;
+    
+    
+     AFederalN: String;
+    
+     AFederalI: String;
+    
+     AEstadual: String;
+    
+     AMunicipal: String;
 }
 
  

@@ -49,6 +49,7 @@ export class DashboardComponent implements OnInit {
   tem5:boolean= false;
   cont: number = 0;
    cont1: number = 0;
+   cont2: number = 0;
 
 
   successMessage: string = "";
@@ -72,6 +73,35 @@ export class DashboardComponent implements OnInit {
 
     this.isLoggedin();
     this.mostranotify = this.vendaService.mostranotify;
+
+     this.vendaService.userNotification(this.vendedor_id).subscribe((result: Notification[])=> {
+                                 // this.successMessage = 'Produto Salvo com sucesso!';
+                                  //this.vendaService.mensagem(this.successMessage); 
+
+                                    console.log('Notification: '+result);
+                                    this.Notification = result;
+
+                                     
+
+
+
+                                    if(result == null){
+                                        this.vendaService.mostranotify = false;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }else{
+                                       this.vendaService.mostranotify = true;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }
+                                   
+                                      this.notfycunt = result.length.toString();
+                                  
+
+                              }, () => {
+                              console.log('Error ao Buscar Notifications');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
     this.getNotifications();
   }
 

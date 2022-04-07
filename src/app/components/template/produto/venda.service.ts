@@ -120,5 +120,12 @@ export class VendaService {
      const url = `${this.baseUrl}/util/TempoDecorrido/${horacomentad}`
         return this.http.get(url, { responseType: 'text' })
   }
+
+  //Pega vendas do dia de hoje
+     findAllVendidosByIdVenda(idvenda: String, token: string):Observable<Produto[]> {
+         
+        const url = `${this.baseUrl}/vendidos/vendidos/vendido/venda/${idvenda}?token=${token}`
+    return this.http.get<Produto[]>(url)
+    }
      
 }
