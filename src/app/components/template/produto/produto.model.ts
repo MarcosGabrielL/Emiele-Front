@@ -2,8 +2,8 @@ export interface Produto{
     
     id: String;
     codigo:String;
-    descrição:String;
-    preçoUn: number;
+    descricao:String;
+    precoun: number;
     quantidade: number;
     tipo:String;
     unidade:String;

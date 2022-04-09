@@ -64,6 +64,7 @@ export class TableComponent implements OnInit {
 
   mostranotify: boolean;
   mostralist: boolean = false;
+  mostramenu: boolean = false;
   selectedVenda: Venda;
   notfycunt: String = "";
   Notification: Notification[];
@@ -124,12 +125,13 @@ export class TableComponent implements OnInit {
 
 
   mostranotification(){
-    if(!this.mostralist){
-      this.mostralist = true;
-     
-    }else{
-      this.mostralist = false;
-    }
+    if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
+    
+  }
+
+  mostramenulist(){
+    if(!this.mostramenu){ this.mostramenu = true;this.mostralist = false;}else{ this.mostramenu = false; }
+    
   }
 
   async getNotifications(){

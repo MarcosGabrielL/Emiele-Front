@@ -23,8 +23,8 @@ export class GerenciaProdutoComponent implements OnInit {
   newProduct: Produto = {
     id: "",
     codigo:"",
-    descrição:"",
-    preçoUn: 0,
+    descricao:"",
+    precoun: 0,
     quantidade: 0,
     tipo:"Sem tipo",
     unidade:"UN",
@@ -93,8 +93,8 @@ open(content: any) {
 
 
  
-    this.newProduct.preçoUn = this.preco;
-    this.newProduct.descrição = this.descricao;
+    this.newProduct.precoun = this.preco;
+    this.newProduct.descricao = this.descricao;
    
     //Pega data formatada
       //  this.posttextaoservice.getHoraServidor().subscribe((resposta: string) => {

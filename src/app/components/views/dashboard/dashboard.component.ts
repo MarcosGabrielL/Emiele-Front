@@ -26,7 +26,7 @@ import { CommonModule } from "@angular/common";
 })
 export class DashboardComponent implements OnInit {
 
-  vendidohoje: String = "";
+   vendidohoje: String = "";
   percenthoje: String = "";
   vendashoje: String = "";
   percentvendashoje: String = "";
@@ -40,6 +40,7 @@ export class DashboardComponent implements OnInit {
   vendedor_id: String = "";
 
   vendas: Venda[];
+  produtos: Produto[];
   eventos: Evento[];
   tem0:boolean= true;
   tem1:boolean= false;
@@ -55,11 +56,21 @@ export class DashboardComponent implements OnInit {
   successMessage: string = "";
   errorMessage: string = "";
   token: any;
+  comprador: User = {
+     id: 0,
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: ""
+  }
 
   mostranotify: boolean;
   mostralist: boolean = false;
+  mostramenu: boolean = false;
+  selectedVenda: Venda;
   notfycunt: String = "";
   Notification: Notification[];
+  mostraprodutos: boolean = false;
 
   constructor(private authenticationService: LoginService,
               private router: Router,
@@ -74,35 +85,7 @@ export class DashboardComponent implements OnInit {
     this.isLoggedin();
     this.mostranotify = this.vendaService.mostranotify;
 
-     this.vendaService.userNotification(this.vendedor_id).subscribe((result: Notification[])=> {
-                                 // this.successMessage = 'Produto Salvo com sucesso!';
-                                  //this.vendaService.mensagem(this.successMessage); 
-
-                                    console.log('Notification: '+result);
-                                    this.Notification = result;
-
-                                     
-
-
-
-                                    if(result == null){
-                                        this.vendaService.mostranotify = false;
-                                       this.mostranotify = this.vendaService.mostranotify;
-                                    }else{
-                                       this.vendaService.mostranotify = true;
-                                       this.mostranotify = this.vendaService.mostranotify;
-                                    }
-                                   
-                                      this.notfycunt = result.length.toString();
-                                  
-
-                              }, () => {
-                              console.log('Error ao Buscar Notifications');
-                                   //   this.vendaService.mensagem(this.errorMessage);
-                                  
-                               });
-
-    this.getNotifications();
+    
   }
 
   CarregaDadosGerais(){
@@ -190,7 +173,38 @@ export class DashboardComponent implements OnInit {
                         this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
 
                             this.vendedor_id  = resposta.id.toString();
-console.log( this.vendedor_id);
+                              console.log( this.vendedor_id);
+
+                               this.vendaService.userNotification(this.vendedor_id).subscribe((result: Notification[])=> {
+                                 // this.successMessage = 'Produto Salvo com sucesso!';
+                                  //this.vendaService.mensagem(this.successMessage); 
+
+                                    console.log('Notification: '+result);
+                                    this.Notification = result;
+
+                                     
+
+
+
+                                    if(result == null){
+                                        this.vendaService.mostranotify = false;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }else{
+                                       this.vendaService.mostranotify = true;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }
+                                   
+                                      this.notfycunt = result.length.toString();
+                                  
+
+                              }, () => {
+                              console.log('Error ao Buscar Notifications');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+                                this.getNotifications();
+
                               this.CarregaDadosGerais();
                               this.CarregaltimasVendas();
                               this.CarregaFaturamento();
@@ -298,13 +312,15 @@ this.htmlvendas = this.sanitized.bypassSecurityTrustHtml(
     });
   }
 
+  
   mostranotification(){
-    if(!this.mostralist){
-      this.mostralist = true;
-     
-    }else{
-      this.mostralist = false;
-    }
+    if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
+    
+  }
+
+  mostramenulist(){
+    if(!this.mostramenu){ this.mostramenu = true;this.mostralist = false;}else{ this.mostramenu = false; }
+    
   }
 
 

@@ -11,6 +11,8 @@ import { Produto } from './produto.model';
 export class ProdutoService {
 
    baseUrl: String = environment.baseUrlVendas;
+   
+  produtos: Produto[];
 
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
@@ -23,6 +25,11 @@ export class ProdutoService {
     const url = `${this.baseUrl}/produtos/produto?id=${id}&token=${token}`
     return this.http.get<Produto>(url)
   }
+
+  findByIdVendedor(id: any, token: string): Observable<Produto[]> {
+    const url = `${this.baseUrl}/produtos/produto/byvendedor?id=${id}&token=${token}`
+    return this.http.get<Produto[]>(url)
+  }  
 
  create(Produto: Produto, token: string): Observable<Produto>{
     const url = `${this.baseUrl}/produtos/produto/add?token=${token}`

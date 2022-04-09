@@ -26,8 +26,8 @@ export class ProductPageComponent implements OnInit {
    newProduct: Produto = {
     id: "",
     codigo:"",
-    descrição:"",
-    preçoUn: 0,
+    descricao:"",
+    precoun: 0,
     quantidade: 0,
     tipo:"",
     unidade:"",
@@ -78,8 +78,8 @@ descricao: String = "";
         
         this.newProduct = result;
         console.log('New Product: '+this.newProduct);
-         this.preco=this.newProduct.preçoUn;
-          this.descricao= this.newProduct.descrição;
+         this.preco=this.newProduct.precoun;
+          this.descricao= this.newProduct.descricao;
 
           this.buscafiles();
 
