@@ -32,6 +32,7 @@ export class ProdutoService {
   }  
 
  create(produto: Produto, token: string,  vendedorid: any): Observable<Produto>{
+     console.log('id: '+vendedorid);
     const url = `${this.baseUrl}/produtos/produto/add?token=${token}&vendedorid=${vendedorid}`
     return this.http.post<Produto>(url, produto);
   }

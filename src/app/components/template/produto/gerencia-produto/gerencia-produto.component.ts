@@ -36,6 +36,8 @@ export class GerenciaProdutoComponent implements OnInit {
 preco: number;
 descricao: string = "";
 
+
+  vendedor_id: number;
   token: any;
   loaded = 0;
   selectedFiles: FileList;
@@ -115,17 +117,11 @@ open(content: any) {
                            // console.log('vendedor id'+ resposta.id);
                             this.newProduct.vendedor_id  = resposta.id.toLocaleString(); 
                             console.log('vendedor id'+this.newProduct.vendedor_id);
+                            this.vendedor_id= resposta.id;
+                            console.log('Produto');
                             console.log(this.newProduct);
-               
-            }, () => {
-               this.produtoservice.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
-             }); 
-               };  
 
-//console.log(this.newProduct); 
-
-
-      this.produtoservice.create(this.newProduct, this.token, this.newProduct.vendedor_id).subscribe((result: Produto)=> {
+                             this.produtoservice.create(this.newProduct, this.token, this.newProduct.vendedor_id).subscribe((result: Produto)=> {
         this.successMessage = 'Produto Salvo com sucesso!';
         this.produtoservice.mensagem(this.successMessage); 
 
@@ -137,6 +133,16 @@ open(content: any) {
         this.produtoservice.mensagem(this.errorMessage);
         
      }); 
+               
+            }, () => {
+               this.produtoservice.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
+             }); 
+               };  
+
+//console.log(this.newProduct); 
+
+
+     
 
      
   }
@@ -170,7 +176,7 @@ open(content: any) {
           // The upload is complete
           //progress.complete();
           console.log("Foi");
-          
+          this.router.navigate(['/produtos/home']); 
         }
 
       }, () => {

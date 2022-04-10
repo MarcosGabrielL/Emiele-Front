@@ -83,7 +83,7 @@
                     <label>Codigo</label>
                     <div class="mb-3">
                       <input [(ngModel)]="newProduct.codigo" id="codigo" 
-              name="codigo"  maxlength="10"
+              name="codigo"  maxlength="30"
 
                       type="text" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon">
                     </div>
@@ -92,7 +92,7 @@
                       <textarea [(ngModel)]="descricao" id="descricao" rows="5" 
               name="descricao" 
 
-                      type="email" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon"></textarea>
+                      type="email" class="form-control" placeholder="" aria-label="Password" maxlength="300" aria-describedby="password-addon"></textarea>
                     </div>
                      
                     <label class="w-50" >Preço</label>

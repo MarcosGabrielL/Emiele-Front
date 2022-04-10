@@ -39,10 +39,10 @@ export class DashboardComponent implements OnInit {
 
   vendedor_id: String = "";
 
-  vendas: Venda[];
-  produtos: Produto[];
-  eventos: Evento[];
-  tem0:boolean= true;
+  vendas: Venda[]= [];
+  produtos: Produto[]= [];
+  eventos: Evento[] = [];
+  tem0:boolean= false;
   tem1:boolean= false;
   tem2:boolean= false;
   tem3:boolean= false;
@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
   mostramenu: boolean = false;
   selectedVenda: Venda;
   notfycunt: String = "";
-  Notification: Notification[];
+  Notification: Notification[]= [];
   mostraprodutos: boolean = false;
 
   constructor(private authenticationService: LoginService,
@@ -117,7 +117,7 @@ export class DashboardComponent implements OnInit {
                                     console.log(this.vendedor_id);
                                     console.log(this.token);
 
-                                    this.preenchevendashoje();
+                                   // this.preenchevendashoje();
 
                                   
 
@@ -137,7 +137,7 @@ export class DashboardComponent implements OnInit {
 
                                  
                                   this.eventos=result;
-                                    
+                                    this.tem0 = true;
                                  this.eventos.forEach( (evento: Evento) => {
                                           
                                         if(this.cont == 0){this.tem0 = true}
@@ -217,56 +217,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
-preenchevendashoje(){
 
-
-this.htmlvendas = this.sanitized.bypassSecurityTrustHtml(
-
-  " <tr>"+
-   "                   <td>"+
-    "                    <div class='d-flex px-2 py-1'>"+
-     "                     <div>"+
-      "                      <img src='../assets/img/small-logos/logo-xd.svg' class='avatar avatar-sm me-3' alt='xd'>"+
-       "                   </div>"+
-        "                  <div class='d-flex flex-column justify-content-center'>"+
-         "                   <h6 class='mb-0 text-sm'>"+this.vendas[0].valor+"</h6>"+
-         "                 </div>"+
-         "               </div>"+
-         "             </td>"+
-         "             <td>"+
-         "               <div class='avatar-group mt-2'>"+
-         "                 <a href='javascript:;' class='avatar avatar-xs rounded-circle' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Ryan Tompson'>"+
-         "                   <img src='../assets/img/team-1.jpg' alt='team1'>"+
-         "                 </a>"+
-         "                 <a href='javascript:;' class='avatar avatar-xs rounded-circle' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Romina Hadid'>"+
-         "                   <img src='../assets/img/team-2.jpg' alt='team2'>"+
-         "                 </a>"+
-         "                 <a href='javascript:;' class='avatar avatar-xs rounded-circle' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Alexander Smith'>"+
-         "                   <img src='../assets/img/team-3.jpg' alt='team3'>"+
-         "                 </a>"+
-         "                 <a href='javascript:;' class='avatar avatar-xs rounded-circle' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Jessica Doe'>"+
-         "                   <img src='../assets/img/team-4.jpg' alt='team4'>"+
-         "                 </a>"+
-         "               </div>"+
-         "             </td>"+
-         "             <td class='align-middle text-center text-sm'>"+
-         "               <span class='text-xs font-weight-bold'> R$14,000 </span>"+
-         "             </td>"+
-         "             <td class='align-middle'>"+
-         "               <div class='progress-wrapper w-75 mx-auto'>"+
-         "                 <div class='progress-info'>"+
-         "                   <div class='progress-percentage'>"+
-         "                     <span class='text-xs font-weight-bold'>60%</span>"+
-         "                   </div>"+
-         "                 </div>"+
-         "                 <div class='progress'>"+
-         "                   <div class='progress-bar bg-gradient-info w-60' role='progressbar' aria-valuenow='60' aria-valuemin='0' aria-valuemax='100'></div>"+
-         "                 </div>"+
-         "               </div>"+
-         "             </td>"+
-         "           </tr>");
-//console.log(this.htmlvendas);
-                  }
 
  async getNotifications(){
 
