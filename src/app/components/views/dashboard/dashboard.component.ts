@@ -137,7 +137,7 @@ export class DashboardComponent implements OnInit {
 
                                  
                                   this.eventos=result;
-                                    this.tem0 = true;
+                                    
                                  this.eventos.forEach( (evento: Evento) => {
                                           
                                         if(this.cont == 0){this.tem0 = true}
