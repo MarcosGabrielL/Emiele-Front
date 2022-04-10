@@ -113,23 +113,24 @@ open(content: any) {
                         this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
                            // this.usuario = resposta;
                            // console.log('vendedor id'+ resposta.id);
-                            this.newProduct.vendedor_id  = ""+resposta.id;
-                            console.log(this.newProduct.vendedor_id);
+                            this.newProduct.vendedor_id  = resposta.id.toLocaleString(); 
+                            console.log('vendedor id'+this.newProduct.vendedor_id);
+                            console.log(this.newProduct);
                
             }, () => {
                this.produtoservice.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
              }); 
                };  
 
-//console.log(this.newProduct);
+//console.log(this.newProduct); 
 
 
-      this.produtoservice.create(this.newProduct, this.token).subscribe((result: Produto)=> {
+      this.produtoservice.create(this.newProduct, this.token, this.newProduct.vendedor_id).subscribe((result: Produto)=> {
         this.successMessage = 'Produto Salvo com sucesso!';
         this.produtoservice.mensagem(this.successMessage); 
 
-        this.newProduct = result;
-        console.log(result);
+        //this.newProduct = result;
+        //console.log(result);
              this.upload();
     }, () => {
   this.errorMessage = 'Error ao Salvar produto';

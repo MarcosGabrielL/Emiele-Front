@@ -31,9 +31,9 @@ export class ProdutoService {
     return this.http.get<Produto[]>(url)
   }  
 
- create(Produto: Produto, token: string): Observable<Produto>{
-    const url = `${this.baseUrl}/produtos/produto/add?token=${token}`
-    return this.http.post<Produto>(url, Produto);
+ create(produto: Produto, token: string,  vendedorid: any): Observable<Produto>{
+    const url = `${this.baseUrl}/produtos/produto/add?token=${token}&vendedorid=${vendedorid}`
+    return this.http.post<Produto>(url, produto);
   }
   
   delete(id: String, token: string):Observable<void> {
