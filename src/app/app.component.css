@@ -25531,8 +25531,8 @@ pre[class*="language-"] {
 ::ng-deep .snackbar{
   background: #333;
   color: #fff;
-   position: relative;
-   top: 2%;
+   position: absolute;
+   top: 10%;
    right: 0%;
    z-index: 999999;
 }
