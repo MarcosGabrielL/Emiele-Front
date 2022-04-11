@@ -97,11 +97,11 @@ const routes: Routes = [
                   ]
    },
    {
-    path: 'cardapio',
+    path: 'cardapio/:idvendedor',
     component: CardapiohomeComponent
    },
     {
-    path: 'cardapio/:categoria',
+    path: 'cardapio/:idvendedor/:categoria',
     component: ListComponent
    },
    {

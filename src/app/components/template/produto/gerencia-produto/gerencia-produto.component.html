@@ -174,53 +174,53 @@
     align-content: center;
     flex-direction: row-reverse;
     flex-wrap: nowrap;">
-                      <input list="unidades" maxlength="10" [(ngModel)]="newProduct.unidade"  id="unidade" 
+                      <select maxlength="10" [(ngModel)]="newProduct.unidade"  id="unidade" 
               name="unidade" 
 
                       type="text" class="form-control w-50" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
-                      <datalist id="unidades">
-  <option value="UN">
-  <option value="CX">
-  <option value="KG">
-  <option value="Lt">
-  <option value="TON">
-  <option value="DUZIA">
-  <option value="1000Un">
-  <option value="QUILAT">
-  <option value="METRO">
-  <option value="M3">
-  <option value="PARES">
-  <option value="M2">
-  </datalist>
-                      <input list="tipos" maxlength="10" [(ngModel)]="newProduct.tipo"  id="Tipo" 
+  <option value="CX">CX</option>
+  <option value="UN">UN</option>
+  <option value="KG">KG</option>
+  <option value="Lt">Lt</option>
+  <option value="TON">TON</option>
+  <option value="DUZIA">DUZIA</option>
+  <option value="1000Un">1000Un</option>
+  <option value="QUILAT">QUILAT</option>
+  <option value="METRO">METRO</option>
+  <option value="M3">M3</option>
+  <option value="PARES">PARES</option>
+  <option value="M2">M2</option>
+         
+</select>
+                      <select maxlength="10" [(ngModel)]="newProduct.tipo"  id="Tipo" 
               name="Tipo" 
 
                       type="text" class="form-control w-40" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
-                      <datalist id="tipos">
-  <option selected value="Sem tipo">
-  <option value="Hamburguer">
-  <option value="Sushi">
-  <option value="Pizza">
-  <option value="Bolo">
-    <option value="Sorvete">
-      <option value="Bebida">
-        <option value="Pasteis">
-        <option value="Lanche">
-        <option value="Massa">
-        <option value="Refeição">
-        <option value="Higiene e limpeza do lar">
-        <option value="Higiene e limpeza pessoal">
-        <option value="Perfumaria">
-        <option value="Utilidades dom&#xe9;sticas">
-        <option value="Campo e lazer">
-        <option value="Padaria">
-        <option value="A&#xe7;ougue">
-        <option value="Enlatados">
-        <option value="Doces">
-        <option value="Massas e biscoitos">
-        <option value="Cereais">
-        <option value="Outros">
-</datalist>
+  <option selected value="Sem tipo">Sem tipo</option>
+  <option value="Hamburguer">Hamburguer</option>
+  <option value="Sushi">Sushi</option>
+  <option value="Pizza">Pizza</option>
+  <option value="Bolo">Bolo</option>
+    <option value="Sorvete">Sorvete</option>
+      <option value="Bebida">Bebida</option>
+        <option value="Pasteis">Pasteis</option>
+        <option value="Lanche">Lanche</option>
+        <option value="Massa">Massa</option>
+        <option value="Refeição">Refeição</option>
+        <option value="Higiene e limpeza do lar">Higiene e limpeza do lar</option>
+        <option value="Higiene e limpeza pessoal">Higiene e limpeza pessoal</option>
+        <option value="Perfumaria">Perfumaria</option>
+        <option value="Utilidades dom&#xe9;sticas">Utilidades dom&#xe9;sticas</option>
+        <option value="Campo e lazer">Campo e lazer</option>
+        <option value="Padaria">Padaria</option>
+        <option value="A&#xe7;ougue">A&#xe7;ougue</option>
+        <option value="Enlatados">Enlatados</option>
+        <option value="Doces">Doces</option>
+        <option value="Massas e biscoitos">Massas e biscoitos</option>
+        <option value="Cereais">Cereais</option>
+        <option value="Outros">Outros</option>
+         
+</select>
 
                     </div>
   <div class="text-center" >
