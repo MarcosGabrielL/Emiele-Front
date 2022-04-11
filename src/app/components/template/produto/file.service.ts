@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest, HttpEventType, HttpResponse, HttpHeaders} from '@angular/common/http';
+import {FileDB} from './file.model'
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -108,14 +109,19 @@ export class FileService {
     return this.http.get<File[]>(url)
   }
   
-   findByIdProduto(id: any, token: string): Observable<any> {
+   findByIdProduto(id: any, token: string): Observable<FileDB[]> {
     const url = `${this.baseUrl}/filelist/produto/${id}`
-    return this.http.get<any>(url)
+    return this.http.get<FileDB[]>(url)
   }
 
    findById(id: any, token: string): Observable<File> {
     const url = `${this.baseUrl}/file/${id}`
     return this.http.get<File>(url)
+  }
+
+  deleteById(id: any, token: string): any {
+    const url = `${this.baseUrl}/file/delete/${id}`
+    return this.http.get<any>(url)
   }
 
   

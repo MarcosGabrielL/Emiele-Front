@@ -136,7 +136,7 @@ export class DashboardComponent implements OnInit {
                                   //this.vendaService.mensagem(this.successMessage); 
 
                                  
-                                  this.eventos=result;
+                                 this.eventos=result;
                                     
                                  this.eventos.forEach( (evento: Evento) => {
                                           

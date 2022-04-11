@@ -80,7 +80,7 @@
                 </div>
                 <div class="card-body">
                   <form role="form" >
-                    <label>Codigo</label>
+                    <label>Nome Produto</label>
                     <div class="mb-3">
                       <input [(ngModel)]="newProduct.codigo" id="codigo" 
               name="codigo"  maxlength="30"
@@ -132,6 +132,7 @@
                 <div class="card-header pb-0 text-left bg-transparent">
                   <h3 class="font-weight-bolder text-info text-gradient" style="background-image: linear-gradient(310deg, #cc2945, red);"></h3>
                   <p class="mb-0"></p>
+                  
                 </div>
                 <div class="card-body">
                   <form role="form" >
@@ -144,6 +145,24 @@
               <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
             </ngx-dropzone-image-preview>
           </ngx-dropzone>
+
+          <div class="position-relative" *ngFor="let b of imagnes" style="width: 30%; margin: 2%; display: inline-flex !important;">
+                      <a class="d-block shadow-xl border-radius-xl">
+                        <img style="object-fit: cover !important; width: 100% !important;height: 100px !important;"  
+                        [src]='SafeUrl(b.data)' 
+                        alt="img" class="img-fluid shadow border-radius-xl">
+                        <span (click)="excluiImagem(b.id)" style="position: absolute;
+    top: 0;
+    right: 17%;
+    padding: 0px 7px;
+    border-radius: 50%;
+    background: linear-gradient(310deg, #cc2945, red);
+    color: white; cursor: pointer;">X</span>
+                      </a>
+                      
+                    </div>
+
+
                     </div>
                     <div class="mb-3" style="display:none;">
 
