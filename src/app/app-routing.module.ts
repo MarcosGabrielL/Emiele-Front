@@ -54,16 +54,19 @@ const routes: Routes = [
    ,
    {
     path: 'rtl',
-    component: RtlComponent
+    component: RtlComponent,
+    canActivate: [ HttpInterceptorService ]
    }
    ,
    {
     path: 'billing',
-    component: BillingComponent
+    component: BillingComponent,
+    canActivate: [ HttpInterceptorService ]
    },
    {
     path: 'tables',
-    component: TableComponent
+    component: TableComponent,
+    canActivate: [ HttpInterceptorService ]
    },
    {
     path: 'confirm',
@@ -84,6 +87,7 @@ const routes: Routes = [
    {
     path: 'produtos',
     component: ProdutoComponent,
+    canActivate: [ HttpInterceptorService ]
         children: [
                     {path: 'gerencia',  component:GerenciaProdutoComponent , pathMatch: 'full'},
                      {path: 'home', component: ListaComponent, pathMatch: 'full'}
@@ -92,6 +96,7 @@ const routes: Routes = [
    {
     path: 'shop',
     component: HomeComponent,
+    canActivate: [ HttpInterceptorService ]
         children: [
                     {path: '',  component: IndexComponent, pathMatch: 'full'},
                     { path: 'checkout', component: CheckoutComponent, pathMatch: 'full'},
