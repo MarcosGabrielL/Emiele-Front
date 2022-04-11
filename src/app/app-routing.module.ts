@@ -31,6 +31,9 @@ import { BuscaComponent } from './components/marketplaceweb/views/home/busca/bus
 import { ProductPageComponent } from './components/marketplaceweb/views/product-page/product-page.component';
 import { Erro404Component } from './components/template/erro404/erro404.component';
 
+import { ListComponent } from './components/cardapio/views/list/list.component';
+import { CardapiohomeComponent } from './components/cardapio/views/cardapiohome/cardapiohome.component';
+
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
    {
@@ -87,16 +90,24 @@ const routes: Routes = [
    {
     path: 'produtos',
     component: ProdutoComponent,
-    canActivate: [ HttpInterceptorService ]
+    canActivate: [ HttpInterceptorService ],
         children: [
                     {path: 'gerencia',  component:GerenciaProdutoComponent , pathMatch: 'full'},
                      {path: 'home', component: ListaComponent, pathMatch: 'full'}
                   ]
    },
    {
+    path: 'cardapio',
+    component: CardapiohomeComponent
+   },
+    {
+    path: 'cardapio/:categoria',
+    component: ListComponent
+   },
+   {
     path: 'shop',
     component: HomeComponent,
-    canActivate: [ HttpInterceptorService ]
+    canActivate: [ HttpInterceptorService ],
         children: [
                     {path: '',  component: IndexComponent, pathMatch: 'full'},
                     { path: 'checkout', component: CheckoutComponent, pathMatch: 'full'},

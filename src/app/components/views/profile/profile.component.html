@@ -1,5 +1,5 @@
 
-<body class="g-sidenav-show bg-gray-100">
+<body class="g-sidenav-show bg-gray-100"> 
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-info-circle p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -32,7 +32,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" href="/tables">
+          <a class="nav-link " href="/tables">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -92,6 +92,7 @@
             <span class="nav-link-text ms-1">Produtos</span>
           </a>
         </li>
+         
         <li class="nav-item">
           <a class="nav-link  " href="/produtos">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -114,10 +115,10 @@
           </a>
         </li>
         <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Conta</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link  " href="/profile">
+          <a class="nav-link  active" href="/profile">
             <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>customer-support</title>
@@ -137,6 +138,28 @@
             <span class="nav-link-text ms-1">Perfil</span>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link  " href="/rtl">
+            <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <title>box-3d-50</title>
+                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g transform="translate(-1870.000000, -591.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                          <g transform="translate(1716.000000, 291.000000)">
+                            <g transform="translate(154.000000, 300.000000)">
+                              <path class="color-background" d="M40,40 L36.3636364,40 L36.3636364,3.63636364 L5.45454545,3.63636364 L5.45454545,0 L38.1818182,0 C39.1854545,0 40,0.814545455 40,1.81818182 L40,40 Z" opacity="0.603585379"></path>
+                              <path class="color-background" d="M30.9090909,7.27272727 L1.81818182,7.27272727 C0.814545455,7.27272727 0,8.08727273 0,9.09090909 L0,41.8181818 C0,42.8218182 0.814545455,43.6363636 1.81818182,43.6363636 L30.9090909,43.6363636 C31.9127273,43.6363636 32.7272727,42.8218182 32.7272727,41.8181818 L32.7272727,9.09090909 C32.7272727,8.08727273 31.9127273,7.27272727 30.9090909,7.27272727 Z M18.1818182,34.5454545 L7.27272727,34.5454545 L7.27272727,30.9090909 L18.1818182,30.9090909 L18.1818182,34.5454545 Z M25.4545455,27.2727273 L7.27272727,27.2727273 L7.27272727,23.6363636 L25.4545455,23.6363636 L25.4545455,27.2727273 Z M25.4545455,20 L7.27272727,20 L7.27272727,16.3636364 L25.4545455,16.3636364 L25.4545455,20 Z">
+                              </path>
+                            </g>
+                          </g>
+                        </g>
+                      </g>
+              </svg>
+            </div>
+            <span class="nav-link-text ms-1">Mensagens</span>
+          </a>
+        </li>
+
         
        
       </ul>
@@ -160,7 +183,7 @@
   </aside>
   <div class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <!-- Navbar -->
-     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -312,6 +335,7 @@
                     </div>
                   </a>
                 </li>
+
                 <li class="mb-2" >
                   <a class="dropdown-item border-radius-md"  href="/index">
                     <div class="d-flex py-1">
@@ -468,10 +492,10 @@
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                Alec Thompson
+                {{usuario.firstName}} {{usuario.lastName}}
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
-                CEO / Co-Founder
+                {{usuario.email}}
               </p>
             </div>
           </div>
@@ -548,60 +572,63 @@
         <div class="col-12 col-xl-4">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
-              <h6 class="mb-0">Platform Settings</h6>
+              <h6 class="mb-0">Configurações da plataforma</h6>
             </div>
             <div class="card-body p-3">
-              <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
+              <h6 class="text-uppercase text-body text-xs font-weight-bolder">Conta</h6>
               <ul class="list-group">
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Email me when someone follows me</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Envie-me um e-mail quando alguém me seguir</label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1">
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Email me when someone answers on my post</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Envie-me um e-mail quando alguém efetuar pedido</label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Envie-me um e-mail quando alguém me contatar</label>
                   </div>
                 </li>
               </ul>
-              <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Application</h6>
+              <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">INSCRIÇÃOr</h6>
               <ul class="list-group">
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3">
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">New launches and projects</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">
+Novos Produtos
+</label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4" checked>
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Monthly product updates</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Atualizações mensais de produtos
+</label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0 pb-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5">
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Assine a newslette</label>
                   </div>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="col-12 col-xl-4">
+         <div class="col-12 col-xl-4" style="display: none;">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-md-8 d-flex align-items-center">
-                  <h6 class="mb-0">Profile Information</h6>
+                  <h6 class="mb-0">Informação da Loja</h6>
                 </div>
                 <div class="col-md-4 text-end">
                   <a href="javascript:;">
@@ -611,15 +638,21 @@
               </div>
             </div>
             <div class="card-body p-3">
+              <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img src="../assets/img/small-logos/logo-slack.svg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            </div>
+          </div>
               <p class="text-sm">
-                Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally difficult paths, choose the one more painful in the short term (pain avoidance is creating an illusion of equality).
+                
+Loja de {{usuario.firstName}} {{usuario.lastName}}!
               </p>
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; Alec M. Thompson</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; (44) 123 1234 123</li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nome Fantasia:</strong> &nbsp; {{usuario.firstName}} {{usuario.lastName}}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telefone:</strong> &nbsp; (44) 123 1234 123</li>
                 <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Location:</strong> &nbsp; USA</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Endereço:</strong> &nbsp; USA</li>
                 <li class="list-group-item border-0 ps-0 pb-0">
                   <strong class="text-dark text-sm">Social:</strong> &nbsp;
                   <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
@@ -637,6 +670,52 @@
           </div>
         </div>
         <div class="col-12 col-xl-4">
+          <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                  <h6 class="mb-0">Informação do Perfil</h6>
+                </div>
+                <div class="col-md-4 text-end">
+                  <a (click)="open(content)">
+                    <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-3">
+              <div class="col-auto">
+            <div class="avatar avatar-xl position-relative">
+              <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            </div>
+          </div>
+              <p class="text-sm">
+                
+Olá, sou {{usuario.firstName}} {{usuario.lastName}}, Decisões: Se você não consegue decidir, a resposta é não. Se dois caminhos igualmente difíceis, escolha o mais doloroso a curto prazo (evitar a dor é criar uma ilusão de igualdade).
+              </p>
+              <hr class="horizontal gray-light my-4">
+              <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nome completo:</strong> &nbsp; {{usuario.firstName}} {{usuario.lastName}}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telefone:</strong> &nbsp; (44) 123 1234 123</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Endereço:</strong> &nbsp; USA</li>
+                <li class="list-group-item border-0 ps-0 pb-0">
+                  <strong class="text-dark text-sm">Social:</strong> &nbsp;
+                  <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-facebook fa-lg"></i>
+                  </a>
+                  <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-twitter fa-lg"></i>
+                  </a>
+                  <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-instagram fa-lg"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-xl-4" style="display: none;">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <h6 class="mb-0">Conversations</h6>
@@ -697,7 +776,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 mt-4">
+        <div class="col-12 mt-4" style="display: none;">
           <div class="card mb-4">
             <div class="card-header pb-0 p-3">
               <h6 class="mb-1">Projects</h6>
@@ -831,7 +910,7 @@
           </div>
         </div>
       </div>
-      <footer class="footer pt-3  ">
+       <footer class="footer pt-3  ">
         <div class="container-fluid">
           <div class="row align-items-center justify-content-lg-between">
             <div class="col-lg-6 mb-lg-0 mb-4">
@@ -840,23 +919,23 @@
                   document.write(new Date().getFullYear())
                 </script>,
                 made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+                <a href="R$" class="font-weight-bold" target="_blank">Softsaj</a>
                 for a better web.
               </div>
             </div>
             <div class="col-lg-6">
               <ul class="nav nav-footer justify-content-center justify-content-lg-end">
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+                  <a href="R$" class="nav-link text-muted" target="_blank">Marcos Gabriel</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+                  <a href="R$/presentation" class="nav-link text-muted" target="_blank">About Us</a>
                 </li>
                 <li class="nav-item">
                   <a href="https://creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+                  <a href="R$/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
                 </li>
               </ul>
             </div>
@@ -921,7 +1000,7 @@
           <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/soft-ui-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
             <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
           </a>
-        </div>
+        </div>         
       </div>
     </div>
   </div>
@@ -936,6 +1015,190 @@
     }
   </script>
   <!-- Github buttons -->
+
+  <ng-template #content let-c="close" let-d="dismiss" style=" max-width: 50%; width: 30%;">
+  <div class="modal-body" >
+    
+    <div class="tab_container">
+     
+      <input id="tab2" type="radio" name="tabs" checked style="display: none;">
+      <label for="tab2" style="display: none;"><i class="fa fa-camera-retro" style="display: none;"></i><span> &nbsp;Foto(s) </span></label>
+
+      
+
+      <section id="content2" class="tab-content">
+         <form class="form-horizontal" role="form">
+                  <div class="text-center" >
+                     
+          <ngx-dropzone (change)="onSelect($event)">
+            <ngx-dropzone-label>Selecione ou Arraste nova foto</ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+                    <a>Resumo:</a>
+                     <div class="panel-body">
+                                    <textarea class="form-control" rows="5" placeholder=""
+                                    for="texto" id="texto" [(ngModel)]="ticketmedio" name="texto"></textarea>
+                      </div>
+                      <a>Nome Completo:</a>
+                      <div class="panel-body">
+                                    <textarea class="form-control" rows="1" placeholder=""
+                                    for="texto" id="texto" [(ngModel)]="ticketmedio" name="texto"></textarea>
+                      </div>
+                      <a>Email:</a>
+                      <div class="panel-body">
+                                    <textarea class="form-control" rows="1" placeholder=""
+                                    for="texto" id="texto" [(ngModel)]="ticketmedio" name="texto"></textarea>
+                      </div>
+                      <a>Endereço:</a>
+                      <div class="panel-body">
+                                    <textarea class="form-control" rows="1" placeholder=""
+                                    for="texto" id="texto" [(ngModel)]="ticketmedio" name="texto"></textarea>
+                      </div>
+                    </div>
+                  </form>
+                  <div
+                                       class="mar-top clearfix">  <button  type="button" (click)="Att()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Atualizar</button></div>
+      </section>
+
+     
+    </div>
+
+  </div>
+</ng-template>
+
+ <style>
+             @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+h1 {
+  color: #ccc;
+  text-align: center;
+}
+
+a {
+  color: #ccc;
+  text-decoration: none;
+  outline: none;
+}
+
+/*Fun begins*/
+.tab_container {
+  width: 100%;
+    margin: 0 auto;
+    padding-top: 0;
+    position: relative;
+}
+
+.tab_container input, section {
+  clear: both;
+  padding-top: 10px;
+  display: none;
+}
+
+
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4,
+#tab5:checked ~ #content5 {
+  display: block;
+  padding: 2% 9%;
+  background: #fff;
+  color: #999;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.tab_container .tab-content p,
+.tab_container .tab-content h3 {
+  -webkit-animation: fadeInScale 0.7s ease-in-out;
+  -moz-animation: fadeInScale 0.7s ease-in-out;
+  animation: fadeInScale 0.7s ease-in-out;
+}
+.tab_container .tab-content h3  {
+  text-align: center;
+}
+
+.tab_container [id^="tab"]:checked + label {
+  background: #fff;
+  box-shadow: inset 0 3px #0CE;
+}
+
+.tab_container [id^="tab"]:checked + label .fa {
+  color: #0CE;
+}
+
+label .fa {
+  font-size: 1.3em;
+  margin: 0 0.4em 0 0;
+}
+
+/*Media query*/
+@media only screen and (max-width: 900px) {
+  label span {
+    display: none;
+  }
+  
+  .tab_container {
+    width: 98%;
+  }
+}
+
+/*Content Animation*/
+@keyframes fadeInScale {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.no_wrap {
+  text-align:center;
+  color: #0ce;
+}
+.link {
+  text-align:center;
+}
+.form-control1 {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    height: 226px;
+    padding: 0.875rem 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #000;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+             </style>
  
 </body>
 

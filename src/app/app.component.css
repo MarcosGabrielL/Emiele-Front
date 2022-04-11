@@ -25529,7 +25529,7 @@ pre[class*="language-"] {
 /*# sourceMappingURL=dashboard-free.css.map */
 
 ::ng-deep .snackbar{
-  background: #333;
+  background: linear-gradient(310deg, #141727 0%, #3A416F 100%);
   color: #fff;
    position: fixed;
    top: 5%;
@@ -25555,21 +25555,6 @@ pre[class*="language-"] {
   scrollbar-color: #dedede #fff;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #fff !important; 
-}
-::-webkit-scrollbar  {
-    background: #fff !important; 
-}            { /* 1 */ }
-::-webkit-scrollbar-button       { /* 2 */ }
-::-webkit-scrollbar-track        { /* 3 */ }
-::-webkit-scrollbar-track-piece  { /* 4 */ }
-::-webkit-scrollbar-thumb {
-    background: #fff !important; 
-}       { /* 5 */ }
-::-webkit-scrollbar-corner       { /* 6 */ }
-::-webkit-resizer   
 
 
 

@@ -48,12 +48,20 @@ export class ProfileComponent implements OnInit {
   cont: number = 0;
    cont1: number = 0;
    cont2: number = 0;
-
+files: File[] = [];
 
   successMessage: string = "";
   errorMessage: string = "";
   token: any;
   comprador: User = {
+     id: 0,
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: ""
+  }
+
+  usuario: User= {
      id: 0,
     email: "",
     password: "",
@@ -68,10 +76,47 @@ export class ProfileComponent implements OnInit {
   notfycunt: String = "";
   Notification: Notification[];
   mostraprodutos: boolean = false;
+  closeResult = '';
 
-  constructor() { }
+  constructor(private cdRef: ChangeDetectorRef,private authenticationService: LoginService,
+              private router: Router,
+              private http: HttpClient,
+              private vendaService: VendaService,
+              private snackBar: MatSnackBar,
+              private cd: ChangeDetectorRef,
+              private sanitized: DomSanitizer,
+
+    private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.isLoggedin();
+  }
+
+   private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  onSelect(event : any) {
+  console.log(event);
+  this.files.push(...event.addedFiles);
+}
+
+onRemove(event: any) {
+  console.log(event);
+  this.files.splice(this.files.indexOf(event), 1);
+}
+
+open(content: any) {
+    this.modalService.open(content, { size: 'lg' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
 
@@ -85,4 +130,103 @@ export class ProfileComponent implements OnInit {
     
   }
 
+   isLoggedin(){
+
+        this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE');
+    //Verifica se está logado
+                if(this.authenticationService.isUserLoggedIn()){
+                    //Pega email do usuario logado
+                    let email = this.authenticationService.getLoggedInUserName();
+                        //Pega usuario pelo email
+                        this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
+                            this.usuario = resposta;
+
+                            this.vendedor_id  = resposta.id.toString();
+console.log( this.vendedor_id);
+                              
+                              this.vendaService.userNotification(this.vendedor_id).subscribe((result: Notification[])=> {
+                                 // this.successMessage = 'Produto Salvo com sucesso!';
+                                  //this.vendaService.mensagem(this.successMessage); 
+
+                                    console.log('Notification: '+result);
+                                    this.Notification = result;
+
+
+
+                                    if(result == null){
+                                        this.vendaService.mostranotify = false;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }else{
+                                       this.vendaService.mostranotify = true;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }
+                                   
+                                      this.notfycunt = result.length.toString();
+                                  
+                                        this.getNotifications();
+                              }, () => {
+                              console.log('Error ao Buscar Notifications i');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+                              
+                              this.CarregaConversations();
+               
+            }, () => {
+               this.vendaService.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
+             }); 
+               };  
+  }
+
+  async getNotifications(){
+
+
+    while(true){
+    console.log(this.cont1);
+    this.cont1 = this.cont1 +1;
+    await this.wait(30000);
+  }
+
+ }
+
+  wait(ms: number)  {
+    return new Promise((resolve)=> {
+
+      this.vendaService.userNotification(this.vendedor_id).subscribe((result: Notification[])=> {
+                                 // this.successMessage = 'Produto Salvo com sucesso!';
+                                  //this.vendaService.mensagem(this.successMessage); 
+
+                                    console.log('Notification: '+result);
+                                    this.Notification = result;
+
+
+
+                                    if(result == null){
+                                        this.vendaService.mostranotify = false;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }else{
+                                       this.vendaService.mostranotify = true;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }
+                                   
+                                      this.notfycunt = result.length.toString();
+                                  
+
+                              }, () => {
+                              console.log('Error ao Buscar Notifications');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+      setTimeout(resolve, ms);
+    });
+  }
+
+  CarregaConversations(){
+
+  }
+
+  Att(){
+
+  }
 }

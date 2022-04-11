@@ -64,13 +64,15 @@ import { CartComponent } from './components/marketplaceweb/views/cart/cart.compo
 import { CheckoutComponent } from './components/marketplaceweb/views/checkout/checkout.component';
 import { ContactComponent } from './components/marketplaceweb/views/contact/contact.component';
  
-
+ 
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CarouselHomeComponent } from './components/marketplaceweb/views/home/carousel-home/carousel-home.component';
 import { IndexComponent } from './components/marketplaceweb/views/home/index/index.component';
 import { ProductPageComponent } from './components/marketplaceweb/views/product-page/product-page.component';
 import { Erro404Component } from './components/template/erro404/erro404.component';
+import { ListComponent } from './components/cardapio/views/list/list.component';
+import { CardapiohomeComponent } from './components/cardapio/views/cardapiohome/cardapiohome.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +111,9 @@ import { Erro404Component } from './components/template/erro404/erro404.componen
     CarouselHomeComponent,
     IndexComponent,
     ProductPageComponent,
-    Erro404Component
+    Erro404Component,
+    ListComponent,
+    CardapiohomeComponent
   ],
   imports: [
     BrowserModule,
