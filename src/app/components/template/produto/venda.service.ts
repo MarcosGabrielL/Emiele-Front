@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Produto } from './produto.model';
+import { Produto,ProdutoDTO } from './produto.model';
 import { Venda, Evento, ResponseVendas, Notification } from './venda.model';
 
 @Injectable({
@@ -13,6 +13,34 @@ export class VendaService {
 
   mostranotify: boolean;
   baseUrl: String = environment.baseUrlVendas;
+
+   produtos: ProdutoDTO[]=[];
+ Semtipo: ProdutoDTO[]=[];
+ Hamburguer: ProdutoDTO[]=[];
+ Sushi: ProdutoDTO[]=[];
+ Pizza: ProdutoDTO[]=[];
+ Bolo: ProdutoDTO[]=[];
+   Sorvete: ProdutoDTO[]=[];
+     Bebida: ProdutoDTO[]=[];
+       Pasteis: ProdutoDTO[]=[];
+       Lanche: ProdutoDTO[]=[];
+       Massa: ProdutoDTO[]=[];
+       Refeicao: ProdutoDTO[]=[];
+       Higienelar: ProdutoDTO[]=[];
+       Higienepessoal: ProdutoDTO[]=[];
+       Perfumaria: ProdutoDTO[]=[];
+       Utilidades: ProdutoDTO[]=[];
+       Campo: ProdutoDTO[]=[];
+       Padaria: ProdutoDTO[]=[];
+       Acougue: ProdutoDTO[]=[];
+       Enlatados: ProdutoDTO[]=[];
+       Doces: ProdutoDTO[]=[];
+       biscoitos: ProdutoDTO[]=[];
+       Cereais: ProdutoDTO[]=[];
+       Outros: ProdutoDTO[]=[];
+       dog: ProdutoDTO[]=[];
+       fruta: ProdutoDTO[]=[];
+       pet: ProdutoDTO[]=[];
 
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 

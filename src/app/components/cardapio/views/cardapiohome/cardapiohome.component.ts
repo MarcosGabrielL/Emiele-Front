@@ -92,81 +92,107 @@ export class CardapiohomeComponent implements OnInit {
 
                                         if(evento.tipo==="Sem tipo"){
                                             this.Semtipo.push(evento);
+                                            this.vendaService.Semtipo =  this.Semtipo;
                                         }
                                         if(evento.tipo==="Hamburguer"){
                                             this.Hamburguer.push(evento);
+                                            this.vendaService.Hamburguer =  this.Hamburguer;
                                         }
                                         if(evento.tipo==="Sushi"){
                                             this.Sushi.push(evento);
+                                            this.vendaService.Sushi =  this.Sushi;
                                         }
                                         if(evento.tipo==="Pizza"){
                                             this.Pizza.push(evento);
+                                            this.vendaService.Pizza =  this.Pizza;
                                         }
                                         if(evento.tipo==="Bolo"){
                                             this.Bolo.push(evento);
+                                            this.vendaService.Bolo =  this.Bolo;
                                         }
                                         if(evento.tipo==="Sorvete"){
                                             this.Sorvete.push(evento);
+                                            this.vendaService.Sorvete =  this.Sorvete;
                                         }
                                         if(evento.tipo==="Bebida"){
                                             this.Bebida.push(evento);
+                                            this.vendaService.Bebida =  this.Bebida;
                                         }
                                         if(evento.tipo==="Pasteis"){
                                             this.Pasteis.push(evento);
+                                            this.vendaService.Pasteis =  this.Pasteis;
                                         }
                                         if(evento.tipo==="Lanche"){
                                             this.Lanche.push(evento);
+                                            this.vendaService.Semtipo =  this.Semtipo;
                                         }
                                         if(evento.tipo==="Massa"){
                                             this.Massa.push(evento);
+                                            this.vendaService.Semtipo =  this.Semtipo;
                                         }
                                         if(evento.tipo==="Refeição"){
                                             this.Refeicao.push(evento);
+                                            this.vendaService.Refeicao =  this.Refeicao;
                                         }
                                         if(evento.tipo==="Higiene e limpeza do lar"){
                                             this.Higienelar.push(evento);
+                                            this.vendaService.Higienelar =  this.Higienelar;
                                         }
                                         if(evento.tipo==="Higiene e limpeza pessoal"){
                                             this.Higienepessoal.push(evento);
+                                            this.vendaService.Higienepessoal =  this.Higienepessoal;
                                         }
                                         if(evento.tipo==="Perfumaria"){
                                             this.Perfumaria.push(evento);
+                                            this.vendaService.Perfumaria =  this.Perfumaria;
                                         }
                                         if(evento.tipo==="Utilidades dom&#xe9;sticas"){
                                             this.Utilidades.push(evento);
+                                            this.vendaService.Utilidades =  this.Utilidades;
                                         }
                                           if(evento.tipo==="Campo e lazer"){
                                             this.Campo.push(evento);
+                                            this.vendaService.Campo =  this.Campo;
                                         }
                                             if(evento.tipo==="Padaria"){
                                             this.Padaria.push(evento);
+                                            this.vendaService.Padaria =  this.Padaria;
                                         }
                                               if(evento.tipo==="A&#xe7;ougue"){
                                             this.Acougue.push(evento);
+                                            this.vendaService.Acougue =  this.Acougue;
                                         }
                                                 if(evento.tipo==="Enlatados"){
                                             this.Enlatados.push(evento);
+                                            this.vendaService.Enlatados =  this.Enlatados;
                                         }
                                                   if(evento.tipo==="Doces"){
                                             this.Doces.push(evento);
+                                            this.vendaService.Doces =  this.Doces;
                                         }
                                                     if(evento.tipo==="Massas e biscoitos"){
                                             this.biscoitos.push(evento);
+                                            this.vendaService.biscoitos =  this.biscoitos;
                                         }
                                                     if(evento.tipo==="Cereais"){
                                             this.Cereais.push(evento);
+                                            this.vendaService.Cereais =  this.Cereais;
                                         }
                                                     if(evento.tipo==="Outros"){
                                             this.Outros.push(evento);
+                                            this.vendaService.Outros =  this.Outros;
                                         }
                                                   if(evento.tipo==="Cachorro Quente"){
                                             this.dog.push(evento);
+                                            this.vendaService.dog =  this.dog;
                                         }
                                                   if(evento.tipo==="Fruta"){
                                             this.fruta.push(evento);
+                                            this.vendaService.fruta =  this.fruta;
                                         }
                                             if(evento.tipo==="Pet Shop"){
                                             this.pet.push(evento);
+                                            this.vendaService.pet =  this.pet;
                                         }
 
                                                     
@@ -191,7 +217,7 @@ export class CardapiohomeComponent implements OnInit {
 
 lista(any: any){
 
-  this.router.navigate(['/cardapio/this.idvendedor/any']); 
+  this.router.navigate(['/cardapio/'+this.idvendedor+'/'+any]); 
 
 }
 

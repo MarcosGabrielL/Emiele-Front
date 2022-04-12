@@ -192,22 +192,22 @@
                <p>Biscoitos</p>
                <i class="ion-ios-arrow-forward"></i>
             </li>
-            <li class="ui-item orange" *ngIf="Refeicao.length > 0" (click)="lista('Refeição')">
+            <li class="ui-item orange" *ngIf="Refeicao.length == 0" (click)="lista('Refeição')">
                <i class="fas fa-drumstick-bite food-icon"></i>
                <p>Refeicao</p>
                <i class="ion-ios-arrow-forward"></i>
             </li>
-            <li class="ui-item pink" *ngIf="dog.length > 0" (click)="lista('Cachorro Quente')">
+            <li class="ui-item pink" *ngIf="dog.length == 0" (click)="lista('Cachorro Quente')">
                <i class="fas fa-hotdog food-icon"></i>
                <p>Cachorro Quente</p>
                <i class="ion-ios-arrow-forward"></i>
             </li>
-            <li class="ui-item blue" *ngIf="fruta.length > 0" (click)="lista('Fruta')">
+            <li class="ui-item blue" *ngIf="fruta.length == 0" (click)="lista('Fruta')">
                <i class="fas fa-apple-alt food-icon"></i>
                <p>Fruta</p>
                <i class="ion-ios-arrow-forward"></i>
             </li>
-            <li class="ui-item green" *ngIf="pet.length > 0" (click)="lista('Pet Shop')">
+            <li class="ui-item green" *ngIf="pet.length == 0" (click)="lista('Pet Shop')">
                <i class="fas fa-bone food-icon"></i>
                <p>Pet</p>
                <i class="ion-ios-arrow-forward"></i>
@@ -221,10 +221,11 @@
 
    @media only screen and (min-width: 1024px) {
       .ui-list {
-          display: flex !important;
+         display: grid !important;
+         grid-template-columns: repeat(3, 1fr) !important;
       }
       .ui-item {
-         width: 25% !important;
+         width: 100% !important;
       }
       .card1{
          width: 100% !important;
@@ -239,6 +240,7 @@
       }
       .ui-item {
          width: 100% !important;
+
       }
       .card1{
          width: 100% !important;
