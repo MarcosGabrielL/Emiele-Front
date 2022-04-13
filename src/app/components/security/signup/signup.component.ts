@@ -38,12 +38,14 @@ export class SignupComponent implements OnInit {
   successMessage: string = "";
    invalidLogin = false;
   loginSuccess = false;
+  tipo: String= "1";
 
      authRequestreg:any ={
     "email":"email",
     "password":"pass",
     "firstName":"first",
-    "lastName":"last"
+    "lastName":"last",
+    "tipo": "1"
   };
 
    authRequestRegister:any ={
@@ -61,7 +63,8 @@ export class SignupComponent implements OnInit {
     "email":this.emailreg,
     "password":this.passwordreg,
     "firstName":this.firstName,
-    "lastName":this.lastName
+    "lastName":this.lastName,
+    "tipo": this.tipo
      };
     
     this.authRequestreg={

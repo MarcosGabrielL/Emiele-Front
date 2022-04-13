@@ -58,7 +58,8 @@ files: File[] = [];
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    tipo: ""
   }
 
   usuario: User= {
@@ -66,7 +67,8 @@ files: File[] = [];
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    tipo: ""
   }
 
   mostranotify: boolean;

@@ -58,7 +58,8 @@ export class RtlComponent implements OnInit {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    tipo: ""
   }
 
   mostranotify: boolean;

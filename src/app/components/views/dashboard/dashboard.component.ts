@@ -61,7 +61,8 @@ export class DashboardComponent implements OnInit {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    tipo: ""
   }
 
   mostranotify: boolean;

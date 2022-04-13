@@ -1290,6 +1290,20 @@
 
                   type="password" class="form-control" placeholder="Senha" aria-label="Password" aria-describedby="password-addon">
                 </div>
+
+<div class="mb-3">
+                 <select [(ngModel)]="tipo"  id="Tipo" 
+              name="Tipo" 
+
+                      type="text" class="form-select w-100" placeholder="" aria-label="Password" aria-describedby="password-addon" style="/*margin-right: 10%; border: 0; padding: 0.5rem 1rem 0.5rem 0;*/">
+                      <option selected value="1">Vou Vender</option>
+                      <option value="3">Vou Comprar</option>
+                      <option value="2">Vou Entregar</option>
+                      </select>
+</div>
+
+
+
                 <div class="form-check form-check-info text-left">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                   <label class="form-check-label" for="flexCheckDefault">

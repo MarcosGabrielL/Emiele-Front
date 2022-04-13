@@ -62,7 +62,8 @@ export class ListaComponent implements OnInit {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    tipo: ""
   }
 
   images: SafeUrl[] = [];

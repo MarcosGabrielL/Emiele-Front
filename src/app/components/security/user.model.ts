@@ -5,4 +5,5 @@ export interface User{
     password: String;
     firstName: String;
     lastName: String;
+    tipo: String;
 }

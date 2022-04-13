@@ -58,7 +58,8 @@ export class BillingComponent implements OnInit {
     email: "",
     password: "",
     firstName: "",
-    lastName: ""
+    lastName: "",
+    tipo: ""
   }
 
   mostranotify: boolean;
