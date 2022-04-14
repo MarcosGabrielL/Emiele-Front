@@ -10,5 +10,6 @@ export interface FileDB {
     idpost: String;
     type: String;
     data: File;
+    idvendedor: String;
     
   }

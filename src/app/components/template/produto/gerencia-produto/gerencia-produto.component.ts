@@ -141,7 +141,11 @@ open(content: any) {
 
         //this.newProduct = result;
         //console.log(result);
+        if(this.files.length == 0){
+          this.router.navigate(['/produtos/home']); 
+        }else{
              this.upload();
+           }
     }, () => {
   this.errorMessage = 'Error ao Salvar produto';
         this.produtoservice.mensagem(this.errorMessage);
@@ -197,6 +201,7 @@ open(content: any) {
                 console.log("Não foi:"+event);
               });
     });
+     
   }
 
   ExcluiProduct(){

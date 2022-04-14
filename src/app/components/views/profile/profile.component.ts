@@ -8,12 +8,17 @@ import { Produto } from './../../../../app/components/template/produto/produto.m
 import { Venda, Evento } from './../../../../app/components/template/produto/venda.model';
 import { ResponseVendas } from './../../../../app/components/template/produto/venda.model';
 import { Vendido, Tem, Notification } from './../../../../app/components/template/produto/venda.model';
-import { User } from './../../../../app/components/security/user.model';
+import { User,Vendedor } from './../../../../app/components/security/user.model';
 import { VendaService } from './../../../../app/components/template/produto/venda.service';
+
+import {FileService} from './../../../../app/components/template/produto/file.service';
+import {FileDB} from './../../../../app/components/template/produto/file.model'
+
+
 import {LoginService} from './../../../../app/components/security/login.service'
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer,SafeHtml,SafeUrl } from '@angular/platform-browser';
 import { CommonModule } from "@angular/common";
 
 @Component({
@@ -71,7 +76,16 @@ files: File[] = [];
     tipo: ""
   }
 
-  mostranotify: boolean;
+  vendedor: Vendedor = {
+    id: "",
+     nomefantasia: "", 
+    descricao: "",
+    rua: "",
+    telefone: "",
+    email: ""
+  }
+
+  mostranotify: boolean = false;
   mostralist: boolean = false;
   mostramenu: boolean = false;
   selectedVenda: Venda;
@@ -80,13 +94,19 @@ files: File[] = [];
   mostraprodutos: boolean = false;
   closeResult = '';
 
-  constructor(private cdRef: ChangeDetectorRef,private authenticationService: LoginService,
+  image: SafeUrl = "";
+  temimagem: boolean = false;
+  imagemdb: FileDB;
+
+  constructor(private cdRef: ChangeDetectorRef,
+              private authenticationService: LoginService,
               private router: Router,
               private http: HttpClient,
               private vendaService: VendaService,
               private snackBar: MatSnackBar,
               private cd: ChangeDetectorRef,
               private sanitized: DomSanitizer,
+              private FileService: FileService,
 
     private modalService: NgbModal) { }
 
@@ -150,17 +170,17 @@ console.log( this.vendedor_id);
                                  // this.successMessage = 'Produto Salvo com sucesso!';
                                   //this.vendaService.mensagem(this.successMessage); 
 
-                                    console.log('Notification: '+result);
+                                    console.log('Notification: ');
+                                    console.log(result);
                                     this.Notification = result;
 
 
-
-                                    if(result == null){
-                                        this.vendaService.mostranotify = false;
-                                       this.mostranotify = this.vendaService.mostranotify;
+                                    if(result.length == 0){
+                                        //this.vendaService.mostranotify = false;
+                                       this.mostranotify = false;
                                     }else{
-                                       this.vendaService.mostranotify = true;
-                                       this.mostranotify = this.vendaService.mostranotify;
+                                       //this.vendaService.mostranotify = false;
+                                       this.mostranotify = true;
                                     }
                                    
                                       this.notfycunt = result.length.toString();
@@ -203,12 +223,12 @@ console.log( this.vendedor_id);
 
 
 
-                                    if(result == null){
-                                        this.vendaService.mostranotify = false;
-                                       this.mostranotify = this.vendaService.mostranotify;
+                                    if(result.length == 0){
+                                        //this.vendaService.mostranotify = false;
+                                       this.mostranotify = false;
                                     }else{
-                                       this.vendaService.mostranotify = true;
-                                       this.mostranotify = this.vendaService.mostranotify;
+                                       //this.vendaService.mostranotify = false;
+                                       this.mostranotify = true;
                                     }
                                    
                                       this.notfycunt = result.length.toString();
@@ -226,9 +246,125 @@ console.log( this.vendedor_id);
 
   CarregaConversations(){
 
+     this.authenticationService.getVendedorById(+this.vendedor_id, this.token).subscribe((resposta: Vendedor) => {
+
+
+                                this.vendedor = resposta;
+                                console.log('Vendedor: ');
+                                console.log(this.vendedor);
+
+                                //Busca Imagem de perfil
+                                this.FileService.findByIdVendedor(this.vendedor_id, this.token).subscribe((resposta: FileDB[]) => {
+
+                                    this.imagemdb = resposta[0];
+
+                                    if(resposta.length == 0){
+                                      this.temimagem = false;
+                                      this.image = "https://i.pinimg.com/originals/76/47/2e/76472e433e19ec424f7f6b8933380f93.png";
+                                    }else{
+                                       this.temimagem = true;
+                                     // this.files.push(resposta[0].data);
+                                      this.image = this.sanitized.bypassSecurityTrustUrl('data:image/png;base64,'+resposta[0].data);
+                                    }
+
+
+                                   }, () => {
+                              console.log('Error ao Buscar Dados Loja');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+
+               }, () => {
+                              console.log('Error ao Buscar Dados Vendedor');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+
   }
 
+  //Atualizar informações Loja
   Att(){
 
+    //ATualiza DADOS
+    this.authenticationService.AtualizaVendedor(this.vendedor, this.token).subscribe((resposta: Vendedor) => {
+
+      //this.vendedor = resposta;
+      console.log(resposta);
+      if(this.files.length == 0){
+       this.authenticationService.mensagem("Dados Atualizados Com Sucesso!");
+       }
+           this.AttImage();
+      
+
+      }, () => {
+         this.vendaService.mensagem("Error ao Atualizar Dados Vendedor");
+                              console.log('Error ao Atualizar Dados Vendedor');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+    
   }
+
+
+  AttImage(){
+    
+
+    //Atualiza Foto
+    if( this.temimagem){
+      //Atualiza Imagem
+      this.FileService.AtualizaFotoLoja(this.files[0], this.vendedor_id, this.imagemdb.id).subscribe((event: any) => {
+
+                                   if (event.type === HttpEventType.UploadProgress) {
+
+                                    //Calculando Porcentagem
+                                    let aqui: number = event!.total;
+                                    this.authenticationService.
+                                              mensagem('Salvando Imagens: '+Math.round((100 * event.loaded) / aqui) + '%...');
+
+                                   } else if (event instanceof HttpResponse) {
+                                    //UploadComplet
+                                            
+                                            this.modalService.dismissAll();
+                                      this.CarregaConversations();
+                                          }
+
+
+                                   }, () => {
+                              console.log('Error ao Atualizar imagem de Exibição');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+      
+    }else{
+      //Salva Imagem
+      this.FileService.SalvaFotoLoja(this.files[0], this.vendedor_id).subscribe((event: any) => {
+
+                                    if (event.type === HttpEventType.UploadProgress) {
+
+                                    //Calculando Porcentagem
+                                    let aqui: number = event!.total;
+                                    this.authenticationService.
+                                              mensagem('Salvando Imagens: '+Math.round((100 * event.loaded) / aqui) + '%...');
+
+                                   } else if (event instanceof HttpResponse) {
+                                    //UploadComplet
+                                            
+                                            this.modalService.dismissAll();
+                                      this.CarregaConversations();
+                                          }
+
+                                   }, () => {
+                              console.log('Error ao Atualizar imagem de Exibição');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+    }
+   
+    
+
+  }
+
+
 }

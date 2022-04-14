@@ -143,15 +143,15 @@
                 <div class="card-header pb-0 text-left bg-transparent">
                               <div class="col-auto" >
             <div class="avatar avatar-xl" style="margin: 10px auto; align-items: center; display: block;">
-              <img style="border-radius: 74px;" src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img style="border-radius: 74px;" [src]='image' alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
-                  <h3 class="font-weight-bolder text-info text-gradient" style="text-align: center; background-image: linear-gradient(310deg, #cc2945, red);">Loja Nome</h3>
+                  <h3 class="font-weight-bolder text-info text-gradient" style="text-align: center; background-image: linear-gradient(310deg, #cc2945, red);">{{vendedor.nomefantasia}}</h3>
                   <p class="mb-0 gt">Buscar Produtos por Categoria</p>
                   <select [(ngModel)]="tipo"  id="Tipo" 
               name="Tipo" (change)="CarregaProdutoByVendedorAndTipo()"
 
                       type="text" class="form-select w-100" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%; border: 0; padding: 0.5rem 1rem 0.5rem 0;">
-  <option selected value="Sem tipo">Sem tipo</option>
+  <option selected value="Todos">Todos</option>
   <option value="Hamburguer">Hamburguer</option>
   <option value="Sushi">Sushi</option>
   <option value="Pizza">Pizza</option>
@@ -208,7 +208,7 @@
 
                <div class="card" *ngFor="let x of produtos">
                   <div class="card__image">
-                     <img [src]='SafeUrl(x.files[0].data)' />
+                     <img [src]='SafeUrl(x.files[0]?.data)' />
                   </div>
                   <div class="card__info">
                      <div class="car__info--title">

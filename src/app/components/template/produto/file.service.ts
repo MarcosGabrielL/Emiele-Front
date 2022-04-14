@@ -58,7 +58,7 @@ export class FileService {
   headers: new HttpHeaders({
     'Content-Type': 'multipart/form-data'
   })
-};
+  };
 
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
@@ -114,6 +114,11 @@ export class FileService {
     return this.http.get<FileDB[]>(url)
   }
 
+  findByIdVendedor(id: any, token: string): Observable<FileDB[]> {
+    const url = `${this.baseUrl}/filelist/loja/${id}`
+    return this.http.get<FileDB[]>(url)
+  }
+
    findById(id: any, token: string): Observable<File> {
     const url = `${this.baseUrl}/file/${id}`
     return this.http.get<File>(url)
@@ -122,6 +127,63 @@ export class FileService {
   deleteById(id: any, token: string): any {
     const url = `${this.baseUrl}/file/delete/${id}`
     return this.http.get<any>(url)
+  }
+
+  SalvaFotoLoja(file: File, id: any): Observable<any> {
+
+     
+
+    const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'multipart/form-data'
+  })
+  };
+
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('idproduct', id);
+
+      return this.http
+      .request('POST', `${this.baseUrl}/loja/saveFile?idproduct=${id}`, {
+        body: formData,
+        reportProgress: true,
+        observe: 'events',
+        headers:  new HttpHeaders({
+            'Content-Type': 'multipart/form-data'
+          }),
+        params: this.params,
+        responseType: this.responseType,
+        withCredentials: this.withCredentials,
+      })
+  }
+
+   AtualizaFotoLoja(file: File, iddovendedor: any, iddofile: any): Observable<any> {
+
+     
+
+    const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'multipart/form-data'
+  })
+  };
+
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    formData.append('idproduct', iddovendedor);
+    formData.append('id', iddofile);
+
+      return this.http
+      .request('POST', `${this.baseUrl}/loja/uploadFile`, {
+        body: formData,
+        reportProgress: true,
+        observe: 'events',
+        headers:  new HttpHeaders({
+            'Content-Type': 'multipart/form-data'
+          }),
+        params: this.params,
+        responseType: this.responseType,
+        withCredentials: this.withCredentials,
+      })
   }
 
   

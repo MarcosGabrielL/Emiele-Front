@@ -486,16 +486,16 @@
         <div class="row gx-4">
           <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../assets/img/bruce-mars.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img [src]='image' alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
               <h5 class="mb-1">
-                {{usuario.firstName}} {{usuario.lastName}}
+                {{vendedor.nomefantasia}}
               </h5>
               <p class="mb-0 font-weight-bold text-sm">
-                {{usuario.email}}
+                {{vendedor.email}}
               </p>
             </div>
           </div>
@@ -623,7 +623,7 @@ Novos Produtos
             </div>
           </div>
         </div>
-         <div class="col-12 col-xl-4" style="display: none;">
+         <div class="col-12 col-xl-4" >
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -631,8 +631,8 @@ Novos Produtos
                   <h6 class="mb-0">Informação da Loja</h6>
                 </div>
                 <div class="col-md-4 text-end">
-                  <a href="javascript:;">
-                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile"></i>
+                 <a (click)="open(content)" style="cursor: pointer;">
+                    <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" ></i>
                   </a>
                 </div>
               </div>
@@ -640,19 +640,20 @@ Novos Produtos
             <div class="card-body p-3">
               <div class="col-auto">
             <div class="avatar avatar-xl position-relative">
-              <img src="../assets/img/small-logos/logo-slack.svg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img [src]='image' alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
           </div>
-              <p class="text-sm">
+              <p class="text-sm"> 
                 
-Loja de {{usuario.firstName}} {{usuario.lastName}}!
+Loja de {{usuario.firstName}} {{usuario.lastName}}! <br><br>
+{{vendedor.descricao}}
               </p>
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nome Fantasia:</strong> &nbsp; {{usuario.firstName}} {{usuario.lastName}}</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telefone:</strong> &nbsp; (44) 123 1234 123</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; alecthompson@mail.com</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Endereço:</strong> &nbsp; USA</li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Nome Fantasia:</strong> &nbsp; {{vendedor.nomefantasia}}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telefone:</strong> &nbsp;  {{vendedor.telefone}}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;  {{vendedor.email}}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Endereço:</strong> &nbsp;  {{vendedor.rua}}</li>
                 <li class="list-group-item border-0 ps-0 pb-0">
                   <strong class="text-dark text-sm">Social:</strong> &nbsp;
                   <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
@@ -669,7 +670,7 @@ Loja de {{usuario.firstName}} {{usuario.lastName}}!
             </div>
           </div>
         </div>
-        <div class="col-12 col-xl-4">
+        <div class="col-12 col-xl-4" style="display: none;">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <div class="row">
@@ -691,7 +692,7 @@ Loja de {{usuario.firstName}} {{usuario.lastName}}!
           </div>
               <p class="text-sm">
                 
-Olá, sou {{usuario.firstName}} {{usuario.lastName}}, Decisões: Se você não consegue decidir, a resposta é não. Se dois caminhos igualmente difíceis, escolha o mais doloroso a curto prazo (evitar a dor é criar uma ilusão de igualdade).
+Olá, sou {{usuario.firstName}} {{usuario.lastName}}!
               </p>
               <hr class="horizontal gray-light my-4">
               <ul class="list-group">
@@ -1039,22 +1040,24 @@ Olá, sou {{usuario.firstName}} {{usuario.lastName}}, Decisões: Se você não c
                     <a>Resumo:</a>
                      <div class="panel-body">
                                     <textarea class="form-control" rows="5" placeholder=""
-                                    for="texto" id="texto" [(ngModel)]="ticketmedio" name="texto"></textarea>
+                                    for="texto" id="descricao" [(ngModel)]="vendedor.descricao" name="descricao">
+                                  </textarea>
                       </div>
-                      <a>Nome Completo:</a>
+                      <a>Nome Fantasia:</a>
                       <div class="panel-body">
                                     <textarea class="form-control" rows="1" placeholder=""
-                                    for="texto" id="texto" [(ngModel)]="ticketmedio" name="texto"></textarea>
+                                    for="texto" id="fantasia" [(ngModel)]="vendedor.nomefantasia" name="fantasia">
+                                  </textarea>
                       </div>
                       <a>Email:</a>
                       <div class="panel-body">
                                     <textarea class="form-control" rows="1" placeholder=""
-                                    for="texto" id="texto" [(ngModel)]="ticketmedio" name="texto"></textarea>
+                                    for="texto" id="email" [(ngModel)]="vendedor.email" disabled name="email"></textarea>
                       </div>
                       <a>Endereço:</a>
                       <div class="panel-body">
                                     <textarea class="form-control" rows="1" placeholder=""
-                                    for="texto" id="texto" [(ngModel)]="ticketmedio" name="texto"></textarea>
+                                    for="texto" id="rua" [(ngModel)]="vendedor.rua" name="rua"></textarea>
                       </div>
                     </div>
                   </form>

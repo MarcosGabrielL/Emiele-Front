@@ -6,7 +6,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Produto,ProdutoDTO } from './../../../../../app/components/template/produto/produto.model';
 import { Venda, Evento, ResponseVendas, Vendido, Tem, Notification  } from './../../../../../app/components/template/produto/venda.model';
-import { User } from './../../../../../app/components/security/user.model';
+import { User,Vendedor } from './../../../../../app/components/security/user.model';
 import { VendaService } from './../../../../../app/components/template/produto/venda.service';
 import {LoginService} from './../../../../../app/components/security/login.service'
 import { NgxDropzoneModule } from 'ngx-dropzone';
@@ -14,6 +14,8 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeHtml,SafeUrl } from '@angular/platform-browser';
 import { CommonModule } from "@angular/common";
 
+import {FileService} from './../../../../../app/components/template/produto/file.service';
+import {FileDB} from './../../../../../app/components/template/produto/file.model'
 
 import { ProdutoService } from './../../../../../app/components/template/produto/produto.service';
 
@@ -60,6 +62,19 @@ export class ListComponent implements OnInit {
        successMessage: string = "";
   errorMessage: string = "";
    nome1: string="";  
+   token: any="";
+
+   image: SafeUrl = "";
+  temimagem: boolean = false;
+  imagemdb: FileDB;
+  vendedor: Vendedor = {
+    id: "",
+     nomefantasia: "", 
+    descricao: "",
+    rua: "",
+    telefone: "",
+    email: ""
+  }
 
 
  constructor(private cdRef: ChangeDetectorRef,private authenticationService: LoginService,
@@ -71,6 +86,7 @@ export class ListComponent implements OnInit {
               private cd: ChangeDetectorRef,
               private sanitized: DomSanitizer,
               private modalService: NgbModal,
+              private FileService: FileService,
               private produtoservice: ProdutoService) { }
 
   ngOnInit(): void {
@@ -78,6 +94,7 @@ export class ListComponent implements OnInit {
      this.tipo = this.route.snapshot.paramMap.get("categoria")!;
 
      console.log(this.idvendedor)
+     this.CarregaVendedor();
     this.CarregaProdutoByVendedorAndTipo();
   }
 
@@ -138,6 +155,49 @@ export class ListComponent implements OnInit {
 
     return this.sanitized.bypassSecurityTrustUrl('data:image/png;base64,'+data);
                                                   
+
+}
+
+CarregaVendedor(){
+   this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE');
+  this.authenticationService.getVendedorById(+this.idvendedor, this.token).subscribe((resposta: Vendedor) => {
+
+
+                                this.vendedor = resposta;
+                                console.log('Vendedor: ');
+                                console.log(this.vendedor);
+
+                                //Busca Imagem de perfil
+                                this.FileService.findByIdVendedor(this.idvendedor, this.token).subscribe((resposta: FileDB[]) => {
+
+                                    this.imagemdb = resposta[0];
+
+                                    if(resposta.length == 0){
+                                      this.temimagem = false;
+                                      this.image = "https://i.pinimg.com/originals/76/47/2e/76472e433e19ec424f7f6b8933380f93.png";
+                                    }else{
+                                       this.temimagem = true;
+                                     // this.files.push(resposta[0].data);
+                                      this.image = this.sanitized.bypassSecurityTrustUrl('data:image/png;base64,'+resposta[0].data);
+                                    }
+
+
+                                   }, () => {
+                                    this.temimagem = false;
+                                      this.image = "https://i.pinimg.com/originals/76/47/2e/76472e433e19ec424f7f6b8933380f93.png";
+                              console.log('Error ao Buscar Dados Loja');
+                                   this.authenticationService.mensagem('Error ao Buscar Dados da Loja');
+                                  
+                               });
+
+
+               }, () => {
+
+                                 this.temimagem = false;
+                                      this.image = "https://i.pinimg.com/originals/76/47/2e/76472e433e19ec424f7f6b8933380f93.png";
+                              console.log('Error ao Buscar Dados Vendedor');
+                                 this.authenticationService.mensagem('Error ao Buscar Dados Vendedor');
+                               });
 
 }
 

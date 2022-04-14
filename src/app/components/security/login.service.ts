@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { User } from './../../../app/components/security/user.model';
+import { User, Vendedor } from './../../../app/components/security/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -78,4 +78,17 @@ export class LoginService {
           duration: 4000
         })
         }
-}
+
+      getVendedorById(id: number, token: String): Observable<Vendedor>{
+     const url = `${this.baseUrl}/vendedores/vendedor/${id}?token=${token}`
+     return this.http.get<Vendedor>(url)
+   }
+
+      AtualizaVendedor(vendedor: any, token: any): Observable<Vendedor>  {
+            return this.http.post<Vendedor>(`${this.baseUrl}/vendedores/vendedor/add?token=${token}`
+                , vendedor, {  responseType: 'text' as 'json' });
+        }
+
+     
+
+    }

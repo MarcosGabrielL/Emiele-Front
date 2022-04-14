@@ -7,3 +7,15 @@ export interface User{
     lastName: String;
     tipo: String;
 }
+
+export interface Vendedor {
+    
+     id: String;
+     nomefantasia: String; 
+    descricao: String;   
+    rua: String;
+    telefone: String;
+    email: String;
+    
+
+}
