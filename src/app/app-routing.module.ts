@@ -107,7 +107,6 @@ const routes: Routes = [
    {
     path: 'shop',
     component: HomeComponent,
-    canActivate: [ HttpInterceptorService ],
         children: [
                     {path: '',  component: IndexComponent, pathMatch: 'full'},
                     { path: 'checkout', component: CheckoutComponent, pathMatch: 'full'},
