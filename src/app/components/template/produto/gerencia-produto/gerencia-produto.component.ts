@@ -80,8 +80,16 @@ this.id = this.produtoservice.getId()
     }
   }
   onSelect(event : any) {
-  console.log(event);
+  this.files = [];
+  console.log(event.addedFiles.size);
   this.files.push(...event.addedFiles);
+  if(this.files[0].size >=1000000){
+        this.produtoservice.mensagem("Arquivo Muito Grande");
+         this.files = [];
+  }else{
+    this.files = [];
+  this.files.push(...event.addedFiles);
+    }
 }
 
 onRemove(event: any) {
@@ -98,8 +106,16 @@ open(content: any) {
   }
 
   selectFile(event: any) {
-    this.files.push(...event.addedFiles);
-    //this.selectedFiles = event.target.files;
+     this.files = [];
+  console.log(event.addedFiles.size);
+  this.files.push(...event.addedFiles);
+  if(this.files[0].size >=1000000){
+        this.produtoservice.mensagem("Arquivo Muito Grande");
+         this.files = [];
+  }else{
+    this.files = [];
+  this.files.push(...event.addedFiles);
+    }
   }
 
   SaveProduct(){
@@ -116,6 +132,7 @@ open(content: any) {
           //  console.log(resposta);
         // }); 
     this.newProduct.data = "9:43:11";
+    
      
     console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
     this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE');
@@ -274,6 +291,10 @@ excluiImagem(id: any){
                                       this.produtoservice.mensagem(this.errorMessage);
                                   
                                }); 
+}
+
+format(){
+  //this.preco.replace(",",".");
 }
 
 }

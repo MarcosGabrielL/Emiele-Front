@@ -1029,9 +1029,9 @@ Olá, sou {{usuario.firstName}} {{usuario.lastName}}!
 
       <section id="content2" class="tab-content">
          <form class="form-horizontal" role="form">
-                  <div class="text-center" >
-                     
-          <ngx-dropzone (change)="onSelect($event)">
+                  <div class="" >
+                     <span>Tamanho Limite Arquivo: 1MB</span>    
+          <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
             <ngx-dropzone-label>Selecione ou Arraste nova foto</ngx-dropzone-label>
             <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">
               <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>

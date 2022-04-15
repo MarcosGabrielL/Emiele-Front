@@ -144,7 +144,7 @@ export class FileService {
     formData.append('idproduct', id);
 
       return this.http
-      .request('POST', `${this.baseUrl}/loja/saveFile?idproduct=${id}`, {
+      .request('POST', `${this.baseUrl}/loja/saveFile`, {
         body: formData,
         reportProgress: true,
         observe: 'events',

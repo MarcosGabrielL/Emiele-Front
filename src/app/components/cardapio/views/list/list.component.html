@@ -143,7 +143,7 @@
                 <div class="card-header pb-0 text-left bg-transparent">
                               <div class="col-auto" >
             <div class="avatar avatar-xl" style="margin: 10px auto; align-items: center; display: block;">
-              <img style="border-radius: 74px;" [src]='image' alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+              <img style="border-radius: 74px; width: 74px;" [src]='image' alt="profile_image" class="w-100 border-radius-lg shadow-sm">
             </div>
                   <h3 class="font-weight-bolder text-info text-gradient" style="text-align: center; background-image: linear-gradient(310deg, #cc2945, red);">{{vendedor.nomefantasia}}</h3>
                   <p class="mb-0 gt">Buscar Produtos por Categoria</p>
@@ -229,5 +229,57 @@
             </div>
          </div>
       </div>
+
+      <a class="float-button bg-gradient-dark " target="_blank" >
+  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+  <span  style="position: relative;
+            top: -17px;
+    right: 9px;
+    padding: 0px 4px;
+    border-radius: 50%;
+    background: red;
+    color: white;
+    background: red;">1</span>
+</a>
+
+<style type="text/css">
+.float-button {
+        text-decoration: none;
+        position: fixed;
+        padding: 10px;
+        padding-right: 15px;
+        top: 5%;
+        right: -20px;
+        color: #fff;
+        border-radius:25px 30px 5px 25px;
+        z-index: 100;
+        font-family: Arial;
+        font-size: 17px;
+        animation: whatsapp-animation 0.5s ease-in-out;
+        transition:all 0.3s ease-out;
+    }
+
+    .float-button:hover {
+         background-color: #128C7E;
+          color: #fff;
+    }
+
+    .fa-shopping-cart {
+        font-size: 30px !important;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    @keyframes whatsapp-animation {
+        from {
+            opacity: 0%;
+        }
+
+        to {
+            opacity: 100%
+        }
+    }
+
+    </style>
 
   

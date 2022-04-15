@@ -107,10 +107,15 @@
 
                       type="text" class="form-control w-50" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
 
-                      <input maxlength="10" [(ngModel)]="preco" id="preco" 
+                      <input maxlength="10" [(ngModel)]="preco" id="preco" (keyup)="format()"
               name="preco" 
 
-                      type="text" class="form-control w-40" placeholder="Somente numeros" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
+                      type="text" class="form-control w-40" placeholder="Somente numeros" aria-label="Password" aria-describedby="password-addon" style="    padding: 0 0 0 32px;
+    margin-right: 10%;
+    background-image: url(https://static.thenounproject.com/png/101791-200.png);
+    background-position: 6px 7px;
+    background-repeat: no-repeat;
+    background-size: 20px;">
 
                     </div>
                     
@@ -138,7 +143,8 @@
                   <form role="form" >
                     <label class="w-50" >Upload Imagens</label>
                                         <label></label>
-                    <div class="mb-3">              
+                    <div class="mb-3">    
+                    <span>Tamanho Limite Arquivo: 1MB</span>          
                       <ngx-dropzone (change)="selectFile($event)">
             <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
             <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f">

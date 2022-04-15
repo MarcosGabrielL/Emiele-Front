@@ -124,8 +124,16 @@ files: File[] = [];
     }
   }
   onSelect(event : any) {
-  console.log(event);
+    this.files = [];
+  console.log(event.addedFiles.size);
   this.files.push(...event.addedFiles);
+  if(this.files[0].size >=1000000){
+        this.vendaService.mensagem("Arquivo Muito Grande");
+         this.files = [];
+  }else{
+    this.files = [];
+  this.files.push(...event.addedFiles);
+    }
 }
 
 onRemove(event: any) {
@@ -245,6 +253,8 @@ console.log( this.vendedor_id);
   }
 
   CarregaConversations(){
+
+    this.files = [];
 
      this.authenticationService.getVendedorById(+this.vendedor_id, this.token).subscribe((resposta: Vendedor) => {
 
