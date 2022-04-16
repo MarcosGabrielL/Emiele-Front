@@ -12,7 +12,7 @@ import {LoginService} from './../../../../../app/components/security/login.servi
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeHtml,SafeUrl } from '@angular/platform-browser';
-import { CommonModule } from "@angular/common";
+import { CommonModule, Location } from "@angular/common";
 
 import {FileService} from './../../../../../app/components/template/produto/file.service';
 import {FileDB} from './../../../../../app/components/template/produto/file.model'
@@ -113,11 +113,13 @@ export class ListComponent implements OnInit {
               private sanitized: DomSanitizer,
               private modalService: NgbModal,
               private FileService: FileService,
-              private produtoservice: ProdutoService) { }
+              private produtoservice: ProdutoService,
+              private Location: Location) { }
 
   ngOnInit(): void {
     this.idvendedor = this.route.snapshot.paramMap.get("idvendedor")!;
      this.tipo = this.route.snapshot.paramMap.get("categoria")!;
+
 
 
   //sessionStorage.setItem('Produtos', JSON.stringify([]));  
@@ -226,6 +228,8 @@ CarregaVendedor(){
                                 this.vendedor = resposta;
                                 console.log('Vendedor: ');
                                 console.log(this.vendedor);
+
+                                //this.Location.go(this.vendedor.nomefantasia.replace(" ","")+);
 
                                 //Busca Imagem de perfil
                                 this.FileService.findByIdVendedor(this.idvendedor, this.token).subscribe((resposta: FileDB[]) => {

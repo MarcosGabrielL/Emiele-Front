@@ -173,6 +173,8 @@ export class DashboardComponent implements OnInit {
                         //Pega usuario pelo email
                         this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
 
+                         
+
                             this.vendedor_id  = resposta.id.toString();
                               console.log( this.vendedor_id);
 

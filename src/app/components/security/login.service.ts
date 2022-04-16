@@ -37,8 +37,9 @@ export class LoginService {
         return 'Basic ' + window.btoa(username + ":" + password)
       }
 
-      registerSuccessfulLogin(username: string, password: string) {
+      registerSuccessfulLogin(username: string, password: string, tipo: any) {
         sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
+        sessionStorage.setItem('tipo', tipo)
       }
 
       logout() {
@@ -49,7 +50,8 @@ export class LoginService {
 
       isUserLoggedIn() {
         let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
-        if (user === null) return false
+        let tipo = sessionStorage.getItem('tipo')
+        if (user === null || tipo === "2" || tipo === "3" || tipo === null) return false
         return true
       }
 

@@ -26,6 +26,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     async canActivate(): Promise<boolean> {
     if (!await this.authenticationService.isUserLoggedIn()) {
+        this.authenticationService.mensagem("Sessão finalizada! Por Favor Faça Login Novamente");
       await this.router.navigate(['']);
       return false;
     }

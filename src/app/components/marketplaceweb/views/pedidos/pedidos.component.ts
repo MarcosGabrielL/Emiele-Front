@@ -10,6 +10,7 @@ export class PedidosComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(sessionStorage.getItem('tipo'));
   }
 
 }

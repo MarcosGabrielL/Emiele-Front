@@ -10,6 +10,8 @@ import {
   supportsScrollBehavior,
 } from '@angular/cdk/platform';
 
+import { User, Vendedor } from './../../../../app/components/security/user.model';
+
 @Component({
   selector: 'app-login',
   templateUrl: './signin.component.html',
@@ -81,13 +83,25 @@ export class SigninComponent implements OnInit {
     this.authenticationService.authenticationService(this.authRequest).subscribe((result)=> {
       this.invalidLogin = false;
       this.loginSuccess = true;
-      this.authenticationService.createBasicAuthToken(this.email, this.password);
-      this.authenticationService.registerSuccessfulLogin(this.email, this.password);
+      
       this.successMessage = 'Login Successful.';
       this.authenticationService.mensagem(this.successMessage);
       localStorage.setItem('this.TOKEN_SESSION_ATTRIBUTE', result+'');
       console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
-      this.router.navigate(['/index']);
+
+      this.authenticationService.getByEmail(this.email).subscribe((result1: User)=> {
+        this.authenticationService.createBasicAuthToken(this.email, this.password);
+      this.authenticationService.registerSuccessfulLogin(this.email, this.password, result1.tipo);
+      if(result1.tipo === "1"){
+
+                this.router.navigate(['/index']);
+              }if(result1.tipo === "3"){
+                  
+                this.router.navigate(['/shop/pedidos/'+this.email]);
+                }
+    }, () => {
+             
+              });
     }, () => {
       this.invalidLogin = true;
       this.loginSuccess = false;
@@ -116,7 +130,7 @@ export class SigninComponent implements OnInit {
                 this.invalidLogin = false;
                 this.loginSuccess = true;
                 this.authenticationService.createBasicAuthToken(this.emailreg, this.passwordreg);
-                this.authenticationService.registerSuccessfulLogin(this.emailreg, this.passwordreg);
+               // this.authenticationService.registerSuccessfulLogin(this.emailreg, this.passwordreg);
                 this.successMessage = 'Login com sucesso';
                 this.authenticationService.mensagem(this.successMessage);
                 localStorage.setItem('this.TOKEN_SESSION_ATTRIBUTE', result+'');

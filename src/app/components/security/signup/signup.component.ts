@@ -81,16 +81,18 @@ export class SignupComponent implements OnInit {
                 this.invalidLogin = false;
                 this.loginSuccess = true;
                 this.authenticationService.createBasicAuthToken(this.emailreg, this.passwordreg);
-                this.authenticationService.registerSuccessfulLogin(this.emailreg, this.passwordreg);
+                this.authenticationService.registerSuccessfulLogin(this.emailreg, this.passwordreg, this.tipo);
                 this.successMessage = 'Login com sucesso';
                 this.sendEmail();
                 this.authenticationService.mensagem(this.successMessage);
+                if(this.tipo === "1"){
+
                 this.router.navigate(['/index']);
+              }if(this.tipo === "3"){
+                  
+                this.router.navigate(['/shop/pedidos/'+this.emailreg]);
+                }
               }, () => {
-                this.invalidLogin = true;
-                this.loginSuccess = false;
-                this.authenticationService.mensagem(this.errorMessage);
-                this.router.navigate(['/index']);
               });
     }, () => {
   this.errorMessage = 'Erro no cadastro';
