@@ -87,7 +87,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 
 /* Apply clearfix in a few places */
 /* Apply dollar signs */
-.product .product-price:before, .product .product-line-price:before, .totals-value:before {
+.product .product-price:before, .product .product-line-price:before {
   content: '$';
 }
 
@@ -154,7 +154,7 @@ label {
 .product .remove-product {
   border: 0;
   padding: 4px 8px;
-  background-image: linear-gradient(310deg, #141727 0%, #3A416F 100%);
+  background-color: #0d6efd;
   color: #fff;
   font-size: 12px;
   border-radius: 3px;
@@ -279,6 +279,11 @@ label {
   .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
   text-indent: -9999px;
 }
+
+.form-check-input:checked {
+    background-color: green !important;
+    border-color: green !important;
+}
 }
 </style>
 
@@ -311,66 +316,59 @@ label {
     <label class="product-line-price">Total</label>
   </div>
 
-  <div class="product">
+  <div class="product"  *ngFor="let x of produtos; let i = index">
     <div class="product-image">
-      <img src="https://www.confeiteiradesucesso.com/wp-content/uploads/2019/03/hamburguergourmet-fb.jpg">
+      <img [src]='SafeUrl(x.files[0]?.data)'>
     </div>
     <div class="product-details">
-      <div class="product-title">Dingo Dog Bones</div>
-      <p class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</p>
+      <div class="product-title">{{x.codigo}}</div>
+      <p class="product-description">{{x.descricao}}</p>
     </div>
-    <div class="product-price">12.99</div>
+    <div class="product-price">{{x.precoun}}</div>
     <div class="product-quantity">
-      <input type="number" value="2" min="1">
+      <input type="number" [(ngModel)]="x.quantidade" min="1">
     </div>
     <div class="product-removal">
       <button class="remove-product">
         Remove
       </button>
     </div>
-    <div class="product-line-price">25.98</div>
+    <div class="product-line-price">{{x.SubTotal}}</div>
   </div>
 
-  <div class="product">
-    <div class="product-image">
-      <img src="https://s.cdpn.io/3/large-NutroNaturalChoiceAdultLambMealandRiceDryDogFood.png">
-    </div>
-    <div class="product-details">
-      <div class="product-title">Nutro™ Adult Lamb and Rice Dog Food</div>
-      <p class="product-description">Who doesn't like lamb and rice? We've all hit the halal cart at 3am while quasi-blackout after a night of binge drinking in Manhattan. Now it's your dog's turn!</p>
-    </div>
-    <div class="product-price">45.99</div>
-    <div class="product-quantity">
-      <input type="number" value="1" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product ">
-        Remove
-      </button>
-    </div>
-    <div class="product-line-price">45.99</div>
-  </div>
+<div class="form-check form-switch" style="    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+    float: right;
+    margin: 0 0 29px 0px;
+    display: none;">
+                      <input class="form-check-input" type="checkbox" id="rememberMe" checked (change)="entrega()" [(ngModel)]="entregar" >
+                      <label class="form-check-label" for="rememberMe">Entregar?</label>
+                    </div>
+  
 
   <div class="totals">
     <div class="totals-item">
       <label>Subtotal</label>
-      <div class="totals-value" id="cart-subtotal">71.97</div>
+      <div class="totals-value" id="cart-subtotal">{{subtotal}}</div>
     </div>
-    <div class="totals-item">
-      <label>Tax (5%)</label>
-      <div class="totals-value" id="cart-tax">3.60</div>
+    <div class="totals-item" style="display: none;">
+      <label>Impostos (0%)</label>
+      <div class="totals-value" id="cart-tax">{{tax}}</div>
     </div>
-    <div class="totals-item">
-      <label>Shipping</label>
-      <div class="totals-value" id="cart-shipping">15.00</div>
+    <div class="totals-item" style="display: none;">
+      <label>Frete</label>
+      <div class="totals-value" id="cart-shipping">{{frete}}</div>
     </div>
     <div class="totals-item totals-item-total">
-      <label>Grand Total</label>
-      <div class="totals-value" id="cart-total">90.57</div>
+      <label>Total</label>
+      <div class="totals-value" id="cart-total" style="font-size: 11px;
+    font-weight: bold;
+    margin-top: -15px;"><h1>R$ {{total}}</h1></div>
     </div>
   </div>
       
-      <button class="checkout">Checkout</button>
+      <button class="checkout" (click)="criaVenda()" >Efetuar Pedido</button>
 
 </div>
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>

@@ -7,6 +7,10 @@
          font-family: "Montserrat", sans-serif;
 
          }
+
+
+
+
          .container {
          display: flex;
          justify-content: center;
@@ -65,7 +69,8 @@
          }
          .card__info--price {
          text-align: right;
-         color: orangered;
+         color: green;
+         font-size: 18px;
          }
          .rect2 {
          position: relative;
@@ -84,7 +89,11 @@
          }
 
          .busca1{
-             display: none;
+             display: flex;
+         }
+
+         .busca{
+            display: none;
          }
 
          .card1 {
@@ -97,7 +106,7 @@
          }
         
 
-@media only screen and (max-width: 600px){
+/*@media only screen and (max-width: 600px){
         .card {
              width: 43%;
           }
@@ -126,7 +135,7 @@
 }
 .card__info h3 {
     font-size: 13px;
-}
+}*/
 
          
       </style>
@@ -197,6 +206,7 @@
               <span class="input-group-text text-body" style="background: transparent;border: 0;"><i class="fas fa-search" aria-hidden="true" ></i></span>
               <input (keyup)="BuscarProdutoByVendedorAndTipo()"  [(ngModel)]="nome1" name="nome1" id="nome1" type="text" class="form-control" placeholder="Buscar em {{tipo}}" style="border: 0; margin: 0; padding: 0;">
             </div>
+
           </div>
                      </div>
                      </div>
@@ -206,22 +216,19 @@
 
 
 
-               <div class="card" *ngFor="let x of produtos">
-                  <div class="card__image">
+               <div class="card" *ngFor="let x of produtos; let i = index" (click)="open(content,i )">
+                  <div class="card__image" >
                      <img [src]='SafeUrl(x.files[0]?.data)' />
                   </div>
                   <div class="card__info">
                      <div class="car__info--title">
-                        <h3>{{x.codigo}}</h3>
+                        <h3 style="margin-top: 14px;">{{x.codigo}}</h3>
                         <p>{{x.descricao}}</p>
                      </div>
-                     <div class="card__info--price">
-                        <p>$ 5</p>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+                     <div class="card__info--price1" style="    position: absolute;
+    bottom: 13px;
+    right: 20px;">
+                        <span style="color: linear-gradient(310deg, #cc2945, red);; font-weight: bold; font-size: 18px;">R$ {{x.precoun}}</span>
                      </div>
                   </div>
                </div>
@@ -230,7 +237,7 @@
          </div>
       </div>
 
-      <a class="float-button bg-gradient-dark " target="_blank" >
+      <a *ngIf="cart" class="float-button bg-gradient-dark " target="_blank" (click)="Cart()">
   <i class="fa fa-shopping-cart" aria-hidden="true"></i>
   <span  style="position: relative; 
             top: -17px;
@@ -239,7 +246,7 @@
     border-radius: 50%;
     background: red;
     color: white;
-    background: red;">1</span>
+    background: red;">{{ProdutosInCart.length}}</span>
 </a>
 
 <style type="text/css">
@@ -280,6 +287,58 @@
         }
     }
 
+   
+
+
     </style>
+
+    <ng-template #content let-c="close" let-d="dismiss" style=" max-width: 50%; width: 30%; ">
+    
+    <div class="container">
+  <div class="card" style="border: 0;
+    margin: auto;
+    box-shadow: none;">
+    <img [src]='SafeUrl(produtose.files[0]?.data)' alt="" />
+    <div class="card-body">
+      <div class="row">
+        <div class="card-title">
+          <h4>{{produtose.codigo}}</h4>
+          <h3>R$ {{produtose.precoun}}</h3>
+        </div>
+        <div class="view-btn">
+        <div class="input-group" style="width: 40%;">
+              <span (click)="Changequantidade(-1)" class="input-group-text text-body" style="background: transparent;border: 0;"><i class="fa fa-arrow-left" aria-hidden="true" ></i></span>
+              <input disabled [(ngModel)]="quantidade" focus="false" name="nome1" id="nome1" type="text" class="form-control" placeholder="Qtd" style="border: 0; margin: 0; padding: 0; background: #fff;">
+               <span (click)="Changequantidade(1)" class="input-group-text text-body" style="background: transparent;border: 0;"><i class="fa fa-arrow-right" aria-hidden="true" ></i></span>
+            </div>
+        </div>
+      </div>
+      <hr />
+      <p>
+       {{produtose.descricao}}
+      </p>
+      <h5 style="    font-size: 18px !important; color: red;">TOTAL: R$ {{total}}</h5>
+      <div class="btn-group" style="    align-items: center;
+    margin: auto;
+    display: flex;">
+        <div class="btn" (click)="AddToCart()">
+          <a >Add ao Carrinho</a>
+        </div>
+      </div>
+      <div class="btn-group" style="    align-items: center;
+    margin: auto;
+    display: flex;">
+        
+        <div class="btn" (click)="GoToCart()">
+          <a >Comprar Agora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </ng-template>
+
+    <app-footer1></app-footer1>
 
   

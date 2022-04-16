@@ -1,4 +1,16 @@
- 
+::ng-deep .model-rounded .modal-content {
+        
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: transparent !important;
+    background-clip: padding-box;
+    border: 0;
+    outline: 0;
+        
+} 
 /*--------------------------------
 
 hermes-dashboard-icons Web Font - built using nucleoapp.com

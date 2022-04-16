@@ -19,11 +19,13 @@ import {FileDB} from './../../../../../app/components/template/produto/file.mode
 
 import { ProdutoService } from './../../../../../app/components/template/produto/produto.service';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   host: {'(document:submit)': 'onKeyUp($event)'},
-  styleUrls: ['../../../../../app/app.component.css']
+  styleUrls: ['../../../../../app/app.component.css'],
+ // encapsulation: ViewEncapsulation.Emulated
 })
 export class ListComponent implements OnInit {
 
@@ -75,6 +77,14 @@ export class ListComponent implements OnInit {
     telefone: "",
     email: ""
   }
+  cart: boolean = false;
+  quantidade: number = 1;
+
+  closeResult = '';
+  produtose: ProdutoDTO;
+  total: number = 0;
+
+  ProdutosInCart: ProdutoDTO[] = [];
 
 
  constructor(private cdRef: ChangeDetectorRef,private authenticationService: LoginService,
@@ -93,9 +103,37 @@ export class ListComponent implements OnInit {
     this.idvendedor = this.route.snapshot.paramMap.get("idvendedor")!;
      this.tipo = this.route.snapshot.paramMap.get("categoria")!;
 
+
+     this.ProdutosInCart = JSON.parse(sessionStorage.getItem('Produtos')!);
+     if(this.ProdutosInCart.length>0){
+      this.cart = true;
+     }
+
      console.log(this.idvendedor)
      this.CarregaVendedor();
     this.CarregaProdutoByVendedorAndTipo();
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  open(content: any, index: any) {
+
+    this.produtose = this.produtos[index];
+    this.total = +this.produtose.precoun;
+
+    this.modalService.open(content, { size: 'lg' , windowClass: 'model-rounded'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
   }
 
   CarregaProdutoByVendedorAndTipo(){
@@ -199,6 +237,74 @@ CarregaVendedor(){
                                  this.authenticationService.mensagem('Error ao Buscar Dados Vendedor');
                                });
 
+}
+
+Changequantidade(add: number){
+
+  this.quantidade = this.quantidade + add;
+
+  this.total = this.quantidade * +this.produtose.precoun;
+}
+
+AddToCart(){
+
+this.modalService.dismissAll();
+  this.cart = true;
+
+  this.produtose.quantidade = this.quantidade;
+  this.produtose.SubTotal = this.total;
+
+  let mudou = false;
+  this.ProdutosInCart.forEach( (evento: ProdutoDTO) => { 
+
+       if(evento.id === this.produtose.id){
+        mudou = true;
+        this.ProdutosInCart[ this.ProdutosInCart.indexOf(evento)] = this.produtose;
+       }                                         
+     });
+
+if(!mudou){
+  this.ProdutosInCart.push(this.produtose);
+}
+  console.log("Carrinho: ");
+  console.log(this.ProdutosInCart);
+
+   sessionStorage.setItem('Produtos', JSON.stringify(this.ProdutosInCart));
+   sessionStorage.setItem('Vendedor', JSON.stringify(this.vendedor));
+}
+
+GoToCart(){
+
+this.modalService.dismissAll();
+  this.cart = true;
+
+  this.produtose.quantidade = this.quantidade;
+  this.produtose.SubTotal = this.total;
+
+let mudou = false;
+  this.ProdutosInCart.forEach( (evento: ProdutoDTO) => { 
+
+       if(evento.id === this.produtose.id){
+
+        mudou = true;
+        this.ProdutosInCart[ this.ProdutosInCart.indexOf(evento)] = this.produtose;
+       }                                         
+     });
+
+if(!mudou){
+  this.ProdutosInCart.push(this.produtose);
+}
+  console.log("Carrinho: ");
+  console.log(this.ProdutosInCart);
+
+   sessionStorage.setItem('Produtos', JSON.stringify(this.ProdutosInCart));
+   sessionStorage.setItem('Vendedor', JSON.stringify(this.vendedor));
+
+   this.router.navigate(['/shop/cart']);
+}
+
+Cart(){
+   this.router.navigate(['/shop/cart']);
 }
 
 }

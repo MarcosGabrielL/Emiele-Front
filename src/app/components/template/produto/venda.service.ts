@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Produto,ProdutoDTO } from './produto.model';
-import { Venda, Evento, ResponseVendas, Notification } from './venda.model';
+import { Venda, Evento, ResponseVendas, Notification,RequestWrapper } from './venda.model';
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +55,7 @@ export class VendaService {
     return this.http.get<Venda>(url)
   }
     
-    addVendas(requestWrapper: any , token: String): Observable<Venda>{
+    addVendas(requestWrapper: RequestWrapper , token: String): Observable<Venda>{
     const url = `${this.baseUrl}/vendas/venda/?token=${token}`
     return this.http.post<Venda>(url, requestWrapper);
   

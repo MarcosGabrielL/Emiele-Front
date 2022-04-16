@@ -1,3 +1,6 @@
+
+import { Produto,ProdutoDTO } from './produto.model';
+
 export interface Venda{
     
     id: String;
@@ -79,7 +82,7 @@ export interface Notification{
      isRead: boolean;
 }
 
-export interface Produto{
+export interface Produto1{
       
       id: String;
     
@@ -184,6 +187,13 @@ export interface Produto{
      AEstadual: String;
     
      AMunicipal: String;
+}
+
+ export interface RequestWrapper {
+
+    produtos: ProdutoDTO[];
+    vendas: Venda;
+
 }
 
  

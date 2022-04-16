@@ -33,6 +33,7 @@ import { Erro404Component } from './components/template/erro404/erro404.componen
 
 import { ListComponent } from './components/cardapio/views/list/list.component';
 import { CardapiohomeComponent } from './components/cardapio/views/cardapiohome/cardapiohome.component';
+import { PedidosComponent } from './components/marketplaceweb/views/pedidos/pedidos.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -115,7 +116,8 @@ const routes: Routes = [
                     { path: 'blog', component: BlogComponent, pathMatch: 'full'},
                     { path: 'busca', component: BuscaComponent, pathMatch: 'full'},
                     { path: 'produto/:id', component: ProductPageComponent, pathMatch: 'full'},
-                    { path: 'produto-nao-encontrado', pathMatch: 'full', component: Erro404Component }
+                    { path: 'produto-nao-encontrado', pathMatch: 'full', component: Erro404Component },
+                    { path: 'pedidos/:emailcliente', component: PedidosComponent, pathMatch: 'full'},
                   ]
    },
     { path: '**', pathMatch: 'full', 

@@ -73,6 +73,9 @@ import { ProductPageComponent } from './components/marketplaceweb/views/product-
 import { Erro404Component } from './components/template/erro404/erro404.component';
 import { ListComponent } from './components/cardapio/views/list/list.component';
 import { CardapiohomeComponent } from './components/cardapio/views/cardapiohome/cardapiohome.component';
+import { AddProductComponent } from './components/cardapio/template/add-product/add-product.component';
+import { PedidosComponent } from './components/marketplaceweb/views/pedidos/pedidos.component';
+import { Footer1Component } from './components/template/footer1/footer1.component';
 
 @NgModule({
   declarations: [
@@ -113,7 +116,10 @@ import { CardapiohomeComponent } from './components/cardapio/views/cardapiohome/
     ProductPageComponent,
     Erro404Component,
     ListComponent,
-    CardapiohomeComponent
+    CardapiohomeComponent,
+    AddProductComponent,
+    PedidosComponent,
+    Footer1Component
   ],
   imports: [
     BrowserModule,
