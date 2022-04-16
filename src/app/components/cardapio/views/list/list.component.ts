@@ -103,11 +103,13 @@ export class ListComponent implements OnInit {
     this.idvendedor = this.route.snapshot.paramMap.get("idvendedor")!;
      this.tipo = this.route.snapshot.paramMap.get("categoria")!;
 
+if(!sessionStorage.getItem('Produtos') === null){
 
      this.ProdutosInCart = JSON.parse(sessionStorage.getItem('Produtos')!);
      if(this.ProdutosInCart?.length>0){
       this.cart = true;
      }
+   }
 
      console.log(this.idvendedor)
      this.CarregaVendedor();
@@ -248,13 +250,15 @@ Changequantidade(add: number){
 
 AddToCart(){
 
-this.modalService.dismissAll();
-  this.cart = true;
+
 
   this.produtose.quantidade = this.quantidade;
   this.produtose.SubTotal = this.total;
+   this.ProdutosInCart.push(this.produtose);
+  console.log(this.produtose);
 
   let mudou = false;
+  if(this.ProdutosInCart?.length>0){
   this.ProdutosInCart?.forEach( (evento: ProdutoDTO) => { 
 
        if(evento.id === this.produtose.id){
@@ -264,13 +268,19 @@ this.modalService.dismissAll();
      });
 
 if(!mudou){
-  this.ProdutosInCart.push(this.produtose);
+  this.ProdutosInCart?.push(this.produtose);
+}
+}else{
+   this.ProdutosInCart?.push(this.produtose);
 }
   console.log("Carrinho: ");
   console.log(this.ProdutosInCart);
 
    sessionStorage.setItem('Produtos', JSON.stringify(this.ProdutosInCart));
    sessionStorage.setItem('Vendedor', JSON.stringify(this.vendedor));
+
+   this.modalService.dismissAll();
+  this.cart = true;
 }
 
 GoToCart(){
