@@ -105,7 +105,7 @@ export class ListComponent implements OnInit {
 
 
      this.ProdutosInCart = JSON.parse(sessionStorage.getItem('Produtos')!);
-     if(this.ProdutosInCart.length>0){
+     if(this.ProdutosInCart?.length>0){
       this.cart = true;
      }
 
