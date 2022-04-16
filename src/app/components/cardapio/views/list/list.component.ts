@@ -81,7 +81,23 @@ export class ListComponent implements OnInit {
   quantidade: number = 1;
 
   closeResult = '';
-  produtose: ProdutoDTO;
+  produtose: ProdutoDTO = {
+     "id": "",
+     "codigo": "",
+     "descricao": "",
+     "precoun": "",
+     "Ventrada": "",
+     "quantidade": 0,
+     "tipo": "",
+     "Unidade": "",
+     "UnidadeTributavel": "",
+     "data": "",
+     "loja": "",
+     "SubTotal": 0,
+     "vendedor_id": "",
+     "files": [],
+     "urls": []
+  }
   total: number = 0;
 
   ProdutosInCart: ProdutoDTO[] = [];
@@ -103,13 +119,17 @@ export class ListComponent implements OnInit {
     this.idvendedor = this.route.snapshot.paramMap.get("idvendedor")!;
      this.tipo = this.route.snapshot.paramMap.get("categoria")!;
 
-if(!sessionStorage.getItem('Produtos') === null){
 
+  //sessionStorage.setItem('Produtos', JSON.stringify([]));  
      this.ProdutosInCart = JSON.parse(sessionStorage.getItem('Produtos')!);
-     if(this.ProdutosInCart?.length>0){
-      this.cart = true;
+     try{
+       if(this.ProdutosInCart.length>0){
+        this.cart = true;
+       }
+     }catch( e: unknown){
+        this.ProdutosInCart = [];
      }
-   }
+ 
 
      console.log(this.idvendedor)
      this.CarregaVendedor();
@@ -129,7 +149,7 @@ if(!sessionStorage.getItem('Produtos') === null){
   open(content: any, index: any) {
 
     this.produtose = this.produtos[index];
-    this.total = +this.produtose.precoun;
+    this.total =  +this.produtose.precoun.replace(",",".");
 
     this.modalService.open(content, { size: 'lg' , windowClass: 'model-rounded'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
@@ -244,8 +264,9 @@ CarregaVendedor(){
 Changequantidade(add: number){
 
   this.quantidade = this.quantidade + add;
-
-  this.total = this.quantidade * +this.produtose.precoun;
+console.log(this.produtose.precoun.replace(",","."))
+  this.total = this.quantidade * +this.produtose.precoun.replace(",",".");
+  console.log(this.total);
 }
 
 AddToCart(){
@@ -253,13 +274,12 @@ AddToCart(){
 
 
   this.produtose.quantidade = this.quantidade;
-  this.produtose.SubTotal = this.total;
-   this.ProdutosInCart.push(this.produtose);
+  this.produtose.SubTotal = +this.total;
+   //this.ProdutosInCart.push(this.produtose);
   console.log(this.produtose);
 
   let mudou = false;
-  if(this.ProdutosInCart?.length>0){
-  this.ProdutosInCart?.forEach( (evento: ProdutoDTO) => { 
+  this.ProdutosInCart.forEach( (evento: ProdutoDTO) => { 
 
        if(evento.id === this.produtose.id){
         mudou = true;
@@ -269,9 +289,6 @@ AddToCart(){
 
 if(!mudou){
   this.ProdutosInCart?.push(this.produtose);
-}
-}else{
-   this.ProdutosInCart?.push(this.produtose);
 }
   console.log("Carrinho: ");
   console.log(this.ProdutosInCart);
@@ -292,7 +309,7 @@ this.modalService.dismissAll();
   this.produtose.SubTotal = this.total;
 
 let mudou = false;
-  this.ProdutosInCart?.forEach( (evento: ProdutoDTO) => { 
+  this.ProdutosInCart.forEach( (evento: ProdutoDTO) => { 
 
        if(evento.id === this.produtose.id){
 

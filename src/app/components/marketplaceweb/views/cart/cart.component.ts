@@ -104,8 +104,8 @@ criaVenda(){
    this.VendaService.addVendas(this.request, this.token).subscribe((result: Venda)=> {
 
     this.VendaService.mensagem('Pedido Efetuado com sucesso!');
-     sessionStorage.setItem('Produtos', "");
-     sessionStorage.setItem('Vendedor', "");
+     sessionStorage.setItem('Produtos', JSON.stringify([]));
+     sessionStorage.setItem('Vendedor', JSON.stringify({}));
      sessionStorage.setItem('Pedidos', JSON.stringify(this.request));
 
     this.router.navigate(['/shop/pedidos/1']);
