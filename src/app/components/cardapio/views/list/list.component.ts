@@ -255,7 +255,7 @@ this.modalService.dismissAll();
   this.produtose.SubTotal = this.total;
 
   let mudou = false;
-  this.ProdutosInCart.forEach( (evento: ProdutoDTO) => { 
+  this.ProdutosInCart?.forEach( (evento: ProdutoDTO) => { 
 
        if(evento.id === this.produtose.id){
         mudou = true;
@@ -282,7 +282,7 @@ this.modalService.dismissAll();
   this.produtose.SubTotal = this.total;
 
 let mudou = false;
-  this.ProdutosInCart.forEach( (evento: ProdutoDTO) => { 
+  this.ProdutosInCart?.forEach( (evento: ProdutoDTO) => { 
 
        if(evento.id === this.produtose.id){
 
