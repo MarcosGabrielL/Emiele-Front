@@ -76,6 +76,8 @@ import { CardapiohomeComponent } from './components/cardapio/views/cardapiohome/
 import { AddProductComponent } from './components/cardapio/template/add-product/add-product.component';
 import { PedidosComponent } from './components/marketplaceweb/views/pedidos/pedidos.component';
 import { Footer1Component } from './components/template/footer1/footer1.component';
+import { HomecardapioComponent } from './components/cardapio/views/homecardapio/homecardapio.component';
+import { PortfolioComponent } from './components/views/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +121,9 @@ import { Footer1Component } from './components/template/footer1/footer1.componen
     CardapiohomeComponent,
     AddProductComponent,
     PedidosComponent,
-    Footer1Component
+    Footer1Component,
+    HomecardapioComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,

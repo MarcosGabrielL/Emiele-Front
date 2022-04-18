@@ -34,9 +34,15 @@ import { Erro404Component } from './components/template/erro404/erro404.componen
 import { ListComponent } from './components/cardapio/views/list/list.component';
 import { CardapiohomeComponent } from './components/cardapio/views/cardapiohome/cardapiohome.component';
 import { PedidosComponent } from './components/marketplaceweb/views/pedidos/pedidos.component';
+import { PortfolioComponent } from './components/views/portfolio/portfolio.component';
 
 const routes: Routes = [
-{ path: '', redirectTo: '/home', pathMatch: 'full' },
+{ path: '', redirectTo: '/ola', pathMatch: 'full' },
+
+ {
+    path: 'ola',
+    component: PortfolioComponent
+   },
    {
     path: 'home',
     component: SigninComponent
