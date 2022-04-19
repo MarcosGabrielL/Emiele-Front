@@ -143,6 +143,11 @@ export class VendaService {
     return this.http.get<Notification[]>(url)
   }
 
+    AtualizaNotification (Notification: Notification, id: String):Observable<Notification> {
+    const url = `${this.baseUrl}/notifications/notification/update/${id}?id=${id}&token=1`
+     return this.http.put<Notification>(url, Notification);
+  }
+
   getTempoDecorrido(horacomentad?: any): Observable<string> {
     
      const url = `${this.baseUrl}/util/TempoDecorrido/${horacomentad}`

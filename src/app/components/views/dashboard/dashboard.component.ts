@@ -269,6 +269,21 @@ export class DashboardComponent implements OnInit {
   
   mostranotification(){
     if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
+
+
+       this.Notification.forEach( (notify: Notification) => {
+           // if(notify.level === "1"){
+               this.vendaService.AtualizaNotification(notify, this.vendedor_id).subscribe((result: Notification)=> {
+                             console.log('Notifications Atualizadas com Sucesso');
+
+                }, () => {
+                                        console.log('Error ao Atualizar Notifications');
+                                             //   this.vendaService.mensagem(this.errorMessage);
+                                            
+                                         });
+       //  }
+
+     });
     
   }
 

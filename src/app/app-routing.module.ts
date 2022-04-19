@@ -37,14 +37,14 @@ import { PedidosComponent } from './components/marketplaceweb/views/pedidos/pedi
 import { PortfolioComponent } from './components/views/portfolio/portfolio.component';
 
 const routes: Routes = [
-{ path: '', redirectTo: '/ola', pathMatch: 'full' },
+{ path: '', redirectTo: '/home', pathMatch: 'full' },
 
  {
-    path: 'ola',
+    path: 'home',
     component: PortfolioComponent
    },
    {
-    path: 'home',
+    path: 'login',
     component: SigninComponent
    },
    {
