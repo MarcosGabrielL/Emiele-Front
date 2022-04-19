@@ -78,6 +78,7 @@ import { PedidosComponent } from './components/marketplaceweb/views/pedidos/pedi
 import { Footer1Component } from './components/template/footer1/footer1.component';
 import { HomecardapioComponent } from './components/cardapio/views/homecardapio/homecardapio.component';
 import { PortfolioComponent } from './components/views/portfolio/portfolio.component';
+import { RevendedorComponent } from './components/marketplaceweb/views/revendedor/revendedor.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { PortfolioComponent } from './components/views/portfolio/portfolio.compo
     PedidosComponent,
     Footer1Component,
     HomecardapioComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    RevendedorComponent
   ],
   imports: [
     BrowserModule,

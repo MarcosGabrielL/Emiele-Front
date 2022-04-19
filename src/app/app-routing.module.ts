@@ -36,12 +36,18 @@ import { CardapiohomeComponent } from './components/cardapio/views/cardapiohome/
 import { PedidosComponent } from './components/marketplaceweb/views/pedidos/pedidos.component';
 import { PortfolioComponent } from './components/views/portfolio/portfolio.component';
 
+import { RevendedorComponent } from './components/marketplaceweb/views/revendedor/revendedor.component';
+
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
 
  {
     path: 'home',
     component: PortfolioComponent
+   },
+   {
+    path: 'revendedor',
+    component: RevendedorComponent
    },
    {
     path: 'login',
