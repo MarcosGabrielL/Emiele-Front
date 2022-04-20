@@ -38,6 +38,13 @@ import { PortfolioComponent } from './components/views/portfolio/portfolio.compo
 
 import { RevendedorComponent } from './components/marketplaceweb/views/revendedor/revendedor.component';
 
+import { RevendedorLoginComponent } from './components/marketplaceweb/views/revendedor-login/revendedor-login.component';
+import { RevendedorCadastroComponent } from './components/marketplaceweb/views/revendedor-cadastro/revendedor-cadastro.component';
+import { RevendedorPerfilComponent } from './components/marketplaceweb/views/revendedor-perfil/revendedor-perfil.component';
+
+
+import { OrderPayInCadastroComponent } from './components/template/order-pay-in-cadastro/order-pay-in-cadastro.component';
+
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
 
@@ -48,7 +55,13 @@ const routes: Routes = [
    {
     path: 'revendedor',
     component: RevendedorComponent
-   },
+},
+              
+                    { path: 'revendedor/login', component: RevendedorLoginComponent, pathMatch: 'full'},
+                    { path: 'revendedor/cadastro', component: RevendedorCadastroComponent, pathMatch: 'full'},
+                    { path: 'revendedor/perfil', component: RevendedorPerfilComponent, pathMatch: 'full'},
+                
+   
    {
     path: 'login',
     component: SigninComponent
@@ -56,6 +69,10 @@ const routes: Routes = [
    {
     path: 'cadastrar',
     component: SignupComponent
+   },
+   {
+    path: 'cadastrar/payment',
+    component: OrderPayInCadastroComponent
    },
    {
     path: 'index',

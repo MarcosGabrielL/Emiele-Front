@@ -79,6 +79,10 @@ import { Footer1Component } from './components/template/footer1/footer1.componen
 import { HomecardapioComponent } from './components/cardapio/views/homecardapio/homecardapio.component';
 import { PortfolioComponent } from './components/views/portfolio/portfolio.component';
 import { RevendedorComponent } from './components/marketplaceweb/views/revendedor/revendedor.component';
+import { RevendedorLoginComponent } from './components/marketplaceweb/views/revendedor-login/revendedor-login.component';
+import { RevendedorCadastroComponent } from './components/marketplaceweb/views/revendedor-cadastro/revendedor-cadastro.component';
+import { RevendedorPerfilComponent } from './components/marketplaceweb/views/revendedor-perfil/revendedor-perfil.component';
+import { OrderPayInCadastroComponent } from './components/template/order-pay-in-cadastro/order-pay-in-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +129,11 @@ import { RevendedorComponent } from './components/marketplaceweb/views/revendedo
     Footer1Component,
     HomecardapioComponent,
     PortfolioComponent,
-    RevendedorComponent
+    RevendedorComponent,
+    RevendedorLoginComponent,
+    RevendedorCadastroComponent,
+    RevendedorPerfilComponent,
+    OrderPayInCadastroComponent
   ],
   imports: [
     BrowserModule,
