@@ -168,15 +168,13 @@ Credit Card
   transform: translateX(-50%);
 }
 .credit-card-box:hover .flip, .credit-card-box.hover .flip {
-  transform: rotateY(180deg);
+  transform: rotateY(00deg);
 }
 .credit-card-box .front,
 .credit-card-box .back {
   width: 400px;
   height: 250px;
   border-radius: 15px;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
   background: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
   position: absolute;
   color: #fff;
@@ -185,6 +183,9 @@ Credit Card
   left: 0;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+.des {
+  display: none;
 }
 .credit-card-box .front::before,
 .credit-card-box .back::before {
@@ -219,7 +220,7 @@ Credit Card
   transform: rotateY(0deg);
 }
 .credit-card-box .back {
-  transform: rotateY(180deg);
+  transform: rotateY(0deg);
 }
 .credit-card-box .back .logo {
   top: 185px;
@@ -380,51 +381,34 @@ Credit Card
     align-content: center;
     flex-direction: row-reverse;
     flex-wrap: nowrap;">
-                      <select maxlength="10" id="unidade" 
-              name="unidade" 
+                      <select for="tipoconta" id="tipoconta" [(ngModel)]="tipoconta"
+              name="tipoconta"
 
                       type="text" class="form-control w-50" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
-  <option value="CX">CX</option>
-  <option value="UN">UN</option>
-  <option value="KG">KG</option>
-  <option value="Lt">Lt</option>
-  <option value="TON">TON</option>
-  <option value="DUZIA">DUZIA</option>
-  <option value="1000Un">1000Un</option>
-  <option value="QUILAT">QUILAT</option>
-  <option value="METRO">METRO</option>
-  <option value="M3">M3</option>
-  <option value="PARES">PARES</option>
-  <option value="M2">M2</option>
+  
+  <option selected value="UN">Conta-corrente</option>
+  <option value="KG">Poupança</option>
+  <option value="Lt">Eletrônica</option>
+  <option value="TON">Conta-salário </option>
          
 </select>
-                      <select maxlength="10"   id="Tipo" 
-              name="Tipo" 
+                      <select for="banco" id="banco" [(ngModel)]="banco"
+              name="banco"
 
                       type="text" class="form-control w-40" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 10%;">
-  <option selected value="Sem tipo">Sem tipo</option>
-  <option value="Hamburguer">Hamburguer</option>
-  <option value="Sushi">Sushi</option>
-  <option value="Pizza">Pizza</option>
-  <option value="Bolo">Bolo</option>
-    <option value="Sorvete">Sorvete</option>
-      <option value="Bebida">Bebida</option>
-        <option value="Pasteis">Pasteis</option>
-        <option value="Lanche">Lanche</option>
-        <option value="Massa">Massa</option>
-        <option value="Refeição">Refeição</option>
-        <option value="Higiene e limpeza do lar">Higiene e limpeza do lar</option>
-        <option value="Higiene e limpeza pessoal">Higiene e limpeza pessoal</option>
-        <option value="Perfumaria">Perfumaria</option>
-        <option value="Utilidades dom&#xe9;sticas">Utilidades dom&#xe9;sticas</option>
-        <option value="Campo e lazer">Campo e lazer</option>
-        <option value="Padaria">Padaria</option>
-        <option value="A&#xe7;ougue">A&#xe7;ougue</option>
-        <option value="Enlatados">Enlatados</option>
-        <option value="Doces">Doces</option>
-        <option value="Massas e biscoitos">Massas e biscoitos</option>
-        <option value="Cereais">Cereais</option>
-        <option value="Outros">Outros</option>
+  <option selected value="Nubank">Nubank</option>
+  <option value="Inter">Inter</option>
+  <option value="C6">C6</option>
+  <option value="Itaú">Itaú</option>
+  <option value="Bradesco">Bradesco</option>
+    <option value="Banco do Brasil">Banco do Brasil</option>
+      <option value="Santander">Santander</option>
+        <option value="BTG">BTG</option>
+        <option value="Banrisul">Banrisul</option>
+        <option value="Banco Pan">Banco Pan</option>
+        <option value="Caixa Economica">Caixa Economica</option>
+        <option value="XP">XP</option>
+       
          
 </select>
 </div>
@@ -437,13 +421,13 @@ Credit Card
     flex-direction: row-reverse;
     flex-wrap: nowrap;">
 
-                      <input maxlength="10"  id="quantidade" 
-              name="quantidade" 
+                      <input for="numeroconta" id="numeroconta" [(ngModel)]="numeroconta"
+              name="numeroconta" 
 
-                      type="text" class="form-control w-50" placeholder="" aria-label="Password" aria-describedby="password-addon" style="margin-right: 0%;">
+                      type="text" class="form-control w-50" placeholder="" aria-label="Passbword" aria-describedby="password-addon" style="margin-right: 0%;">
 
-                      <input maxlength="10"  id="preco" 
-              name="preco" 
+                      <input for="agencia" id="agencia" [(ngModel)]="agencia"
+              name="agencia"
 
                       type="text" class="form-control w-40" placeholder="" aria-label="Password" aria-describedby="password-addon" style="    padding: 0 0 0 32px;
     margin-right: 10%;"
@@ -453,17 +437,17 @@ Credit Card
 
 <label>Nome Completo</label>
                     <div class="mb-3">
-                      <input   id="banco" 
-              name="banco" 
+                      <input   for="nomecompleto" id="nomecompleto" [(ngModel)]="nomecompleto"
+              name="nomecompleto"
 
-                      type="email" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                      type="email" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon">
                     </div>
                     <label>CPF</label>
                     <div class="mb-3">
-                      <input id="cpf" 
-              name="cpf" 
+                      <input for="cpf" id="cpf" [(ngModel)]="cpf"
+              name="cpf"
 
-                      type="cpf" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="password-addon">
+                      type="cpf" class="form-control" placeholder="" aria-label="Password" aria-describedby="password-addon">
                     </div>
                   </form>
                 </div>
@@ -482,7 +466,7 @@ Credit Card
 
   <div class="credit-card-box">
     <div class="flip">
-      <div class="front">
+      <div class="front" #front (click)="front.classList.add('des'); beck.classList.remove('des')">
         <div class="chip"></div>
         <div class="logo">
           <svg version="1.1" id="visa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -504,17 +488,17 @@ Credit Card
             </g>
           </svg>
         </div>
-        <div class="number"></div>
+        <div class="number">{{numeroCartao1}} {{numeroCartao2}} {{numeroCartao3}} {{numeroCartao4}}</div>
         <div class="card-holder" style="color: white;">
           <label style="color: white;">Titular do Cartão</label>
-          <div></div>
+          <div>{{titular}}</div>
         </div>
         <div class="card-expiration-date" >
           <label style="color: white;">Data Vencimento</label>
-          <div></div>
+          <div>{{mesvencimento}}/{{anovencimento}}</div>
         </div>
       </div>
-      <div class="back">
+      <div class="back des" #beck (click)="front.classList.remove('des'); beck.classList.add('des')">
         <div class="strip"></div>
         <div class="logo">
           <svg version="1.1" id="visa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -539,7 +523,7 @@ Credit Card
         </div>
         <div class="ccv">
           <label>CCV</label>
-          <div></div>
+          <div>{{cvv}}</div>
         </div>
       </div>
     </div>
@@ -547,19 +531,19 @@ Credit Card
   <form class="form" autocomplete="off" novalidate>
     <fieldset>
       <label for="card-number">Numero de Cartão</label>
-      <input type="num" id="card-number" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-1" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-2" class="input-cart-number" maxlength="4" />
-      <input type="num" id="card-number-3" class="input-cart-number" maxlength="4" />
+      <input type="num" for="numeroCartao1" id="numeroCartao1" [(ngModel)]="numeroCartao1" name="numeroCartao1" class="input-cart-number" maxlength="4" />
+      <input type="num" for="numeroCartao2" id="numeroCartao2" [(ngModel)]="numeroCartao2" name="numeroCartao2" id="card-number-1" class="input-cart-number" maxlength="4" />
+      <input type="num" for="numeroCartao3" id="numeroCartao3" [(ngModel)]="numeroCartao3" name="numeroCartao3" class="input-cart-number" maxlength="4" />
+      <input type="num" for="numeroCartao4" id="numeroCartao4" [(ngModel)]="numeroCartao4" name="numeroCartao4" class="input-cart-number" maxlength="4" />
     </fieldset>
     <fieldset>
       <label for="card-holder">Titular do cartão</label>
-      <input type="text" id="card-holder" />
+      <input type="text" for="titular" id="titular" [(ngModel)]="titular" name="titular" />
     </fieldset>
     <fieldset class="fieldset-expiration">
       <label for="card-expiration-month">Data Vencimento</label>
       <div class="select">
-        <select id="card-expiration-month">
+        <select for="mesvencimento" id="mesvencimento" [(ngModel)]="mesvencimento" name="mesvencimento">
           <option></option>
           <option>01</option>
           <option>02</option>
@@ -576,7 +560,7 @@ Credit Card
         </select>
       </div>
       <div class="select">
-        <select id="card-expiration-year">
+        <select  for="anovencimento" id="anovencimento" [(ngModel)]="anovencimento" name="anovencimento">
           <option></option>
           <option>2022</option>
           <option>2023</option>
@@ -595,12 +579,12 @@ Credit Card
     </fieldset>
     <fieldset class="fieldset-ccv">
       <label for="card-ccv">CCV</label>
-      <input type="text" id="card-ccv" maxlength="3" />
+      <input type="text" for="cvv" id="cvv" [(ngModel)]="cvv" name="cvv" maxlength="3" />
     </fieldset>
    
   </form>
   <div class="text-center" style="    padding-top: 80px;">
-                      <button  type="button" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background: linear-gradient(310deg, #cc2945 0%, red 100%);" >Salvar</button>
+                      <button (click)="salvaperfil()" type="button" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background: linear-gradient(310deg, #cc2945 0%, red 100%);" >Salvar</button>
                     </div>
 
                     <div class="card-body p-3">
