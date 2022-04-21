@@ -1,189 +1,4 @@
 
-<style type="text/css">
-
-@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap');
-        :root {
-            --pale-blue: hsl(225, 100%, 94%);
-            --bright-blue: hsl(245, 75%, 52%);
-            --very-pale-blue: hsl(225, 100%, 98%);
-            --desaturated-blue: hsl(224, 23%, 55%);
-            --dark-blue: hsl(223, 47%, 23%);
-        }
-        body {
-            font-family: 'Red Hat Display', sans-serif;
-            font-size: 16px;
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            padding: 0px;
-            margin: 0px;
-            background: var(--pale-blue);
-        }
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background: url(https://rvs-order-summary-component.netlify.app/images/pattern-background-desktop.svg);
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: top;
-            z-index: -1;
-        }
-        main {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
-        .card {
-            width: 320px;
-            min-height: 400px;
-            margin: 60px auto;
-            border-radius: 10px;
-            background: white;
-        }
-        .card .card-header {
-            width: 100%;
-            height: 156px;
-            border-radius: 10px 10px 0px 0px;
-        }
-        .card .card-header img {
-            width: 100%;
-            border-radius: 10px 10px 0px 0px;
-        }
-        .card .card-body {
-            width: 100%;
-            height: auto;
-            padding: 25px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        .card .card-body .card-title {
-            width: 100%;
-            font-weight: 900;
-            color: var(--dark-blue);
-            text-align: center;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-        .card .card-body .card-text {
-            width: 100%;
-            color: var(--desaturated-blue);
-            text-align: center;
-            line-height: 25px;
-            padding: 15px 0px;
-            box-sizing: border-box;
-        }
-        .card .card-body .card-plan {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            column-gap: 15px;
-            background: var(--very-pale-blue);
-            border-radius: 10px;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-        .card .card-body .card-plan .card-plan-img {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-        }
-        .card .card-body .card-plan .card-plan-text {
-            flex-grow: 6;
-            display: flex;
-            flex-direction: column;
-            row-gap: 4px;
-        }
-        .card .card-body .card-plan .card-plan-text .card-plan-title {
-            color: var(--dark-blue);
-            font-weight: 900;
-            font-size: 14px;
-        }
-        .card .card-body .card-plan .card-plan-text .card-plan-price {
-            color: var(--desaturated-blue);
-            font-size: 14px;
-        }
-        .card .card-body .card-plan .card-plan-link {
-            flex-grow: 1;
-        }
-        .card .card-body .card-plan .card-plan-link a {
-            color: var(--bright-blue);
-            font-weight: 700;
-            font-size: 14px;
-            cursor: pointer;
-        }
-        .card .card-body .card-plan .card-plan-link a:hover {
-            color: #766cf1;
-            text-decoration: none;;
-        }
-        .card .card-body .card-payment-button {
-            padding: 25px 0px 15px;
-            box-sizing: border-box;
-        }
-        .card .card-body .card-payment-button button {
-            width: 100%;
-            height: 50px;
-            border: 0;
-            background: var(--bright-blue);
-            color: white;
-            font-weight: 700;
-            border-radius: 10px;
-            box-shadow: 0px 10px 20px 0px hsl(245deg 75% 52% / 44%);
-            cursor: pointer;
-        }
-        .card .card-body .card-payment-button button:hover {
-            background: #766cf1;
-        }
-        .card .card-body .card-cancel-button {
-            padding: 15px 0px;
-            box-sizing: border-box;
-        }
-        .card .card-body .card-cancel-button button {
-            width: 100%;
-            border: 0;
-            background: none;
-            color: var(--desaturated-blue);
-            font-weight: 900;
-            text-align: center;
-            cursor: pointer;
-        }
-        .card .card-body .card-cancel-button button:hover {
-            color: var(--dark-blue);
-        }
-        
-
-        @media (max-width: 375px) {
-            body {
-                height: auto;
-            }
-            body::before {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                width: 100%;
-                height: 100%;
-                background: url(https://rvs-order-summary-component.netlify.app/images/pattern-background-mobile.svg);
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: top;
-                z-index: -1;
-            }
-            
-        }
-</style>
 
 <!DOCTYPE html>
 <html lang="en" >
@@ -200,11 +15,164 @@
 <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
 
 
-  <title>CodePen - Order Summary</title>
+  <title>CodePen - Pricing Table</title>
   
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700'>
   
-  
-  
+<style>
+html {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.background {
+  padding: 0 25px 25px;
+  position: relative;
+  width: 100%;
+}
+
+.background::after {
+  content: '';
+  background: #60a9ff;
+  background: linear-gradient(to bottom, #60a9ff 0%,#4394f4 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60a9ff', endColorstr='#4394f4',GradientType=0 );
+  height: 350px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+@media (min-width: 900px) {
+  .background {
+    padding: 0 0 25px;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 50px 0 0;
+  max-width: 960px;
+  width: 100%;
+}
+
+.panel {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px 25px;
+  position: relative;
+  width: 100%;
+  z-index: 10;
+}
+
+.pricing-table {
+  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.08), 0px 20px 31px 3px rgba(0, 0, 0, 0.09), 0px 8px 20px 7px rgba(0, 0, 0, 0.02);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 900px) {
+  .pricing-table {
+    flex-direction: row;
+  }
+}
+
+.pricing-table * {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.pricing-plan {
+  border-bottom: 1px solid #e1f1ff;
+  padding: 25px;
+}
+
+.pricing-plan:last-child {
+  border-bottom: none;
+}
+
+@media (min-width: 900px) {
+  .pricing-plan {
+    border-bottom: none;
+    border-right: 1px solid #e1f1ff;
+    flex-basis: 100%;
+    padding: 25px 50px;
+  }
+
+  .pricing-plan:last-child {
+    border-right: none;
+  }
+}
+
+.pricing-img {
+  margin-bottom: 25px;
+  max-width: 100%;
+}
+
+.pricing-header {
+  color: #888;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.pricing-features {
+  color: #016FF9;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 50px 0 25px;
+}
+
+.pricing-features-item {
+  border-top: 1px solid #e1f1ff;
+  font-size: 12px;
+  line-height: 1.5;
+  padding: 15px 0;
+}
+
+.pricing-features-item:last-child {
+  border-bottom: 1px solid #e1f1ff;
+}
+
+.pricing-price {
+  color: #016FF9;
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.pricing-button {
+  border: 1px solid #9dd1ff;
+  border-radius: 10px;
+  color: #348EFE;
+  display: inline-block;
+  margin: 25px 0;
+  padding: 15px 35px;
+  text-decoration: none;
+  transition: all 150ms ease-in-out;
+}
+
+.pricing-button:hover,
+.pricing-button:focus {
+  background-color: #e1f1ff;
+}
+
+.pricing-button.is-featured {
+  background-color: #48aaff;
+  color: #fff;
+}
+
+.pricing-button.is-featured:hover,
+.pricing-button.is-featured:active {
+  background-color: #269aff;
+}
+</style>
 
   <script>
   window.console = window.console || function(t) {};
@@ -222,31 +190,46 @@
 </head>
 
 <body translate="no" >
-  <main>
-        <div class="card">
-            <div class="card-header">
-                <img src="https://rvs-order-summary-component.netlify.app/images/illustration-hero.svg" alt="">
-            </div>
-            <div class="card-body">
-                <div class="card-title">Order Summary</div>
-                <div class="card-text">You can now listen to millions of songs, audiobooks, and podcasts on any device anywhere you like!</div>
-                <div class="card-plan">
-                    <div class="card-plan-img"><img src="https://rvs-order-summary-component.netlify.app/images/icon-music.svg" alt=""></div>
-                    <div class="card-plan-text">
-                        <div class="card-plan-title">Plano Mensal Plan</div>
-                        <div class="card-plan-price">$59.99/year</div>
-                    </div>
-                    <div class="card-plan-link"><a href="#!">Change</a></div>
-                </div>
-                <div class="card-payment-button">
-                    <button>Proceed to Payment</button>
-                </div>
-                <div class="card-cancel-button">
-                    <button>Cancel Order</button>
-                </div>
-            </div>
-        </div>
-    </main>
+  <div class="background">
+  <div class="container">
+    <div class="panel pricing-table">
+      
+      <div class="pricing-plan">
+        <img src="https://s22.postimg.cc/8mv5gn7w1/paper-plane.png" alt="" class="pricing-img">
+        <h2 class="pricing-header">Personal</h2>
+        <ul class="pricing-features">
+          <li class="pricing-features-item">Custom domains</li>
+          <li class="pricing-features-item">Sleeps after 30 mins of inactivity</li>
+        </ul>
+        <span class="pricing-price">Free</span>
+        <a href="#/" class="pricing-button">Sign up</a>
+      </div>
+      
+      <div class="pricing-plan">
+        <img src="https://s28.postimg.cc/ju5bnc3x9/plane.png" alt="" class="pricing-img">
+        <h2 class="pricing-header">Small team</h2>
+        <ul class="pricing-features">
+          <li class="pricing-features-item">Never sleeps</li>
+          <li class="pricing-features-item">Multiple workers for more powerful apps</li>
+        </ul>
+        <span class="pricing-price">$150</span>
+        <a href="#/" class="pricing-button is-featured">Free trial</a>
+      </div>
+      
+      <div class="pricing-plan">
+        <img src="https://s21.postimg.cc/tpm0cge4n/space-ship.png" alt="" class="pricing-img">
+        <h2 class="pricing-header">Enterprise</h2>
+        <ul class="pricing-features">
+          <li class="pricing-features-item">Dedicated</li>
+          <li class="pricing-features-item">Simple horizontal scalability</li>
+        </ul>
+        <span class="pricing-price">$400</span>
+        <a href="#/" class="pricing-button">Free trial</a>
+      </div>
+      
+    </div>
+  </div>
+</div>
   
   
   
