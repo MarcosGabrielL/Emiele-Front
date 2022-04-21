@@ -93,7 +93,7 @@ export class LoginService {
 
 
         updateVVendedor(id: any, vendedor: any, token: any): Observable<Vendedor>  {
-            return this.http.put<Vendedor>(`${this.baseUrl}/vendedores/vendedor/update/escolheu/${id}?token=${token}`
+            return this.http.post<Vendedor>(`${this.baseUrl}/vendedores/vendedor/update/escolheu/${id}?token=${token}`
                 , vendedor, {  responseType: 'text' as 'json' });
         }
 

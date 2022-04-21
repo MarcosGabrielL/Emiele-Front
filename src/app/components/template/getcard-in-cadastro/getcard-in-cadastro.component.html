@@ -1,12 +1,11 @@
 
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
   
 <style>
 
 
 .divmaster{
-   background: linear-gradient(310deg, #336 0%, #cc2945 100%);
+   background: #fff;
     margin-top: 0;
     padding-top: 2px;
     min-height: 1012px;
@@ -153,7 +152,7 @@ Checkout
   width: 460px;
   background: white;
   border-radius: 15px;
-  padding: 160px 45px 30px;
+  padding: 160px 20px 30px;
 }
 
 /*--------------------
@@ -178,7 +177,7 @@ Credit Card
   border-radius: 15px;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  background: linear-gradient(135deg, #bd6772, #53223f);
+  background: linear-gradient(310deg, #2152ff 0%, #21d4fd 100%);
   position: absolute;
   color: #fff;
   font-family: Inconsolata;
@@ -319,15 +318,23 @@ Credit Card
 }
 @media only screen and (max-width: 600px) {
     .divmaster {
-      min-width: 118%;
-      min-height: 1012px;
+      min-width: 100%;
+    min-height: 100%;
     }
     .checkout {
     width: 95%;
     }
     .form fieldset input.input-cart-number, .form fieldset .select.input-cart-number {
     width: 23%;
-}
+    }
+    .credit-card-box .front, .credit-card-box .back {
+    width: 91%;
+    margin: auto;
+    height: 250px;
+    border-radius: 15px;
+    position: relative;
+    color: #fff;
+  }
   }
 </style>
 
@@ -340,14 +347,15 @@ Credit Card
   <div class="">
           <div class="">
             <div class="col-md-12 mb-lg-0 mb-4">
-              <div class="card mt-4" style="border: 0;">
+              <div class="card mt-4" style="border: 0;border-radius: 20px;">
                  
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-lg-6">
                   <div class="d-flex flex-column h-100">
                     <h5 class="font-weight-bolder">Perfil para pagamentos</h5>
-                    <p class="">As informações pessoais que você fornecer aqui serão adicionadas ao seu perfil para pagamentos, saques e receber por suas vendas.</p>
+                    <p class="">As informações que você fornecer aqui serão adicionadas ao seu perfil para pagamentos e serão usadas para 
+                    Processar Pagamentos e Saques</p>
                     
                   </div>
                 </div>
@@ -592,8 +600,19 @@ Credit Card
    
   </form>
   <div class="text-center" style="    padding-top: 80px;">
-                      <button  type="button" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background: linear-gradient(310deg, #336 0%, #cc2945 100%);" >Salvar</button>
+                      <button  type="button" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background: linear-gradient(310deg, #cc2945 0%, red 100%);" >Salvar</button>
                     </div>
+
+                    <div class="card-body p-3">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="d-flex flex-column h-100">
+                    <p class="">Nenhuma cobrança automática será feita após o término do período de teste gratuito</p>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
 </div>
 
 </div>
