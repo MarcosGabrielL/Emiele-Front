@@ -44,6 +44,7 @@ import { RevendedorPerfilComponent } from './components/marketplaceweb/views/rev
 
 
 import { OrderPayInCadastroComponent } from './components/template/order-pay-in-cadastro/order-pay-in-cadastro.component';
+import { GetcardInCadastroComponent } from './components/template/getcard-in-cadastro/getcard-in-cadastro.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -73,6 +74,10 @@ const routes: Routes = [
    {
     path: 'cadastrar/payment',
     component: OrderPayInCadastroComponent
+   },
+   {
+    path: 'cadastrar/payment/cart',
+    component: GetcardInCadastroComponent
    },
    {
     path: 'index',

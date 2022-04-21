@@ -94,7 +94,14 @@ export class SigninComponent implements OnInit {
       this.authenticationService.registerSuccessfulLogin(this.email, this.password, result1.tipo);
       if(result1.tipo === "1"){
 
+        //Checar Se escolheu
+        //Se Ambiente = 0 e Serie = 0 
+        //Vai pra escolher plano
+        //Se não Vai pro index
+
                 this.router.navigate(['/index']);
+              } if(result1.tipo === "2"){
+                    this.router.navigate(['/revendedor/perfil']);
               }if(result1.tipo === "3"){
                   
                 this.router.navigate(['/shop/pedidos/'+this.email]);

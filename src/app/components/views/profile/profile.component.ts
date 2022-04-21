@@ -82,7 +82,11 @@ files: File[] = [];
     descricao: "",
     rua: "",
     telefone: "",
-    email: ""
+    email: "",
+    ambiente: 0,
+    serie: 0,
+    datainicio: "",
+    datafim: ""
   }
 
   mostranotify: boolean = false;

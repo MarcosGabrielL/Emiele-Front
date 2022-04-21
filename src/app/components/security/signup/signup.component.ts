@@ -78,6 +78,8 @@ export class SignupComponent implements OnInit {
         this.successMessage = 'Cadastro com sucesso';
         this.authenticationService.mensagem(this.successMessage); 
             this.authenticationService.authenticationService(this.authRequestreg).subscribe((result)=> {
+              localStorage.setItem('this.TOKEN_SESSION_ATTRIBUTE', result+'');
+      console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
                 this.invalidLogin = false;
                 this.loginSuccess = true;
                 this.authenticationService.createBasicAuthToken(this.emailreg, this.passwordreg);
@@ -87,7 +89,9 @@ export class SignupComponent implements OnInit {
                 this.authenticationService.mensagem(this.successMessage);
                 if(this.tipo === "1"){
 
-                this.router.navigate(['/index']);
+                 this.router.navigate(['/cadastrar/payment']);
+              } if(this.tipo === "2"){
+                    this.router.navigate(['/revendedor/perfil']);
               }if(this.tipo === "3"){
                   
                 this.router.navigate(['/shop/pedidos/'+this.emailreg]);

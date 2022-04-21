@@ -83,6 +83,7 @@ import { RevendedorLoginComponent } from './components/marketplaceweb/views/reve
 import { RevendedorCadastroComponent } from './components/marketplaceweb/views/revendedor-cadastro/revendedor-cadastro.component';
 import { RevendedorPerfilComponent } from './components/marketplaceweb/views/revendedor-perfil/revendedor-perfil.component';
 import { OrderPayInCadastroComponent } from './components/template/order-pay-in-cadastro/order-pay-in-cadastro.component';
+import { GetcardInCadastroComponent } from './components/template/getcard-in-cadastro/getcard-in-cadastro.component';
 
 @NgModule({
   declarations: [
@@ -133,7 +134,8 @@ import { OrderPayInCadastroComponent } from './components/template/order-pay-in-
     RevendedorLoginComponent,
     RevendedorCadastroComponent,
     RevendedorPerfilComponent,
-    OrderPayInCadastroComponent
+    OrderPayInCadastroComponent,
+    GetcardInCadastroComponent
   ],
   imports: [
     BrowserModule,

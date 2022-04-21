@@ -16,6 +16,10 @@ export interface Vendedor {
     rua: String;
     telefone: String;
     email: String;
+    serie: number;
+    ambiente: number;
+    datafim: String;
+    datainicio: String;
     
 
 }

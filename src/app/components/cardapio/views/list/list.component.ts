@@ -75,7 +75,12 @@ export class ListComponent implements OnInit {
     descricao: "",
     rua: "",
     telefone: "",
-    email: ""
+    email: "",
+    ambiente: 0,
+    serie: 0,
+    datainicio: "",
+    datafim: ""
+
   }
   cart: boolean = false;
   quantidade: number = 1;
