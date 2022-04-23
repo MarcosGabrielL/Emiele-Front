@@ -133,4 +133,41 @@ export interface Root{
    binaryMode: boolean
 }
 
+export interface RootDTO{
+   items:String;
+   payer: String;
+   paymentMethods: String;
+   shipments: String;
+   backUrls: String;
+   id: String;
+   initPoint: String;
+   sandboxInitPoint: String;
+   dateCreated: String;
+   operationType: String;
+   metadata: String;
+   additionalInfo: String;
+   externalReference: String;
+   expires: boolean;
+   collectorId: number
+   clientId: number
+   marketplace: String;
+   marketplaceFee: number;
+   binaryMode: boolean;
+   vendedor_id: String;
+}
 
+export interface ResultPago {
+    
+   id: String;
+   reques: String;
+   collectionId: String;
+   collectionStatus: String;
+   externalReference: String;
+   paymentType: String;
+   merchantOrderId: String;
+   preferenceId: String;
+    siteId: String;
+   processingMode: String;
+   merchantAccountId: String;
+   attributes: String;
+}

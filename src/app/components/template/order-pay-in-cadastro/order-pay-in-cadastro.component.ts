@@ -16,7 +16,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
 import { CommonModule, DOCUMENT } from "@angular/common";
 import {PerfilpagamentoService} from './../../../../app/components/template/perfilpagamento.service';
-import { Perfil, PreferenceItem, NewPreferenceDTO, Root } from './../../../../app/components/template/perfilpagamento.model';
+import { Perfil, PreferenceItem, NewPreferenceDTO, Root, RootDTO } from './../../../../app/components/template/perfilpagamento.model';
 
 import { environment } from 'src/environments/environment';
 
@@ -58,6 +58,8 @@ export class OrderPayInCadastroComponent implements OnInit {
 }
 
 root: Root;
+rootdto: RootDTO;
+vendedor_id: String = "";
 
 
    preferenceitens: PreferenceItem[] = [];
@@ -113,6 +115,7 @@ console.log('Token: ' + this.token);
                               // console.log(resposta);
                                resposta.ambiente = this.ambiente; //Free
                                resposta.serie =  this.serie;
+                               this.vendedor_id = resposta.id;
 
                                         this.authenticationService.updateVVendedor(resposta.id, resposta, this.token).subscribe((resposta1: Vendedor) => {
 
@@ -161,25 +164,55 @@ console.log('Token: ' + this.token);
       this.PerfilpagamentoService.createPreference(this.preference).subscribe((resposta: any) => {
 
                   this.root = JSON.parse(resposta);
-                  //console.log(resposta);
-                 // console.log(Object.values(this.root)[7]);
+
+                  this.rootdto = {
+                    "items":JSON.stringify(this.root.items),
+           "payer": JSON.stringify(this.root.payer),
+           "paymentMethods": JSON.stringify(this.root.paymentMethods),
+           "shipments": JSON.stringify(this.root.shipments),
+           "backUrls": JSON.stringify(this.root.backUrls),
+           "id": this.root.id,
+           "initPoint": this.root.initPoint,
+           "sandboxInitPoint": this.root.sandboxInitPoint,
+           "dateCreated": this.root.dateCreated,
+           "operationType": this.root.operationType,
+           "metadata": JSON.stringify(this.root.metadata),
+           "additionalInfo": this.root.additionalInfo,
+           "externalReference": this.root.externalReference,
+           "expires": this.root.expires,
+           "collectorId": this.root.collectorId,
+           "clientId": this.root.clientId,
+           "marketplace": this.root.marketplace,
+           "marketplaceFee": this.root.marketplaceFee,
+           "binaryMode": this.root.binaryMode,
+           "vendedor_id": this.vendedor_id
+
+                  }
                   
-                   if(this.tipo == 1){
-                      //this.router.navigate(['/index']);
-                      this.router.navigate(['/cadastrar/payment/cart']);
-                   }if(this.tipo == 2){
-                      //this.router.navigate(['/cadastrar/payment/cart']);
-                      window.open(''+this.root.sandboxInitPoint, '_blank');
-                      //this.document.location.href = ''+ resposta.sandboxInitPoint;
-                   }if(this.tipo == 3){               
-                      //this.router.navigate(['/cadastrar/payment/cart']);
-                       window.open(''+this.root.sandboxInitPoint, '_blank');
-                      //this.document.location.href = '' +resposta.sandboxInitPoint;
-                   }
+                   this.PerfilpagamentoService.savePreference(this.rootdto, this.token ).subscribe((resposta: RootDTO) => {
+
+                        if(this.tipo == 1){
+                          //this.router.navigate(['/index']);
+                          this.router.navigate(['/cadastrar/payment/cart']);
+                       }if(this.tipo == 2){
+                          //this.router.navigate(['/cadastrar/payment/cart']);
+                          window.open(''+this.root.sandboxInitPoint, '_blank');
+                          //this.document.location.href = ''+ resposta.sandboxInitPoint;
+                       }if(this.tipo == 3){               
+                          //this.router.navigate(['/cadastrar/payment/cart']);
+                           window.open(''+this.root.sandboxInitPoint, '_blank');
+                          //this.document.location.href = '' +resposta.sandboxInitPoint;
+                       }
+                  
+                  }, () => {
+                                   console.log("Erro ao Salvar Preferencias de Pago!");
+                                 }); 
+
+                   
 
        }, () => {
-                                   console.log("Erro ao Carregar Usuario!");
-                                 }); 
+             console.log("Erro ao Criar Pago!");
+             }); 
 
 
                                              

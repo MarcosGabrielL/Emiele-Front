@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Perfil, NewPreferenceDTO,Root} from './perfilpagamento.model';
+import { Perfil, NewPreferenceDTO , Root , ResultPago, RootDTO} from './perfilpagamento.model';
 
 
 @Injectable({
@@ -46,4 +46,16 @@ export class PerfilpagamentoService {
             return this.http.post<Root>(`${this.baseUrlVendas}/create`
                 , NewPreferenceDTO, {  responseType: 'text' as 'json' });
         }
+
+        savePreference(NewPreference : RootDTO, token: any ): Observable<RootDTO>   {
+            return this.http.post<RootDTO>(`${this.baseUrlVendas}/preferences/preference/add?token=${token}`
+                , NewPreference, {  responseType: 'text' as 'json' });
+        }
+
+        getResultpagos(id: String, token: any): Observable<ResultPago>{
+            const url = `${this.baseUrlVendas}/resultpagos/resultpago/user/${id}?token=${token}`
+                return this.http.get<ResultPago>(url)
+        }
+
+        
 }
