@@ -165,7 +165,8 @@ console.log('Token: ' + this.token);
                  // console.log(Object.values(this.root)[7]);
                   
                    if(this.tipo == 1){
-                      this.router.navigate(['/index']);
+                      //this.router.navigate(['/index']);
+                      this.router.navigate(['/cadastrar/payment/cart']);
                    }if(this.tipo == 2){
                       //this.router.navigate(['/cadastrar/payment/cart']);
                       window.open(''+this.root.sandboxInitPoint, '_blank');
