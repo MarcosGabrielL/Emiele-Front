@@ -31,6 +31,24 @@ export class PerfilpagamentoService {
           duration: 4000
         })
         }
+        mensagemsucess(str: string): void {
+        console.log(str);
+        this._snack.open(`${str}`, 'X', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['snackbarsucess'],
+          duration: 4000
+        })
+        }
+        mensagemerro(str: string): void {
+        console.log(str);
+        this._snack.open(`${str}`, 'X', {
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+          panelClass: ['snackbarerro'],
+          duration: 4000
+        })
+        }
 
         Save(vendedor: Perfil, token: any): Observable<Perfil>  {
             return this.http.post<Perfil>(`${this.baseUrl}/perfispagamento/perfil/add?token=${token}`

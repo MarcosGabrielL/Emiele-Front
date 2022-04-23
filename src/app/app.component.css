@@ -1,3 +1,5 @@
+
+
 ::ng-deep .model-rounded .modal-content {
         
     position: relative;
@@ -11,6 +13,7 @@
     outline: 0;
         
 } 
+
 /*--------------------------------
 
 hermes-dashboard-icons Web Font - built using nucleoapp.com
@@ -25542,6 +25545,25 @@ pre[class*="language-"] {
 
 ::ng-deep .snackbar{
   background: linear-gradient(310deg, #141727 0%, #3A416F 100%);
+  color: #fff;
+   position: fixed;
+   top: 5%;
+   right: 1%;
+   z-index: 999999;
+   max-width: 90%;
+}
+
+::ng-deep .snackbarsucess{
+  background: linear-gradient(310deg, green 0%, limegreen 100%);
+  color: #fff;
+   position: fixed;
+   top: 5%;
+   right: 1%;
+   z-index: 999999;
+   max-width: 90%;
+}
+::ng-deep .snackbarerro{
+  background: linear-gradient(310deg, red 0%, red 100%);
   color: #fff;
    position: fixed;
    top: 5%;

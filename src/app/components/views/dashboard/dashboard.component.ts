@@ -17,6 +17,8 @@ import { DomSanitizer,SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from "@angular/common";
 
 
+import {PerfilpagamentoService} from './../../../../app/components/template/perfilpagamento.service';
+import { Perfil, PreferenceItem, NewPreferenceDTO, Root, RootDTO } from './../../../../app/components/template/perfilpagamento.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -72,14 +74,17 @@ export class DashboardComponent implements OnInit {
   notfycunt: String = "";
   Notification: Notification[]= [];
   mostraprodutos: boolean = false;
+  status: any;
 
   constructor(private authenticationService: LoginService,
               private router: Router,
+              private route: ActivatedRoute,
               private http: HttpClient,
               private vendaService: VendaService,
               private snackBar: MatSnackBar,
               private cd: ChangeDetectorRef,
-              private sanitized: DomSanitizer) { }
+              private sanitized: DomSanitizer,
+              private PerfilpagamentoService: PerfilpagamentoService) { }
 
   ngOnInit(): void {
 
@@ -217,6 +222,24 @@ export class DashboardComponent implements OnInit {
                this.vendaService.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
              }); 
                };  
+
+
+               //Vê se foi pago
+               
+                  this.status = this?.route.snapshot.paramMap.get("resultpag") || "";
+                  console.log(this.status); // price
+                
+
+               if(this?.status === "approved"){
+                  this.PerfilpagamentoService.mensagemsucess("Pagamento Aprovado! Aproveite");
+               }
+               if(this?.status === "in_process"){
+                   this.PerfilpagamentoService.mensagem("Pagamento Em Processo! Até Lá desfrute do plano Gratis!");
+               }
+               if(this?.status === "rejected"){
+                   this.PerfilpagamentoService.mensagemerro("Pagamento Rejeitado! Efetue um novo pagamento ou desfrute do plano Gratis");
+               }
+              
   }
 
 
