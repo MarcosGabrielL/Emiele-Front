@@ -23,3 +23,114 @@ export interface Perfil{
   cvv: string;
     
 }
+
+export interface NewPreferenceDTO {
+    accessToken: String;
+    items: PreferenceItem[];
+}
+
+export interface PreferenceItem{
+     name: String;
+     quantity: number;
+     price: number;
+}
+
+
+
+
+//-----------------------------------------------------------------------------------------------//
+
+// import com.fasterxml.jackson.databind.ObjectMapper; // version 2.11.1
+// import com.fasterxml.jackson.annotation.JsonProperty; // version 2.11.1
+/* ObjectMapper om = new ObjectMapper();
+Root root = om.readValue(myJsonString, Root.class); */
+export interface  Item{
+    id: String;
+    title: String;
+    description: String;
+    categoryId: String;
+    quantity: number;
+    currencyId: String;
+    unitPrice: String;
+}
+
+export interface Phone{
+    areaCode: String;
+    number: String;
+}
+
+export interface Identification{
+     type: String;
+    number: String;
+}
+
+export interface Address{
+    zipCode: String;
+    streetName: String;
+}
+
+export interface Payer{
+    name: String;
+    surname: String;
+    email: String;
+    phone: Phone;
+    identification: Identification;
+    address: Address;
+}
+
+export interface ExcludedPaymentMethod{
+    id: String;
+}
+
+export interface ExcludedPaymentType{
+    id: String;
+}
+
+export interface PaymentMethods{
+    excludedPaymentMethods: ExcludedPaymentMethod[];
+    excludedPaymentTypes: ExcludedPaymentType[];
+}
+
+export interface ReceiverAddress{
+     floor: String;
+     apartment: String;
+     zipCode: String;
+     streetName: String;
+}
+
+export interface Shipments{
+     receiverAddress: ReceiverAddress;
+}
+
+export interface BackUrls{
+     success: String;
+     pending: String;
+     failure: String;
+}
+
+export interface Metadata{
+}
+
+export interface Root{
+   items: Item[];
+   payer: Payer;
+   paymentMethods: PaymentMethods;
+   shipments: Shipments;
+   backUrls: BackUrls;
+   id: String;
+   initPoint: String;
+   sandboxInitPoint: String;
+   dateCreated: String;
+   operationType: String;
+   metadata: Metadata;
+   additionalInfo: String;
+   externalReference: String;
+   expires: boolean;
+   collectorId: number
+   clientId: number
+   marketplace: String;
+   marketplaceFee: number
+   binaryMode: boolean
+}
+
+

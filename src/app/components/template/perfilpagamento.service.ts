@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Perfil} from './perfilpagamento.model';
+import { Perfil, NewPreferenceDTO,Root} from './perfilpagamento.model';
 
 
 @Injectable({
@@ -13,7 +13,8 @@ import { Perfil} from './perfilpagamento.model';
 export class PerfilpagamentoService {
 
   baseUrl: String = environment.baseUrl;
-
+  baseUrlVendas: String = environment.baseUrlVendas;
+  
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
     getById(id: String): Observable<Perfil>{
@@ -39,5 +40,10 @@ export class PerfilpagamentoService {
       AtualizaVendedor(vendedor: Perfil, token: any, id: any): Observable<Perfil>  {
             return this.http.post<Perfil>(`${this.baseUrl}/perfispagamento/perfil/update/${id}?token=${token}`
                 , vendedor, {  responseType: 'text' as 'json' });
+        }
+
+        createPreference(NewPreferenceDTO : NewPreferenceDTO ): Observable<Root>   {
+            return this.http.post<Root>(`${this.baseUrlVendas}/create`
+                , NewPreferenceDTO, {  responseType: 'text' as 'json' });
         }
 }
