@@ -88,6 +88,22 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
+    //Vê se foi pago
+               
+                  this.status = this?.route.snapshot.paramMap.get("resultpag") || "";
+                  console.log(this.status); // price
+                
+
+               if(this?.status === "approved"){
+                  this.PerfilpagamentoService.mensagemsucess("Pagamento Aprovado! Aproveite");
+               }
+               if(this?.status === "in_process"){
+                   this.PerfilpagamentoService.mensagem("Pagamento Em Processo! Até Lá desfrute do plano Gratis!");
+               }
+               if(this?.status === "rejected"){
+                   this.PerfilpagamentoService.mensagemerro("Pagamento Rejeitado! Efetue um novo pagamento ou desfrute do plano Gratis");
+               }
+
     this.isLoggedin();
     this.mostranotify = this.vendaService.mostranotify;
 
@@ -224,21 +240,7 @@ export class DashboardComponent implements OnInit {
                };  
 
 
-               //Vê se foi pago
                
-                  this.status = this?.route.snapshot.paramMap.get("resultpag") || "";
-                  console.log(this.status); // price
-                
-
-               if(this?.status === "approved"){
-                  this.PerfilpagamentoService.mensagemsucess("Pagamento Aprovado! Aproveite");
-               }
-               if(this?.status === "in_process"){
-                   this.PerfilpagamentoService.mensagem("Pagamento Em Processo! Até Lá desfrute do plano Gratis!");
-               }
-               if(this?.status === "rejected"){
-                   this.PerfilpagamentoService.mensagemerro("Pagamento Rejeitado! Efetue um novo pagamento ou desfrute do plano Gratis");
-               }
               
   }
 
