@@ -22,8 +22,8 @@ export class PerfilpagamentoService {
      return this.http.get<Perfil>(url)
     }
 
-    getByIdVendedor(id: String): Observable<Perfil>{
-     const url = `${this.baseUrl}/perfispagamento/perfil/user/${id}`
+    getByIdVendedor(email: String): Observable<Perfil>{
+     const url = `${this.baseUrl}/perfispagamento/perfil/user/${email}`
      return this.http.get<Perfil>(url)
     }
 

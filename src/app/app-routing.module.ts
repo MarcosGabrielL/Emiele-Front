@@ -46,6 +46,9 @@ import { RevendedorPerfilComponent } from './components/marketplaceweb/views/rev
 import { OrderPayInCadastroComponent } from './components/template/order-pay-in-cadastro/order-pay-in-cadastro.component';
 import { GetcardInCadastroComponent } from './components/template/getcard-in-cadastro/getcard-in-cadastro.component';
 
+import { CreatAccesstokenInAuthSuccessComponent } from './components/template/creat-accesstoken-in-auth-success/creat-accesstoken-in-auth-success.component';
+
+
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
 
@@ -100,6 +103,11 @@ const routes: Routes = [
     path: 'billing',
     component: BillingComponent,
     canActivate: [ HttpInterceptorService ]
+   },
+   {
+    path: 'billing/creat',
+    component: BillingComponent,
+    canActivate: [ CreatAccesstokenInAuthSuccessComponent ]
    },
    {
     path: 'tables',

@@ -84,6 +84,7 @@ import { RevendedorCadastroComponent } from './components/marketplaceweb/views/r
 import { RevendedorPerfilComponent } from './components/marketplaceweb/views/revendedor-perfil/revendedor-perfil.component';
 import { OrderPayInCadastroComponent } from './components/template/order-pay-in-cadastro/order-pay-in-cadastro.component';
 import { GetcardInCadastroComponent } from './components/template/getcard-in-cadastro/getcard-in-cadastro.component';
+import { CreatAccesstokenInAuthSuccessComponent } from './components/template/creat-accesstoken-in-auth-success/creat-accesstoken-in-auth-success.component';
 
 @NgModule({
   declarations: [
@@ -135,7 +136,8 @@ import { GetcardInCadastroComponent } from './components/template/getcard-in-cad
     RevendedorCadastroComponent,
     RevendedorPerfilComponent,
     OrderPayInCadastroComponent,
-    GetcardInCadastroComponent
+    GetcardInCadastroComponent,
+    CreatAccesstokenInAuthSuccessComponent
   ],
   imports: [
     BrowserModule,
