@@ -90,8 +90,15 @@ export class DashboardComponent implements OnInit {
 
     //Vê se foi pago
                
-                  this.status = this?.route.snapshot.paramMap.get("resultpag") || "";
-                  console.log(this.status); // price
+                 this.route.queryParamMap.subscribe((param : any) => {
+
+                     this.status = this.route.snapshot.queryParamMap.get('resultpag');
+
+                       console.log('Status: '+this.status +"- " +param['resultpag']); // price
+                  })
+
+                 
+                  console.log('Status: '+this.status); // price
                 
 
                if(this?.status === "approved"){
@@ -192,9 +199,10 @@ export class DashboardComponent implements OnInit {
                     //Pega email do usuario logado
                     let email = this.authenticationService.getLoggedInUserName();
                         //Pega usuario pelo email
+                        console.log('Email: '+email);
                         this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
 
-                         
+                         console.log(resposta);
 
                             this.vendedor_id  = resposta.id.toString();
                               console.log( this.vendedor_id);

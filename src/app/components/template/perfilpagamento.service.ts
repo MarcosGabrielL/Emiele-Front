@@ -22,6 +22,11 @@ export class PerfilpagamentoService {
      return this.http.get<Perfil>(url)
     }
 
+    getByIdVendedor(id: String): Observable<Perfil>{
+     const url = `${this.baseUrl}/perfispagamento/perfil/user/${id}`
+     return this.http.get<Perfil>(url)
+    }
+
       mensagem(str: string): void {
         console.log(str);
         this._snack.open(`${str}`, 'X', {
