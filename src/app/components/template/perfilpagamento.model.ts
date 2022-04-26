@@ -36,6 +36,16 @@ export interface PreferenceItem{
 }
 
 
+export interface AutenticacionResponse{
+
+    access_token: String;
+    token_type: String;
+    expires_in: number;
+    scope: String;
+    user_id: number;
+    refresh_token: String;
+
+}
 
 
 //-----------------------------------------------------------------------------------------------//

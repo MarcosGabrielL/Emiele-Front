@@ -106,8 +106,7 @@ const routes: Routes = [
    },
    {
     path: 'billing/creat',
-    component: BillingComponent,
-    canActivate: [ CreatAccesstokenInAuthSuccessComponent ]
+    component: CreatAccesstokenInAuthSuccessComponent
    },
    {
     path: 'tables',

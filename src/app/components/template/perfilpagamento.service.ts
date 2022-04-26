@@ -1,10 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpEvent, HttpRequest, HttpEventType, HttpResponse, HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Perfil, NewPreferenceDTO , Root , ResultPago, RootDTO} from './perfilpagamento.model';
+import { Perfil, NewPreferenceDTO , Root , ResultPago, RootDTO, AutenticacionResponse} from './perfilpagamento.model';
 
 
 @Injectable({
@@ -14,6 +14,8 @@ export class PerfilpagamentoService {
 
   baseUrl: String = environment.baseUrl;
   baseUrlVendas: String = environment.baseUrlVendas;
+  AppID: String = environment.AppID;
+  SECRET_KEY: String = environment.SECRET_KEY;
   
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
@@ -80,5 +82,38 @@ export class PerfilpagamentoService {
                 return this.http.get<ResultPago>(url)
         }
 
+        EnviaCredenciais(code: any): Observable<AutenticacionResponse>{
+
+            /*curl -X POST \
+-H 'accept: application/json' \
+-H 'content-type: application/x-www-form-urlencoded' \
+'https://api.mercadolibre.com/oauth/token' \
+-d 'grant_type=authorization_code' \
+-d 'client_id=$APP_ID' \
+-d 'client_secret=$SECRET_KEY' \
+-d 'code=$SERVER_GENERATED_AUTHORIZATION_CODE' \
+-d 'redirect_uri=$REDIRECT_URI'*/
+
+                let body = new URLSearchParams();
+                body.set('grant_type', "authorization_code");
+                body.set('client_id', this.AppID.toString());
+                body.set('client_secret', this.SECRET_KEY.toString());
+                body.set('code', code);
+                body.set('client_id', "emiele.herokuapp.com");
+
+
+                let options = {
+                    headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                };
+
+
+             return this.http.post<AutenticacionResponse>(`https://api.mercadolibre.com/oauth/token'`
+                , body.toString(), options);
+        }
+
+        SalvaCredenciais(AutenticacionResponse: AutenticacionResponse): Observable<AutenticacionResponse>  {
+            return this.http.post<AutenticacionResponse>(`${this.baseUrlVendas}/create/add`
+                , AutenticacionResponse, {  responseType: 'text' as 'json' });
+        }
         
 }
