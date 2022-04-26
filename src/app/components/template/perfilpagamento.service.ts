@@ -139,10 +139,18 @@ export class PerfilpagamentoService {
                 body.set('code', code);
                 body.set('redirect_uri', "https://emiele-service-vendas.herokuapp.com/generic/oauth");
 
-
+//add Access-Control-Allow-Origin "*"
+//Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
 
                 let options = {
-                    headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                    headers: new HttpHeaders({
+                       'Content-Type': 'application/x-www-form-urlencoded',
+                       'accept': 'application/json',
+                       'Access-Control-Allow-Origin': '*',
+                       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
+
+
+                    })
                 };
 
 

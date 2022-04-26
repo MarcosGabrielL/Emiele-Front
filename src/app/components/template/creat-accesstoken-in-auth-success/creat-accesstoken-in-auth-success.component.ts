@@ -59,7 +59,7 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
 }*/
 
           this.response = result;
-          //console.log(this.response);
+          console.log(result);
         
         //Salva o access token
         this.PerfilpagamentoService.SalvaCredenciais(this.response, this.state).subscribe((result: AutenticacionResponse)=> {
@@ -75,13 +75,13 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
          }, () => {
 
               this.PerfilpagamentoService.mensagemerro('Erro ao Salvar Credenciais');
-                                  
+                                  console.log('Erro ao Salvar Credenciais');
          }); 
 
   }, () => {
 
       this.PerfilpagamentoService.mensagemerro('Erro ao Buscar Credenciais');
-                                  
+                                  console.log('Erro ao Buscar Credenciais');
   }); 
 
 
