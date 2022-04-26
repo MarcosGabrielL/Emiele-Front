@@ -21,7 +21,7 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
   state: any = null;
   response:  AutenticacionResponse;
   listo: boolean = false;
-  texto: String = "Autorização Concedida com Sucesso!, Espere enquanto configuramos sua conta... Não feche essa página";
+  texto: String = "Espere enquanto configuramos sua conta... Não feche essa página";
 
   ngOnInit(): void {
 
