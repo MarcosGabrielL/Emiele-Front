@@ -137,7 +137,7 @@ export class PerfilpagamentoService {
                 body.set('client_id', this.AppID.toString());
                 body.set('client_secret', this.SECRET_KEY.toString());
                 body.set('code', code);
-                body.set('redirect_uri', "emiele.herokuapp.com");
+                body.set('redirect_uri', "https://emiele-service-vendas.herokuapp.com/generic/oauth");
 
 
 
