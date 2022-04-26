@@ -16,7 +16,6 @@ export class PerfilpagamentoService {
   baseUrlVendas: String = environment.baseUrlVendas;
   AppID: String = environment.AppID;
   SECRET_KEY: String = environment.SECRET_KEY;
-  accessToken: String = environment.accessToken;
   
   constructor(private http: HttpClient, private _snack: MatSnackBar) { }
 
@@ -85,33 +84,33 @@ export class PerfilpagamentoService {
 
         EnviaCredenciais(code: any): Observable<AutenticacionResponse>{
 
-            /*curl -X POST \
-                    'https://api.mercadopago.com/oauth/token' \
-                    -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
-                    -H 'Content-Type: application/json' \
-                    -d '{
-                  "client_secret": "client_secret",
-                  "client_id": "client_id",
-                  "grant_type": "authorization_code",
-                  "code": "TG-XXXXXXXX-241983636"
-                }'*/
+            /*
+                curl -X POST \
+                -H 'accept: application/json' \
+                -H 'content-type: application/x-www-form-urlencoded' \
+                'https://api.mercadolibre.com/oauth/token' \
+                -d 'grant_type=authorization_code' \
+                -d 'client_id=$APP_ID' \
+                -d 'client_secret=$SECRET_KEY' \
+                -d 'code=$SERVER_GENERATED_AUTHORIZATION_CODE' \
+                -d 'redirect_uri=$REDIRECT_URI'
+            */
 
                 let body = new URLSearchParams();
                 body.set('grant_type', "authorization_code");
                 body.set('client_id', this.AppID.toString());
                 body.set('client_secret', this.SECRET_KEY.toString());
                 body.set('code', code);
-              //  body.set('redirect_uri', "emiele.herokuapp.com");
+                body.set('redirect_uri', "emiele.herokuapp.com");
+
+
 
                 let options = {
-                    headers: new HttpHeaders({
-                           'Content-Type': 'application/json',
-                           'Authorization': `Bearer ${this.accessToken}`
-                        })
+                    headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
                 };
 
 
-             return this.http.post<AutenticacionResponse>(`https://api.mercadopago.com/oauth/token`
+             return this.http.post<AutenticacionResponse>(`https://api.mercadolibre.com/oauth/token`
                 , body.toString(), options);
         }
 
