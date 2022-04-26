@@ -142,20 +142,11 @@ export class PerfilpagamentoService {
 //add Access-Control-Allow-Origin "*"
 //Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
 
-                let options = {
-                    headers: new HttpHeaders({
-                       'Content-Type': 'application/x-www-form-urlencoded',
-                       'accept': 'application/json',
-                       'Access-Control-Allow-Origin': '*',
-                       'Access-Control-Allow-Methods': 'GET,POST,OPTIONS,DELETE,PUT'
-
-
-                    })
-                };
+              
 
 
              return this.http.post<AutenticacionResponse>(`https://api.mercadolibre.com/oauth/token`
-                , body.toString(), options);
+                , body.toString());
         }
 
         SalvaCredenciais(AutenticacionResponse: AutenticacionResponse, id: any): Observable<AutenticacionResponse>  {
