@@ -36,7 +36,7 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
                if(this.code != null && this.state != null){
 
                 //Envie as suas credenciais e o código de autorização ao endpoint /oauth/token para receber como resposta o access token.
-                 this. EnviaCredenciais();
+                this. EnviaCredenciais();
 
                }
 
@@ -59,7 +59,7 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
 }*/
 
           this.response = result;
-          console.log(result);
+          //console.log(result);
         
         //Salva o access token
         this.PerfilpagamentoService.SalvaCredenciais(this.response, this.state).subscribe((result: AutenticacionResponse)=> {
@@ -75,13 +75,13 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
          }, () => {
 
               this.PerfilpagamentoService.mensagemerro('Erro ao Salvar Credenciais');
-                                  console.log('Erro ao Salvar Credenciais');
+                                  //console.log('Erro ao Salvar Credenciais');
          }); 
 
   }, () => {
 
       this.PerfilpagamentoService.mensagemerro('Erro ao Buscar Credenciais');
-                                  console.log('Erro ao Buscar Credenciais');
+                                  //console.log('Erro ao Buscar Credenciais');
   }); 
 
 
