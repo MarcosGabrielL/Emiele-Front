@@ -102,6 +102,7 @@ export class PerfilpagamentoService {
                 body.set('redirect_uri', "emiele.herokuapp.com");
 
 
+
                 let options = {
                     headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
                 };
@@ -117,3 +118,19 @@ export class PerfilpagamentoService {
         }
         
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -90,5 +90,5 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
 go(){
    this.router.navigate(['/billing']);
 }
-
+ 
 }

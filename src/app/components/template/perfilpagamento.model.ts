@@ -28,7 +28,7 @@ export interface NewPreferenceDTO {
     accessToken: String;
     items: PreferenceItem[];
 }
-
+ 
 export interface PreferenceItem{
      name: String;
      quantity: number;

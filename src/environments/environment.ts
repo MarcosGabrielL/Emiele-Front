@@ -13,6 +13,8 @@ export const environment = {
    autorizationUrl: "https://auth.mercadopago.com.ar/authorization?client_id=3843631125520319&response_type=code&platform_id=mp&redirect_uri=https://emiele-service-vendas.herokuapp.com/generic"
 };
 
+ 
+
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
