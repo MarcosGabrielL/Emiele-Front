@@ -62,7 +62,7 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
           //console.log(this.response);
         
         //Salva o access token
-        this.PerfilpagamentoService.SalvaCredenciais(this.response).subscribe((result: AutenticacionResponse)=> {
+        this.PerfilpagamentoService.SalvaCredenciais(this.response, this.state).subscribe((result: AutenticacionResponse)=> {
 
               this.listo = true;
 
