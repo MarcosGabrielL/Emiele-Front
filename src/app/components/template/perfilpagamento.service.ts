@@ -101,15 +101,15 @@ export class PerfilpagamentoService {
                 body.set('code', code);
                 body.set('redirect_uri', "emiele.herokuapp.com");
 
-
+/*
 
                 let options = {
                     headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-                };
+                };*/
 
 
              return this.http.post<AutenticacionResponse>(`https://api.mercadopago.com/oauth/token`
-                , body.toString(), options);
+                , body.toString());//, options);
         }
 
         SalvaCredenciais(AutenticacionResponse: AutenticacionResponse, id: any): Observable<AutenticacionResponse>  {
