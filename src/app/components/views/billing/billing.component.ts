@@ -40,7 +40,7 @@ export class BillingComponent implements OnInit {
 
   htmlvendas: SafeHtml = "";
 
-  vendedor_id: String = "";
+  vendedor_id: String = "1";
 
   vendas: Venda[];
   produtos: Produto[];
