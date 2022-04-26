@@ -82,7 +82,7 @@ export class PerfilpagamentoService {
                 return this.http.get<ResultPago>(url)
         }
 
-        EnviaCredenciais(code: any): Observable<AutenticacionResponse>{
+        EnviaCredenciais1(code: any): Observable<AutenticacionResponse>{
 
             /*
                curl -X POST \
@@ -118,7 +118,7 @@ export class PerfilpagamentoService {
                 , body.toString(), options);
         }
 
-          EnviaCredenciaisAR(code: any): Observable<AutenticacionResponse>{
+          EnviaCredenciais(code: any): Observable<AutenticacionResponse>{
 
             /*
                 curl -X POST \
