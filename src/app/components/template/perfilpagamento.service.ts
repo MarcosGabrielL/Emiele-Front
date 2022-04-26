@@ -108,7 +108,7 @@ export class PerfilpagamentoService {
 
                 let options = {
                     headers: new HttpHeaders({
-                       'Content-Type': 'application/json',
+                      // 'Content-Type': 'application/json',
                        'Authorization': `Bearer ${this.accessToken}`
                     })
                 };
@@ -133,22 +133,22 @@ export class PerfilpagamentoService {
             */
 
                 let body = new URLSearchParams();
-                body.set('grant_type', "authorization_code");
+                body.set('grant_type', 'authorization_code');
                 body.set('client_id', this.AppID.toString());
                 body.set('client_secret', this.SECRET_KEY.toString());
                 body.set('code', code);
-                body.set('redirect_uri', "https://emiele-service-vendas.herokuapp.com/generic/oauth");
+                body.set('redirect_uri', 'https://emiele-service-vendas.herokuapp.com/generic/oauth');
 
 //add Access-Control-Allow-Origin "*"
 //Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
 
-             //   let options = {
-               //     headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
-               // };
+                let options = {
+                    headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+                };
 
 
              return this.http.post<AutenticacionResponse>(`https://api.mercadolibre.com/oauth/token`
-                , body.toString());//, options);
+                , body.toString(), options);
         }
 
         SalvaCredenciais(AutenticacionResponse: AutenticacionResponse, id: any): Observable<AutenticacionResponse>  {

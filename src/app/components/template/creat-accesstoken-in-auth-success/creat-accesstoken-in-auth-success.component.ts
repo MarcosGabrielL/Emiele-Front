@@ -22,6 +22,7 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
   response:  AutenticacionResponse;
   listo: boolean = false;
   texto: String = "Espere enquanto configuramos sua conta... Não feche essa página";
+  msg: String = "Configurando...";
 
   ngOnInit(): void {
 
@@ -59,7 +60,7 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
 }*/
 
           this.response = result;
-          //console.log(result);
+          console.log(result);
         
         //Salva o access token
         this.PerfilpagamentoService.SalvaCredenciais(this.response, this.state).subscribe((result: AutenticacionResponse)=> {
@@ -69,19 +70,20 @@ export class CreatAccesstokenInAuthSuccessComponent implements OnInit {
               this.PerfilpagamentoService.mensagemsucess('Autenticado com Sucesso!');
 
               this.texto = "Autorização Concedida com Sucesso!"
+              this.msg = "Autorizado";
 
              // this.router.
 
          }, () => {
 
               this.PerfilpagamentoService.mensagemerro('Erro ao Salvar Credenciais');
-                                  //console.log('Erro ao Salvar Credenciais');
+                                  console.log('Erro ao Salvar Credenciais');
          }); 
 
   }, () => {
 
       this.PerfilpagamentoService.mensagemerro('Erro ao Buscar Credenciais');
-                                  //console.log('Erro ao Buscar Credenciais');
+                                  console.log('Erro ao Buscar Credenciais');
   }); 
 
 
