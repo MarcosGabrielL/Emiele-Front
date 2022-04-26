@@ -99,7 +99,7 @@ export class PerfilpagamentoService {
                 body.set('client_id', this.AppID.toString());
                 body.set('client_secret', this.SECRET_KEY.toString());
                 body.set('code', code);
-                body.set('client_id', "emiele.herokuapp.com");
+                body.set('redirect_uri', "emiele.herokuapp.com");
 
 
                 let options = {
