@@ -157,6 +157,11 @@ export class PerfilpagamentoService {
             return this.http.post<AutenticacionResponse>(`${this.baseUrlVendas}/create/add?id=${id}`
                 , AutenticacionResponse);
         }
+
+         getCredenciais(id: String, token: any): Observable<AutenticacionResponse>{
+            const url = `${this.baseUrlVendas}/auth/${id}?token=${token}`
+                return this.http.get<AutenticacionResponse>(url)
+        }
         
 }
 

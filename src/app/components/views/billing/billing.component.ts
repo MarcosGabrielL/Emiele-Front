@@ -20,7 +20,7 @@ import { environment } from 'src/environments/environment';
 
 
 import {PerfilpagamentoService} from './../../../../app/components/template/perfilpagamento.service';
-import { Perfil, PreferenceItem, NewPreferenceDTO, Root, RootDTO } from './../../../../app/components/template/perfilpagamento.model';
+import { Perfil, PreferenceItem, NewPreferenceDTO, Root, RootDTO, AutenticacionResponse } from './../../../../app/components/template/perfilpagamento.model';
 
 @Component({
   selector: 'app-billing',
@@ -78,6 +78,9 @@ export class BillingComponent implements OnInit {
 
    autorizationUrl: String = environment.autorizationUrl;
 
+     response:  AutenticacionResponse;
+     status: String = "STATUS: Sem autorização";
+
 code: any = null;
   constructor(private authenticationService: LoginService,
               private router: Router,
@@ -91,35 +94,11 @@ code: any = null;
 
   ngOnInit(): void {
 
-
+       this.isLoggedin();
+    this.mostranotify = this.vendaService.mostranotify;
              
   }
 
-  mostranotification(){
-    if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
-    
-  }
-
-  mostramenulist(){
-    if(!this.mostramenu){ this.mostramenu = true;this.mostralist = false;}else{ this.mostramenu = false; }
-    
-  }
-
-//solicitud de autorización.
-  SolicitarAutorization(){
-
-      
-  }
-
-    //Salva Codigo de Autorização
-  SalvaRefreshToken(){
-
-  }
-
-    //Solicita Acess Token Para Operar
-  ObterAcessToken(){
-
-  }
 
   SafeUrl(): SafeUrl{
 
@@ -131,5 +110,171 @@ Url(): String{
    return 'https://auth.mercadopago.com/authorization?client_id=3843631125520319&response_type=code&platform_id=mp&state='+this.vendedor_id+'&redirect_uri=https://emiele-service-vendas.herokuapp.com/generic/oauth';
 
 }
+
+isLoggedin(){
+
+        this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE');
+    //Verifica se está logado
+                if(this.authenticationService.isUserLoggedIn()){
+                    //Pega email do usuario logado
+                    let email = this.authenticationService.getLoggedInUserName();
+                        //Pega usuario pelo email
+                        console.log('Email: '+email);
+                        this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
+
+                         console.log(resposta);
+
+                            this.vendedor_id  = resposta.id.toString();
+                              console.log( this.vendedor_id);
+
+                               this.vendaService.userNotification(this.vendedor_id).subscribe((result: Notification[])=> {
+                                 // this.successMessage = 'Produto Salvo com sucesso!';
+                                  //this.vendaService.mensagem(this.successMessage); 
+
+                                    console.log('Notification: '+result);
+                                    this.Notification = result;
+
+                                     
+
+
+
+                                    if(result == null){
+                                        this.vendaService.mostranotify = false;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }else{
+                                       this.vendaService.mostranotify = true;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }
+                                   
+                                      this.notfycunt = result.length.toString();
+                                  
+
+                              }, () => {
+                              console.log('Error ao Buscar Notifications');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+                                this.getNotifications();
+
+                              this.CarregaDadosPerfilPagamento();
+                              this.CarregaNotasFiscais();
+                              this.CarregaTransações();
+                              this.CarregaProvedoresPagamento();
+                              
+               
+            }, () => {
+               this.vendaService.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
+             }); 
+               };  
+
+
+               
+              
+  }
+
+
+  async getNotifications(){
+
+
+    while(true){
+    console.log(this.cont1);
+    this.cont1 = this.cont1 +1;
+    await this.wait(30000);
+  }
+
+ }
+
+  wait(ms: number)  {
+    return new Promise((resolve)=> {
+
+      this.vendaService.userNotification(this.vendedor_id).subscribe((result: Notification[])=> {
+                                 // this.successMessage = 'Produto Salvo com sucesso!';
+                                  //this.vendaService.mensagem(this.successMessage); 
+
+                                    console.log('Notification: '+result);
+                                    this.Notification = result;
+
+
+
+                                    if(result == null){
+                                        this.vendaService.mostranotify = false;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }else{
+                                       this.vendaService.mostranotify = true;
+                                       this.mostranotify = this.vendaService.mostranotify;
+                                    }
+                                   
+                                      this.notfycunt = result.length.toString();
+                                  
+
+                              }, () => {
+                              console.log('Error ao Buscar Notifications');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+      setTimeout(resolve, ms);
+    });
+  }
+
+   mostranotification(){
+    if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
+
+
+       this.Notification.forEach( (notify: Notification) => {
+           // if(notify.level === "1"){
+               this.vendaService.AtualizaNotification(notify, this.vendedor_id).subscribe((result: Notification)=> {
+                             console.log('Notifications Atualizadas com Sucesso');
+
+                }, () => {
+                                        console.log('Error ao Atualizar Notifications');
+                                             //   this.vendaService.mensagem(this.errorMessage);
+                                            
+                                         });
+       //  }
+
+     });
+    
+  }
+
+  mostramenulist(){
+    if(!this.mostramenu){ this.mostramenu = true;this.mostralist = false;}else{ this.mostramenu = false; }
+    
+  }
+
+
+  CarregaDadosPerfilPagamento(){
+
+
+  }
+
+
+  CarregaNotasFiscais(){
+
+  }
+
+  CarregaTransações(){
+
+  }
+
+  CarregaProvedoresPagamento(){
+
+     this.PerfilpagamentoService.getCredenciais(this.vendedor_id, this.token).subscribe((result: AutenticacionResponse)=> {
+
+           this.response = result;
+           console.log(this.response);
+
+           if(this.response != null){
+            this.status = "STATUS:     Autorizado";
+           }
+
+                }, () => {
+                                        console.log('Error ao Buscar Credenciais Provedores');
+                                             //   this.vendaService.mensagem(this.errorMessage);
+                                            
+                                         });
+       //  }
+  }
 
 }

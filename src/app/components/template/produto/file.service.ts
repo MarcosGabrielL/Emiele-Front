@@ -73,13 +73,7 @@ export class FileService {
       .request('POST', `${this.baseUrl}/uploadFile`, {
         body: formData,
         reportProgress: true,
-        observe: 'events',
-        headers:  new HttpHeaders({
-            'Content-Type': 'multipart/form-data'
-          }),
-        params: this.params,
-        responseType: this.responseType,
-        withCredentials: this.withCredentials,
+        observe: 'events'
       })/*.subscribe(event => {
         if (event.type === HttpEventType.UploadProgress) {
           // calculate the progress percentage
@@ -147,13 +141,7 @@ export class FileService {
       .request('POST', `${this.baseUrl}/loja/saveFile`, {
         body: formData,
         reportProgress: true,
-        observe: 'events',
-        headers:  new HttpHeaders({
-            'Content-Type': 'multipart/form-data'
-          }),
-        params: this.params,
-        responseType: this.responseType,
-        withCredentials: this.withCredentials,
+        observe: 'events'
       })
   }
 
