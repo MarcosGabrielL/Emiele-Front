@@ -151,9 +151,11 @@ export class PerfilpagamentoService {
                 , body.toString(), options);
         }
 
+
+
         SalvaCredenciais(AutenticacionResponse: AutenticacionResponse, id: any): Observable<AutenticacionResponse>  {
             return this.http.post<AutenticacionResponse>(`${this.baseUrlVendas}/create/add?id=${id}`
-                , AutenticacionResponse, {  responseType: 'text' as 'json' });
+                , AutenticacionResponse);
         }
         
 }
