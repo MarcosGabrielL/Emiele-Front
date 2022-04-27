@@ -72,6 +72,11 @@ export class PerfilpagamentoService {
                 , NewPreferenceDTO, {  responseType: 'text' as 'json' });
         }
 
+         createPreferenceVendedor(NewPreferenceDTO : NewPreferenceDTO ): Observable<Root>   {
+            return this.http.post<Root>(`${this.baseUrlVendas}/create/Vendedor`
+                , NewPreferenceDTO, {  responseType: 'text' as 'json' });
+        }
+
         savePreference(NewPreference : RootDTO, token: any ): Observable<RootDTO>   {
             return this.http.post<RootDTO>(`${this.baseUrlVendas}/preferences/preference/add?token=${token}`
                 , NewPreference, {  responseType: 'text' as 'json' });

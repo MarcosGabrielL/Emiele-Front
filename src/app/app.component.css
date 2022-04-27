@@ -25550,7 +25550,7 @@ pre[class*="language-"] {
    top: 5%;
    right: 1%;
    z-index: 999999;
-   max-width: 90%;
+   max-width: 390px;
 }
 
 ::ng-deep .snackbarsucess{
@@ -25560,7 +25560,7 @@ pre[class*="language-"] {
    top: 5%;
    right: 1%;
    z-index: 999999;
-   max-width: 90%;
+   max-width: 390px;
 }
 ::ng-deep .snackbarerro{
   background: linear-gradient(310deg, red 0%, red 100%);
@@ -25569,7 +25569,7 @@ pre[class*="language-"] {
    top: 5%;
    right: 1%;
    z-index: 999999;
-   max-width: 90%;
+    max-width: 390px;
 }
 
 /* width */

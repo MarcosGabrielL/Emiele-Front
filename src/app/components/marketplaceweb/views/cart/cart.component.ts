@@ -8,6 +8,9 @@ import { VendaService } from './../../../../../app/components/template/produto/v
 import { Venda,RequestWrapper } from './../../../../../app/components/template/produto/venda.model';
 
 
+import {PerfilpagamentoService} from './../../../../../app/components/template/perfilpagamento.service';
+import { Perfil, PreferenceItem, NewPreferenceDTO, Root, RootDTO, AutenticacionResponse } from './../../../../../app/components/template/perfilpagamento.model';
+
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -20,7 +23,8 @@ export class CartComponent implements OnInit {
   constructor(private sanitized: DomSanitizer,
               private VendaService: VendaService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private PerfilpagamentoService: PerfilpagamentoService) { }
 
   produtos: ProdutoDTO[] = [];
   vendedor: Vendedor;
@@ -56,6 +60,24 @@ export class CartComponent implements OnInit {
   }
   token: string = "";
 
+  preference: NewPreferenceDTO = { 
+    "accessToken": "",
+    "items": []
+  }
+
+  preferenceitem: PreferenceItem = {
+     "name": "",
+     "quantity": 0,
+     "price": 0,
+}
+
+preferenceitens: PreferenceItem[];
+
+root: Root;
+rootdto: RootDTO;
+vendedor_id: String = "";
+access_token: String = "";
+
   ngOnInit(): void {
     this.produtos = JSON.parse(sessionStorage.getItem('Produtos')!);
 
@@ -87,7 +109,107 @@ entrega(){
 criaVenda(){
 
 
-  this.venda.valor= "" + this.subtotal;
+  //Cria Preferencia de Pago com AccesToken Vendedor
+  //Criar Checkout com itens e porcentagem se Plano de vendedor = gratis
+  this.getPagamento();
+
+
+  
+  
+ }
+
+
+
+
+ getPagamento(){
+
+
+    
+
+    this.produtos.forEach( (evento: ProdutoDTO) => { 
+
+        this.preferenceitem = {
+         "name": evento.codigo,
+         "quantity": +evento.quantidade,
+         "price": +evento.SubTotal,
+        }
+
+        this.preferenceitens.push(this.preferenceitem); 
+
+     });
+
+     this.PerfilpagamentoService.getCredenciais(this.vendedor_id, this.token).subscribe((result: AutenticacionResponse)=> {
+      this.access_token = result.access_token;
+           console.log(result.access_token);
+                }, () => {
+                                        console.log('Error ao Buscar Credenciais Provedores');
+                                         });
+
+
+     this.preference =  { 
+        "accessToken": this.access_token,
+        "items": this.preferenceitens
+      }
+
+  //console.log(this.preference);
+
+      this.PerfilpagamentoService.createPreferenceVendedor(this.preference).subscribe((resposta: any) => {
+
+                  this.root = JSON.parse(resposta);
+
+                  this.rootdto = {
+                    "items":JSON.stringify(this.root.items),
+                   "payer": JSON.stringify(this.root.payer),
+                   "paymentMethods": JSON.stringify(this.root.paymentMethods),
+                   "shipments": JSON.stringify(this.root.shipments),
+                   "backUrls": JSON.stringify(this.root.backUrls),
+                   "id": this.root.id,
+                   "initPoint": this.root.initPoint,
+                   "sandboxInitPoint": this.root.sandboxInitPoint,
+                   "dateCreated": this.root.dateCreated,
+                   "operationType": this.root.operationType,
+                   "metadata": JSON.stringify(this.root.metadata),
+                   "additionalInfo": this.root.additionalInfo,
+                   "externalReference": this.root.externalReference,
+                   "expires": this.root.expires,
+                   "collectorId": this.root.collectorId,
+                   "clientId": this.root.clientId,
+                   "marketplace": this.root.marketplace,
+                   "marketplaceFee": this.root.marketplaceFee,
+                   "binaryMode": this.root.binaryMode,
+                   "vendedor_id": this.produtos[0].vendedor_id
+
+                  }
+                  
+                   this.PerfilpagamentoService.savePreference(this.rootdto, this.token ).subscribe((resposta: RootDTO) => {
+
+
+
+                      //Cria Venda com caracteristicas
+
+                      this.salvaVenda(this.root.sandboxInitPoint);
+                       
+                         
+                      
+                  }, () => {
+                                   console.log("Erro ao Salvar Preferencias de Pago!");
+                                 }); 
+
+                   
+
+       }, () => {
+             console.log("Erro ao Criar Pago!");
+             }); 
+
+
+                                             
+  }
+
+  
+
+  salvaVenda(an: String){
+
+    this.venda.valor= "" + this.subtotal;
   this.venda.datavenda= "" +new Date;
   this.venda.recebido1 = this.total;
   this.venda.modopagamento1= "1";
@@ -108,7 +230,9 @@ criaVenda(){
      sessionStorage.setItem('Vendedor', JSON.stringify({}));
      sessionStorage.setItem('Pedidos', JSON.stringify(this.request));
 
-    this.router.navigate(['/shop/pedidos/1']);
+      //Retorna Mensagem de Pago OU Negado
+     //Redireciona para Lista de Pedidos com Status (Pedido, PAgo, Entregue, Cancelado... etc)
+     window.open(''+this.root.sandboxInitPoint, '_blank');
 
 
   }, () => {
@@ -116,7 +240,6 @@ criaVenda(){
                                    this.VendaService.mensagem('Erro ao Efetuar Pedido!');
                                   
                                });
- }
-
+  }
 
 }

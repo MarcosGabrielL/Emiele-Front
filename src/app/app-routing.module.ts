@@ -47,7 +47,7 @@ import { OrderPayInCadastroComponent } from './components/template/order-pay-in-
 import { GetcardInCadastroComponent } from './components/template/getcard-in-cadastro/getcard-in-cadastro.component';
 
 import { CreatAccesstokenInAuthSuccessComponent } from './components/template/creat-accesstoken-in-auth-success/creat-accesstoken-in-auth-success.component';
-
+import { TrackpagamentoComponent } from './components/marketplaceweb/views/trackpagamento/trackpagamento.component';
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -141,6 +141,10 @@ const routes: Routes = [
    {
     path: 'cardapio/:idvendedor',
     component: CardapiohomeComponent
+   },
+   {
+    path: 'pedidos/track',
+    component: TrackpagamentoComponent
    },
     {
     path: 'cardapio/:idvendedor/:categoria',
