@@ -70,7 +70,7 @@ export class TrackpagamentoComponent implements OnInit {
                                  
                                     this.selectedVenda = result;
 
-                                    console.log("Produtos:" +this.selectedVenda);
+                                    console.log(this.selectedVenda);
 
                                     //Busca vendedor
                                     this.vendedor = this.selectedVenda.vendedor_id;

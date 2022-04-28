@@ -71,7 +71,7 @@ export class CartComponent implements OnInit {
      "price": 0,
 }
 
-preferenceitens: PreferenceItem[];
+preferenceitens: PreferenceItem[]=[];
 
 root: Root;
 rootdto: RootDTO;
@@ -138,18 +138,7 @@ criaVenda(){
 
      });
 
-     this.PerfilpagamentoService.getCredenciais(this.vendedor_id, this.token).subscribe((result: AutenticacionResponse)=> {
-      this.access_token = result.access_token;
-           console.log(result.access_token);
-                }, () => {
-                                        console.log('Error ao Buscar Credenciais Provedores');
-                                         });
-
-
-     this.preference =  { 
-        "accessToken": this.access_token,
-        "items": this.preferenceitens
-      }
+     
 
   //console.log(this.preference);
 
@@ -171,18 +160,23 @@ criaVenda(){
    this.VendaService.addVendas(this.request, this.token).subscribe((result: Venda)=> {
 
     this.venda = result;
+    console.log(this.venda);
 
-    }, () => {
-                                    
-            this.VendaService.mensagem('Erro ao Efetuar Pedido!');
-         });
-  
+        this.PerfilpagamentoService.getCredenciais(this.venda.vendedor_id, this.token).subscribe((result: AutenticacionResponse)=> {
+    
+      this.access_token = result.access_token;
+           console.log(result.access_token);
+
+            this.preference =  { 
+        "accessToken": this.access_token,
+        "items": this.preferenceitens
+      }
+      console.log(this.preference);
 
 
 
 
-
-      this.PerfilpagamentoService.createPreferenceVendedor(this.preference, this.venda.id).subscribe((resposta: any) => {
+                         this.PerfilpagamentoService.createPreferenceVendedor(this.preference, this.venda.id).subscribe((resposta: any) => {
 
                   this.root = JSON.parse(resposta);
 
@@ -235,6 +229,35 @@ criaVenda(){
        }, () => {
              console.log("Erro ao Criar Pago!");
              }); 
+
+
+
+
+
+
+
+
+
+
+
+                }, () => {
+                                        console.log('Error ao Buscar Credenciais de Pago do vendedor');
+                                         });
+
+
+
+
+    }, () => {
+                                    
+            this.VendaService.mensagem('Erro ao Efetuar Pedido!');
+         });
+  
+
+
+
+
+
+     
 
 
                                              
