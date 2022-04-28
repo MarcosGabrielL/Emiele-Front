@@ -153,7 +153,36 @@ criaVenda(){
 
   //console.log(this.preference);
 
-      this.PerfilpagamentoService.createPreferenceVendedor(this.preference).subscribe((resposta: any) => {
+
+    this.venda.valor= "" + this.subtotal;
+  this.venda.datavenda= "" +new Date;
+  this.venda.recebido1 = this.total;
+  this.venda.modopagamento1= "1";
+  this.venda.vendedor_id= this.produtos[0].vendedor_id;
+  this.venda.comprador_id = "1";
+
+  this.request.vendas = this.venda;
+  this.request.produtos = this.produtos;
+
+
+  this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE')!;
+
+
+   this.VendaService.addVendas(this.request, this.token).subscribe((result: Venda)=> {
+
+    this.venda = result;
+
+    }, () => {
+                                    
+            this.VendaService.mensagem('Erro ao Efetuar Pedido!');
+         });
+  
+
+
+
+
+
+      this.PerfilpagamentoService.createPreferenceVendedor(this.preference, this.venda.id).subscribe((resposta: any) => {
 
                   this.root = JSON.parse(resposta);
 
@@ -187,8 +216,14 @@ criaVenda(){
 
                       //Cria Venda com caracteristicas
 
-                      this.salvaVenda(this.root.sandboxInitPoint);
-                       
+                      this.VendaService.mensagem('Pedido Efetuado com sucesso!');
+                       sessionStorage.setItem('Produtos', JSON.stringify([]));
+                       sessionStorage.setItem('Vendedor', JSON.stringify({}));
+                       sessionStorage.setItem('Pedidos', JSON.stringify(this.request));
+
+                        //Retorna Mensagem de Pago OU Negado
+                       //Redireciona para Lista de Pedidos com Status (Pedido, PAgo, Entregue, Cancelado... etc)
+                       window.open(''+this.root.sandboxInitPoint, '_blank');
                          
                       
                   }, () => {
@@ -205,41 +240,7 @@ criaVenda(){
                                              
   }
 
+
   
-
-  salvaVenda(an: String){
-
-    this.venda.valor= "" + this.subtotal;
-  this.venda.datavenda= "" +new Date;
-  this.venda.recebido1 = this.total;
-  this.venda.modopagamento1= "1";
-  this.venda.vendedor_id= this.produtos[0].vendedor_id;
-  this.venda.comprador_id = "1";
-
-  this.request.vendas = this.venda;
-  this.request.produtos = this.produtos;
-
-
-  this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE')!;
-
-
-   this.VendaService.addVendas(this.request, this.token).subscribe((result: Venda)=> {
-
-    this.VendaService.mensagem('Pedido Efetuado com sucesso!');
-     sessionStorage.setItem('Produtos', JSON.stringify([]));
-     sessionStorage.setItem('Vendedor', JSON.stringify({}));
-     sessionStorage.setItem('Pedidos', JSON.stringify(this.request));
-
-      //Retorna Mensagem de Pago OU Negado
-     //Redireciona para Lista de Pedidos com Status (Pedido, PAgo, Entregue, Cancelado... etc)
-     window.open(''+this.root.sandboxInitPoint, '_blank');
-
-
-  }, () => {
-                                    
-                                   this.VendaService.mensagem('Erro ao Efetuar Pedido!');
-                                  
-                               });
-  }
 
 }

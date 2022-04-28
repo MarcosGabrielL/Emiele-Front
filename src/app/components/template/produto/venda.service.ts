@@ -60,6 +60,11 @@ export class VendaService {
     return this.http.post<Venda>(url, requestWrapper);
   
     }
+    attVendas(token: string, venda: Venda):Observable<Venda> {
+    const url = `${this.baseUrl}/vendas/venda/att?token=${token}`
+     return this.http.post<Venda>(url, venda)
+  
+    }
     
     updateVendas(id: String, token: string, venda: Venda):Observable<Venda> {
     const url = `${this.baseUrl}/vendas/venda/update/${id}?id=${id}&token=${token}`

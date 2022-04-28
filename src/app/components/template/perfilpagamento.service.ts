@@ -72,8 +72,8 @@ export class PerfilpagamentoService {
                 , NewPreferenceDTO, {  responseType: 'text' as 'json' });
         }
 
-         createPreferenceVendedor(NewPreferenceDTO : NewPreferenceDTO ): Observable<Root>   {
-            return this.http.post<Root>(`${this.baseUrlVendas}/create/Vendedor`
+         createPreferenceVendedor(NewPreferenceDTO : NewPreferenceDTO, id: any ): Observable<Root>   {
+            return this.http.post<Root>(`${this.baseUrlVendas}/create/Vendedor?id=${id}`
                 , NewPreferenceDTO, {  responseType: 'text' as 'json' });
         }
 
