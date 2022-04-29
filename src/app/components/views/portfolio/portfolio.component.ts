@@ -14,6 +14,12 @@ export class PortfolioComponent implements AfterContentInit {
   carregando: boolean = true;
   mostra: boolean = true;
 
+  aberto: boolean = true;
+
+
+  fecha(){
+      this.aberto = false;
+  }
 
   saibamais(){ 
    

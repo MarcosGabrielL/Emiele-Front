@@ -66,7 +66,7 @@ export class ListComponent implements OnInit {
    nome1: string="";  
    token: any="";
 
-   image: SafeUrl = "";
+   image: SafeUrl = "https://i.pinimg.com/originals/76/47/2e/76472e433e19ec424f7f6b8933380f93.png";
   temimagem: boolean = false;
   imagemdb: FileDB;
   vendedor: Vendedor = {
@@ -120,6 +120,13 @@ export class ListComponent implements OnInit {
               private FileService: FileService,
               private produtoservice: ProdutoService,
               private Location: Location) { }
+
+ aberto: boolean = true;
+
+
+  fecha(){
+      this.aberto = false;
+  }
 
   ngOnInit(): void {
     this.idvendedor = this.route.snapshot.paramMap.get("idvendedor")!;

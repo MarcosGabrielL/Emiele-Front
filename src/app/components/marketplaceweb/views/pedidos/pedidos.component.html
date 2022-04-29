@@ -1,23 +1,4 @@
 
-
-<!DOCTYPE html>
-<html lang="en" >
-
-<head>
-
-  <meta charset="UTF-8">
-  
-<link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
-<meta name="apple-mobile-web-app-title" content="CodePen">
-
-<link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
-
-<link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
-
-
-  <title>CodePen - Orders List</title>
-  
-  
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css'>
   
 <style>
@@ -28,8 +9,11 @@
 }
 
 body {
-    background-color: #fff;
-    font-family: Arial, Tahoma;
+  
+}
+
+.apaga{
+display: none;
 }
 
 .list {
@@ -87,7 +71,7 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     color: #FFF;
-    background-image: linear-gradient(310deg, #cc2945, red);
+    background-image: linear-gradient(310deg, #e7093e, #e7093e);
 }
 
 /* Start Main */
@@ -212,7 +196,7 @@ body {
     width: 15px;
     height: 16px;
     border-radius: 2px;
-    background-image: linear-gradient(310deg, #cc2945, red);
+    background-image: linear-gradient(310deg, #e7093e, #e7093e);
 }
 
 .items .item span {
@@ -337,9 +321,9 @@ body {
     margin-left: 10px;
     font-size: 16px;
     border-radius: 3px;
-    border: 1px solid #5e12a4;
+    border:0;
     color: #FFF;
-    background-image: linear-gradient(310deg, #cc2945, red);
+    background-image: linear-gradient(310deg, #e7093e, #e7093e);
 }
 
 .list .bottom .number span:nth-of-type(3),
@@ -356,60 +340,149 @@ body {
     margin-right: 10px;
 }
 
-/* End Bottom */
+/* Make more adjustments for phone */
+@media screen and (max-width: 500px) {
+ .items .item span:nth-of-type(4) {
+    width: 34px;
+    height: 27px;
+    line-height: 27px;
+    margin-right: 12px;
+    text-align: center;
+    border-radius: 3px;
+    border: 1px solid #DDD;
+}
+.list {
+    /* width: 980px; */
+    width: 100%;
+    height: 630px;
+    padding:  27px;
+    margin: 10px auto;
+    background-color: #FFF;
+}
+.items .item button{
+    display: none;
+}
+.items .item span:nth-of-type(6) {
+    display: none;
+}
+.items .item img {
+   width: 17%;
+    margin-right: 6px;
+}
+
+.some{
+    display: none;
+}
+.list .main .amount {
+    position: relative;
+    margin-right: 6px;
+}
+.list .main .menu {
+    position: relative;
+    margin-right: 24px;
+}
+.list .main .quantity {
+    margin-right: 14px;
+ }
+.items .item span:nth-of-type(2) {
+    margin-right: 27px;
+}
+.items .item span:nth-of-type(5) {
+    margin-right: 2px;
+    margin-left: 35px;
+    font-size: 13px;
+}
+
+
+}
+
+@media screen and (min-width: 500px) {
+.aparece{
+    display:  none;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
 </style>
 
-  <script>
-  window.console = window.console || function(t) {};
-</script>
+
+
+
+<div class="newSb " id="newSb" *ngIf="aberto">
+  <div class="newSb__close">
+    <button type="button" id="newSb_btn_close" data-target="#newSb"  (click)="fecha()">
+      <svg style="fill: #fff;" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke-width="50" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15">
+        <path d="M7.5 7.03L0.47 0L0 0.48L7 7.5L0 14.53L0.47 15L7.5 7.98L14.5 15L15 14.53L7.98 7.5L15 0.48L14.5 0L7.5 7.03Z"></path>
+      </svg>
+    </button>
+  </div>
+  <img class="newSb__logo" src="https://i.ibb.co/PzBWFCL/logo3-Copfffia.png" alt="PedidosYa logo">
+  <div class="newSb__meta">
+    <header class="newSb__header">Nosso App</header>
+    <div class="newSb__rating"> <!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg></div>
+    <span class="newSb__subheader">Baixar gratis</span>
+  </div>
+  <div class="newSb__applink">
+    <a class="newSb__applink__btn" href="">ABRIR</a>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
 
   
-  
-  <script>
-  if (document.location.search.match(/type=embed/gi)) {
-    window.parent.postMessage("resize", "*");
-  }
-</script>
-
-
-</head>
-
-<body translate="no" >
   <div class="list">
   <div class="heading">
     <h4>Pedidos</h4>
     <i class="fas fa-ellipsis-h"></i>
   </div>
-  <form>
+  <form style="display: none;">
     <input type="search" placeholder="Invoice Search">
     <input type="text" placeholder="Search by Title">
     <input type="phone" placeholder="Search by Phone">
     <input type="submit" value="Search">
   </form>
   <div class="main">
-    <input type="checkbox">
+    <input class="some" type="checkbox">
     <span class="invoice">
-      <span>Invoice</span>
+      <span class="some">Invoice</span>
     </span>
     <span class="image">
       <span>Image</span>
     </span>
     <span class="menu">
-      <span>Menu</span><i class="fas fa-sort-down fa-sm"></i>
+      <span>Produto</span><i class="fas fa-sort-down fa-sm"></i>
     </span>
-    <span class="customer">
-      <span>Customer Name</span><i class="fas fa-sort-down fa-sm"></i>
+    <span class="customer some">
+      <span >Customer Name</span><i class="fas fa-sort-down fa-sm"></i>
     </span>
     <span class="quantity">
-      <span>Quantity</span>
+      <span>Quantidade</span>
     </span>
     <span class="amount">
-      <span>Amount</span><i class="fas fa-sort-down fa-sm"></i>
+      <span>Valor</span>
     </span>
-    <span class="status">
-      <span>Order Status</span><i class="fas fa-sort-down fa-sm"></i>
+    <span class="status some">
+      <span >Order Status</span><i class="fas fa-sort-down fa-sm"></i>
     </span>
-    <span class="phone">
+    <span class="phone some">
       <span>Phone</span><i class="fas fa-sort-down fa-sm"></i>
     </span>
   </div>
@@ -417,99 +490,162 @@ body {
     <div class="item">
       <div class="check">
         <input type="checkbox">
-        <span class="geekmark"></span>
+        <span class="geekmark some"></span>
       </div>
-      <span># 1150</span>
+      <span class="some"># 1150</span>
       <img src="https://i.postimg.cc/d1bVjpHd/01.jpg">
       <span>Cheese Pizza</span>
-      <span>Mark Willy</span>
+      <span class="some">Mark Willy</span>
       <span>05</span>
-      <span>$2,590</span>
-      <button>Confirmed</button>
-      <span>+123 9856047</span>
-      <i class="fas fa-ellipsis-h"></i>
+      <span >$2,590</span>
+      <button class="some">Confirmed</button>
+      <span class="some">+123 9856047</span>
+      <i class="fas fa-ellipsis-h some"></i>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <span># 1151</span>
-      <img src="https://i.postimg.cc/13s4Tx9r/02.jpg">
-      <span>Big Burger</span>
-      <span>Mithila Zaman</span>
-      <span>03</span>
-      <span>$1,590</span>
-      <button>Pending</button>
-      <span>+123 9856047</span>
-      <i class="fas fa-ellipsis-h"></i>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <span># 1152</span>
-      <img src="https://i.postimg.cc/ncYhqdvj/03.jpg">
-      <span>Chicken Pasta</span>
-      <span>Siddikur Rahman</span>
+      <div class="check">
+        <input type="checkbox">
+        <span class="geekmark some"></span>
+      </div>
+      <span class="some"># 1150</span>
+      <img src="https://i.postimg.cc/d1bVjpHd/01.jpg">
+      <span style="margin-right: 27px;">Cheese Pizza</span>
+      <span class="some">Mark Willy</span>
       <span>05</span>
-      <span>$2,590</span>
-      <button>Confirmed</button>
-      <span>+123 9856047</span>
-      <i class="fas fa-ellipsis-h"></i>
+      <span >$2,590</span>
+      <button class="some">Confirmed</button>
+      <span class="some">+123 9856047</span>
+      <i class="fas fa-ellipsis-h some"></i>
     </div>
     <div class="item">
-      <input type="checkbox">
-      <span># 1153</span>
-      <img src="https://i.postimg.cc/3xtrcdf3/04.png">
-      <span>Chicken Pizza</span>
-      <span>Siddikur Rahman</span>
+      <div class="check">
+        <input type="checkbox">
+        <span class="geekmark some"></span>
+      </div>
+      <span class="some"># 1150</span>
+      <img src="https://i.postimg.cc/d1bVjpHd/01.jpg">
+      <span  style="margin-right: 27px;">Cheese Pizza</span>
+      <span class="some">Mark Willy</span>
       <span>05</span>
-      <span>$2,590</span>
-      <button>Confirmed</button>
-      <span>+123 9856047</span>
-      <i class="fas fa-ellipsis-h"></i>
+      <span >$2,590</span>
+      <button class="some">Confirmed</button>
+      <span class="some">+123 9856047</span>
+      <i class="fas fa-ellipsis-h some"></i>
     </div>
-    <div class="item">
-      <input type="checkbox">
-      <span># 1154</span>
-      <img src="https://i.postimg.cc/yNrdkk0L/05.jpg">
-      <span>Big Burger</span>
-      <span>Mithila Zaman</span>
-      <span>03</span>
-      <span>$1,590</span>
-      <button>Pending</button>
-      <span>+123 9856047</span>
-      <i class="fas fa-ellipsis-h"></i>
-    </div>
-    <div class="item">
-      <input type="checkbox">
-      <span># 1155</span>
-      <img src="https://i.postimg.cc/8PVCJ8rg/06.png">
-      <span>Chicken Pasta</span>
-      <span>Siddikur Rahman</span>
-      <span>05</span>
-      <span>$2,590</span>
-      <button>Confirmed</button>
-      <span>+123 9856047</span>
-      <i class="fas fa-ellipsis-h"></i>
-    </div>
+    
   </div>
   <div class="bottom">
     <div class="showing">
-      <span>Showing 1-30 / 150 Results</span>
+      <span>Mostrando 1-30</span>
     </div>
     <div class="number">
-      <span>Previous</span>
+      <span>Aterior</span>
       <span>1</span>
       <span>2</span>
       <span>3</span>
       <span>4</span>
-      <span>Next</span>
+      <span>Próxima</span>
     </div>
   </div>
 </div>
   
   
+  <style type="text/css">.keouNN .newSb {
+    position: static;
+}
+.newSb {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+    box-direction: normal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-direction: row;
+    -webkit-box-align: center;
+    -moz-box-align: center;
+    box-align: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-align-items: center;
+    -o-align-items: center;
+    align-items: center;
+    -ms-flex-align: center;
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-style: normal;
+    font-family: "museo-sans",sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    background-color: #e7093e;
+    z-index: 99999;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    position: inherit;
+}
+.newSb * {
+    box-sizing: border-box;
+    line-height: 1;
+    color: #fff;
+    stroke: transparent;
+}
+.newSb__close button {
+    display: block;
+    line-height: 15px;
+    height: 45px;
+    width: 45px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: none;
+    padding: 15px;
+    color: #fff;
+}
+.newSb__logo {
+        width: 46px;
+    height: 46px;
+    margin-right: 11px;
+    margin-left: 11px;
+    margin-top: -6px;
+}
+.newSb__header {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+.newSb__subheader {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 16px;
+}
+.newSb__applink {
+    position: absolute;
+    right: 15px;
+    top: 27px;
+}
+.newSb__applink__btn {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 5px 8px;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-decoration: none;
+}</style>
   
   
-
-</body>
-
-</html>
- 

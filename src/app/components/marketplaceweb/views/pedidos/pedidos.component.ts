@@ -9,8 +9,15 @@ export class PedidosComponent implements OnInit {
 
   constructor() { }
 
+  aberto: boolean = true;
+
   ngOnInit(): void {
     console.log(sessionStorage.getItem('tipo'));
+  }
+
+
+  fecha(){
+      this.aberto = false;
   }
 
 }
