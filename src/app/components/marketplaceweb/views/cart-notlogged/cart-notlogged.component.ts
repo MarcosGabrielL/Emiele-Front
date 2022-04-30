@@ -267,6 +267,8 @@ criaVenda(){
                                     this.logado = true;
 
 
+
+
                                     //Carrega Carrinho
 
                                     this.produtos = JSON?.parse(sessionStorage?.getItem('Produtos') || "") || [] ;
