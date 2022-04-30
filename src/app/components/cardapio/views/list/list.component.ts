@@ -343,11 +343,11 @@ if(!mudou){
    sessionStorage.setItem('Produtos', JSON.stringify(this.ProdutosInCart));
    sessionStorage.setItem('Vendedor', JSON.stringify(this.vendedor));
 
-   this.router.navigate(['/shop/cart']);
+   this.router.navigate(['shop/cart/isnotlogged']);
 }
 
 Cart(){
-   this.router.navigate(['/shop/cart']);
+   this.router.navigate(['shop/cart/isnotlogged']);
 }
 
 }

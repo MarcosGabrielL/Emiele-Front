@@ -86,6 +86,7 @@ import { OrderPayInCadastroComponent } from './components/template/order-pay-in-
 import { GetcardInCadastroComponent } from './components/template/getcard-in-cadastro/getcard-in-cadastro.component';
 import { CreatAccesstokenInAuthSuccessComponent } from './components/template/creat-accesstoken-in-auth-success/creat-accesstoken-in-auth-success.component';
 import { TrackpagamentoComponent } from './components/marketplaceweb/views/trackpagamento/trackpagamento.component';
+import { CartNotloggedComponent } from './components/marketplaceweb/views/cart-notlogged/cart-notlogged.component';
 
 @NgModule({
   declarations: [
@@ -139,7 +140,8 @@ import { TrackpagamentoComponent } from './components/marketplaceweb/views/track
     OrderPayInCadastroComponent,
     GetcardInCadastroComponent,
     CreatAccesstokenInAuthSuccessComponent,
-    TrackpagamentoComponent
+    TrackpagamentoComponent,
+    CartNotloggedComponent
   ],
   imports: [
     BrowserModule,

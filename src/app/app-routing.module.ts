@@ -49,6 +49,8 @@ import { GetcardInCadastroComponent } from './components/template/getcard-in-cad
 import { CreatAccesstokenInAuthSuccessComponent } from './components/template/creat-accesstoken-in-auth-success/creat-accesstoken-in-auth-success.component';
 import { TrackpagamentoComponent } from './components/marketplaceweb/views/trackpagamento/trackpagamento.component';
 
+import { CartNotloggedComponent } from './components/marketplaceweb/views/cart-notlogged/cart-notlogged.component';
+
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
 
@@ -150,6 +152,9 @@ const routes: Routes = [
     path: 'cardapio/:idvendedor/:categoria',
     component: ListComponent
    },
+   { 
+    path: 'shop/cart/isnotlogged', 
+    component: CartNotloggedComponent},
    {
     path: 'shop',
     component: HomeComponent,

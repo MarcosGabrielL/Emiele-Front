@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, ViewEncapsulation, NgModule} from '@angular/core';
 
 import { DomSanitizer,SafeHtml,SafeUrl } from '@angular/platform-browser';
 
@@ -15,11 +15,12 @@ import { Perfil, PreferenceItem, NewPreferenceDTO, Root, RootDTO, AutenticacionR
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  selector: 'app-cart-notlogged',
+  templateUrl: './cart-notlogged.component.html',
+  styleUrls: ['./cart-notlogged.component.css'],
+   encapsulation: ViewEncapsulation.None
 })
-export class CartComponent implements OnInit {
+export class CartNotloggedComponent implements OnInit {
 
   constructor(private sanitized: DomSanitizer,
               private VendaService: VendaService,
@@ -77,31 +78,28 @@ preferenceitens: PreferenceItem[]=[];
 root: Root;
 rootdto: RootDTO;
 vendedor_id: String = "";
+comprador_id: String = "";
 access_token: String = "";
 logado: boolean = false;
  token: any;
 
   ngOnInit(): void {
-
-
-    //Verifica se ta logado
+     //Verifica se ta logado
         this.isLoggedin();
-
-    
   }
 
-  SafeUrl(data: any): SafeUrl{
+  entrega(){
+  if(this.entregar){
+     this.entregar = false;
+  }else{
+    this.entregar = true;
+  }
+}
+
+ SafeUrl(data: any): SafeUrl{
 
     return this.sanitized.bypassSecurityTrustUrl('data:image/png;base64,'+data);                                           
 
-}
-
-entrega(){
-  if(this.entregar){
-      this.frete = 5;
-  }else{
-    this.frete = 0;
-  }
 }
 
 criaVenda(){
@@ -142,7 +140,7 @@ criaVenda(){
   this.venda.recebido1 = this.total;
   this.venda.modopagamento1= "1";
   this.venda.vendedor_id= this.produtos[0].vendedor_id;
-  this.venda.comprador_id = "1";
+  this.venda.comprador_id = this.comprador_id;
 
   this.request.vendas = this.venda;
   this.request.produtos = this.produtos;
@@ -291,7 +289,7 @@ criaVenda(){
                            //Se não ta logado
                               //loga ou pede email
                                   //Abre Pagina checkout
-                                                  this.router.navigate(['/shop/cart/isnotlogged']);
+                                                  //this.router.navigate(['/shop/cart/isnotlogged']);
 
              });
 
@@ -300,7 +298,7 @@ criaVenda(){
                            //Se não ta logado
                               //loga ou pede email
                                   //Abre Pagina checkout
-                                                  this.router.navigate(['/shop/cart/isnotlogged']);
+                                                 // this.router.navigate(['/shop/cart/isnotlogged']);
                };  
 
 
@@ -308,6 +306,5 @@ criaVenda(){
               
   }
 
-  
 
 }

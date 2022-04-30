@@ -287,17 +287,7 @@ label {
 }
 </style>
 
-  <script>
-  window.console = window.console || function(t) {};
-</script>
-
   
-  
-  <script>
-  if (document.location.search.match(/type=embed/gi)) {
-    window.parent.postMessage("resize", "*");
-  }
-</script>
 
 
 </head>
@@ -340,8 +330,7 @@ label {
     display: block;
     padding-left: 1.25rem;
     float: right;
-    margin: 0 0 29px 0px;
-    display: none;">
+    margin: 0 0 29px 0px;">
                       <input class="form-check-input" type="checkbox" id="rememberMe" checked (change)="entrega()" [(ngModel)]="entregar" >
                       <label class="form-check-label" for="rememberMe">Entregar?</label>
                     </div>
