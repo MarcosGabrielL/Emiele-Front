@@ -275,19 +275,13 @@ tfoot {
     padding: 0;
 
 	}
+
+.model-rounded {
+    background: #fff;
+}
+
 </style>
 
-  <script>
-  window.console = window.console || function(t) {};
-</script>
-
-  
-  
-  <script>
-  if (document.location.search.match(/type=embed/gi)) {
-    window.parent.postMessage("resize", "*");
-  }
-</script>
 
 
 </head>
@@ -313,7 +307,7 @@ tfoot {
     padding-top: 0.75em;
     padding-bottom: 0.75em; padding-right: 5px;"> Ou Conectar a uma conta</address>
   <div>
-      <button class="button button--full" type="submit" style="margin-left: 5px;">Entrar</button>
+      <button class="button button--full" type="submit" style="margin-left: 5px;" (click)='open(content)'>Entrar</button>
     </div>
     
 </header>
@@ -500,4 +494,12 @@ tfoot {
 </div>
 
 </html>
+
+
+<ng-template #content let-c="close" let-d="dismiss" style="background: #fff !important;">
+    
+      <app-login-client></app-login-client>
+
+
+    </ng-template>
  

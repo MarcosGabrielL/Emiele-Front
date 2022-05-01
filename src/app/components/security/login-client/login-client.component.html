@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang='en' class=''>
+
+<head>
+
+  <meta charset='UTF-8'>
+  <title>CodePen Demo</title>
+
+  <meta name="robots" content="noindex">
+
+  <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+  <link rel="mask-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111">
+  <link rel="canonical" href="https://codepen.io/lucasfernandodev/pen/vYpzoBB">
+
+  
+  
+
+  <style class="INLINE_PEN_STYLESHEET_ID">
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.main{
+  width: calc(100vw / 2 + 25px);
+  height: 100%;
+  max-width: 410px;
+  min-width: 290px;
+  min-heigth: calc(100vh - 20vh);
+  background: #ddd;
+  padding: 24px 24px;
+  border-radius: 5px;
+  padding-bottom: 32px;
+  position: relative;
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px){
+  .main{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  padding: 24px 24px;
+  border-radius: 0;
+  padding-bottom: 32px;
+  position: relative;
+  gap: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+}
+.main .login{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main .login h1{
+font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.8px;
+  font-size: 26px;
+  color: #111;
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+
+.main .group{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main input{
+  width: 100%;
+    height: 46px;
+    background: #ddd;
+    border-radius: 4px;
+    border: unset;
+    padding-left: 15px;
+    color: #333;
+}
+
+.main input:focus{
+  outline: 2px solid #cc2945
+}
+
+.main input::placeholder{
+  color: #aaa;
+}
+
+.main a{
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+  color: #cc2945;
+  margin-top: 0px;
+    transition: 250ms linear;
+}
+
+.main a:hover{
+  color: #cc2945cd;
+    text-decoration: underline;
+}
+
+.main .btn{
+  width: 100%;
+  height: 48px;
+  border-radius: 6px;
+  border: 2px solid transparent;
+  background: #cc2945;
+  color: #dedede;
+  text-transform: uppercase;
+font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: 250ms linear;
+  font-size: 16px;
+}
+
+.main .btn:hover{
+  background: #cc2945dd;
+}
+
+.main .row{
+  display: flex;
+  width: 100%;
+  height: 6px;
+  position: relative;
+  margin: 8px 0;
+}
+
+.main .row::before,
+.main .row::after{
+  content: "";
+  position: absolute;
+  height: 0.5px;
+  width: calc(50% - 3px);
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  background: linear-gradient(to right, #090526dd, rgba(0,0,50,0.3));
+  border-radius: 50%;
+  opacity: 0.2;
+}
+
+.main .row::after{
+  left: unset;
+    right: 0;
+  background: linear-gradient(to left, #090526dd, rgba(0,0,50,0.3))
+}
+
+.main .login .groupRow{
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  min-height: 46px;
+  width: 100%;
+  color: #444;
+  font-size: 14px;
+}
+
+.main .groupRow .btn-github{
+  background: #333;
+  color: #f5f5f5;
+  stroke: f5f5f5;
+  width: 180px;
+  height: 44px;
+  border: unset;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 12px;
+}
+
+.icon{
+  width: 64px;
+  height: 64px;
+  background: #fff;
+  border-radius: 12px;
+  position: relative;
+  z-index: 300;
+  background-image: url(https://i.ibb.co/r60TMhc/Untitled-4.png);
+}
+
+  </style>
+
+  
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-7549a40147ccd0ba0a6b5373d87e770e49bb4689f1c2dc30cccc7463f207f997.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-4793b73c6332f7f14a9b6bba5d5e62748e9d1bd0b5c52d7af6376f3d1c625d7e.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js"></script>
+</head>
+
+<body>
+  <main class="main">
+  <div>  <img style="width: 64px;
+  height: 64px;
+  background: #fff;
+  border-radius: 12px;
+  position: relative;
+  z-index: 300;" src="https://i.ibb.co/r60TMhc/Untitled-4.png"></div>
+  <form action="#" class="login" *ngIf="login">
+    <h1>Entrar</h1>
+    <div class="group">
+      <label for="user"></label>
+      <input for="emailreg" id="emailreg" [(ngModel)]="emailreg"
+              name="emailreg" type="text" placeholder="Email">
+    </div>
+    <div class="group">
+      <label for="user"></label>
+      <input [(ngModel)]="passwordreg" id="passwordreg" 
+              name="passwordreg" 
+
+                  type="password" placeholder="Senha">
+    </div>
+    <div class="group">
+      <a href="#">Esqueci minha senha</a>
+    </div>
+    <button class="btn" (click)="handleLogin()">Entrar</button>
+      <div class="groupRow">
+        Não tem uma conta? <a (click)="registrar()">Registre-se</a>
+      </div>
+    <div class="row"></div>
+    <div class="groupRow" style="display: none;">
+      <span>ou entre com</span>
+      <button class="btn-github">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+        </svg>
+        GITHUB
+      </button>
+    </div>
+  </form>
+   <form action="#" class="login" *ngIf="!login">
+     <h1>Cadastrar-se</h1>
+    <div class="group">
+      <label for="user"></label>
+      <input for="emailreg" id="emailreg" [(ngModel)]="emailreg"
+              name="emailreg" type="text" placeholder="Email">
+    </div>
+    <div class="group">
+      <label for="user"></label>
+      <input [(ngModel)]="passwordreg" id="passwordreg" 
+              name="passwordreg" 
+
+                  type="password" placeholder="Senha">
+    </div>
+    <button class="btn" (click)="handleRegistration()">Cadastrar</button>
+      <div class="groupRow">
+        Já possui uma conta? <a (click)="entrar()">Entrar</a>
+      </div>
+    <div class="row"></div>
+    <div class="groupRow" style="display: none;">
+      <span>ou entre com</span>
+      <button class="btn-github">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+          <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
+        </svg>
+        GITHUB
+      </button>
+    </div>
+  </form>
+</main>
+  
+<script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+  
+</body>
+
+</html>

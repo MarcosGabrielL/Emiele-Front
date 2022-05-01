@@ -87,6 +87,7 @@ import { GetcardInCadastroComponent } from './components/template/getcard-in-cad
 import { CreatAccesstokenInAuthSuccessComponent } from './components/template/creat-accesstoken-in-auth-success/creat-accesstoken-in-auth-success.component';
 import { TrackpagamentoComponent } from './components/marketplaceweb/views/trackpagamento/trackpagamento.component';
 import { CartNotloggedComponent } from './components/marketplaceweb/views/cart-notlogged/cart-notlogged.component';
+import { LoginClientComponent } from './components/security/login-client/login-client.component';
 
 @NgModule({
   declarations: [
@@ -141,7 +142,8 @@ import { CartNotloggedComponent } from './components/marketplaceweb/views/cart-n
     GetcardInCadastroComponent,
     CreatAccesstokenInAuthSuccessComponent,
     TrackpagamentoComponent,
-    CartNotloggedComponent
+    CartNotloggedComponent,
+    LoginClientComponent
   ],
   imports: [
     BrowserModule,

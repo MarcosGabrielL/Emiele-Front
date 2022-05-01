@@ -1,5 +1,6 @@
 import {Component, OnInit, ChangeDetectorRef, ViewEncapsulation, NgModule} from '@angular/core';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeHtml,SafeUrl } from '@angular/platform-browser';
 
 import { Produto,ProdutoDTO } from './../../../../../app/components/template/produto/produto.model';
@@ -12,7 +13,7 @@ import {LoginService} from './../../../../../app/components/security/login.servi
 import {PerfilpagamentoService} from './../../../../../app/components/template/perfilpagamento.service';
 import { Perfil, PreferenceItem, NewPreferenceDTO, Root, RootDTO, AutenticacionResponse } from './../../../../../app/components/template/perfilpagamento.model';
 
-import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-cart-notlogged',
@@ -27,7 +28,8 @@ export class CartNotloggedComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private PerfilpagamentoService: PerfilpagamentoService,
-              private authenticationService: LoginService) { }
+              private authenticationService: LoginService,
+              private modalService: NgbModal) { }
 
   produtos: ProdutoDTO[] = [];
   vendedor: Vendedor;
@@ -82,26 +84,16 @@ comprador_id: String = "";
 access_token: String = "";
 logado: boolean = false;
  token: any;
+ closeResult = '';
 
   ngOnInit(): void {
-
-    //Carrega Carrinho
-
-                                    this.produtos = JSON?.parse(sessionStorage?.getItem('Produtos') || "") || [] ;
-
-                                    this.produtos?.forEach( (evento: ProdutoDTO) => { 
-                                        this.subtotal = this.subtotal + evento.SubTotal;
-                                         this.total = this.subtotal;                                           
-                                     });
-                                    
-                                    this.vendedor = JSON.parse(sessionStorage.getItem('Vendedor')!);
-                                    
-
-                                    console.log(this.produtos);
-                             
-                             
-     //Verifica se ta logado
+      //Verifica se ta logado
         this.isLoggedin();
+
+    
+                             
+                             
+   
   }
 
   entrega(){
@@ -298,17 +290,70 @@ criaVenda(){
 
              });
 
+                        //Carrega Carrinho
+
+                                    this.produtos = JSON.parse(sessionStorage.getItem('Produtos')!) ;
+
+                                    this.produtos?.forEach( (evento: ProdutoDTO) => { 
+                                        this.subtotal = this.subtotal + evento.SubTotal;
+                                         this.total = this.subtotal;                                           
+                                     });
+                                    
+                                    this.vendedor = JSON.parse(sessionStorage.getItem('Vendedor')!);
+                                    
+
+                                    console.log(this.produtos);
+
                }else{
                  console.log('Não Logado')
                            //Se não ta logado
                               //loga ou pede email
                                   //Abre Pagina checkout
                                                  // this.router.navigate(['/shop/cart/isnotlogged']);
+
+                                                 //Carrega Carrinho
+
+                                      this.produtos = JSON.parse(sessionStorage.getItem('Produtos')!) ;
+
+                                    this.produtos?.forEach( (evento: ProdutoDTO) => { 
+                                        this.subtotal = this.subtotal + evento.SubTotal;
+                                         this.total = this.subtotal;                                           
+                                     });
+                                    
+                                    this.vendedor = JSON.parse(sessionStorage.getItem('Vendedor')!);
+                                    
+
+                                    console.log(this.produtos);
                };  
 
 
                
               
+  }
+
+   private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  open(content: any) {
+
+    
+
+    this.modalService.open(content, { size: 'lg' , windowClass: 'model-rounded'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  Entrar(){
+    this.modalService.dismissAll();
   }
 
 
