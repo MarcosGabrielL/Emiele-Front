@@ -84,6 +84,22 @@ logado: boolean = false;
  token: any;
 
   ngOnInit(): void {
+
+    //Carrega Carrinho
+
+                                    this.produtos = JSON?.parse(sessionStorage?.getItem('Produtos') || "") || [] ;
+
+                                    this.produtos?.forEach( (evento: ProdutoDTO) => { 
+                                        this.subtotal = this.subtotal + evento.SubTotal;
+                                         this.total = this.subtotal;                                           
+                                     });
+                                    
+                                    this.vendedor = JSON.parse(sessionStorage.getItem('Vendedor')!);
+                                    
+
+                                    console.log(this.produtos);
+                             
+                             
      //Verifica se ta logado
         this.isLoggedin();
   }
@@ -269,20 +285,7 @@ criaVenda(){
 
 
 
-                                    //Carrega Carrinho
-
-                                    this.produtos = JSON?.parse(sessionStorage?.getItem('Produtos') || "") || [] ;
-
-                                    this.produtos?.forEach( (evento: ProdutoDTO) => { 
-                                        this.subtotal = this.subtotal + evento.SubTotal;
-                                         this.total = this.subtotal;                                           
-                                     });
                                     
-                                    this.vendedor = JSON.parse(sessionStorage.getItem('Vendedor')!);
-                                    
-
-                                    console.log(this.produtos);
-                             
                                
                
             }, () => {
