@@ -226,6 +226,7 @@ tfoot {
           flex: 1;
   grid-gap: 1em;
   gap: 1em;
+  min-width: 12.5vw;
 }
 
 .header {
@@ -397,7 +398,7 @@ tfoot {
 
 
     <div>
-      <button class="button button--full" type="submit" ><svg class="icon">
+      <button class="button button--full" type="submit" (click)="criaVenda()" ><svg class="icon">
           <use xlink:href="#icon-shopping-bag" />
         </svg>Comprar Agora</button>
     </div>
