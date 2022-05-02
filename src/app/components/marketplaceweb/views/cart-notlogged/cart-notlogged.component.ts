@@ -91,7 +91,7 @@ logado: boolean = false;
         this.isLoggedin();
 
     
-                             
+                       this.modalService.dismissAll();       
                              
    
   }
@@ -259,7 +259,7 @@ criaVenda(){
   isLoggedin(){
         this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE');
     //Verifica se está logado
-                if(this.authenticationService.isUserLoggedIn()){
+    console.log('token'+this.token);
                     //Pega email do usuario logado
                     let email = this.authenticationService.getLoggedInUserName();
                         //Pega usuario pelo email
@@ -303,28 +303,6 @@ criaVenda(){
                                     
 
                                     console.log(this.produtos);
-
-               }else{
-                 console.log('Não Logado')
-                           //Se não ta logado
-                              //loga ou pede email
-                                  //Abre Pagina checkout
-                                                 // this.router.navigate(['/shop/cart/isnotlogged']);
-
-                                                 //Carrega Carrinho
-
-                                      this.produtos = JSON.parse(sessionStorage.getItem('Produtos')!) ;
-
-                                    this.produtos?.forEach( (evento: ProdutoDTO) => { 
-                                        this.subtotal = this.subtotal + evento.SubTotal;
-                                         this.total = this.subtotal;                                           
-                                     });
-                                    
-                                    this.vendedor = JSON.parse(sessionStorage.getItem('Vendedor')!);
-                                    
-
-                                    console.log(this.produtos);
-               };  
 
 
                
