@@ -32,7 +32,7 @@ export class SignupComponent implements OnInit {
     emailreg: string = "";
   passwordreg : string = "";
   firstName : string = "";
-  lastName : string = "";
+  lastName : string = "  ";
 
    errorMessage = 'Invalid Credentials';
   successMessage: string = "";

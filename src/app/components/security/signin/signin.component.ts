@@ -36,7 +36,7 @@ export class SigninComponent implements OnInit {
     emailreg: string = "";
   passwordreg : string = "";
   firstName : string = "";
-  lastName : string = "";
+  lastName : string = " ";
 
      authRequestreg:any ={
     "email":"email",
