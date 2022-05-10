@@ -142,7 +142,7 @@ export class PerfilpagamentoService {
                 body.set('client_id', this.AppID.toString());
                 body.set('client_secret', this.SECRET_KEY.toString());
                 body.set('code', code);
-                body.set('redirect_uri', 'https://emiele-service-vendas.herokuapp.com/generic/oauth');
+                body.set('redirect_uri', 'https://emiele-service-gerenciador.herokuapp.com/generic/oauth');
 
 //add Access-Control-Allow-Origin "*"
 //Header add Access-Control-Allow-Methods: "GET,POST,OPTIONS,DELETE,PUT"
