@@ -97,10 +97,18 @@ logado: boolean = false;
   }
 
   entrega(){
+    //Pega taxa frete vendedor
+    
+
   if(this.entregar){
      this.entregar = false;
+      this.frete = 0;
+     this.total = this.total - 5;
   }else{
     this.entregar = true;
+ this.frete = 5;
+   
+     this.total = this.total + 5;
   }
 }
 
@@ -124,14 +132,15 @@ criaVenda(){
  getPagamento(){
 
 
-    
+    //Verifica se esta logado
+    if(this.comprador_id != ""){
 
     this.produtos.forEach( (evento: ProdutoDTO) => { 
 
         this.preferenceitem = {
          "name": evento.codigo,
          "quantity": +evento.quantidade,
-         "price": +evento.SubTotal,
+         "price": +evento.precoun,
         }
 
         this.preferenceitens.push(this.preferenceitem); 
@@ -152,6 +161,8 @@ criaVenda(){
 
   this.request.vendas = this.venda;
   this.request.produtos = this.produtos;
+
+  console.log(this.request);
 
 
   this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE')!;
@@ -217,7 +228,7 @@ criaVenda(){
 
                         //Retorna Mensagem de Pago OU Negado
                        //Redireciona para Lista de Pedidos com Status (Pedido, PAgo, Entregue, Cancelado... etc)
-                       window.open(''+this.root.sandboxInitPoint, '_blank');
+                       window.open(''+this.root.initPoint, '_blank');
                          
                       
                   }, () => {
@@ -252,6 +263,14 @@ criaVenda(){
             this.VendaService.mensagem('Erro ao Efetuar Pedido!');
          });
   
+
+
+ }else{
+
+   this.VendaService.mensagem('Usuario não Reconhecido');
+
+ }
+
                                         
   }
 
@@ -267,8 +286,8 @@ criaVenda(){
                         this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
                          console.log(resposta);
 
-                            this.vendedor_id  = resposta.id.toString();
-                              console.log( this.vendedor_id);
+                           this.comprador_id  = resposta.id.toString();
+                              console.log( this.comprador_id);
                               
                                //Verifica se é cliente
                                console.log('Logago')

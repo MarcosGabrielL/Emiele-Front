@@ -74,6 +74,9 @@ export class CartComponent implements OnInit {
 
 preferenceitens: PreferenceItem[]=[];
 
+
+comprador_id: String = "";
+
 root: Root;
 rootdto: RootDTO;
 vendedor_id: String = "";
@@ -142,10 +145,12 @@ criaVenda(){
   this.venda.recebido1 = this.total;
   this.venda.modopagamento1= "1";
   this.venda.vendedor_id= this.produtos[0].vendedor_id;
-  this.venda.comprador_id = "1";
+  this.venda.comprador_id = this.comprador_id;
 
   this.request.vendas = this.venda;
   this.request.produtos = this.produtos;
+
+   console.log(this.request);
 
 
   this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE')!;
@@ -154,7 +159,7 @@ criaVenda(){
    this.VendaService.addVendas(this.request, this.token).subscribe((result: Venda)=> {
 
     this.venda = result;
-    console.log(this.venda);
+    //console.log(this.venda);
 
         this.PerfilpagamentoService.getCredenciais(this.venda.vendedor_id, this.token).subscribe((result: AutenticacionResponse)=> {
     
@@ -261,8 +266,8 @@ criaVenda(){
                         this.authenticationService.getByEmail(email).subscribe((resposta: User) => {
                          console.log(resposta);
 
-                            this.vendedor_id  = resposta.id.toString();
-                              console.log( this.vendedor_id);
+                            this.comprador_id  = resposta.id.toString();
+                              console.log( this.comprador_id);
                               
                                //Verifica se é cliente
                                console.log('Logago')

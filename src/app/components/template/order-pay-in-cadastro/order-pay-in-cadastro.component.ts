@@ -196,11 +196,11 @@ console.log('Token: ' + this.token);
                           this.router.navigate(['/cadastrar/payment/cart']);
                        }if(this.tipo == 2){
                           //this.router.navigate(['/cadastrar/payment/cart']);
-                          window.open(''+this.root.sandboxInitPoint, '_blank');
+                          window.open(''+this.root.initPoint, '_blank');
                           //this.document.location.href = ''+ resposta.sandboxInitPoint;
                        }if(this.tipo == 3){               
                           //this.router.navigate(['/cadastrar/payment/cart']);
-                           window.open(''+this.root.sandboxInitPoint, '_blank');
+                           window.open(''+this.root.initPoint, '_blank');
                           //this.document.location.href = '' +resposta.sandboxInitPoint;
                        }
                   
