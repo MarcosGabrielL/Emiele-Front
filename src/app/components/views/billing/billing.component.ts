@@ -102,7 +102,7 @@ code: any = null;
 
   SafeUrl(): SafeUrl{
 
-     return this.sanitized.bypassSecurityTrustUrl('https://auth.mercadopago.com/authorization?client_id=3843631125520319&response_type=code&platform_id=mp&state='+this.vendedor_id+'&redirect_uri=https://emiele-service-vendas.herokuapp.com/generic/oauth');
+     return this.sanitized.bypassSecurityTrustUrl('https://auth.mercadopago.com/authorization?client_id=3843631125520319&response_type=code&platform_id=mp&state='+this.vendedor_id+'&redirect_uri=https://emiele-service-gerenciador.herokuapp.com/generic/oauth');
 
 }
 
