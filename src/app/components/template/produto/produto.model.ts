@@ -43,3 +43,5 @@ export interface ResponseFile {
           data: BlobPart[];
 
   }
+
+  

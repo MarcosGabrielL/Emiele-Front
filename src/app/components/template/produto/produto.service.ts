@@ -71,4 +71,6 @@ export class ProdutoService {
   getId(): any{
     return sessionStorage.getItem('PRODUTO_ID_SESSION')
   }
+
+ 
 }

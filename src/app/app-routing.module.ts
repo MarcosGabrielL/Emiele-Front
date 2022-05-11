@@ -154,7 +154,11 @@ const routes: Routes = [
    },
    { 
     path: 'shop/cart/isnotlogged', 
-    component: CartNotloggedComponent},
+    component: CartNotloggedComponent
+    },
+     { 
+        path: 'shop/pedidos/:emailcliente',
+        component: PedidosComponent},
    {
     path: 'shop',
     component: HomeComponent,
@@ -166,8 +170,7 @@ const routes: Routes = [
                     { path: 'blog', component: BlogComponent, pathMatch: 'full'},
                     { path: 'busca', component: BuscaComponent, pathMatch: 'full'},
                     { path: 'produto/:id', component: ProductPageComponent, pathMatch: 'full'},
-                    { path: 'produto-nao-encontrado', pathMatch: 'full', component: Erro404Component },
-                    { path: 'pedidos/:emailcliente', component: PedidosComponent, pathMatch: 'full'},
+                    { path: 'produto-nao-encontrado', pathMatch: 'full', component: Erro404Component }
                   ]
    },
     { path: '**', pathMatch: 'full', 

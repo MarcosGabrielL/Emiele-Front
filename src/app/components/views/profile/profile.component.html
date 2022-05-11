@@ -580,43 +580,54 @@
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault" checked>
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Envie-me um e-mail quando alguém me seguir</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault">Envie-me um e-mail quando<br> gerar nova fatura</label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault1">
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Envie-me um e-mail quando alguém efetuar pedido</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault1">Envie-me um e-mail quando<br> alguém efetuar pedido</label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault2" checked>
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Envie-me um e-mail quando alguém me contatar</label>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault2">Envie-me um e-mail quando<br> alguém me contatar</label>
                   </div>
                 </li>
               </ul>
-              <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">INSCRIÇÃOr</h6>
+              <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Delivery</h6>
               <ul class="list-group">
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
-                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault3">
+                    <input class="form-check-input ms-auto" type="checkbox" id="cobrafrete" name="cobrafrete" [(ngModel)]="cobrafrete"  (change)="atualizaFrete()">
                     <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault3">
-Novos Produtos
+Cobrar Frete
 </label>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0">
                   <div class="form-check form-switch ps-0">
                     <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault4" checked>
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Atualizações mensais de produtos
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault4">Taxa Fixa Frete
 </label>
+<div class="card" style="padding: 0.5em; width: 90%;">
+    <span style=" display: inline;">R$ </span>
+          <input (focusout)="atualizaFrete()" name="taxaFrete" id="taxaFrete" [(ngModel)]="taxaFrete" type="text" class="form-control address" placeholder="5,00"   style="
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: transparent;
+    display: inline;
+    color: #333 !important;">
+      </div>
                   </div>
                 </li>
                 <li class="list-group-item border-0 px-0 pb-0">
                   <div class="form-check form-switch ps-0">
-                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5">
-                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Assine a newslette</label>
+                    <input class="form-check-input ms-auto" type="checkbox" id="flexSwitchCheckDefault5" disabled>
+                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0" for="flexSwitchCheckDefault5">Frete por 10 Km</label>
+                 
                   </div>
                 </li>
               </ul>

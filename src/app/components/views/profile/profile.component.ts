@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Produto } from './../../../../app/components/template/produto/produto.model';
-import { Venda, Evento } from './../../../../app/components/template/produto/venda.model';
+import { Venda, Evento,Frete } from './../../../../app/components/template/produto/venda.model';
 import { ResponseVendas } from './../../../../app/components/template/produto/venda.model';
 import { Vendido, Tem, Notification } from './../../../../app/components/template/produto/venda.model';
 import { User,Vendedor } from './../../../../app/components/security/user.model';
@@ -89,6 +89,15 @@ files: File[] = [];
     datafim: ""
   }
 
+  frete: Frete = {
+    id: "",
+     
+   fretefixo: "",
+   frete10k: "",
+    cobrafrete: false,
+   vendedorid: ""
+  }
+
   mostranotify: boolean = false;
   mostralist: boolean = false;
   mostramenu: boolean = false;
@@ -101,6 +110,9 @@ files: File[] = [];
   image: SafeUrl = "";
   temimagem: boolean = false;
   imagemdb: FileDB;
+
+  taxaFrete: number = 5;
+  cobrafrete: boolean = true;
 
   constructor(private cdRef: ChangeDetectorRef,
               private authenticationService: LoginService,
@@ -154,8 +166,26 @@ open(content: any) {
   }
 
 
-  mostranotification(){
+mostranotification(){
     if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
+
+
+       this.Notification.forEach( (notify: Notification) => {
+
+
+            notify.isRead = true;
+
+               this.vendaService.SalvaNotification(notify).subscribe((result: Notification)=> {
+                             console.log('Notifications Atualizadas com Sucesso');
+
+                }, () => {
+                                        console.log('Error ao Atualizar Notifications');
+                                             //   this.vendaService.mensagem(this.errorMessage);
+                                            
+                                         });
+       //  }
+
+     });
     
   }
 
@@ -196,6 +226,8 @@ console.log( this.vendedor_id);
                                     }
                                    
                                       this.notfycunt = result.length.toString();
+
+                                      this.buscaFrete();
                                   
                                         this.getNotifications();
                               }, () => {
@@ -230,20 +262,25 @@ console.log( this.vendedor_id);
                                  // this.successMessage = 'Produto Salvo com sucesso!';
                                   //this.vendaService.mensagem(this.successMessage); 
 
+                                    this.Notification = [];
+
                                     console.log('Notification: '+result);
-                                    this.Notification = result;
+                                    result.forEach( (notify: Notification) => {
+                                      if(notify.isRead == false){
+                                        this.Notification.push(notify);
+                                      }
+                                     });
 
 
-
-                                    if(result.length == 0){
-                                        //this.vendaService.mostranotify = false;
-                                       this.mostranotify = false;
+                                    if(result == null  ||  this.Notification.length == 0){
+                                        this.vendaService.mostranotify = false;
+                                       this.mostranotify = this.vendaService.mostranotify;
                                     }else{
-                                       //this.vendaService.mostranotify = false;
-                                       this.mostranotify = true;
+                                       this.vendaService.mostranotify = true;
+                                       this.mostranotify = this.vendaService.mostranotify;
                                     }
                                    
-                                      this.notfycunt = result.length.toString();
+                                      this.notfycunt = this.Notification.length.toString();
                                   
 
                               }, () => {
@@ -378,6 +415,39 @@ console.log( this.vendedor_id);
    
     
 
+  }
+
+  atualizaFrete(){
+     this.frete.fretefixo = this.taxaFrete.toString();
+         this.frete.cobrafrete = this.cobrafrete;
+         this.frete.vendedorid = this.vendedor_id;
+          console.log(this.frete);
+
+    this.vendaService.saveFreteVendedor(this.frete, "1").subscribe((result: Frete)=> {
+
+
+          this.frete.id = result.id;
+this.buscaFrete();
+         
+
+          
+         
+
+      }, () => {
+                                   console.log("Erro ao Salvar frete!");
+                                 }); 
+    
+  }
+
+  buscaFrete(){
+    this.vendaService.getFreteVendedor(this.vendedor_id, "1").subscribe((result: Frete)=> {
+
+                  this.frete = result;
+
+
+                 }, () => {
+                                                   console.log("Erro ao Carregar frete!");
+                                                 }); 
   }
 
 

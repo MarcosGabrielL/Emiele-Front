@@ -196,4 +196,14 @@ export interface Produto1{
 
 }
 
+export interface Frete{
+
+        id: String;
+     
+   fretefixo: String;
+   frete10k: String;
+   cobrafrete: boolean;
+   vendedorid: String;
+
+  }
  

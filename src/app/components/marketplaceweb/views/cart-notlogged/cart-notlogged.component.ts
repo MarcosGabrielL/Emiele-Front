@@ -6,7 +6,7 @@ import { DomSanitizer,SafeHtml,SafeUrl } from '@angular/platform-browser';
 import { Produto,ProdutoDTO } from './../../../../../app/components/template/produto/produto.model';
 import { User,Vendedor } from './../../../../../app/components/security/user.model';
 import { VendaService } from './../../../../../app/components/template/produto/venda.service';
-import { Venda,RequestWrapper } from './../../../../../app/components/template/produto/venda.model';
+import { Venda,RequestWrapper, Frete } from './../../../../../app/components/template/produto/venda.model';
 import {LoginService} from './../../../../../app/components/security/login.service'
 
 
@@ -85,6 +85,9 @@ access_token: String = "";
 logado: boolean = false;
  token: any;
  closeResult = '';
+ valorfrete: number = 0;
+
+ address: String = "";
 
   ngOnInit(): void {
       //Verifica se ta logado
@@ -98,18 +101,53 @@ logado: boolean = false;
 
   entrega(){
     //Pega taxa frete vendedor
+
+    this.VendaService.getFreteVendedor(this.produtos[0].vendedor_id, "1").subscribe((result: Frete)=> {
+
+          this.valorfrete = +result.fretefixo;
+          console.log(this.valorfrete);
+
+          if(result.cobrafrete){
+
+              if(this.entregar){
+                 this.entregar = false;
+                  this.frete = 0;
+                 this.total = this.total - this.valorfrete;
+                 this.venda.modopagamento2 = "Retira";
+              }else{
+                this.entregar = true;
+             this.frete = this.valorfrete;
+               
+                 this.total = this.total + this.valorfrete;
+                 this.venda.modopagamento2 = "Entrega";
+              }
+
+          }
+
+         
+
+      }, () => {
+        this.valorfrete = 5;
+         if(this.entregar){
+             this.entregar = false;
+              this.frete = 0;
+             this.total = this.total - this.valorfrete;
+             this.venda.modopagamento2 = "Retira";
+          }else{
+            this.entregar = true;
+         this.frete = this.valorfrete;
+           
+             this.total = this.total + this.valorfrete;
+             this.venda.modopagamento2 = "Entrega";
+          }
+                                   console.log("Erro ao calcular frete!");
+                                 }); 
+
     
 
-  if(this.entregar){
-     this.entregar = false;
-      this.frete = 0;
-     this.total = this.total - 5;
-  }else{
-    this.entregar = true;
- this.frete = 5;
-   
-     this.total = this.total + 5;
-  }
+    
+
+  
 }
 
  SafeUrl(data: any): SafeUrl{
@@ -158,6 +196,8 @@ criaVenda(){
   this.venda.modopagamento1= "1";
   this.venda.vendedor_id= this.produtos[0].vendedor_id;
   this.venda.comprador_id = this.comprador_id;
+  this.venda.loja = this.address;
+
 
   this.request.vendas = this.venda;
   this.request.produtos = this.produtos;

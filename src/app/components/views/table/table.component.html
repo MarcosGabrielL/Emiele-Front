@@ -502,11 +502,11 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                            <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" class="avatar avatar-sm me-3" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
                             <h6 class="mb-0 text-sm">{{x.comprador_id}}</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                            <p class="text-xs text-secondary mb-0">{{x.modopagamento2}}</p>
                           </div>
                         </div>
                       </td>
@@ -515,10 +515,10 @@
                         <p class="text-xs text-secondary mb-0">{{x.datavenda}}</p>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">{{x.status}}</span>
+                        <span class="badge badge-sm bg-gradient-success">{{getStatus(x.status)}}</span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">{{x.valor}}</span>
+                        <span class="text-secondary text-xs font-weight-bold">R$ {{x.valor}}</span>
                       </td>
                       <td class="align-middle">
                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
@@ -566,24 +566,41 @@
                      <h6 class="mb-3 text-sm">{{comprador.id}}</h6>
                     <span class="mb-2 text-xs">Name: <span class="text-dark font-weight-bold ms-sm-2">{{comprador.firstName}} {{comprador.lastName}}</span></span>
                     <span class="mb-2 text-xs">Email Address: <span class="text-dark ms-sm-2 font-weight-bold">{{comprador.email}}</span></span>
-                    <span class="text-xs">Endereço para Entrega: <span class="text-dark ms-sm-2 font-weight-bold">FRB1235476</span></span>
+                    <span class="text-xs">Endereço para Entrega: <span class="text-dark ms-sm-2 font-weight-bold">{{selectedVenda.loja}}</span></span>
                   </div>
                       </td>
                       <td style="width: 30%;">
                           <div class="d-flex px-2" *ngFor="let p of produtos">
-                          <div>
-                            <img src="../assets/img/small-logos/logo-invision.svg" class="avatar avatar-sm rounded-circle me-2" alt="invision">
-                          </div>
-                          <div class="my-auto" style="width: 80%;">
-                            <h6 class="mb-0 text-sm" style="display: inline-block;">{{p.codigo}} x {{p.quantidade}}</h6>
+                                  
+                                  <div class="my-auto" style="width: 80%;">
+                                    <h6 class="mb-0 text-sm" style="display: inline-block;">{{p.codigo.substring(0,15)}} x {{p.quantidade}}</h6>
+                                    <p class="text-sm font-weight-bold mb-0" style="display: inline-block; 
+            float: right;">R$ {{selectedVenda.valor}}</p>
+                                  </div>
+                          
+                        </div>
+                        <div class="d-flex px-2" *ngIf="mostraprodutos">
+                          
+                            <div class="my-auto" style="width: 80%;">
+                            <h6 class="mb-0 text-sm" style="display: inline-block;"><br>frete: </h6>
                             <p class="text-sm font-weight-bold mb-0" style="display: inline-block; 
-    float: right;">$2,500</p>
+    float: right;"><br>R$ {{+selectedVenda.recebido1 - +selectedVenda.valor}}</p>
+                          </div>
+                        </div>
+
+                        <div class="d-flex px-2" *ngIf="mostraprodutos">
+                          
+                            <div class="my-auto" style="width: 80%;">
+                            <h6 class="mb-0 text-sm" style="display: inline-block;">TOTAL: </h6>
+                            <p class="text-sm font-weight-bold mb-0" style="display: inline-block; 
+    float: right;">R$ {{+selectedVenda.recebido1}}</p>
                           </div>
                         </div>
                       </td>
                       <div class="ms-auto" *ngIf="mostraprodutos">
-                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Cancelar</a>
-                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Despachar para Entrega</a>
+                    <a class="btn btn-link text-danger text-gradient px-3 mb-0"><i class="far fa-trash-alt me-2"></i>Cancelar</a>
+                    <a class="btn btn-link text-dark px-3 mb-0"  (click)="Despachar()"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true" 
+                      *ngIf="!dispachou"></i>{{dispachar}}</a>
                   </div>
                       <td class="align-middle text-center">
                         <div class="d-flex align-items-center justify-content-center" *ngIf="mostraprodutos">
@@ -670,7 +687,7 @@
                       </td>
                       <div class="ms-auto">
                     <a class="btn btn-link text-danger text-gradient px-3 mb-0" href="javascript:;"><i class="far fa-trash-alt me-2"></i>Cancelar</a>
-                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Despachar para Entrega</a>
+                    <a class="btn btn-link text-dark px-3 mb-0"  href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i></a>
                   </div>
                       <td class="align-middle text-center">
                         <div class="d-flex align-items-center justify-content-center">

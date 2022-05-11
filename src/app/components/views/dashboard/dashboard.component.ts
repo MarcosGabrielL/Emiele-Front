@@ -1,3 +1,4 @@
+
 import {Component, OnInit, ChangeDetectorRef, ViewEncapsulation, NgModule} from '@angular/core';
 import {HttpClient, HttpEventType, HttpResponse} from '@angular/common/http';
 import {tap, map} from 'rxjs/operators';
@@ -75,6 +76,7 @@ export class DashboardComponent implements OnInit {
   Notification: Notification[]= [];
   mostraprodutos: boolean = false;
   status: any;
+  quantidadeVendas: number = 0;
 
   constructor(private authenticationService: LoginService,
               private router: Router,
@@ -146,6 +148,8 @@ export class DashboardComponent implements OnInit {
                                     console.log(this.vendedor_id);
                                     console.log(this.token);
 
+                                    this.quantidadeVendas = this.vendas.length;
+
                                    // this.preenchevendashoje();
 
                                   
@@ -155,6 +159,8 @@ export class DashboardComponent implements OnInit {
                                       this.vendaService.mensagem(this.errorMessage);
                                   
                                }); 
+
+
 
   }
 
@@ -273,12 +279,17 @@ export class DashboardComponent implements OnInit {
                                  // this.successMessage = 'Produto Salvo com sucesso!';
                                   //this.vendaService.mensagem(this.successMessage); 
 
+                                  this.Notification = [];
+
                                     console.log('Notification: '+result);
-                                    this.Notification = result;
+                                    result.forEach( (notify: Notification) => {
+                                      if(notify.isRead == false){
+                                        this.Notification.push(notify);
+                                      }
+                                     });
 
 
-
-                                    if(result == null){
+                                    if(result == null  ||  this.Notification.length == 0){
                                         this.vendaService.mostranotify = false;
                                        this.mostranotify = this.vendaService.mostranotify;
                                     }else{
@@ -286,7 +297,7 @@ export class DashboardComponent implements OnInit {
                                        this.mostranotify = this.vendaService.mostranotify;
                                     }
                                    
-                                      this.notfycunt = result.length.toString();
+                                      this.notfycunt = this.Notification.length.toString();
                                   
 
                               }, () => {
@@ -305,8 +316,11 @@ export class DashboardComponent implements OnInit {
 
 
        this.Notification.forEach( (notify: Notification) => {
-           // if(notify.level === "1"){
-               this.vendaService.AtualizaNotification(notify, this.vendedor_id).subscribe((result: Notification)=> {
+
+
+            notify.isRead = true;
+
+               this.vendaService.SalvaNotification(notify).subscribe((result: Notification)=> {
                              console.log('Notifications Atualizadas com Sucesso');
 
                 }, () => {
@@ -326,6 +340,10 @@ export class DashboardComponent implements OnInit {
   }
 
 
+goto(rot: String){
+
+     this.router.navigate([rot]);
+}
   
 
 }

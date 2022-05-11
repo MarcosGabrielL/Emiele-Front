@@ -70,6 +70,8 @@ export class TableComponent implements OnInit {
   notfycunt: String = "";
   Notification: Notification[];
   mostraprodutos: boolean = false;
+  dispachar: String = "Despachar para Entrega";
+  dispachou: boolean = false;
 
   constructor(private cdRef: ChangeDetectorRef,private authenticationService: LoginService,
               private router: Router,
@@ -97,12 +99,17 @@ export class TableComponent implements OnInit {
                                  // this.successMessage = 'Produto Salvo com sucesso!';
                                   //this.vendaService.mensagem(this.successMessage); 
 
+                                    this.Notification = [];
+
                                     console.log('Notification: '+result);
-                                    this.Notification = result;
+                                    result.forEach( (notify: Notification) => {
+                                      if(notify.isRead == false){
+                                        this.Notification.push(notify);
+                                      }
+                                     });
 
 
-
-                                    if(result == null){
+                                    if(result == null  ||  this.Notification.length == 0){
                                         this.vendaService.mostranotify = false;
                                        this.mostranotify = this.vendaService.mostranotify;
                                     }else{
@@ -110,7 +117,8 @@ export class TableComponent implements OnInit {
                                        this.mostranotify = this.vendaService.mostranotify;
                                     }
                                    
-                                      this.notfycunt = result.length.toString();
+                                      this.notfycunt = this.Notification.length.toString();
+                                  
                                   
 
                               }, () => {
@@ -125,8 +133,26 @@ export class TableComponent implements OnInit {
 
 
 
-  mostranotification(){
+ mostranotification(){
     if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
+
+
+       this.Notification.forEach( (notify: Notification) => {
+
+
+            notify.isRead = true;
+
+               this.vendaService.SalvaNotification(notify).subscribe((result: Notification)=> {
+                             console.log('Notifications Atualizadas com Sucesso');
+
+                }, () => {
+                                        console.log('Error ao Atualizar Notifications');
+                                             //   this.vendaService.mensagem(this.errorMessage);
+                                            
+                                         });
+       //  }
+
+     });
     
   }
 
@@ -229,7 +255,7 @@ console.log( this.vendedor_id);
                                      this.produtos = result;
                                      this.cdRef.detectChanges();
 
-                                    console.log("Produtos:" +this.produtos);
+                                    console.log("Produtos:" +JSON.stringify(this.produtos));
                                     
 
                                    // this.preenchevendashoje();
@@ -237,7 +263,7 @@ console.log( this.vendedor_id);
                                   
 
                               }, () => {
-                                this.errorMessage = 'Error ao Salvar produto';
+                                this.errorMessage = 'Error ao Buscar Produtos';
                                       this.vendaService.mensagem(this.errorMessage);
                                   
                                });  
@@ -248,7 +274,18 @@ console.log( this.vendedor_id);
 
                                     this.selectedVenda = result;
 
-                                    console.log("Produtos:" +this.selectedVenda);
+
+
+                                    if(this.selectedVenda.modopagamento3 === "4"){
+                                      this.dispachar = "Em Caminho";
+                                      this.dispachou = true;
+                                      console.log("MODOPAGAMENTO 3: "+this.selectedVenda.modopagamento3);
+                                    }else{
+                                      this.dispachou = false;
+                                      this.dispachar = "Despachar para Entrega";
+                                    }
+
+                                    console.log("Produtos:" +JSON.stringify(this.selectedVenda));
                                     
                                    // Get informations of client
                                    this.authenticationService.getById(this.selectedVenda.comprador_id).subscribe((resposta: User) => {
@@ -257,7 +294,7 @@ console.log( this.vendedor_id);
                                           console.log("Comprador: "+this.comprador);
 
                                     }, () => {
-                                              this.errorMessage = 'Error ao Salvar produto';
+                                              this.errorMessage = 'Cliente não registrado';
                                                     this.vendaService.mensagem(this.errorMessage);
                                                 
                                              }); 
@@ -269,5 +306,70 @@ console.log( this.vendedor_id);
                                   
                                });  
   }
+
+  getStatus(status: any): String{
+    /*1-Carrinho
+    0 - pedido
+    2-Pago
+    3-Pronto
+    4-Despachado
+    5-Em Caminho
+    6-Entregue
+    7-Cancelado
+    8-Extraviado
+    9-Danificado*/
+    let result: String = "";
+
+      if(status === "0"){
+        result = "Pedido";
+      }
+      if(status === "1"){
+        result = "Carrinho";
+      }
+      if(status === "2"){
+        result = "Pago";
+      }
+      if(status === "3"){
+        result = "Pronto";
+      }
+      if(status === "4"){
+        result = "Despachado";
+      }
+      if(status === "5"){
+        result = "Em Caminho";
+      }
+      if(status === "6"){
+        result = "Entregue";
+      }
+      if(status === "7"){
+        result = "Cancelado";
+      }
+
+      return result;
+
+  }
+
+
+Despachar(){
+  //Muda Status venda para Em Caminho
+      if(!this.dispachou){
+                console.log(this.selectedVenda);
+                this.selectedVenda.modopagamento3 = "4";
+
+               this.vendaService.attVendas("this.token", this.selectedVenda).subscribe((result: Venda)=> {
+
+                        this.router.navigateByUrl('/att', { skipLocationChange: true }).then(() => {
+                      this.router.navigate(['/tables']); // navigate to same route
+                  }); 
+
+
+
+                   }, () => {
+                                              this.errorMessage = 'Error ao Atualizar Venda';
+                                                    this.vendaService.mensagem(this.errorMessage);
+                                                
+                                             });
+         }  
+}
 
 }

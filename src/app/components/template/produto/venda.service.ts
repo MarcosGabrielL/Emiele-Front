@@ -4,7 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Produto,ProdutoDTO } from './produto.model';
-import { Venda, Evento, ResponseVendas, Notification,RequestWrapper } from './venda.model';
+import { Venda, Evento, ResponseVendas, Notification,RequestWrapper, Frete } from './venda.model';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +53,11 @@ export class VendaService {
     getVendaById (id: String, token: String):Observable<Venda> {
     const url = `${this.baseUrl}/vendas/venda/${id}?id=${id}&token=${token}`
     return this.http.get<Venda>(url)
+  }
+
+    findAllByIdComprador (id: String, token: String):Observable<Venda[]> {
+    const url = `${this.baseUrl}/vendas/venda/comprador?id=${id}&token=${token}`
+    return this.http.get<Venda[]>(url)
   }
     
     addVendas(requestWrapper: RequestWrapper , token: String): Observable<Venda>{
@@ -150,7 +155,12 @@ export class VendaService {
 
     AtualizaNotification (Notification: Notification, id: String):Observable<Notification> {
     const url = `${this.baseUrl}/notifications/notification/update/${id}?id=${id}&token=1`
-     return this.http.put<Notification>(url, Notification);
+     return this.http.post<Notification>(url, Notification);
+  }
+
+    SalvaNotification (Notification: Notification):Observable<Notification> {
+    const url = `${this.baseUrl}/notifications/notification/add?token=1`
+     return this.http.post<Notification>(url, Notification);
   }
 
   getTempoDecorrido(horacomentad?: any): Observable<string> {
@@ -165,5 +175,17 @@ export class VendaService {
         const url = `${this.baseUrl}/vendidos/vendidos/vendido/venda/${idvenda}?token=${token}`
     return this.http.get<Produto[]>(url)
     }
+
+     getFreteVendedor(id: any, token: string): Observable<Frete> {
+    const url = `${this.baseUrl}/fretes/frete/vendedor/${id}?token=${token}`
+    return this.http.get<Frete>(url)
+  
+  }
+
+  saveFreteVendedor(frete: Frete, token: string): Observable<Frete>{
+    
+    const url = `${this.baseUrl}/fretes/frete/add?token=${token}`
+    return this.http.post<Frete>(url, frete);
+  }
      
 }

@@ -92,12 +92,17 @@ export class ProdutoComponent implements OnInit {
                                  // this.successMessage = 'Produto Salvo com sucesso!';
                                   //this.vendaService.mensagem(this.successMessage); 
 
+                                    this.Notification = [];
+
                                     console.log('Notification: '+result);
-                                    this.Notification = result;
+                                    result.forEach( (notify: Notification) => {
+                                      if(notify.isRead == false){
+                                        this.Notification.push(notify);
+                                      }
+                                     });
 
 
-
-                                    if(result == null){
+                                    if(result == null  ||  this.Notification.length == 0){
                                         this.vendaService.mostranotify = false;
                                        this.mostranotify = this.vendaService.mostranotify;
                                     }else{
@@ -105,7 +110,7 @@ export class ProdutoComponent implements OnInit {
                                        this.mostranotify = this.vendaService.mostranotify;
                                     }
                                    
-                                      this.notfycunt = result.length.toString();
+                                      this.notfycunt = this.Notification.length.toString();
 
 
                                   
@@ -120,8 +125,26 @@ export class ProdutoComponent implements OnInit {
     });
   }
 
-  mostranotification(){
+   mostranotification(){
     if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
+
+
+       this.Notification.forEach( (notify: Notification) => {
+
+
+            notify.isRead = true;
+
+               this.vendaService.SalvaNotification(notify).subscribe((result: Notification)=> {
+                             console.log('Notifications Atualizadas com Sucesso');
+
+                }, () => {
+                                        console.log('Error ao Atualizar Notifications');
+                                             //   this.vendaService.mensagem(this.errorMessage);
+                                            
+                                         });
+       //  }
+
+     });
     
   }
 
