@@ -42,6 +42,8 @@ import { RevendedorLoginComponent } from './components/marketplaceweb/views/reve
 import { RevendedorCadastroComponent } from './components/marketplaceweb/views/revendedor-cadastro/revendedor-cadastro.component';
 import { RevendedorPerfilComponent } from './components/marketplaceweb/views/revendedor-perfil/revendedor-perfil.component';
 
+import { RevendedorTransacoesComponent } from './components/marketplaceweb/views/revendedor-transacoes/revendedor-transacoes.component';
+
 
 import { OrderPayInCadastroComponent } from './components/template/order-pay-in-cadastro/order-pay-in-cadastro.component';
 import { GetcardInCadastroComponent } from './components/template/getcard-in-cadastro/getcard-in-cadastro.component';
@@ -50,6 +52,8 @@ import { CreatAccesstokenInAuthSuccessComponent } from './components/template/cr
 import { TrackpagamentoComponent } from './components/marketplaceweb/views/trackpagamento/trackpagamento.component';
 
 import { CartNotloggedComponent } from './components/marketplaceweb/views/cart-notlogged/cart-notlogged.component';
+
+
 
 const routes: Routes = [
 { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -66,6 +70,7 @@ const routes: Routes = [
                     { path: 'revendedor/login', component: RevendedorLoginComponent, pathMatch: 'full'},
                     { path: 'revendedor/cadastro', component: RevendedorCadastroComponent, pathMatch: 'full'},
                     { path: 'revendedor/perfil', component: RevendedorPerfilComponent, pathMatch: 'full'},
+                    { path: 'revendedor/transacoes', component: RevendedorTransacoesComponent, pathMatch: 'full'},
                 
    
    {

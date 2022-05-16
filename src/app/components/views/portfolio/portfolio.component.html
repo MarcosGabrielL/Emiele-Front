@@ -77,7 +77,7 @@ display: none;
     font-weight: 500;
     font-size: 16px;
     color: #fff;
-    background-color: #e7093e;
+    background-color: #25D366;
     z-index: 99999;
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
@@ -135,7 +135,7 @@ svg:not(:root) {
     font-size: 14px;
     text-decoration: none;
 }</style>
-<div class="newSb" id="newSb" *ngIf="false">
+<div class="newSb" id="newSb" *ngIf="aberto">
   <div class="newSb__close">
     <button type="button" id="newSb_btn_close" data-target="#newSb" (click)="fecha()">
       <svg style="fill: #fff;" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke-width="50" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15">
@@ -143,14 +143,14 @@ svg:not(:root) {
       </svg>
     </button>
   </div>
-  <img class="newSb__logo" src="https://i.ibb.co/PzBWFCL/logo3-Copfffia.png" alt=" logo">
+  <img class="newSb__logo" src="https://es.logodownload.org/wp-content/uploads/2018/10/whatsapp-logo-11.png" alt=" logo">
   <div class="newSb__meta">
-    <header class="newSb__header">Nosso App</header>
+    <header class="newSb__header">SAIBA AGORA COMO COMEÇAR A USAR O SISTEMA EMIELE</header>
     <div class="newSb__rating"> <!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg></div>
-    <span class="newSb__subheader">Baixar gratis</span>
+    <span class="newSb__subheader">Chamar no zap</span>
   </div>
   <div class="newSb__applink">
-    <a class="newSb__applink__btn" href="">ABRIR</a>
+    <a class="newSb__applink__btn" href="https://bit.ly/3JVFxGS">CHAMAR</a>
   </div>
 </div>
 
@@ -203,7 +203,12 @@ color: #d9003c;
   height:60px;
   bottom:0px;
   left:40px;
-  background-color:#25D366;
+  background: #f09433; 
+background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+ 
   color:#FFF !important;
   border-radius:50px;
   text-align:center;
@@ -222,8 +227,8 @@ color:#FFF !important;
 </head>
 <body>
 
-  <a class='float' href='https://bit.ly/3JVFxGS'>
-<i class='fab fa-whatsapp my-float' style='padding-top: 15px;'></i>
+  <a class='float' href='https://www.instagram.com/emiele.store/'> <!-- SAIBA AGORA COMO COMEÇAR A USAR O SISTEMA -->
+<i class='fab fa-instagram my-float' style='padding-top: 15px;'></i>
 </a>
 
     <!-- SECTION: Splashscreen -->

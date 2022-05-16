@@ -189,7 +189,7 @@
   </aside>
   <div style=" margin-left: 0;" class="main-content position-relative bg-gray-100 max-height-vh-100 h-100">
     <!-- Navbar -->
-    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
+    <nav style="display: none" class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
       <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
@@ -497,17 +497,13 @@
           </div>
           <div class="col-auto my-auto">
             <div class="h-100">
-              <h5 class="mb-1">
-                {{vendedor?.nomefantasia || "Helena Dutra"}}
+              <h5 class="mb-1">Saldo:<h5 class="mb-1" style="color: #2152FF; ">R$ 689,53</h5>
               </h5>
               <h5 class="mb-0 text-sm" >
-                Codigo: <a class="mb-0 font-weight-bold text-sm" style="color: #2152FF; "> HDUTRA1 </a>
+                Codigo:  HDUTRA1
                 </h5> 
               <h5 class="mb-0 text-sm" >
-                Saldo: 
-                <a class="mb-0 font-weight-bold text-sm" style="color: #2152FF; ">
-                R$ 689,53
-              </a>
+                 {{vendedor?.nomefantasia || "Helena Dutra"}}
               </h5>
               
             </div>
@@ -552,7 +548,7 @@
                     <span class="ms-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Link de divulgação&nbsp;&nbsp;&nbsp;&nbsp;</span>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" >
                   <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <title>document</title>
@@ -568,10 +564,10 @@
                         </g>
                       </g>
                     </svg>
-                    <span class="ms-1">Informações do Sistema</span>
+                    <span class="ms-1">Retirar dinheiro</span>
                   </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" style="display: none">
                   <a class="nav-link mb-0 px-0 py-1 " data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
                     <svg class="text-dark" width="16px" height="16px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                       <title>settings</title>
@@ -600,6 +596,46 @@
     </div>
     <div class="container-fluid py-4">
       <div class="row">
+        
+         <div class="col-12 col-xl-4" >
+          <div class="card h-100">
+            <div class="card-header pb-0 p-3">
+              <div class="row">
+                <div class="col-md-8 d-flex align-items-center">
+                  <h6 class="mb-0">Informação Usuario</h6>
+                </div>
+                <div class="col-md-4 text-end">
+                 <a (click)="open(content)" style="cursor: pointer;">
+                    <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" ></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-3">
+              
+              <ul class="list-group">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
+
+                	<strong class="text-dark">Nome Completo:</strong> &nbsp; {{vendedor.nomefantasia}}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telefone:</strong> &nbsp;  {{vendedor.telefone}}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;  {{vendedor.email}}</li>
+                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Endereço:</strong> &nbsp;  {{vendedor.rua}}</li>
+                <li class="list-group-item border-0 ps-0 pb-0">
+                  <strong class="text-dark text-sm">Social:</strong> &nbsp;
+                  <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-facebook fa-lg"></i>
+                  </a>
+                  <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-twitter fa-lg"></i>
+                  </a>
+                  <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
+                    <i class="fab fa-instagram fa-lg"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div class="col-12 col-xl-4">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
@@ -654,61 +690,12 @@ Novos Produtos
             </div>
           </div>
         </div>
-         <div class="col-12 col-xl-4" >
-          <div class="card h-100">
-            <div class="card-header pb-0 p-3">
-              <div class="row">
-                <div class="col-md-8 d-flex align-items-center">
-                  <h6 class="mb-0">Informação da Loja</h6>
-                </div>
-                <div class="col-md-4 text-end">
-                 <a (click)="open(content)" style="cursor: pointer;">
-                    <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" ></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-3">
-              <div class="col-auto">
-            <div class="avatar avatar-xl position-relative">
-              <img [src]='image' alt="profile_image" class="w-100 border-radius-lg shadow-sm">
-            </div>
-          </div>
-              <p class="text-sm"> 
-                
-Loja de {{usuario.firstName}} {{usuario.lastName}}! <br><br>
-{{vendedor.descricao}}
-              </p>
-              <hr class="horizontal gray-light my-4">
-              <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm">
-
-                	<strong class="text-dark">Nome Completo:</strong> &nbsp; {{vendedor.nomefantasia}}</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telefone:</strong> &nbsp;  {{vendedor.telefone}}</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp;  {{vendedor.email}}</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Endereço:</strong> &nbsp;  {{vendedor.rua}}</li>
-                <li class="list-group-item border-0 ps-0 pb-0">
-                  <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                  <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                    <i class="fab fa-facebook fa-lg"></i>
-                  </a>
-                  <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                    <i class="fab fa-twitter fa-lg"></i>
-                  </a>
-                  <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                    <i class="fab fa-instagram fa-lg"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
         <div class="col-12 col-xl-4" style="display: none;">
           <div class="card h-100">
             <div class="card-header pb-0 p-3">
               <div class="row">
                 <div class="col-md-8 d-flex align-items-center">
-                  <h6 class="mb-0">Informação do Perfil</h6>
+                  <h6 class="mb-0">Informação Usuario</h6>
                 </div>
                 <div class="col-md-4 text-end">
                   <a (click)="open(content)">

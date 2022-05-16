@@ -265,6 +265,7 @@ criaVenda(){
                        sessionStorage.setItem('Produtos', JSON.stringify([]));
                        sessionStorage.setItem('Vendedor', JSON.stringify({}));
                        sessionStorage.setItem('Pedidos', JSON.stringify(this.request));
+                       sessionStorage.setItem('vendedorurl', this.produtos[0].vendedor_id.toString());
 
                         //Retorna Mensagem de Pago OU Negado
                        //Redireciona para Lista de Pedidos com Status (Pedido, PAgo, Entregue, Cancelado... etc)

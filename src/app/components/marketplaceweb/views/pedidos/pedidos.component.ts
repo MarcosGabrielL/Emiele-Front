@@ -8,7 +8,10 @@ import { Vendido, Tem, Notification } from './../../../../../app/components/temp
 import { User,Vendedor } from './../../../../../app/components/security/user.model';
 import { VendaService } from './../../../../../app/components/template/produto/venda.service';
 
-import {LoginService} from './../../../../../app/components/security/login.service'
+import {LoginService} from './../../../../../app/components/security/login.service';
+
+
+    import {Location} from '@angular/common'; 
 
 @Component({
   selector: 'app-pedidos',
@@ -18,8 +21,10 @@ import {LoginService} from './../../../../../app/components/security/login.servi
 export class PedidosComponent implements OnInit {
 
   constructor(private vendaService: VendaService,
-              private route: ActivatedRoute,
-              private authenticationService: LoginService) { }
+  private route: ActivatedRoute,
+    private router: Router,
+              private authenticationService: LoginService,
+               private location: Location ) { }
 
   aberto: boolean = true;
   vendas: Venda[];
@@ -66,7 +71,7 @@ vendedor: Vendedor = {
                                  // this.successMessage = 'Produto Salvo com sucesso!';
                                   //this.vendaService.mensagem(this.successMessage); 
 
-                                   
+                                    
                                     
                                      this.vendas = result;
                                      
@@ -75,7 +80,7 @@ vendedor: Vendedor = {
                                     console.log("Produtos:" +JSON.stringify(this.produtos));
                                     
 
-                                   // this.preenchevendashoje();
+                                  this.atualizaURL();
 
                                   
 
@@ -83,6 +88,8 @@ vendedor: Vendedor = {
                                       this.vendaService.mensagem('Error ao Buscar Pedidos');
                                   
                                });  
+
+
   }
 
    getVendidos(id: any){
@@ -206,6 +213,17 @@ vendedor: Vendedor = {
                                  
                               console.log('Error ao Buscar Dados Vendedor');
                                });
+
+}
+
+atualizaURL(){
+
+  let vendedorfr = sessionStorage.getItem('vendedorurl');
+
+  //Busca URL 
+
+      //atualiza url
+       // this.location.replaceState("/some/newstate/");
 
 }
 

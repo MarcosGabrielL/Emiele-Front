@@ -88,6 +88,7 @@ import { CreatAccesstokenInAuthSuccessComponent } from './components/template/cr
 import { TrackpagamentoComponent } from './components/marketplaceweb/views/trackpagamento/trackpagamento.component';
 import { CartNotloggedComponent } from './components/marketplaceweb/views/cart-notlogged/cart-notlogged.component';
 import { LoginClientComponent } from './components/security/login-client/login-client.component';
+import { RevendedorTransacoesComponent } from './components/marketplaceweb/views/revendedor-transacoes/revendedor-transacoes.component';
 
 @NgModule({
   declarations: [
@@ -143,7 +144,8 @@ import { LoginClientComponent } from './components/security/login-client/login-c
     CreatAccesstokenInAuthSuccessComponent,
     TrackpagamentoComponent,
     CartNotloggedComponent,
-    LoginClientComponent
+    LoginClientComponent,
+    RevendedorTransacoesComponent
   ],
   imports: [
     BrowserModule,

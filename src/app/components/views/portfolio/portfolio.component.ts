@@ -37,6 +37,7 @@ export class PortfolioComponent implements AfterContentInit {
     });
 
     this.carregando=false;
+    this.aberto = true;
   }
 
 }
