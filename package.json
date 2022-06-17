@@ -1,6 +1,6 @@
 {
   "name": "emiele",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "engine": {
     "node": "16.13.0",
     "npm": "8.1.0"
