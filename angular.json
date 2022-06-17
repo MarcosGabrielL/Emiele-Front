@@ -106,5 +106,8 @@
       }
     }
   },
-  "defaultProject": "gibgas"
+  "defaultProject": "gibgas",
+  "cli": {
+    "analytics": "5e180100-5ddc-4cd3-bb5b-b8b761c6203c"
+  }
 }
