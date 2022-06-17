@@ -79,7 +79,7 @@ export class SigninComponent implements OnInit {
     "email":this.email,
     "password":this.password
   };
-   // console.log(this.authRequest);
+   //// console.log(this.authRequest);
     this.authenticationService.authenticationService(this.authRequest).subscribe((result)=> {
       this.invalidLogin = false;
       this.loginSuccess = true;
@@ -87,7 +87,7 @@ export class SigninComponent implements OnInit {
       this.successMessage = 'Login Successful.';
       this.authenticationService.mensagem(this.successMessage);
       localStorage.setItem('this.TOKEN_SESSION_ATTRIBUTE', result+'');
-      console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
+     // console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
 
       this.authenticationService.getByEmail(this.email).subscribe((result1: User)=> {
         this.authenticationService.createBasicAuthToken(this.email, this.password);
@@ -129,7 +129,7 @@ export class SigninComponent implements OnInit {
     "email":this.emailreg,
     "password":this.passwordreg
     };
-       // console.log(this.authRequestRegister);
+       //// console.log(this.authRequestRegister);
     this.registerService.registration(this.authRequestRegister).subscribe((result)=> {
         this.successMessage = 'Cadastro com sucesso';
         this.authenticationService.mensagem(this.successMessage); 
@@ -141,8 +141,8 @@ export class SigninComponent implements OnInit {
                 this.successMessage = 'Login com sucesso';
                 this.authenticationService.mensagem(this.successMessage);
                 localStorage.setItem('this.TOKEN_SESSION_ATTRIBUTE', result+'');
-                console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
-                console.log(result);
+               // console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
+               // console.log(result);
                 this.sendEmail();
                 this.router.navigate(['/index']);
               }, () => {

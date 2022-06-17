@@ -72,14 +72,14 @@ export class SignupComponent implements OnInit {
     "password":this.passwordreg
     };
 
-    console.log(this.authRequestreg);
-       // console.log(this.authRequestRegister);
+   // console.log(this.authRequestreg);
+       //// console.log(this.authRequestRegister);
     this.registerService.registration(this.authRequestRegister).subscribe((result)=> {
         this.successMessage = 'Cadastro com sucesso';
         this.authenticationService.mensagem(this.successMessage); 
             this.authenticationService.authenticationService(this.authRequestreg).subscribe((result)=> {
               localStorage.setItem('this.TOKEN_SESSION_ATTRIBUTE', result+'');
-      console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
+     // console.log('Token:'+localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE'));
                 this.invalidLogin = false;
                 this.loginSuccess = true;
                 this.authenticationService.createBasicAuthToken(this.emailreg, this.passwordreg);
@@ -101,7 +101,7 @@ export class SignupComponent implements OnInit {
     }, () => {
   this.errorMessage = 'Erro no cadastro';
         this.authenticationService.mensagem(this.errorMessage);
-       console.log("Erro no cadastro");
+      // console.log("Erro no cadastro");
         
      }); 
 
@@ -114,11 +114,11 @@ export class SignupComponent implements OnInit {
 
       this.verifyemailservice.sendemail(this.authRequestreg).subscribe((resposta) => {
                 //this.authenticationService.mensagem('Email de verificação enviado');
-                console.log(resposta)
+               // console.log(resposta)
             
             },  () => {
                 //this.authenticationService.mensagem('Erro ao enviar Email de verificação');
-                console.log("Erro envio email")
+               // console.log("Erro envio email")
               });
 
     }
