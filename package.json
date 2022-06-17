@@ -1,9 +1,9 @@
 {
   "name": "emiele",
   "version": "1.0.0",
-  "engine": {
+  "engines": {
     "node": "16.13.0",
-    "npm": "8.11.0"
+    "npm": "8.1.0"
   },
   "scripts": {
     "preinstall": "npm install -g @angular/cli @angular/compiler-cli typescript",
