@@ -1,481 +1,382 @@
-<style type="text/css">.keouNN .newSb {
-    position: static;
-}
-.apaga{
-display: none;
-}
-.newSb {
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    box-orient: horizontal;
-    -webkit-box-direction: normal;
-    box-direction: normal;
-    -moz-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-direction: row;
-    -webkit-box-align: center;
-    box-align: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    -o-align-items: center;
-    align-items: center;
-    -ms-flex-align: center;
-    width: 100%;
-    height: 70px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-style: normal;
-    font-family: museo-sans,sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #333;
-    background-color: #fff;
-    z-index: 1;
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: transparent;
-}
-.newSb {
-    display: -webkit-box;
-    display: -moz-box;
-    display: box;
-    display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -moz-box-orient: horizontal;
-    box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -moz-box-direction: normal;
-    box-direction: normal;
-    -webkit-flex-direction: row;
-    -moz-flex-direction: row;
-    flex-direction: row;
-    -ms-flex-direction: row;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    box-align: center;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    -o-align-items: center;
-    align-items: center;
-    -ms-flex-align: center;
-    width: 100%;
-    height: 70px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-style: normal;
-    font-family: "museo-sans",sans-serif;
-    font-weight: 500;
-    font-size: 16px;
-    color: #fff;
-    background-color: #25D366;
-    z-index: 99999;
-    -webkit-font-smoothing: antialiased;
-    -webkit-tap-highlight-color: transparent;
-    position: inherit;
-}
-.newSb * {
-    box-sizing: border-box;
-    line-height: 1;
-    color: #fff;
-    stroke: transparent;
-}
-.newSb__close button {
-    display: block;
-    line-height: 15px;
-    height: 45px;
-    width: 45px;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    background: none;
-    padding: 15px;
-    color: #fff;
-}
-.newSb__logo {
-        width: 46px;
-    height: 46px;
-    margin-right: 11px;
-    margin-left: 11px;
-    margin-top: -2px;
-    border-radius: 0;
-}
-.newSb__header {
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 18px;
-}
-svg:not(:root) {
-    overflow: hidden;
-}
-.newSb__subheader {
-    font-size: 12px;
-    font-weight: 300;
-    line-height: 16px;
-}
-.newSb__applink {
-    position: absolute;
-    right: 15px;
-    top: 27px;
-}
-.newSb__applink__btn {
-    border: 1px solid;
-    border-radius: 4px;
-    padding: 5px 8px;
-    text-transform: uppercase;
-    font-size: 14px;
-    text-decoration: none;
-}</style>
-<div class="newSb" id="newSb" *ngIf="aberto">
-  <div class="newSb__close">
-    <button type="button" id="newSb_btn_close" data-target="#newSb" (click)="fecha()">
-      <svg style="fill: #fff;" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke-width="50" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15">
-        <path d="M7.5 7.03L0.47 0L0 0.48L7 7.5L0 14.53L0.47 15L7.5 7.98L14.5 15L15 14.53L7.98 7.5L15 0.48L14.5 0L7.5 7.03Z"></path>
-      </svg>
-    </button>
-  </div>
-  <img class="newSb__logo" src="https://es.logodownload.org/wp-content/uploads/2018/10/whatsapp-logo-11.png" alt=" logo">
-  <div class="newSb__meta">
-    <header class="newSb__header">COMEÇE A USAR O SISTEMA EMIELE</header>
-    <div class="newSb__rating"> <!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg><!-- SVG: Single star --><svg style="fill: yellow;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15 15" width="15" height="15"><path d="M0.4 5.13C0.23 5.15 0.08 5.27 0.02 5.44C-0.04 5.61 0.02 5.79 0.15 5.91C1.55 7.19 3.67 9.11 3.67 9.11C3.66 9.11 3.09 11.91 2.7 13.78C2.67 13.94 2.73 14.12 2.88 14.23C3.02 14.34 3.21 14.34 3.36 14.25C5.02 13.31 7.5 11.9 7.5 11.9C7.5 11.9 9.98 13.31 11.63 14.26C11.78 14.34 11.97 14.34 12.12 14.23C12.27 14.12 12.33 13.94 12.29 13.78C11.91 11.91 11.33 9.11 11.33 9.11C11.33 9.11 13.44 7.19 14.85 5.91C14.98 5.79 15.03 5.61 14.98 5.44C14.92 5.27 14.77 5.15 14.6 5.13C12.71 4.92 9.87 4.61 9.87 4.61C9.87 4.61 8.69 2 7.91 0.27C7.83 0.11 7.68 0 7.5 0C7.32 0 7.16 0.11 7.09 0.27C6.31 2 5.13 4.61 5.13 4.61C4.18 4.71 2.29 4.92 0.4 5.13Z"></path></svg></div>
-    <span class="newSb__subheader">Chamar no zap</span>
-  </div>
-  <div class="newSb__applink">
-    <a class="newSb__applink__btn" href="https://bit.ly/3JVFxGS">CHAMAR</a>
-  </div>
-</div>
-
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Personal</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-
- <style type="text/css">
-/*! normalize.css v3.0.2 | MIT License | git.io/normalize */@import 'https://fonts.googleapis.com/css?family=Allura|Merriweather+Sans:400,700,800';html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,hgroup,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block;vertical-align:baseline}audio:not([controls]){display:none;height:0}[hidden],template{display:none}a{background-color:transparent}a:active,a:hover{outline:0}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}h1{font-size:2em;margin:0.67em 0}mark{background:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:1em 40px}hr{box-sizing:content-box;height:0}pre{overflow:auto}code,kbd,pre,samp{font-family:monospace, monospace;font-size:1em}button,input,optgroup,select,textarea{color:inherit;font:inherit;margin:0}button{overflow:visible}button,select{text-transform:none}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],html input[disabled]{cursor:default}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}input{line-height:normal}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="number"]::-webkit-inner-spin-button,input[type="number"]::-webkit-outer-spin-button{height:auto}input[type="search"]{-webkit-appearance:textfield;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}legend{border:0;padding:0}textarea{overflow:auto}optgroup{font-weight:bold}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}body{background-color:#fff;font-size:14px;line-height:1.6;font-family:"Merriweather Sans",sans-serif;color:#9e9e9e;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;overflow-x:hidden}.gigantic,.huge,.large,.bigger,.big,h1,h2,h3,h4,h5,h6{color:#222;font-weight:bold}.gigantic{font-size:110px;line-height:1.09;letter-spacing:-2px}.huge,h1{font-size:68px;line-height:1.05;letter-spacing:-1px}.large,h2{font-size:42px;line-height:1.14}.bigger,h3{font-size:26px;line-height:1.38}.big,h4{font-size:22px;line-height:1.38}.small,small{font-size:10px;line-height:1.2}p{margin:0 0 20px 0}em{font-style:italic}strong{font-weight:bold}hr{border:solid #ddd;border-width:1px 0 0;clear:both;margin:10px 0 30px;height:0}::-moz-selection{background:#FFF498}::selection{background:#FFF498}img::-moz-selection{background:transparent}img::selection{background:transparent}body{-webkit-tap-highlight-color:#FFF498}.no-margin{margin:0}.no-padding{padding:0}a{display:inline-block;color:#d9003c;text-decoration:none}ul,ol{margin:0;padding:0;list-style:none}input,textarea{outline:none}.bold{font-weight:700}.italic{font-style:italic}.wrapper,.wrapper--small,.wrapper--large{position:relative;max-width:90%;height:100%;margin:0 auto}.wrapper--small{width:980px}.wrapper--large{width:1170px}.splashscreen{position:fixed;top:0;left:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:100%;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;background-color:#fff;z-index:100;-webkit-transition:opacity .4s .4s;transition:opacity .4s .4s}.splashscreen--is-hidden{opacity:0}.splashscreen--is-hidden .preloader{opacity:0}.preloader{position:relative;width:200px;height:150px;-webkit-transition:opacity .4s;transition:opacity .4s}.preloader::before{content:"";position:absolute;top:0;left:0;right:45px;bottom:0;border:10px solid #d9003c;-webkit-animation:fadeInOut 1.6s linear infinite;animation:fadeInOut 1.6s linear infinite}.preloader__text{position:absolute;top:50%;right:-10px;-webkit-transform:translateY(-50%);transform:translateY(-50%);padding:10px 0;color:#585858;font-size:32px;font-weight:800;background-color:#fff;}.logo{color:#585858;font-size:34px;font-weight:800;text-transform:uppercase}.transform-link{font-weight:700}.transform-link::after{content:"";display:block;width:100%;height:1px;background-color:#d9003c;-webkit-transition:-webkit-transform .2s ease-out;transition:-webkit-transform .2s ease-out;transition:transform .2s ease-out;transition:transform .2s ease-out, -webkit-transform .2s ease-out}.transform-link:hover::after{-webkit-transform:translateY(3px) scaleY(3);transform:translateY(3px) scaleY(3)}.button,button,input[type="submit"],input[type="reset"],input[type="button"]{display:inline-block;padding:5px 25px;color:#d9003c;font-weight:700;text-decoration:none;background-color:transparent;border-radius:25px;border:2px solid #d9003c;cursor:pointer;-webkit-transition:.2s all ease-in-out;transition:.2s all ease-in-out}.button:hover,.button:active,.button:focus,button:hover,button:active,button:focus,input[type="submit"]:hover,input[type="submit"]:active,input[type="submit"]:focus,input[type="reset"]:hover,input[type="reset"]:active,input[type="reset"]:focus,input[type="button"]:hover,input[type="button"]:active,input[type="button"]:focus{color:#6882f6;border-color:#6882f6}.blurb--framed{padding:15px 0;background-color:#fafafa}.blurb__heading{margin:0 0 15px 0;color:#585858;font-size:58px;font-weight:800}.blurb__copy{font-weight:700}.blurb__copy--tight{max-width:300px}.title{margin:0 0 45px 0;color:#585858;font-size:58px;font-weight:800;text-align:center}@-webkit-keyframes fadeInOut{0%{opacity:1}50%{opacity:.5}100%{opacity:1}}@keyframes fadeInOut{0%{opacity:1}50%{opacity:.5}100%{opacity:1}}@-webkit-keyframes scrollDown{0%{-webkit-transform:translate(-12px, 0px);transform:translate(-12px, 0px);opacity:0}75%{-webkit-transform:translate(-12px, 45px);transform:translate(-12px, 45px);opacity:1}100%{-webkit-transform:translate(-12px, 45px);transform:translate(-12px, 45px);opacity:0}}@keyframes scrollDown{0%{-webkit-transform:translate(-12px, 0px);transform:translate(-12px, 0px);opacity:0}75%{-webkit-transform:translate(-12px, 45px);transform:translate(-12px, 45px);opacity:1}100%{-webkit-transform:translate(-12px, 45px);transform:translate(-12px, 45px);opacity:0}}@-webkit-keyframes scaleUp{0%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}@keyframes scaleUp{0%{-webkit-transform:scale(.95);transform:scale(.95)}100%{-webkit-transform:scale(1);transform:scale(1)}}.navigation{position:absolute;width:100%;height:100px;z-index:10}.navigation__wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between}.navigation__container{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);width:45%}.navigation__list{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between}.navigation__list>li a{color:#9e9e9e;text-transform:uppercase;-webkit-transition:color .2s ease-in-out;transition:color .2s ease-in-out}.navigation__list>li a:hover{color:#787878}.navigation__burger{display:none}@media (max-width: 991px){.navigation__cta{display:none}.navigation__container{position:fixed;top:0;left:0;-webkit-transform:translate(0, 0);transform:translate(0, 0);display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:100%;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;background-color:#fff;opacity:0;visibility:hidden;-webkit-transition:visibility 0s .4s,opacity .4s;transition:visibility 0s .4s,opacity .4s}.navigation__container--is-open{opacity:1;visibility:visible;-webkit-transition:visibility 0s,opacity .4s;transition:visibility 0s,opacity .4s}.navigation__container--is-open .navigation__list>li:nth-child(1) a{-webkit-transition:color .2s ease-in-out,-webkit-transform .2s .4s;transition:color .2s ease-in-out,-webkit-transform .2s .4s;transition:transform .2s .4s,color .2s ease-in-out;transition:transform .2s .4s,color .2s ease-in-out,-webkit-transform .2s .4s}.navigation__container--is-open .navigation__list>li:nth-child(2) a{-webkit-transition:color .2s ease-in-out,-webkit-transform .2s .6s;transition:color .2s ease-in-out,-webkit-transform .2s .6s;transition:transform .2s .6s,color .2s ease-in-out;transition:transform .2s .6s,color .2s ease-in-out,-webkit-transform .2s .6s}.navigation__container--is-open .navigation__list>li:nth-child(3) a{-webkit-transition:color .2s ease-in-out,-webkit-transform .2s .8s;transition:color .2s ease-in-out,-webkit-transform .2s .8s;transition:transform .2s .8s,color .2s ease-in-out;transition:transform .2s .8s,color .2s ease-in-out,-webkit-transform .2s .8s}.navigation__container--is-open .navigation__list>li:nth-child(4) a{-webkit-transition:color .2s ease-in-out,-webkit-transform .2s 1s;transition:color .2s ease-in-out,-webkit-transform .2s 1s;transition:transform .2s 1s,color .2s ease-in-out;transition:transform .2s 1s,color .2s ease-in-out,-webkit-transform .2s 1s}.navigation__container--is-open .navigation__list>li a{-webkit-transform:translateY(0);transform:translateY(0)}.navigation__container--is-open .navigation__list>li a:hover{color:#c4c4c4}.navigation__list{height:250px;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}.navigation__list>li{overflow:hidden}.navigation__list>li a{-webkit-transform:translateY(100%);transform:translateY(100%);color:#585858;font-weight:700;-webkit-transition:-webkit-transform 0s .4s;transition:-webkit-transform 0s .4s;transition:transform 0s .4s;transition:transform 0s .4s, -webkit-transform 0s .4s}.navigation__burger{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:35px;height:27px;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;cursor:pointer}.navigation__burger--is-open .navigation__burger-el{-webkit-transition:opacity .2s,-webkit-transform .4s;transition:opacity .2s,-webkit-transform .4s;transition:transform .4s,opacity .2s;transition:transform .4s,opacity .2s,-webkit-transform .4s}.navigation__burger--is-open .navigation__burger-el--top{-webkit-transform:rotate(45deg);transform:rotate(45deg)}.navigation__burger--is-open .navigation__burger-el--bottom{-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}.navigation__burger--is-open .navigation__burger-el--middle{opacity:0}.navigation__burger-el{display:block;width:100%;height:3px;background-color:#585858;-webkit-transition:opacity .2s .2s,-webkit-transform .4s;transition:opacity .2s .2s,-webkit-transform .4s;transition:transform .4s,opacity .2s .2s;transition:transform .4s,opacity .2s .2s,-webkit-transform .4s}.navigation__burger-el--top{-webkit-transform-origin:left top;transform-origin:left top}.navigation__burger-el--bottom{-webkit-transform-origin:left bottom;transform-origin:left bottom}}.scroll-lock{position:fixed;width:100%;height:100%;overflow:hidden}.introduction{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:100vh;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center}.introduction::before{content:"EM";position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%);font-size:40vw;font-weight:800;opacity:.05}.introduction__content{color:#9e9e9e;font-size:16px;font-weight:800}.introduction__content-el{display:block}.introduction__content-el--name{-webkit-transform:translateX(-30px);transform:translateX(-30px);opacity:0}.introduction__content-el--description{-webkit-transform:matrix(1.0110731102, 0, 0, 1.0110731102, 0, 0);transform:matrix(1.0110731102, 0, 0, 1.0110731102, 0, 0);margin:10px 0;color:#fff;font-size:16vw;text-align:center;text-transform:uppercase;text-shadow:10px 18px 35px rgba(88,88,88,0.23)}.introduction__content-el--job{-webkit-transform:translateX(30px);transform:translateX(30px);text-align:right;opacity:0}.introduction__arrow{position:absolute;bottom:10%;left:50%;-webkit-transform:translate(-12px, 0px);transform:translate(-12px, 0px);width:24px;fill:#d9003c;-webkit-animation:scrollDown 1.6s infinite;animation:scrollDown 1.6s infinite}@media (min-width: 1440px){.introduction::before{font-size:576px}.introduction__content-el--description{font-size:230px}}@media (max-height: 540px){.introduction__arrow{-webkit-animation:none;animation:none}}.about{position:relative;width:100%;height:625px;background-color:#fafafa}.about__wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end}.about__wrapper::before{content:"";position:absolute;top:45px;left:0;right:120px;bottom:45px;border:10px solid #d9003c}.about__visual{position:absolute;left:45px;bottom:0;z-index:2}.about__content{position:relative;z-index:1}.about__content-signature{position:absolute;bottom:-175px;left:0;font-size:30px;font-family:"Allura",cursive}@media (max-width: 991px){.about{padding:60px 0}.about__wrapper{-webkit-box-align:start;-webkit-align-items:flex-start;-ms-flex-align:start;-ms-grid-row-align:flex-start;align-items:flex-start;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center}.about__wrapper::before{right:0;bottom:0}.about__visual{bottom:-68px;left:50%;-webkit-transform:translateX(-50%);transform:translateX(-50%)}.about__content{text-align:center}.about__content-blurb{padding:0 15px}.about__content-blurb h2{font-size:48px}.about__content-blurb p{margin-bottom:10px}.about__content-signature{position:static;font-size:24px}}@media (max-width: 767px){.about{height:540px}.about__visual{width:335px}.about__content-blurb h2{font-size:32px}}@media (max-width: 480px){.about{height:480px}.about__wrapper::before{display:none}.about__visual{width:290px;max-width:100%}}.app-design{position:relative;width:100%;padding:180px 0;overflow:hidden}.app-design__visual{position:absolute;top:35px;left:45%;width:1036px;height:659px;margin:0;background-image:url("../img/app-design-visual.png");background-position:center;background-size:100%;background-repeat:no-repeat}@media (max-width: 991px){.app-design__content h2{font-size:48px}.app-design__visual{width:922px;height:586px}}@media (max-width: 767px){.app-design{height:400px;padding:60px 0}.app-design__content{text-align:center}.app-design__content h2{font-size:32px}.app-design__content h2 br{display:none}.app-design__content p{margin:0 auto 20px auto}.app-design__visual{top:auto;left:50%;bottom:-175px;-webkit-transform:translateX(-50%);transform:translateX(-50%);width:679px;height:439px}}@media (max-width: 480px){.app-design__visual{bottom:68px;width:576px;height:366px}}.web-design{position:relative;width:100%;padding:200px 0;background-color:#fafafa;overflow:hidden}.web-design__wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end}.web-design__visual{position:absolute;top:50%;right:52%;-webkit-transform:translateY(-45%);transform:translateY(-45%);width:828px;height:581px;margin:0;background-image:url("../img/web-design-visual.png");background-position:center;background-size:100%;background-repeat:no-repeat}@media (max-width: 991px){.web-design__content h2{font-size:48px}.web-design__visual{right:45%;width:741px;height:520px}}@media (max-width: 767px){.web-design{height:525px;padding:60px 0}.web-design__wrapper{-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center}.web-design__content{text-align:center}.web-design__content h2{font-size:32px}.web-design__content h2 br{display:none}.web-design__visual{top:auto;right:auto;left:50%;bottom:0;-webkit-transform:translateX(-50%);transform:translateX(-50%);width:523px;height:376px}}@media (max-width: 480px){.web-design{height:425px}.web-design__visual{width:392px;height:275px}}.work{position:relative;width:100%;padding:120px 0 60px 0;background-color:#fafafa}.work__list{position:relative;padding:60px 0}.work__list::before{content:"";position:absolute;top:0;left:175px;right:125px;bottom:0;border:10px solid #d9003c}.work__list-el{display:none}.work__list-el--is-active{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between}.work__list-el--is-active .work__content-blurb h3,.work__list-el--is-active .work__content-blurb p{-webkit-animation:scaleUp .6s;animation:scaleUp .6s}.work__list-el--is-active .work__visual{-webkit-animation:scaleUp .6s;animation:scaleUp .6s}.work__content{position:relative;width:42.5%;z-index:1}.work__content-blurb h3{font-size:54px}.work__content-blurb p{max-width:350px}.work__visual{position:relative;width:52.5%;box-shadow:5px 8px 30px 1px rgba(0,0,0,0.21);z-index:2}.work__visual img{display:block;width:100%}.work__navigation{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100px;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin:45px auto 0 auto}.work__navigation-el{display:block;width:12px;height:12px;background-color:#e0e0e0;border-radius:50%;cursor:pointer}.work__navigation-el--is-active{background-color:transparent;box-shadow:0 0 0 2px #585858}@media (max-width: 991px){.work{padding:90px 0 60px 0}.work__heading{font-size:48px}.work__list{padding:0}.work__list::before{top:45px;left:0;right:0;bottom:45px}.work__list-el--is-active{-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.work__content{width:auto;max-width:100%;margin-bottom:45px;text-align:center}.work__content-blurb{padding:0 15px}.work__content-blurb h3{font-size:42px}.work__content-blurb p{max-width:300px}.work__visual{width:600px;max-width:75%}}@media (max-width: 767px){.work__heading{font-size:32px}.work__content-blurb h3{font-size:30px}}@media (max-width: 480px){.work__list::before{display:none}.work__visual{max-width:100%}}.blog{position:relative;padding:60px 0}.blog__wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between}.blog__post{width:33.33%;margin-right:30px}.blog__post:last-child{margin-right:0}.blog__post-thumbnail{width:100%;box-shadow:5px 8px 30px 1px rgba(0,0,0,0.21)}.blog__post-thumbnail img{display:block;width:100%}.blog__post-excerpt h3{color:#585858;font-size:24px}.blog__view-more{margin-top:90px;text-align:center}.blog__view-more--el{padding:8px 30px}@media (max-width: 991px){.blog__heading{font-size:48px}.blog__wrapper{-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;-ms-grid-row-align:center;align-items:center}.blog__post{width:450px;max-width:100%;margin:0 0 45px 0}.blog__post:last-child{margin-bottom:0}.blog__post-excerpt{text-align:center}.blog__post-excerpt h3{margin-bottom:10px}}@media (max-width: 767px){.blog__heading{font-size:32px}}.contact{position:relative;padding:60px 0;background-color:#fafafa}.contact__wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;padding:60px 0}.contact__wrapper::before{content:"";position:absolute;top:0;left:75px;right:75px;bottom:0;border:10px solid #d9003c}.contact__visual{position:relative;width:47.5%;box-shadow:5px 8px 30px 1px rgba(0,0,0,0.21);z-index:2}.contact__visual img{display:block;width:100%}.contact__form{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:47.5%;-webkit-flex-wrap:wrap;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;padding:15px 0;background-color:#fafafa;z-index:1}.contact__form-el{padding:0 0 0 15px;font-size:16px;font-weight:700;background-color:transparent;border:1px solid #9e9e9e;border-radius:3px}.contact__form-el--name,.contact__form-el--email{width:45%;height:50px}.contact__form-el--message{width:100%;height:150px;margin:20px 0 30px 0;padding-top:15px;resize:none}.contact__form input[type="submit"]{margin-left:auto;padding:10px 50px}@media (max-width: 991px){.contact__heading{font-size:48px}.contact__wrapper{-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:0}.contact__wrapper::before{top:45px;left:0;right:0;bottom:45px}.contact__visual{width:600px;max-width:75%;-webkit-box-ordinal-group:3;-webkit-order:2;-ms-flex-order:2;order:2}.contact__form{width:600px;max-width:75%;margin-bottom:45px;padding:0 15px}}@media (max-width: 767px){.contact__heading{font-size:32px}.contact__form-el--name,.contact__form-el--email{width:100%}.contact__form-el--name{margin-bottom:10px}.contact__form-el--message{margin:10px 0 20px 0}}@media (max-width: 480px){.contact__wrapper::before{display:none}.contact__visual{max-width:100%}.contact__form{max-width:100%;padding:0}.contact__form-el--name,.contact__form-el--email{height:40px}.contact__form-el--message{height:90px}}.footer{position:relative;width:100%;height:100px}.footer__wrapper{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between}.footer__logo{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}.footer__arrow{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:50px;height:50px;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center}.footer__arrow-el{width:24px;fill:#d9003c}@media (max-width: 767px){.footer{height:150px;padding:30px 0}.footer__wrapper{-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.footer__copyright{-webkit-box-ordinal-group:4;-webkit-order:3;-ms-flex-order:3;order:3}.footer__logo{position:static;-webkit-transform:translate(0, 0);transform:translate(0, 0);-webkit-box-ordinal-group:3;-webkit-order:2;-ms-flex-order:2;order:2}}
-.des {
-  display: none;
-}
-
-@media only screen and (max-width: 600px) {
-   /* .introduction{
-background-image: url(https://i.ibb.co/pv3XWD0/6501031.png);
-    background-size: cover;
-}
-.introduction__content-el--description {
-    font-size: 21vw;
-color: #d9003c;
-}*/
-
-.introduction__content-el--description {
-    font-size: 21vw;
-color: #d9003c;
-}
-
-.introduction__arrow {
-    width: 53px;
-}
-
-.introduction__content-el--job, .introduction__content-el--name{
-    opacity: 1;
-    transform: none;
-    text-align: center;
-}
-
-}
-
-
-.float{
-  position:fixed;
-  width:60px;
-  height:60px;
-  bottom:0px;
-  left:40px;
-  background: #f09433; 
-background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
- 
-  color:#FFF !important;
-  border-radius:50px;
-  text-align:center;
-  font-size: 30px;
-  margin-bottom: 20px;
-  z-index: 99999;
-}
-
-.my-float[_ngcontent-yee-c21] {
-    padding-top: 40px;
-    font-size: 20px;
-color:#FFF !important;
-}
-
-  </style>
-</head>
-<body>
-
-  <a class='float' href='https://www.instagram.com/emiele.store/'> <!-- SAIBA AGORA COMO COMEÇAR A USAR O SISTEMA -->
-<i class='fab fa-instagram my-float' style='padding-top: 15px;'></i>
-</a>
-
-    <!-- SECTION: Splashscreen -->
-    <div class="splashscreen" *ngIf="carregando">
-        <div class="preloader">
-            <span class="preloader__text">Carregando</span>
-        </div>
-    </div>
-    <!-- END SECTION: Splashscreen -->
-    <!-- SECTION: Navigation -->
-    <div id="top" class="navigation " #navclose>
-        <div class="navigation__wrapper wrapper--large">
-            <a class="navigation__logo logo" href="#0"><img src="https://i.ibb.co/r60TMhc/Untitled-4.png" style="    width: 50px;"></a>
-            <nav class="navigation__container" ><!-- navigation__container navigation__container--is-open -->
-                <ul class="navigation__list">
-                    <li><a href="#0">Inicio</a></li>
-                    <li><a href="#work">Contato</a></li>
-                    <li><a href="/cadastrar" style="color: #d9003c;">Cadastre seu négocio</a></li>
-                    <li><a href="/revendedor/cadastro"  style="color: blue;">Seja um Consultor</a></li>
-                </ul>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Emiele</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Custom Google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+      
+    </head>
+    <body class="d-flex flex-column h-100">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-primary">Emiele</span></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" href="resume.html">Contato</a></li>
+                            <li class="nav-item"><a class="nav-link" href="projects.html">Sobre</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">Legal</a></li>
+                        </ul>
+                    </div>
+                </div>
             </nav>
-            <a class="navigation__cta button" href="/login">Entrar</a>
-            <div class="navigation__burger"  (click)="navclose.classList.add('des'); navopen.classList.remove('des')"> <!-- navigation__burger navigation__burger--is-open  -->
-                <span class="navigation__burger-el navigation__burger-el--top"></span>
-                <span class="navigation__burger-el navigation__burger-el--middle"></span>
-                <span class="navigation__burger-el navigation__burger-el--bottom"></span>
-            </div>
-        </div>
-    </div>
-     <div id="top" class="navigation des " #navopen>
-        <div class="navigation__wrapper wrapper--large">
-            <a class="navigation__logo logo" href="#0">EMIELE</a>
-            <nav class="navigation__container navigation__container--is-open"><!-- navigation__container navigation__container--is-open -->
-                <ul class="navigation__list">
-                    <li><a href="#0">Inicio</a></li>
-                    <li><a href="#work">Contato</a></li>
-                    <li><a href="/cadastrar" style="color: #d9003c;">Cadastre seu négocio</a></li>
-                    <li><a href="/revendedor/cadastro"  style="color: blue;">Seja um Consultor</a></li>
-                    <li><a  href="/login" >Entrar</a></li>
-                </ul>
-            </nav>
-            <a class="navigation__cta button" href="/login">Entrar</a>
-            <div class="navigation__burger navigation__burger--is-open  " (click)="navopen.classList.add('des'); navclose.classList.remove('des')"> <!-- navigation__burger navigation__burger--is-open  -->
-                <span class="navigation__burger-el navigation__burger-el--top"></span>
-                <span class="navigation__burger-el navigation__burger-el--middle"></span>
-                <span class="navigation__burger-el navigation__burger-el--bottom"></span>
-            </div>
-        </div>
-    </div>
-    <!-- END SECTION: Navigation -->
-    <!-- SECTION: Intro -->
-    <header class="header">
-        <div class="introduction">
-            <h1 class="introduction__content">
-                <span class="introduction__content-el introduction__content-el--name" style="    opacity: 1;">Democratizamos&nbsp; o &nbsp;e-commerce</span>
-                <span class="introduction__content-el introduction__content-el--description">EMIELE</span>
-                <span class="introduction__content-el introduction__content-el--job"  style="    opacity: 1;">As &nbsp;melhores &nbsp;soluções &nbsp;para &nbsp;o &nbsp;seu &nbsp;negócio</span>
-            </h1>
-            <svg class="introduction__arrow" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0" y="0" viewBox="0 0 130 65" xml:space="preserve" enable-background="new 0 0 130 65"><g transform="translate(0.000000,65.000000) scale(0.100000,-0.100000)"><path d="M22.2 634c-50-35-40-47 293-349 174-157 323-285 333-285 24 0 635 552 647 585 8 23 6 30-14 46 -13 10-31 19-40 19s-57-37-107-83c-50-45-179-162-287-260l-197-179 -147 134c-319 289-433 388-446 388C50.2 650 34.2 643 22.2 634z"/></g></svg>
-        </div>
-    </header>
-    <!-- END SECTION: Intro -->
-    <main role="main">
-        <!-- SECTION: About -->
-        <section class="about">
-            <div class="about__wrapper wrapper--small">
-                <div class="about__content">
-                    <div class="about__content-blurb blurb blurb--framed">
-                        <h2 class="blurb__heading">Tudo à sua <br>porta</h2>
-                        <p class="blurb__copy no-margin">Registre sua loja para vender e entregar pedidos </p>
+            <!-- Header-->
+            <header class="py-5">
+                <div class="container px-5 pb-5">
+                    <div class="row gx-5 align-items-center">
+                        <div class="col-xxl-5">
+                            <!-- Header text content-->
+                            <div class="text-center text-xxl-start">
+                                <div class="badge bg-gradient-primary-to-secondary text-white mb-4"><div class="text-uppercase">COMEÇE A USAR O SISTEMA EMIELE</div></div>
+                                <div class="fs-3 fw-light text-muted">Democratizamos o e-commerce</div>
+                                <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">As melhores soluções para o seu negócio</span></h1>
+                                <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
+                                    <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder"  href="/cadastrar">Cadastre-se</a>
+                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder"  href="/login">Login</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xxl-7">
+                            <!-- Header profile picture-->
+                            <div class="d-flex justify-content-center mt-5 mt-xxl-0">
+                                <div class="profile bg-gradient-primary-to-secondary">
+                                    <!-- TIP: For best results, use a photo with a transparent background like the demo example below-->
+                                    <!-- Watch a tutorial on how to do this on YouTube (link)-->
+                                    <img class="profile-img" src="https://i.ibb.co/2txhPG0/Untitled-1.png" alt="..." />
+                                    <div class="dots-1">
+                                        <!-- SVG Dots-->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <!-- END of SVG dots-->
+                                    </div>
+                                    <div class="dots-2">
+                                        <!-- SVG Dots-->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <!-- END of SVG dots-->
+                                    </div>
+                                    <div class="dots-3">
+                                        <!-- SVG Dots-->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <!-- END of SVG dots-->
+                                    </div>
+                                    <div class="dots-4">
+                                        <!-- SVG Dots-->
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 191.6 1215.4" style="enable-background: new 0 0 191.6 1215.4" xml:space="preserve">
+                                            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)">
+                                                <path d="M227.7,12788.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,12801.6,289.7,12808.6,227.7,12788.6z"></path>
+                                                <path d="M1507.7,12788.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,12801.6,1569.7,12808.6,1507.7,12788.6z"></path>
+                                                <path d="M227.7,11508.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,11521.6,289.7,11528.6,227.7,11508.6z"></path>
+                                                <path d="M1507.7,11508.6c-151-50-253-216-222-362c25-119,136-230,254-255c194-41,395,142,375,339c-11,105-90,213-190,262        C1663.7,11521.6,1569.7,11528.6,1507.7,11508.6z"></path>
+                                                <path d="M227.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,10241.6,289.7,10248.6,227.7,10228.6z"></path>
+                                                <path d="M1507.7,10228.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,10241.6,1569.7,10248.6,1507.7,10228.6z"></path>
+                                                <path d="M227.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,8961.6,289.7,8968.6,227.7,8948.6z"></path>
+                                                <path d="M1507.7,8948.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,8961.6,1569.7,8968.6,1507.7,8948.6z"></path>
+                                                <path d="M227.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,7681.6,289.7,7688.6,227.7,7668.6z"></path>
+                                                <path d="M1507.7,7668.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,7681.6,1569.7,7688.6,1507.7,7668.6z"></path>
+                                                <path d="M227.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,6401.6,289.7,6408.6,227.7,6388.6z"></path>
+                                                <path d="M1507.7,6388.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,6401.6,1569.7,6408.6,1507.7,6388.6z"></path>
+                                                <path d="M227.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,5121.6,289.7,5128.6,227.7,5108.6z"></path>
+                                                <path d="M1507.7,5108.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,5121.6,1569.7,5128.6,1507.7,5108.6z"></path>
+                                                <path d="M227.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,3841.6,289.7,3848.6,227.7,3828.6z"></path>
+                                                <path d="M1507.7,3828.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,3841.6,1569.7,3848.6,1507.7,3828.6z"></path>
+                                                <path d="M227.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,2561.6,289.7,2568.6,227.7,2548.6z"></path>
+                                                <path d="M1507.7,2548.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,2561.6,1569.7,2568.6,1507.7,2548.6z"></path>
+                                                <path d="M227.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C383.7,1281.6,289.7,1288.6,227.7,1268.6z"></path>
+                                                <path d="M1507.7,1268.6c-105-35-200-141-222-248c-43-206,163-412,369-369c155,32,275,190,260,339c-11,105-90,213-190,262        C1663.7,1281.6,1569.7,1288.6,1507.7,1268.6z"></path>
+                                            </g>
+                                        </svg>
+                                        <!-- END of SVG dots-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <p class="about__content-signature">by Softsaj</p>
                 </div>
-                <img class="about__visual" src="https://i.ibb.co/2txhPG0/Untitled-1.png" alt="James Martin">
-            </div>
+            </header>
+            <!-- About Section-->
+            <section class="bg-light py-5">
+                <div class="container px-5">
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-xxl-8">
+                            <div class="text-center my-5">
+                                <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Olá!</span></h2>
+                                <p class="lead fw-light mb-4">Descubra a liberdade do seu próprio sistema de delivery</p>
+                                <p class="text-muted">Com a nossa plataforma personalizada, você pode receber pedidos online de forma totalmente automatizada, sem pagar altas comissões aos marketplaces. Tenha controle total sobre o processo de entrega e proporcione uma experiência excepcional aos seus clientes. Junte-se a nós e desfrute da autonomia e rentabilidade que você merece.</p>
+                                <div class="d-flex justify-content-center fs-2 gap-4">
+                                    <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
+                                    <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
+                                    <a class="text-gradient" href="#!"><i class="bi bi-github"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-        </section>
-        <!-- END SECTION: About -->
-        <!-- SECTION: App Design -->
-        <section class="app-design" style="background-color: #fafafa;">
-            <div class="app-design__wrapper wrapper--large">
-                <div class="app-design__content blurb">
-                    <h2 class="blurb__heading">APP de delivery<br>própio</h2>
-                    <p class="blurb__copy blurb__copy--tight">Centralize seus pedidos em uma só plataforma e organize suas operações.</p>
-                    <a class="transform-link" href="/cadastrar">Começar Agora</a>
-                </div>
-            </div>
-            <figure class="app-design__visual"> <img class="about__visual" src="https://i.ibb.co/JBWQ1Dg/jj.png" alt="James Martin"></figure>
-        </section>
-        <!-- END SECTION: App Design -->
-        <!-- SECTION: Web Design -->
-        <section class="web-design">
-            <div class="web-design__wrapper wrapper--small">
-                <div class="web-design__content blurb">
-                    <h2 class="blurb__heading">Venda online com <br>Site própio</h2>
-                    <p class="blurb__copy blurb__copy--tight">Tenha Controle financeiro, delivery, gestão de negócio, contabilidade e e-commerce em um só lugar..</p>
-                    <a class="transform-link" href="#0">Começar Agora</a>
-                </div>
-            </div>
-            <figure class="web-design__visual"><img class="about__visual" src="https://i.ibb.co/sb1ySty/dd.png" alt="James Martin"></figure>
-        </section>
-        <!-- END SECTION: Web Design -->
-        <!-- SECTION: Work -->
-        <section id="work" class="work">
-            <h2 class="work__heading title">Crescer só depende de você</h2>
-            <div class="work__wrapper wrapper--large">
-                <ul class="work__list">
-                    <li class="work__list-el work__list-el--is-active">
-                        <div class="work__content">
-                            <div class="work__content-blurb blurb blurb--framed">
-                                <h3 class="blurb__heading">FAÇA
-DA EMIELE
-<br>O SEU
-NEGÓCIO</h3>
-                                <p class="blurb__copy">SEJA UM PARCEIRO EMIELE E AUMENTE SEUS LUCROS!</p>
-                            </div>
-                            <a class="transform-link" href="/revendedor">Saiba Mais</a>
-                        </div>
-                        <div class="work__visual">
-                            <img src="https://img.freepik.com/fotos-gratis/a-vendedora-arrumou-as-sacolas-coloridas-e-deu-para-o-cliente_144627-58491.jpg" alt="Strategik INC">
-                        </div>
-                    </li>
-                    <li class="work__list-el">
-                        <div class="work__content">
-                            <div class="work__content-blurb blurb blurb--framed">
-                                <h3 class="blurb__heading">TENHA CONTROLE DO SEU<br> NEGÓCIO</h3>
-                                <p class="blurb__copy">Construa seu restaurante online rapidamente, para que você possa se dedicar ao que faz de melhor: cozinhar</p>
-                            </div>
-                            <a class="transform-link" href="/cadastrar">Começar</a>
-                        </div>
-                        <div class="work__visual">
-                            <img src="https://i.ibb.co/VH0GXF9/3-3.png" alt="Ēostre UI Kit">
-                        </div>
-                    </li>
-                    <li class="work__list-el">
-                        <div class="work__content">
-                            <div class="work__content-blurb blurb blurb--framed">
-                                <h3 class="blurb__heading">Organize sua operação<br> de delivery</h3>
-                                <p class="blurb__copy">Aumente suas vendas, Organize seu Delivery, Fidelize seus clientes e Não fique dependente do marketplace</p>
-                            </div>
-                            <a class="transform-link" href="/cadastrar">Começar</a>
-                        </div>
-                        <div class="work__visual">
-                            <img src="https://i.ibb.co/xLfq4gX/1-1.png" alt="Go Outside App">
-                        </div>
-                    </li>
-                </ul>
-                <ul class="work__navigation">
-                    <li class="work__navigation-el work__navigation-el--is-active"></li>
-                    <li class="work__navigation-el"></li>
-                    <li class="work__navigation-el"></li>
-                </ul>
-            </div>
-        </section>
-        <!-- END SECTION: Work -->
-        <!-- SECTION: Blog -->
-        <section id="blog" class="blog" style="display: none;">
-            <h2 class="blog__heading title">Blog Posts</h2>
-            <div class="blog__wrapper wrapper--large">
-                <article class="blog__post">
-                    <div class="blog__post-thumbnail">
-                        <img src="assets/img/blog-post-1.jpg" alt="Man viewing work plans">
+               <!-- Projects Section-->
+            <section class="py-5">
+                <div class="container px-5 mb-5">
+                    <div class="text-center mb-5">
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Vantegens</span></h1>
                     </div>
-                    <div class="blog__post-excerpt">
-                        <h3>Days in the office</h3>
-                        <p>I love using UI Kits vs website templates because UI Kits give you an easier way to use elements compared to templates.</p>
-                        <a class="transform-link" href="#0">Read full article</a>
-                    </div>
-                </article>
-                <article class="blog__post">
-                    <div class="blog__post-thumbnail">
-                        <img src="assets/img/blog-post-2.jpg" alt="Man hanging pictures">
-                    </div>
-                    <div class="blog__post-excerpt">
-                        <h3>Why I use CCO images</h3>
-                        <p>CCO images are awesome because you don't have to credit the author, and you can use them anywhere, anytime.</p>
-                        <a class="transform-link" href="#0">Read full article</a>
-                    </div>
-                </article>
-                <article class="blog__post">
-                    <div class="blog__post-thumbnail">
-                        <img src="assets/img/blog-post-3.jpg" alt="Men working at a desk">
-                    </div>
-                    <div class="blog__post-excerpt">
-                        <h3>Designing for IOT</h3>
-                        <p>Internet of things is coming so quickly, we as designers will have to design UI and UX for more things in the future.</p>
-                        <a class="transform-link" href="#0">Read full article</a>
-                    </div>
-                </article>
-            </div>
-            <div class="blog__view-more">
-                <a class="button blog__view-more--el" href="#0">View More</a>
-            </div>
-        </section>
-        <!-- END SECTION: Blog -->
-        <!-- SECTION: Contact -->
-        <section id="contact" class="contact">
-            <h2 class="contact__heading title">Fale Conosco</h2>
-            <div class="contact__wrapper wrapper--large">
-                <div class="contact__visual">
-                    <img src="https://img.freepik.com/vetores-gratis/entre-em-contato-conosco-ilustracao-do-conceito_114360-1850.jpg?t=st=1650607367~exp=1650607967~hmac=cfcbceebff61cd982a04ba9d51771bc883e539f3eb65424941ccc14808041589&w=740" alt="James Martin's location">
-                </div>
-                <!-- Simple form setup: formspree.io -->
-                <form class="contact__form">
-                    <input class="contact__form-el contact__form-el--name" type="text" placeholder="Your Name" spellcheck="false">
-                    <input class="contact__form-el contact__form-el--email" type="email" placeholder="Your Email" spellcheck="false">
-                    <textarea class="contact__form-el contact__form-el--message" placeholder="Your Message"></textarea>
-                    <input class="contact__form-el contact__form-el--submit" type="submit" value="Enviar">
-                </form>
-            </div>
-        </section>
-        <!-- END SECTION: Contact -->
-    </main>
-    <!-- SECTION: Footer -->
-    <footer class="footer">
-        <div class="footer__wrapper wrapper--large">
-            <p class="footer__copyright no-margin">&copy; powered by Softsaj.com</p>
-            <a class="footer__logo logo" href="#0">EMIELE </a>
-            <a class="footer__arrow" href="#top">
-                <svg class="footer__arrow-el" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0" y="0" viewBox="0 0 130 65" xml:space="preserve" enable-background="new 0 0 130 65"><g transform="translate(0.000000,65.000000) scale(0.100000,-0.100000)"><path d="M315.4 365c-336-305-345-315-290-351 18-12 32-14 45-8 10 5 145 123 300 262l281 253 196-178c108-98 237-215 287-260 50-46 98-83 107-83s27 9 40 19c20 16 22 23 14 46 -12 33-623 585-647 585C638.4 650 489.4 522 315.4 365z"/></g></svg>
-            </a>
-        </div>
-    </footer>
-    <!-- END SECTION: Footer -->
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-11 col-xl-9 col-xxl-8">
+                            <!-- Project Card 1-->
+                            <div class="card overflow-hidden shadow rounded-4 border-0 mb-5">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="p-5">
+                                            <h2 class="fw-bolder">APP de delivery própio</h2>
+                                            <p>Centralize seus pedidos em uma só plataforma e organize suas operações.</p>
+                                        </div>
+                                       <img class="img-fluid" src="https://i.ibb.co/4mdL2Kp/2-2.png" alt="..." style="height: 300px; width: 400px;" />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <!-- jQuery local fallback -->
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-2.2.4.min.js"><\/script>')</script>
-    <script src="assets/js/functions-min.js"></script>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID and uncomment -->
-    <!--
-    <script>
-    (function(b, o, i, l, e, r) {
-        b.GoogleAnalyticsObject = l;
-        b[l] || (b[l] =
-            function() {
-                (b[l].q = b[l].q || []).push(arguments)
-            });
-        b[l].l = +new Date;
-        e = o.createElement(i);
-        r = o.getElementsByTagName(i)[0];
-        e.src = '//www.google-analytics.com/analytics.js';
-        r.parentNode.insertBefore(e, r)
-    }(window, document, 'script', 'ga'));
-    ga('create', 'UA-XXXXX-X', 'auto');
-    ga('send', 'pageview');
-    </script>
-    --> 
-</body>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Project Card 2-->
+                            <div class="card overflow-hidden shadow rounded-4 border-0">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                          <img class="img-fluid" src="https://i.ibb.co/xLfq4gX/1-1.png" alt="..." style="height: 300px; width: 400px;"/>
+                                        <div class="p-5">
+                                            <h2 class="fw-bolder">Site Próprio</h2>
+                                            <p>Venda online com Site própio! Tenha Controle financeiro, delivery, gestão de negócio, contabilidade e e-commerce em um só lugar.</p>
+                                        </div>
+                                      
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Call to action section-->
+            <section class="py-5 bg-gradient-primary-to-secondary text-white">
+                <div class="container px-5 my-5">
+                    <div class="text-center">
+                        <h2 class="display-4 fw-bolder mb-4">Crescer só depende de você</h2>
+                        <a class="btn btn-outline-light btn-lg px-5 py-3 fs-6 fw-bolder" href="contact.html">Começar Agora</a>
+                    </div>
+                </div>
+            </section>
+
+
+        </main>
+           <div class="container px-5 my-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Beneficios</span></h1>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-11 col-xl-9 col-xxl-8">
+                        <!-- Experience Section-->
+                        <section>
+                            
+                            <!-- Experience Card 1-->
+                            <div class="card shadow border-0 rounded-4 mb-5">
+                                <div class="card-body p-5">
+                                    <div class="row align-items-center gx-5">
+                                        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                            <div class="bg-light p-4 rounded-4">
+                                                <div class="text-primary fw-bolder mb-2">Economia em comissões</div>
+                                               
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8"><div>Ao possuir uma plataforma própria, você elimina a necessidade de pagar comissões altas para intermediários, como marketplaces de entrega. Isso permite que você aumente sua margem de lucro, mantendo uma maior parte do valor das vendas.</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Experience Card 2-->
+                            <div class="card shadow border-0 rounded-4 mb-5">
+                                <div class="card-body p-5">
+                                    <div class="row align-items-center gx-5">
+                                        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                            <div class="bg-light p-4 rounded-4">
+                                                <div class="text-primary fw-bolder mb-2">Centralização e organização</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8"><div>Com uma plataforma própria, você pode centralizar todos os pedidos em um só lugar. Isso simplifica a operação de delivery, tornando mais fácil gerenciar e coordenar as solicitações de entrega. Você terá um controle mais eficiente sobre os pedidos, facilitando o acompanhamento e a otimização do processo.</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Education Section-->
+                        <section>
+                          
+                            <!-- Education Card 1-->
+                            <div class="card shadow border-0 rounded-4 mb-5">
+                                <div class="card-body p-5">
+                                    <div class="row align-items-center gx-5">
+                                        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                            <div class="bg-light p-4 rounded-4">
+                                                <div class="text-secondary fw-bolder mb-2">Relacionamento direto com os clientes</div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8"><div>Ter a sua própria plataforma significa que você possui um canal direto com os seus clientes. Isso permite que você colete dados valiosos sobre os clientes, como informações de contato e histórico de compras. Com essas informações em mãos, você pode personalizar as experiências dos clientes, oferecer promoções exclusivas e construir relacionamentos mais duradouros.</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Education Card 2-->
+                            <div class="card shadow border-0 rounded-4 mb-5">
+                                <div class="card-body p-5">
+                                    <div class="row align-items-center gx-5">
+                                        <div class="col text-center text-lg-start mb-4 mb-lg-0">
+                                            <div class="bg-light p-4 rounded-4">
+                                                <div class="text-secondary fw-bolder mb-2">Proteção dos dados do cliente</div>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-8"><div>Ao utilizar uma plataforma própria, você mantém o controle total sobre os dados dos clientes. Isso significa que você não corre o risco de perdê-los caso ocorra alguma mudança nos termos e condições de terceiros. Além disso, você pode garantir a privacidade e segurança dos dados do seu público, construindo confiança e fidelidade.</div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Divider-->
+                        <div class="pb-5"></div>
+                        <!-- Skills Section-->
+                        <section>
+                            <!-- Skillset Card-->
+                            <div class="card shadow border-0 rounded-4 mb-5">
+                                <div class="card-body p-5">
+                                    <!-- Professional skills list-->
+                                    <div class="mb-5">
+                                        <div class="d-flex align-items-center mb-4">
+                                            <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 me-3"><i class="bi bi-tools"></i></div>
+                                            <h3 class="fw-bolder mb-0"><span class="text-gradient d-inline">funcionalidades</span></h3>
+                                        </div>
+                                        <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">App</div></div>
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Gestão do cardápio</div></div>
+                                            <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Área de entrega</div></div>
+                                        </div>
+                                        <div class="row row-cols-1 row-cols-md-3">
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Personalização da loja</div></div>
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Formas de pagamento</div></div>
+                                            <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Gestão de entregas</div></div>
+                                        </div>
+                                       
+                                        <div class="row row-cols-1 row-cols-md-3 mb-4">
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">App</div></div>
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Gestão do cardápio</div></div>
+                                            <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Área de entrega</div></div>
+                                        </div>
+                                        <div class="row row-cols-1 row-cols-md-3">
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Personalização da loja</div></div>
+                                            <div class="col mb-4 mb-md-0"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Formas de pagamento</div></div>
+                                            <div class="col"><div class="d-flex align-items-center bg-light rounded-4 p-3 h-100">Gestão de entregas</div></div>
+                                        </div>
+                                    </div>
+                                    <!-- Languages list-->
+                                    
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        <!-- Footer-->
+        <footer class="bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0">Copyright &copy; Softsaj 2023</div></div>
+                    <div class="col-auto">
+                        <a class="small" href="#!">Privacy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Terms</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
+
+               

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterContentInit,ViewEncapsulation } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
@@ -6,7 +6,8 @@ import { Title, Meta } from '@angular/platform-browser';
 @Component({
   selector: 'app-portfolio',
   templateUrl: './portfolio.component.html',
-  styleUrls: ['./portfolio.component.css']
+  styleUrls: ['./portfolio.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class PortfolioComponent implements AfterContentInit {
 

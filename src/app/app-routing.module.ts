@@ -92,24 +92,24 @@ const routes: Routes = [
    {
     path: 'index',
     component: DashboardComponent,
-    canActivate: [ HttpInterceptorService ]
+   //// canActivate: [ HttpInterceptorService ]
    },
    {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [ HttpInterceptorService ]
+   // canActivate: [ HttpInterceptorService ]
    }
    ,
    {
     path: 'rtl',
     component: RtlComponent,
-    canActivate: [ HttpInterceptorService ]
+   // canActivate: [ HttpInterceptorService ]
    }
    ,
    {
     path: 'billing',
     component: BillingComponent,
-    canActivate: [ HttpInterceptorService ]
+   // canActivate: [ HttpInterceptorService ]
    },
    {
     path: 'billing/creat',
@@ -118,7 +118,7 @@ const routes: Routes = [
    {
     path: 'tables',
     component: TableComponent,
-    canActivate: [ HttpInterceptorService ]
+   // canActivate: [ HttpInterceptorService ]
    },
    {
     path: 'confirm',
@@ -139,7 +139,7 @@ const routes: Routes = [
    {
     path: 'produtos',
     component: ProdutoComponent,
-    canActivate: [ HttpInterceptorService ],
+   // canActivate: [ HttpInterceptorService ],
         children: [
                     {path: 'gerencia',  component:GerenciaProdutoComponent , pathMatch: 'full'},
                      {path: 'home', component: ListaComponent, pathMatch: 'full'}
