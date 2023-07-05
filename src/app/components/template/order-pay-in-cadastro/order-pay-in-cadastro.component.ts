@@ -100,7 +100,7 @@ vendedor_id: String = "";
   Salva(){
 
 this.token = localStorage.getItem('this.TOKEN_SESSION_ATTRIBUTE');
-console.log('Token: ' + this.token);
+//console.log('Token: ' + this.token);
         
     //Verifica se está logado
                 if(this.authenticationService.isUserLoggedIn()){
@@ -119,12 +119,16 @@ console.log('Token: ' + this.token);
 
                                         this.authenticationService.updateVVendedor(resposta.id, resposta, this.token).subscribe((resposta1: Vendedor) => {
 
-                                              console.log(resposta1);
+                                             // console.log(resposta1);
                                               this.vendaService.mensagem("Plano Selecionado Com Sucesso");
 
+                                               if(this.tipo == 1){
+                          //this.router.navigate(['/index']);
+                          this.router.navigate(['/cadastrar/payment/cart']);
+                       }else{
                                               this.getPagamento();
                                              
-
+}
                                                }, () => {
                                                    console.log("Erro ao Salvar Plano!");
                                                  }); 

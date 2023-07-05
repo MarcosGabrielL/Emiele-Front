@@ -45,7 +45,8 @@ export class SignupComponent implements OnInit {
     "password":"pass",
     "firstName":"first",
     "lastName":"last",
-    "tipo": "1"
+    "tipo": "1",
+    "instancia": "1"
   };
 
    authRequestRegister:any ={
@@ -64,7 +65,8 @@ export class SignupComponent implements OnInit {
     "password":this.passwordreg,
     "firstName":this.firstName,
     "lastName":this.lastName,
-    "tipo": this.tipo
+    "tipo": this.tipo,
+    "instancia": "1"
      };
     
     this.authRequestreg={

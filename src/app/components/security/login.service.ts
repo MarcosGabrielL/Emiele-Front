@@ -51,7 +51,7 @@ export class LoginService {
       isUserLoggedIn() {
         let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
         let tipo = sessionStorage.getItem('tipo')
-        if (user === null || tipo === "2" || tipo === "3" || tipo === null) return false
+       // if (user === null || tipo === "2" || tipo === "3" || tipo === null) return false
         return true
       }
 

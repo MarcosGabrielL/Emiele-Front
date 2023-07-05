@@ -13,6 +13,7 @@ export class VendaService {
 
   mostranotify: boolean;
   baseUrl: String = environment.baseUrlVendas;
+  baseUrlEventos: String = environment.baseUrlEventos;
 
    produtos: ProdutoDTO[]=[];
  Semtipo: ProdutoDTO[]=[];
@@ -132,7 +133,7 @@ export class VendaService {
      //Pega Eventos Por usuario
      findEventos(idvendedor: String, token: string):Observable<Evento[]> {
          
-      const url = `${this.baseUrl}/eventos/evento/usuario/${idvendedor}?token=${token}`
+      const url = `${this.baseUrlEventos}/eventos/evento/usuario/${idvendedor}?token=${token}`
     return this.http.get<Evento[]>(url)
      
      }
@@ -149,17 +150,17 @@ export class VendaService {
         }
 
         userNotification (id: String):Observable<Notification[]> {
-    const url = `${this.baseUrl}/notifications/notification/user/${id}?id=${id}&token=1`
+    const url = `${this.baseUrlEventos}/notifications/notification/user/${id}?id=${id}&token=1`
     return this.http.get<Notification[]>(url)
   }
 
     AtualizaNotification (Notification: Notification, id: String):Observable<Notification> {
-    const url = `${this.baseUrl}/notifications/notification/update/${id}?id=${id}&token=1`
+    const url = `${this.baseUrlEventos}/notifications/notification/update/${id}?id=${id}&token=1`
      return this.http.post<Notification>(url, Notification);
   }
 
     SalvaNotification (Notification: Notification):Observable<Notification> {
-    const url = `${this.baseUrl}/notifications/notification/add?token=1`
+    const url = `${this.baseUrlEventos}/notifications/notification/add?token=1`
      return this.http.post<Notification>(url, Notification);
   }
 
