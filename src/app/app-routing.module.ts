@@ -53,6 +53,7 @@ import { TrackpagamentoComponent } from './components/marketplaceweb/views/track
 
 import { CartNotloggedComponent } from './components/marketplaceweb/views/cart-notlogged/cart-notlogged.component';
 
+import { ConfigsComponent } from './components/views/configs/configs.component';
 
 
 const routes: Routes = [
@@ -104,7 +105,13 @@ const routes: Routes = [
     path: 'rtl',
     component: RtlComponent,
    // canActivate: [ HttpInterceptorService ]
+   },
+    {
+    path: 'config',
+    component: ConfigsComponent,
+   // canActivate: [ HttpInterceptorService ]
    }
+   
    ,
    {
     path: 'billing',

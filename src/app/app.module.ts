@@ -89,6 +89,7 @@ import { TrackpagamentoComponent } from './components/marketplaceweb/views/track
 import { CartNotloggedComponent } from './components/marketplaceweb/views/cart-notlogged/cart-notlogged.component';
 import { LoginClientComponent } from './components/security/login-client/login-client.component';
 import { RevendedorTransacoesComponent } from './components/marketplaceweb/views/revendedor-transacoes/revendedor-transacoes.component';
+import { ConfigsComponent } from './components/views/configs/configs.component';
 
 @NgModule({
   declarations: [
@@ -145,7 +146,8 @@ import { RevendedorTransacoesComponent } from './components/marketplaceweb/views
     TrackpagamentoComponent,
     CartNotloggedComponent,
     LoginClientComponent,
-    RevendedorTransacoesComponent
+    RevendedorTransacoesComponent,
+    ConfigsComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@ import {LoginService} from '../../../../../app/components/security/login.service
 import { User } from '../../../../../app/components/security/user.model';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-
+import { FormsModule } from '@angular/forms';
 import { DomSanitizer,SafeHtml, SafeUrl} from '@angular/platform-browser';
 
 
@@ -31,7 +31,8 @@ export class GerenciaProdutoComponent implements OnInit {
     tipo:"Sem tipo",
     unidade:"UN",
     data:"",
-    vendedor_id:"" 
+    vendedor_id:"" ,
+    destaque: false
   } 
     successMessage: string = "";
   errorMessage: string = "";
@@ -39,6 +40,7 @@ preco: number;
 descricao: String = "";
 
 
+destaque_propertie: boolean = false;
   vendedor_id: number;
   token: any;
   loaded = 0;
@@ -91,6 +93,10 @@ this.id = this.produtoservice.getId()
   this.files.push(...event.addedFiles);
     }
 }
+
+ toggleDestaque() {
+    this.destaque_propertie = !this.destaque_propertie;
+  }
 
 onRemove(event: any) {
   console.log(event);

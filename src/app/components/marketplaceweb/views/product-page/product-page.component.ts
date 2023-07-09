@@ -32,7 +32,8 @@ export class ProductPageComponent implements OnInit {
     tipo:"",
     unidade:"",
     data:"",
-    vendedor_id:""
+    vendedor_id:"",
+    destaque: false
   } 
 
   ResponseFile: ResponseFile;

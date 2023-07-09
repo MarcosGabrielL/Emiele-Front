@@ -11,6 +11,7 @@ export interface Produto{
     unidade:String;
     data:String;
     vendedor_id:String;
+    destaque: boolean;
     
 }
 
