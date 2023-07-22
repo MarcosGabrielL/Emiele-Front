@@ -174,5 +174,10 @@ export class FileService {
       })
   }
 
+findBannersByIdVendedor(id: any, token: string): Observable<FileDB[]> {
+    const url = `${this.baseUrl}/filelist/banners/loja/${id}`
+    return this.http.get<FileDB[]>(url)
+  }
+
   
 }

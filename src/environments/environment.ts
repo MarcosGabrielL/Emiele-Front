@@ -8,6 +8,7 @@ export const environment = {
    baseUrl : 'http://192.168.0.26:8081',
    baseUrlEventos : 'http://192.168.0.26:8083',
    baseUrlVendas : 'http://192.168.0.26:8084',
+   baseUrlConfig: 'http://192.168.0.26:8085',
    AppID: "3843631125520319",
    SECRET_KEY: "nL7zr0VyFOtgUQu4YEmR4xYSMOgqLStz",
    accessToken: "APP_USR-3843631125520319-042518-e8d37d5c3f410238d5b745ff6c424dcc-69325226",

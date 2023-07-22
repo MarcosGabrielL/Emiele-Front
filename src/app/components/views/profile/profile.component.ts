@@ -10,23 +10,66 @@ import { ResponseVendas } from './../../../../app/components/template/produto/ve
 import { Vendido, Tem, Notification } from './../../../../app/components/template/produto/venda.model';
 import { User,Vendedor } from './../../../../app/components/security/user.model';
 import { VendaService } from './../../../../app/components/template/produto/venda.service';
-
+import {ProfileService} from '../services/profile.service';
 import {FileService} from './../../../../app/components/template/produto/file.service';
 import {FileDB} from './../../../../app/components/template/produto/file.model'
-
-
+import {CorModel} from '../services/profile.model'
 import {LoginService} from './../../../../app/components/security/login.service'
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { DomSanitizer,SafeHtml,SafeUrl } from '@angular/platform-browser';
 import { CommonModule } from "@angular/common";
+import { animate, style, transition, trigger } from "@angular/animations";
+
+interface ColorOption {
+  name: string;
+  value: string;
+}
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
+
   styleUrls: ['../../../../app/app.component.css']
 })
 export class ProfileComponent implements OnInit {
+
+   colors: ColorOption[] = [
+  { name: 'bs-blue', value: '#0d6efd' },
+  { name: 'bs-indigo', value: '#6610f2' },
+  { name: 'bs-purple', value: '#6f42c1' },
+  { name: 'bs-pink', value: '#d63384' },
+  { name: 'bs-red', value: '#dc3545' },
+  { name: 'bs-orange', value: '#fd7e14' },
+  { name: 'bs-yellow', value: '#ffc107' },
+  { name: 'bs-green', value: '#198754' },
+  { name: 'bs-teal', value: '#20c997' },
+  { name: 'bs-cyan', value: '#0dcaf0' },
+  { name: 'bs-white', value: '#fff' },
+  { name: 'bs-gray', value: '#6c757d' },
+  { name: 'bs-gray-dark', value: '#343a40' },
+  { name: 'bs-gray-100', value: '#f8f9fa' },
+  { name: 'bs-gray-200', value: '#e9ecef' },
+  { name: 'bs-gray-300', value: '#dee2e6' },
+  { name: 'bs-gray-400', value: '#ced4da' },
+  { name: 'bs-gray-500', value: '#adb5bd' },
+  { name: 'bs-gray-600', value: '#6c757d' },
+  { name: 'bs-gray-700', value: '#495057' },
+  { name: 'bs-gray-800', value: '#343a40' },
+  { name: 'bs-gray-900', value: '#212529' },
+  { name: 'bs-primary', value: '#0d6efd' },
+  { name: 'bs-secondary', value: '#6c757d' },
+  { name: 'bs-success', value: '#198754' },
+  { name: 'bs-info', value: '#0dcaf0' },
+  { name: 'bs-warning', value: '#ffc107' },
+  { name: 'bs-danger', value: '#dc3545' },
+  { name: 'bs-light', value: '#f8f9fa' },
+  { name: 'bs-dark', value: '#212529' }
+];
+
+
+  primaryColor: string = this.colors[4].value;
+  secondaryColor: String = this.colors[22].value;
 
    vendidohoje: String = "";
   percenthoje: String = "";
@@ -37,10 +80,18 @@ export class ProfileComponent implements OnInit {
   ticketmedio: String = "";
   ticketmediopercent: String = "";
 
+Titulo: String = "";
+SubTitulo: String = "";
+
   htmlvendas: SafeHtml = "";
 
   vendedor_id: String = "";
-
+   Cores: CorModel = {
+    id: 0,
+    vendedor: 'Nome do Vendedor',
+    primary_color: '#2883e9',
+    secondary: '#6c757d'
+  };
   vendas: Venda[];
   produtos: Produto[];
   eventos: Evento[];
@@ -54,6 +105,8 @@ export class ProfileComponent implements OnInit {
    cont1: number = 0;
    cont2: number = 0;
 files: File[] = [];
+filesBanner : File[] = [];
+filesBanner2 : File[] = [];
 
   successMessage: string = "";
   errorMessage: string = "";
@@ -111,6 +164,9 @@ files: File[] = [];
   temimagem: boolean = false;
   imagemdb: FileDB;
 
+  banners: SafeUrl[];
+
+
   taxaFrete: number = 5;
   cobrafrete: boolean = true;
 
@@ -123,7 +179,7 @@ files: File[] = [];
               private cd: ChangeDetectorRef,
               private sanitized: DomSanitizer,
               private FileService: FileService,
-
+              private profileService: ProfileService,
     private modalService: NgbModal) { }
 
   ngOnInit(): void {
@@ -151,6 +207,30 @@ files: File[] = [];
   this.files.push(...event.addedFiles);
     }
 }
+onSelectBanner1(event : any) {
+    this.filesBanner = [];
+  console.log(event.addedFiles.size);
+  this.filesBanner.push(...event.addedFiles);
+  if(this.filesBanner[0].size >=1000000){
+        this.vendaService.mensagem("Arquivo Muito Grande");
+         this.files = [];
+  }else{
+    this.files = [];
+  this.files.push(...event.addedFiles);
+    }
+}
+onSelectBanner2(event : any) {
+    this.filesBanner2 = [];
+  console.log(event.addedFiles.size);
+  this.filesBanner2.push(...event.addedFiles);
+  if(this.filesBanner2[0].size >=1000000){
+        this.vendaService.mensagem("Arquivo Muito Grande");
+         this.files = [];
+  }else{
+    this.files = [];
+  this.files.push(...event.addedFiles);
+    }
+}
 
 onRemove(event: any) {
   console.log(event);
@@ -162,6 +242,77 @@ open(content: any) {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  openBanner(content: any){
+      this.modalService.open(content, { size: 'lg' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  
+  openDestque(content: any){
+     
+  }
+  openMensagem(content: any){
+       this.modalService.open(content, { size: 'lg' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+  openCores(content: any){
+     this.modalService.open(content, { size: 'lg' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+     
+  }
+  openDominios(content: any){
+      this.modalService.open(content, { size: 'lg' }).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  buscarCores(){
+
+     this.Cores.vendedor = ''+this.vendedor_id;
+     this.profileService.findColorsByIdVendedor(+this.vendedor_id, this.token).subscribe((resposta: CorModel) => {
+
+this.Cores = resposta;
+
+        console.log('Buscando Cores' + JSON.stringify(resposta));
+
+        if(resposta.id == 0 || resposta.id == null){
+            this.Cores.id = resposta.id;
+             this.Cores.primary_color = resposta.primary_color == null ? ''+this.primaryColor: resposta.primary_color;
+             this.Cores.secondary = resposta.secondary == null ? ''+this.secondaryColor: resposta.secondary;
+
+            this.primaryColor = resposta.primary_color; 
+            this.secondaryColor = resposta.secondary;
+            console.log('This Cores' + JSON.stringify(this.Cores));
+        }
+
+    }, () => {
+        console.log('Error ao Buscar Cores');
+    });
+  }
+
+  atualizarCores(){
+    this.Cores.primary_color = ''+this.primaryColor;
+     this.Cores.secondary = ''+this.primaryColor;
+
+     console.log(JSON.stringify(this.Cores));
+
+    
+    this.profileService.AtualizaCoresVendedor(this.Cores, this.token).subscribe((resposta: CorModel) => {
+      }, () => {
+        console.log('Error ao Buscar Cores');
     });
   }
 
@@ -237,6 +388,8 @@ console.log( this.vendedor_id);
                                });
                               
                               this.CarregaConversations();
+                              this.CarregaBanners();
+                              this.buscarCores();
                
             }, () => {
                this.vendaService.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
@@ -335,6 +488,108 @@ console.log( this.vendedor_id);
 
   }
 
+AttBanners(){
+
+console.log("Deletando arquivos");
+         this.profileService.deleteByVendedorId(+this.vendedor_id).subscribe((resposta: any) => {
+
+console.log("Deletado com sucesso");
+    Array.from(this.filesBanner).forEach(file => {
+      console.log("Salvando 1: ");
+
+          const mimeType = file.type;
+        if (mimeType.match(/image\/*/) == null) {
+             this.authenticationService.mensagem("Only images are supported.");
+            return;
+        }
+                  this.profileService.uploadSingleFile(file, this.vendedor_id, 1).subscribe((event: any)  => {
+                    if (event.type === HttpEventType.UploadProgress) {
+                     
+                      let aqui: number = event!.total;
+                        this.authenticationService.mensagem('Salvando Imagens: '+Math.round((100 * event.loaded) / aqui) + '%...');
+                     
+                    } else if (event instanceof HttpResponse) {
+                     
+                    }
+
+                  }, () => {
+                            console.log("Erro ao Salvar Imagens foi:"+event);
+                          });
+                });
+
+         
+     Array.from(this.filesBanner2).forEach(file => {
+      console.log("Salvando 2: ");
+          const mimeType = file.type;
+        if (mimeType.match(/image\/*/) == null) {
+             this.authenticationService.mensagem("Only images are supported.");
+            return;
+        }
+                  this.profileService.uploadSingleFile(file, this.vendedor_id, 2).subscribe((event: any)  => {
+                    if (event.type === HttpEventType.UploadProgress) {
+                       
+                     
+                      let aqui: number = event!.total;
+                        this.authenticationService.mensagem('Salvando Imagens: '+Math.round((100 * event.loaded) / aqui) + '%...');
+                     
+                    } else if (event instanceof HttpResponse) {
+                      this.modalService.dismissAll();
+                     this.CarregaBanners(); 
+                    }
+
+                  }, () => {
+                            console.log("Erro ao Salvar Imagens foi:"+event);
+                          });
+                });
+
+  }, (resposta: any) => {
+      this.vendaService.mensagem("Error ao Atualizar Dados Vendedor: "+resposta);
+         console.log('Error ao Deletar Arquivos '+resposta);
+                                   //   this.vendaService.mensagem(this.errorMessage);
+  });
+  }
+
+//Carrega os Banners
+CarregaBanners(){
+
+    this.banners = [];
+
+     this.authenticationService.getVendedorById(+this.vendedor_id, this.token).subscribe((resposta: Vendedor) => {
+
+
+                                this.vendedor = resposta;
+
+                                //Busca Imagem de perfil
+                                this.FileService.findBannersByIdVendedor(this.vendedor_id, this.token).subscribe((files: FileDB[]) => {
+
+
+                                    if(files.length == 0){
+                                      
+                                      this.image = "https://i.pinimg.com/originals/76/47/2e/76472e433e19ec424f7f6b8933380f93.png";
+                                    }else{
+                                        files.forEach(file => {
+                                        this.banners.push(this.sanitized.bypassSecurityTrustUrl('data:image/png;base64,'+file.data));
+                                        });
+                                    }
+
+
+                                   }, () => {
+                              console.log('Error ao Buscar Dados Loja');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+
+               }, () => {
+                              console.log('Error ao Buscar Dados Vendedor');
+                                   //   this.vendaService.mensagem(this.errorMessage);
+                                  
+                               });
+
+
+  }
+
+
   //Atualizar informações Loja
   Att(){
 
@@ -355,7 +610,6 @@ console.log( this.vendedor_id);
                                    //   this.vendaService.mensagem(this.errorMessage);
                                   
                                });
-    
   }
 
 

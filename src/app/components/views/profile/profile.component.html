@@ -701,19 +701,47 @@ Loja de {{usuario.firstName}} {{usuario.lastName}}! <br><br>
           
               <hr class="horizontal gray-light my-2">
               <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Produtos Banner &nbsp;&nbsp;</strong>  <a (click)="open(content)">
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Produtos Banner &nbsp;&nbsp;</strong>  <a (click)="openBanner(contentBanner)">
                     <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>
                   </a></li>
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Produtos em Destaque &nbsp;&nbsp;</strong>  <a (click)="open(content)">
+                   <div   class="col-auto">
+            <div >
+  <!-- Utilize ng-container para limitar a quantidade de elementos exibidos -->
+  
+    <div *ngFor="let image of banners; let i = index" class="avatar avatar-xl position-relative m-1">
+      <img [src]="image" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+    </div>
+</div>
+          </div>
+               
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Mensagem em Destaque &nbsp;&nbsp;</strong>  <a (click)="openMensagem(contentMessage)">
                     <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>
                   </a></li>
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Mensagem em Destaque &nbsp;&nbsp;</strong>  <a (click)="open(content)">
+                   <li class="list-group-item border-0 ps-0 pt-0 text-sm"> Titulo: &nbsp; Sem tempo de Fazer o almoco?</li>
+                   <li class="list-group-item border-0 ps-0 pt-0 text-sm"> Sub-titulo: &nbsp; Vem, tem Cupom de R$ 30</li>
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm mt-2"><strong class="text-dark">Cores do App/Site &nbsp;&nbsp;</strong>  <a (click)="openCores(contentCores)">
                     <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>
                   </a></li>
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Cores do App/Site &nbsp;&nbsp;</strong>  <a (click)="open(content)">
-                    <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>
-                  </a></li>
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Configuração Dominios &nbsp;&nbsp;</strong>  <a (click)="open(content)">
+                  
+                  
+                        <div   class="col-auto">
+                         
+                              <div class="avatar avatar-xl position-relative m-1">
+                                   <select [(ngModel)]="primaryColor" [ngStyle]="{'background-color': primaryColor}" class="form-control w-100" title="Cor Princiapl" (change)="atualizarCores()">
+                                           
+                                          <option *ngFor="let color of colors" [ngStyle]="{'background-color': color.value}" [value]="color.value"></option>
+                                    </select>
+                               </div>
+                      
+                       
+                              <div class="avatar avatar-xl position-relative m-1">
+                                   <select [(ngModel)]="secondaryColor" [ngStyle]="{'background-color': secondaryColor}" class="form-control w-100" title="Cor Secundaria" (change)="atualizarCores()">
+                                          <option *ngFor="let color of colors" [ngStyle]="{'background-color': color.value}" [value]="color.value"></option>
+                                    </select>
+                               </div>
+                       </div>
+                  
+                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Configuração Dominios &nbsp;&nbsp;</strong>  <a (click)="openDominios(content)">
                     <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>
                   </a></li>
                 
@@ -1076,6 +1104,133 @@ Loja de {{usuario.firstName}} {{usuario.lastName}}! <br><br>
   </div>
 </ng-template>
 
+ <ng-template #contentBanner let-c="close" let-d="dismiss" style=" max-width: 50%; width: 30%;">
+  <div class="modal-body" >
+    
+    <div class="tab_container">
+     
+      <input id="tab2" type="radio" name="tabs" checked style="display: none;">
+      <label for="tab2" style="display: none;"><i class="fa fa-camera-retro" style="display: none;"></i><span> &nbsp;Foto(s) </span></label>
+
+      
+
+      <section id="content2" class="tab-content">
+         <form class="form-horizontal" role="form">
+                  <div class="m-3 " style=" height: 100%;
+  width: 40%; /* Cada div-filha ocupará metade da largura do div-pai */
+  float: left;
+  background-color: #f0f0f0; /* Cor de fundo apenas para visualização */
+  box-sizing: border-box;
+  border: 1px solid #ccc;">
+                     <span>Tamanho Limite Arquivo: 1MB</span>    
+          <ngx-dropzone (change)="onSelectBanner1($event)" [multiple]="false">
+            <ngx-dropzone-label>Selecione ou Arraste o primeiro Banner</ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of filesBanner" [file]="f">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+</div>
+<div class="m-3" style=" height: 100%;
+  width: 40%; /* Cada div-filha ocupará metade da largura do div-pai */
+  float: left;
+  background-color: #f0f0f0; /* Cor de fundo apenas para visualização */
+  box-sizing: border-box;
+  border: 1px solid #ccc;">
+   <span>Tamanho Limite Arquivo: 1MB</span>  
+           <ngx-dropzone (change)="onSelectBanner2($event)" [multiple]="false">
+            <ngx-dropzone-label>Selecione ou Arraste o segundo Banner</ngx-dropzone-label>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of filesBanner2" [file]="f">
+              <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+        </div>
+                  </form>
+                  <div
+                                       class="mar-top clearfix">  <button  type="button" (click)="AttBanners()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Atualizar</button></div>
+      </section>
+
+     
+    </div>
+
+  </div>
+</ng-template>
+
+ <ng-template #contentMessage let-c="close" let-d="dismiss" style=" max-width: 50%; width: 30%;">
+  <div class="modal-body" >
+    
+    <div class="tab_container">
+     
+      <input id="tab2" type="radio" name="tabs" checked style="display: none;">
+      <label for="tab2" style="display: none;"><i class="fa fa-camera-retro" style="display: none;"></i><span> &nbsp;Foto(s) </span></label>
+
+      
+
+      <section id="content2" class="tab-content">
+         <form class="form-horizontal" role="form">
+                  <div class="" >
+                     
+                      <a>Titulo:</a>
+                      <div class="panel-body">
+                                    <textarea class="form-control" rows="1" placeholder="Titulo"
+                                    for="texto" id="fantasia" [(ngModel)]="Titulo" name="fantasia">
+                                  </textarea>
+                      </div>
+                       <a>Sub-Titulo</a>
+                      <div class="panel-body">
+                                    <textarea class="form-control" rows="1" placeholder="Sub-Titulo"
+                                    for="texto" id="fantasia" [(ngModel)]="SubTitulo" name="fantasia">
+                                  </textarea>
+                      </div>
+                    </div>
+                  </form>
+                  <div 
+                                       class="mar-top clearfix">  <button  type="button" (click)="Att()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Atualizar</button></div>
+      </section>
+
+     
+    </div>
+
+  </div>
+</ng-template>
+
+ <ng-template #contentCores let-c="close" let-d="dismiss" style=" max-width: 50%; width: 30%;">
+  <div class="modal-body" >
+    
+    <div class="tab_container">
+     
+      <input id="tab2" type="radio" name="tabs" checked style="display: none;">
+      <label for="tab2" style="display: none;"><i class="fa fa-camera-retro" style="display: none;"></i><span> &nbsp;Foto(s) </span></label>
+
+      
+
+      <section id="content2" class="tab-content">
+         <form class="form-horizontal" role="form">
+                  <div class="" >
+                     
+                      <a>Titulo:</a>
+                      <div class="panel-body">
+                                    <textarea class="form-control" rows="1" placeholder="Titulo"
+                                    for="texto" id="fantasia" [(ngModel)]="Titulo" name="fantasia">
+                                  </textarea>
+                      </div>
+                       <a>Sub-Titulo</a>
+                      <div class="panel-body">
+                                    <textarea class="form-control" rows="1" placeholder="Sub-Titulo"
+                                    for="texto" id="fantasia" [(ngModel)]="SubTitulo" name="fantasia">
+                                  </textarea>
+                      </div>
+                    </div>
+                  </form>
+                  <div 
+                                       class="mar-top clearfix">  <button  type="button" (click)="Att()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Atualizar</button></div>
+      </section>
+
+     
+    </div>
+
+  </div>
+</ng-template>
+
  <style>
              @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
 
@@ -1205,6 +1360,10 @@ label .fa {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.custom-color-select {
+  width: 40px;
+  border-radius: 5px; /* Defina o valor do border-radius desejado */
 }
              </style>
  

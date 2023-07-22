@@ -131,6 +131,7 @@ open(content: any) {
  
     this.newProduct.precoun = this.preco;
     this.newProduct.descricao = this.descricao;
+    this.newProduct.destaque = this.destaque_propertie;
    
     //Pega data formatada
       //  this.posttextaoservice.getHoraServidor().subscribe((resposta: string) => {
@@ -254,6 +255,7 @@ open(content: any) {
                                       this.newProduct.tipo="Sem tipo";
                                       this.newProduct.unidade = result.unidade;
                                       
+    this.newProduct.destaque = this.destaque_propertie;
                                       this.buscaimagens(id);
 
 

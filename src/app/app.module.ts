@@ -91,6 +91,7 @@ import { LoginClientComponent } from './components/security/login-client/login-c
 import { RevendedorTransacoesComponent } from './components/marketplaceweb/views/revendedor-transacoes/revendedor-transacoes.component';
 import { ConfigsComponent } from './components/views/configs/configs.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
