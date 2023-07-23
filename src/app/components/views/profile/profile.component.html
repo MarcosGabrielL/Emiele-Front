@@ -724,22 +724,20 @@ Loja de {{usuario.firstName}} {{usuario.lastName}}! <br><br>
                   </a></li>
                   
                   
-                        <div   class="col-auto">
-                         
-                              <div class="avatar avatar-xl position-relative m-1">
-                                   <select [(ngModel)]="primaryColor" [ngStyle]="{'background-color': primaryColor}" class="form-control w-100" title="Cor Princiapl" (change)="atualizarCores()">
-                                           
-                                          <option *ngFor="let color of colors" [ngStyle]="{'background-color': color.value}" [value]="color.value"></option>
-                                    </select>
-                               </div>
-                      
-                       
-                              <div class="avatar avatar-xl position-relative m-1">
-                                   <select [(ngModel)]="secondaryColor" [ngStyle]="{'background-color': secondaryColor}" class="form-control w-100" title="Cor Secundaria" (change)="atualizarCores()">
-                                          <option *ngFor="let color of colors" [ngStyle]="{'background-color': color.value}" [value]="color.value"></option>
-                                    </select>
-                               </div>
-                       </div>
+                       <div class="col-auto">
+  <div class="avatar avatar-xl position-relative m-1">
+    <select [(ngModel)]="primaryColor" [ngStyle]="{'background-color': primaryColor}" class="form-control w-100" title="Cor Princiapl" (change)="atualizarCores()">
+      <option *ngFor="let color of colors" [ngStyle]="{'background-color': color.value}" [value]="color.value"></option>
+    </select>
+  </div>
+
+  <div class="avatar avatar-xl position-relative m-1">
+    <select [(ngModel)]="secondaryColor" [ngStyle]="{'background-color': secondaryColor}" class="form-control w-100" title="Cor Secundaria" (change)="atualizarCores()">
+      <option *ngFor="let color of colors" [ngStyle]="{'background-color': color.value}" [value]="color.value"></option>
+    </select>
+  </div>
+</div>
+
                   
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Configuração Dominios &nbsp;&nbsp;</strong>  <a (click)="openDominios(content)">
                     <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>

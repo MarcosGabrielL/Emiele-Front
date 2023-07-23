@@ -48,9 +48,9 @@ export class ProfileService {
     return this.http.get<any>(url)
   }
 
-   findColorsByIdVendedor(idvendedor: any, token: string): Observable<CorModel> {
+   findColorsByIdVendedor(idvendedor: any, token: string): Observable<CorModel[]> {
     const url = `${this.baseUrlConfig}/cores/Cor/usuario/${idvendedor}?token=${token}`
-    return this.http.get<CorModel>(url)
+    return this.http.get<CorModel[]>(url)
   }
 
   AtualizaCoresVendedor(cores: CorModel, token: any): Observable<CorModel>  {
