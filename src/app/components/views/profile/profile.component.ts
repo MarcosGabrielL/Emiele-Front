@@ -13,7 +13,7 @@ import { VendaService } from './../../../../app/components/template/produto/vend
 import {ProfileService} from '../services/profile.service';
 import {FileService} from './../../../../app/components/template/produto/file.service';
 import {FileDB} from './../../../../app/components/template/produto/file.model'
-import {CorModel} from '../services/profile.model'
+import {CorModel,Anuncio} from '../services/profile.model'
 import {LoginService} from './../../../../app/components/security/login.service'
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -87,6 +87,7 @@ export class ProfileComponent implements OnInit {
 
  vendedor_id: String = "";
  Cores: CorModel[];
+ Anuncios: Anuncio[];
  vendas: Venda[];
  produtos: Produto[];
  eventos: Evento[];
@@ -139,7 +140,7 @@ vendedor: Vendedor = {
 
 frete: Frete = {
     id: "",
-    
+
     fretefixo: "",
     frete10k: "",
     cobrafrete: false,
@@ -249,7 +250,7 @@ openBanner(content: any){
 }
 
 openDestque(content: any){
-   
+
 }
 openMensagem(content: any){
  this.modalService.open(content, { size: 'lg' }).result.then((result) => {
@@ -264,7 +265,7 @@ openCores(content: any){
   }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
   });
-   
+
 }
 openDominios(content: any){
   this.modalService.open(content, { size: 'lg' }).result.then((result) => {
@@ -275,10 +276,10 @@ openDominios(content: any){
 }
 
 buscarCores() {
-   
+
   this.profileService.findColorsByIdVendedor(+this.vendedor_id, this.token).subscribe(
     (resposta: CorModel[]) => { // Certifique-se de especificar que a resposta é um array de CorModel
-        
+
       this.Cores = resposta; 
 
       if(resposta.length == 0){
@@ -292,6 +293,47 @@ buscarCores() {
       console.log('Erro ao buscar as cores:', error);
   }
   );
+}
+
+buscarAnuncio() {
+
+    this.profileService.findAnuncioByIdVendedor(+this.vendedor_id, this.token).subscribe(
+    (resposta: Anuncio[]) => { // Certifique-se de especificar que a resposta é um array de CorModel
+
+      this.Anuncios = resposta; 
+
+      if(resposta.length == 0){
+            this.Titulo = ' ' ;
+          this.SubTitulo =  '  ' ;
+      }else{
+          this.Titulo = '' + this.Anuncios[0].titulo;
+          this.SubTitulo =  '' + this.Anuncios[0].subtitulo;
+      }
+      console.log(this.Titulo + ' ' + this.SubTitulo);
+  },
+  (error) => {
+      console.log('Erro ao buscar as Anuncios:', error);
+  }
+  );
+
+}
+
+atualizarAnuncio(){
+
+ const NewAnuncio: Anuncio = {
+       id: this.Anuncios.length > 0 && this.Anuncios[0].id != null ? this.Anuncios[0].id : 0,
+       vendedor: ''+this.vendedor_id,
+       id_imagem: '',
+       titulo: ''+this.Titulo,
+       subtitulo: ''+this.SubTitulo
+   };
+
+   this.profileService.AtualizaAnuncioVendedor(NewAnuncio, this.token).subscribe((resposta: Anuncio) => {
+     this.modalService.dismissAll();
+    this.buscarAnuncio();
+}, () => {
+    console.log('Error ao Atualizar Anuncios');
+});
 }
 
 
@@ -312,10 +354,6 @@ atualizarCores(){
 }
 
 
-
-
-
-
 mostranotification(){
     if(!this.mostralist){ this.mostralist = true; this.mostramenu = false; }else{ this.mostralist = false;  }
 
@@ -331,7 +369,7 @@ mostranotification(){
        }, () => {
         console.log('Error ao Atualizar Notifications');
                                              //   this.vendaService.mensagem(this.errorMessage);
-                                             
+
                                          });
        //  }
 
@@ -357,20 +395,21 @@ isLoggedin(){
 
                             this.vendedor_id  = resposta.id.toString();
                             console.log( this.vendedor_id);
-                            
-                            
-                            
+
+
+
                             this.CarregaConversations();
                             this.CarregaBanners();
                             this.buscarCores();
-                            
+                            this.buscarAnuncio();
+
                         }, () => {
                          this.vendaService.mensagem("Erro ao Carregar Usuario! Por Favor Faça o Login e Tente Novamente");
                      }); 
                     };  
                 }
 
-                
+
 
                 CarregaConversations(){
 
@@ -401,14 +440,14 @@ isLoggedin(){
                              }, () => {
                               console.log('Error ao Buscar Dados Loja');
                                    //   this.vendaService.mensagem(this.errorMessage);
-                                   
+
                                });
 
 
                             }, () => {
                               console.log('Error ao Buscar Dados Vendedor');
                                    //   this.vendaService.mensagem(this.errorMessage);
-                                   
+
                                });
 
 
@@ -430,12 +469,12 @@ isLoggedin(){
                        }
                        this.profileService.uploadSingleFile(file, this.vendedor_id, 1).subscribe((event: any)  => {
                         if (event.type === HttpEventType.UploadProgress) {
-                           
+
                           let aqui: number = event!.total;
                           this.authenticationService.mensagem('Salvando Imagens: '+Math.round((100 * event.loaded) / aqui) + '%...');
-                          
+
                       } else if (event instanceof HttpResponse) {
-                       
+
                       }
 
                   }, () => {
@@ -443,7 +482,7 @@ isLoggedin(){
                 });
                    });
 
-                        
+
                         Array.from(this.filesBanner2).forEach(file => {
                           console.log("Salvando 2: ");
                           const mimeType = file.type;
@@ -453,11 +492,11 @@ isLoggedin(){
                        }
                        this.profileService.uploadSingleFile(file, this.vendedor_id, 2).subscribe((event: any)  => {
                         if (event.type === HttpEventType.UploadProgress) {
-                         
-                           
+
+
                           let aqui: number = event!.total;
                           this.authenticationService.mensagem('Salvando Imagens: '+Math.round((100 * event.loaded) / aqui) + '%...');
-                          
+
                       } else if (event instanceof HttpResponse) {
                           this.modalService.dismissAll();
                           this.CarregaBanners(); 
@@ -490,7 +529,7 @@ CarregaBanners(){
 
 
                                     if(files.length == 0){
-                                      
+
                                       this.image = "https://i.pinimg.com/originals/76/47/2e/76472e433e19ec424f7f6b8933380f93.png";
                                   }else{
                                     files.forEach(file => {
@@ -502,14 +541,14 @@ CarregaBanners(){
                             }, () => {
                               console.log('Error ao Buscar Dados Loja');
                                    //   this.vendaService.mensagem(this.errorMessage);
-                                   
+
                                });
 
 
                             }, () => {
                               console.log('Error ao Buscar Dados Vendedor');
                                    //   this.vendaService.mensagem(this.errorMessage);
-                                   
+
                                });
 
 
@@ -528,19 +567,19 @@ CarregaBanners(){
          this.authenticationService.mensagem("Dados Atualizados Com Sucesso!");
      }
      this.AttImage();
-     
+
 
  }, () => {
    this.vendaService.mensagem("Error ao Atualizar Dados Vendedor");
    console.log('Error ao Atualizar Dados Vendedor');
                                    //   this.vendaService.mensagem(this.errorMessage);
-                                   
+
                                });
 }
 
 
 AttImage(){
-    
+
 
     //Atualiza Foto
     if( this.temimagem){
@@ -556,7 +595,7 @@ AttImage(){
 
                                 } else if (event instanceof HttpResponse) {
                                     //UploadComplet
-                                    
+
                                     this.modalService.dismissAll();
                                     this.CarregaConversations();
                                 }
@@ -565,7 +604,7 @@ AttImage(){
                             }, () => {
                               console.log('Error ao Atualizar imagem de Exibição');
                                    //   this.vendaService.mensagem(this.errorMessage);
-                                   
+
                                });
       
   }else{
@@ -581,7 +620,7 @@ AttImage(){
 
                                 } else if (event instanceof HttpResponse) {
                                     //UploadComplet
-                                    
+
                                     this.modalService.dismissAll();
                                     this.CarregaConversations();
                                 }
@@ -589,11 +628,11 @@ AttImage(){
                             }, () => {
                               console.log('Error ao Atualizar imagem de Exibição');
                                    //   this.vendaService.mensagem(this.errorMessage);
-                                   
+
                                });
   }
-  
-  
+
+
 
 }
 
@@ -608,15 +647,15 @@ atualizaFrete(){
 
       this.frete.id = result.id;
       this.buscaFrete();
-      
 
-      
-      
+
+
+
 
   }, () => {
      console.log("Erro ao Salvar frete!");
  }); 
-   
+
 }
 
 buscaFrete(){

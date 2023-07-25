@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest, HttpEventType, HttpResponse, HttpHeaders} from '@angular/common/http';
-import { Banners, CorModel} from './profile.model'
+import { Banners, CorModel, Anuncio} from './profile.model'
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -55,6 +55,16 @@ export class ProfileService {
 
   AtualizaCoresVendedor(cores: CorModel, token: any): Observable<CorModel>  {
             return this.http.post<CorModel>(`${this.baseUrlConfig}/cores/Cor/add?token=${token}`
+                , cores, {  responseType: 'text' as 'json' });
+        }
+
+   findAnuncioByIdVendedor(idvendedor: any, token: string): Observable<Anuncio[]> {
+    const url = `${this.baseUrlConfig}/anuncios/Anuncio/usuario/${idvendedor}?token=${token}`
+    return this.http.get<Anuncio[]>(url)
+  }
+
+  AtualizaAnuncioVendedor(cores: Anuncio, token: any): Observable<Anuncio>  {
+            return this.http.post<Anuncio>(`${this.baseUrlConfig}/anuncios/Anuncio/add?token=${token}`
                 , cores, {  responseType: 'text' as 'json' });
         }
 

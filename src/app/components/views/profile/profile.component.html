@@ -717,8 +717,10 @@ Loja de {{usuario.firstName}} {{usuario.lastName}}! <br><br>
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Mensagem em Destaque &nbsp;&nbsp;</strong>  <a (click)="openMensagem(contentMessage)">
                     <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>
                   </a></li>
-                   <li class="list-group-item border-0 ps-0 pt-0 text-sm"> Titulo: &nbsp; Sem tempo de Fazer o almoco?</li>
-                   <li class="list-group-item border-0 ps-0 pt-0 text-sm"> Sub-titulo: &nbsp; Vem, tem Cupom de R$ 30</li>
+  <li class="list-group-item border-0 ps-0 pt-0 text-sm">Titulo: {{ Titulo }}</li>
+  <li class="list-group-item border-0 ps-0 pt-0 text-sm">SubTitulo: {{ SubTitulo }}</li>
+
+
                 <li class="list-group-item border-0 ps-0 pt-0 text-sm mt-2"><strong class="text-dark">Cores do App/Site &nbsp;&nbsp;</strong>  <a (click)="openCores(contentCores)">
                     <i class="fas fa-user-edit text-info text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Profile" style="cursor: pointer;"></i>
                   </a></li>
@@ -1170,19 +1172,19 @@ Loja de {{usuario.firstName}} {{usuario.lastName}}! <br><br>
                       <a>Titulo:</a>
                       <div class="panel-body">
                                     <textarea class="form-control" rows="1" placeholder="Titulo"
-                                    for="texto" id="fantasia" [(ngModel)]="Titulo" name="fantasia">
+                                    for="texto" id="Titulo" [(ngModel)]="Titulo" name="Titulo">
                                   </textarea>
                       </div>
                        <a>Sub-Titulo</a>
                       <div class="panel-body">
                                     <textarea class="form-control" rows="1" placeholder="Sub-Titulo"
-                                    for="texto" id="fantasia" [(ngModel)]="SubTitulo" name="fantasia">
+                                    for="texto" id="SubTitulo" [(ngModel)]="SubTitulo" name="SubTitulo">
                                   </textarea>
                       </div>
                     </div>
                   </form>
                   <div 
-                                       class="mar-top clearfix">  <button  type="button" (click)="Att()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Atualizar</button></div>
+                                       class="mar-top clearfix">  <button  type="button" (click)="atualizarAnuncio()" class="btn bg-gradient-info w-100 mt-4 mb-0" style="background-image: linear-gradient(310deg, #336, green);" >Atualizar</button></div>
       </section>
 
      

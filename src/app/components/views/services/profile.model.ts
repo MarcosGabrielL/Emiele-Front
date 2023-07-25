@@ -12,3 +12,12 @@ export class CorModel {
   primary_color: string;
   secondary: string;
 }
+
+
+export interface Anuncio {
+  id: number;
+  vendedor: string;
+  id_imagem: string;
+  titulo: string;
+  subtitulo: string;
+}
