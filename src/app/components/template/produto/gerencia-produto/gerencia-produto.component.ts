@@ -96,6 +96,8 @@ this.id = this.produtoservice.getId()
 
  toggleDestaque() {
     this.destaque_propertie = !this.destaque_propertie;
+
+  console.log(this.destaque_propertie);
   }
 
 onRemove(event: any) {
@@ -124,6 +126,8 @@ open(content: any) {
     }
   }
 
+
+
   SaveProduct(){
 
 
@@ -136,7 +140,7 @@ open(content: any) {
     //Pega data formatada
       //  this.posttextaoservice.getHoraServidor().subscribe((resposta: string) => {
         //    this.hora = resposta;
-          //  console.log(resposta);
+          //  console.log(resposta);  
         // }); 
     this.newProduct.data = "9:43:11";
     
@@ -254,8 +258,9 @@ open(content: any) {
                                       this.newProduct.quantidade = result.quantidade;
                                       this.newProduct.tipo="Sem tipo";
                                       this.newProduct.unidade = result.unidade;
-                                      
-    this.newProduct.destaque = this.destaque_propertie;
+                                     
+                                      this.destaque_propertie = result.destaque ;
+                                      console.log(this.destaque_propertie);
                                       this.buscaimagens(id);
 
 

@@ -126,7 +126,7 @@
                     </div>
                     
                    <div class="form-check form-switch">
-  <input class="form-check-input" type="checkbox" id="destaque" [(ngModel)]="destaque_propertie" [checked]="destaque_propertie">
+  <input class="form-check-input" type="checkbox" id="destaque" [(ngModel)]="destaque_propertie" [checked]="destaque_propertie" (change)="toggleDestaque()">
   <label class="form-check-label" for="destaque" title="Se marcada essa opção o produto aparecerá na seção destaques no aplicativo">Destaque</label>
 </div>
 
